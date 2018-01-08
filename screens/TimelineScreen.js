@@ -1,9 +1,9 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
-export default class HomeScreen extends React.Component {
+export default class TimelineScreen extends React.Component {
   static navigationOptions = {
-    title: 'Countdown',
+    title: 'Timeline',
   };
 
   render() {
