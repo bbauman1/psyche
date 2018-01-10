@@ -11,7 +11,7 @@
     `yarn global add ngrok`
     
     `yarn global add exp`
-4. Run 'npm install' in project directory
+4. Run `npm install` in project directory
 
 # Running
 
