@@ -2,7 +2,7 @@
 
 # Setup
 
-1. Download [Node.js](https://nodejs.org/en/)
+1. Download [Node.js](https://nodejs.org/en/) (Note: React has issues running on versions of npm 5+, install a 4.x.x version)
 2. Download the Expo app on your phone from your app store.
 3. Install the Expo CLI `npm install exp --global`
 
@@ -11,6 +11,7 @@
     `yarn global add ngrok`
     
     `yarn global add exp`
+4. Run 'npm install' in project directory
 
 # Running
 
