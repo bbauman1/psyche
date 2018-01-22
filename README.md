@@ -30,8 +30,3 @@
 
 * iOS (Mac Only): `exp ios`
 * Android: `exp android`
-
-# Documentation
-
-* [Expo](https://docs.expo.io/versions/latest/index.html)
-* [Tab Views](https://github.com/react-native-community/react-native-tab-view)
