@@ -1,23 +1,23 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { TabViewAnimated, TabBar } from 'react-native-tab-view';  
-import Colors from '../constants/Colors';
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { TabViewAnimated, TabBar } from "react-native-tab-view";
+import Colors from "../constants/Colors";
 
 export default class SocialScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', icon: 'logo-facebook' },
-      { key: 'second', icon: 'logo-instagram' },
-      { key: 'third', icon: 'logo-twitter' },
-    ],
+      { key: "first", icon: "logo-facebook" },
+      { key: "second", icon: "logo-instagram" },
+      { key: "third", icon: "logo-twitter" }
+    ]
   };
 
   static navigationOptions = {
-    title: 'Social Media',
+    title: "Social Media"
   };
-  
+
   _handleIndexChange = index => this.setState({ index });
 
   _renderHeader = props => {
@@ -37,18 +37,12 @@ export default class SocialScreen extends React.Component {
 
   _renderScene = ({ route }) => {
     switch (route.key) {
-      case 'first':
-        return (
-          <View/>
-        );
-      case 'second':
-        return (
-          <View/>
-        );
-      case 'third':
-        return (
-          <View/>
-        );
+      case "first":
+        return <View />;
+      case "second":
+        return <View />;
+      case "third":
+        return <View />;
       default:
         return null;
     }
@@ -69,12 +63,12 @@ export default class SocialScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1
   },
   tabbar: {
-    backgroundColor: '#000',
+    backgroundColor: "#000"
   },
   indicator: {
-    backgroundColor: '#222',
-  },
+    backgroundColor: "#222"
+  }
 });
