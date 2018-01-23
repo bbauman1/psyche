@@ -1,20 +1,20 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';  
-import Colors from '../constants/Colors';
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { TabViewAnimated, TabBar, SceneMap } from "react-native-tab-view";
+import Colors from "../constants/Colors";
 
 export default class FactsScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'Mission' },
-      { key: 'second', title: 'Spacecraft' },
-      { key: 'third', title: 'Asteroid' },
-    ],
+      { key: "first", title: "Mission" },
+      { key: "second", title: "Spacecraft" },
+      { key: "third", title: "Asteroid" }
+    ]
   };
 
   static navigationOptions = {
-    title: 'Facts',
+    title: "Facts"
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -23,26 +23,20 @@ export default class FactsScreen extends React.Component {
     return (
       <TabBar
         {...props}
-        indicatorStyle={styles.indicator}        
+        indicatorStyle={styles.indicator}
         style={styles.tabbar}
       />
     );
-  };  
+  };
 
   _renderScene = ({ route }) => {
     switch (route.key) {
-      case 'first':
-        return (
-          <View/>
-        );
-      case 'second':
-        return (
-          <View/>
-        );
-      case 'third':
-        return (
-          <View/>
-        );
+      case "first":
+        return <View />;
+      case "second":
+        return <View />;
+      case "third":
+        return <View />;
       default:
         return null;
     }
@@ -63,12 +57,12 @@ export default class FactsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1
   },
   tabbar: {
-    backgroundColor: '#000',
+    backgroundColor: "#000"
   },
   indicator: {
-    backgroundColor: '#222',
-  },
+    backgroundColor: "#222"
+  }
 });
