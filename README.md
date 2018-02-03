@@ -23,6 +23,15 @@
 
 ### Expo App
 
+#### Production 
+
+* Scan the url code [here](https://expo.io/@bbauman1/psyche)
+* **Important:** Anyone you share this link with can see our app, but it won't come
+  up in searches on Expo's website. 
+* This link is not guranteed to be the latest version of the app.
+
+#### Development
+
 * `exp start`
 * Scan QR code with app
 
