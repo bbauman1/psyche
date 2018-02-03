@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { LinearGradient } from 'expo';
 import Timeline from 'react-native-timeline-listview'
 
@@ -21,10 +21,18 @@ export default class TimelineScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timeline
-          style={styles.list}
-          data={this.data}
-        />
+        <LinearGradient
+          colors={['#ef5966', '#a53f5b']}
+          style={styles.gradient}>
+          <Timeline
+            style={styles.list}
+            data={this.data}
+            titleStyle={{ color: 'white' }}
+            descriptionStyle={{ color: 'white' }}
+          />
+        </LinearGradient>
+
+
       </View>
     );
   }
@@ -33,11 +41,15 @@ export default class TimelineScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    paddingTop: 0,
+    backgroundColor: 'transparent',
   },
   list: {
     flex: 1,
     marginTop: 20,
+    backgroundColor: 'transparent',
   },
+  gradient: {
+    flex: 1,
+  }
 });
