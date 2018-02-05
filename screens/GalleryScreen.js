@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text, Image, View, TouchableHighlight, Button, Alert, Dimensions } from "react-native";
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
+/* NOTE: Formatting will be taken care of soon! */
 export default class GalleryScreen extends React.Component
 {
 	static navigationOptions = {
@@ -36,6 +37,7 @@ export default class GalleryScreen extends React.Component
 	}
 	selectCallback = (data) => {
 		console.log(data);
+		//TEST for callback success
 	}
 	render() {
 		
@@ -47,7 +49,7 @@ export default class GalleryScreen extends React.Component
 					<View>
 					{this.rows}
 					</View>
-					</ScrollView>
+				</ScrollView>
 				)
 		}
 	}
@@ -74,15 +76,15 @@ class MediaContainer extends React.Component
 	{
 		return (
 				<TouchableHighlight onPress={this.onPress} underlayColor = {"#fff"} style = {{alignItems: 'center'}}>
-				<Image source = {{uri: this.props.uriMedia}} style = {{width:this.props.width, height:this.props.width, borderWidth: 1.0, borderColor: "#fff"}} />
+					<Image source = {{uri: this.props.uriMedia}} style = {{width:this.props.width, height:this.props.width, borderWidth: 1.0, borderColor: "#fff"}} />
 				</TouchableHighlight>
 				)
 	}
 }
 
 const styles = StyleSheet.create({
-								 container: {
-								 flex: 1,
-								 flexDirection: 'column'
-								 }
-								 });
+			 container: {
+			 flex: 1,
+			 flexDirection: 'column'
+			 }
+			 });
