@@ -1,6 +1,6 @@
-function getCountdown(launchDateString) {
-  var countDownDate = new Date(launchDateString).getTime();
-  var now = new Date().getTime();
+function timeTillLaunch(nowTime, launchTime) {
+  var countDownDate = new Date(launchTime).getTime();
+  var now = new Date(nowTime).getTime();
   var distance = countDownDate - now;
 
   return {
@@ -11,3 +11,5 @@ function getCountdown(launchDateString) {
     seconds: Math.floor((distance % (1000 * 60)) / 1000)
   };
 }
+
+exports.timeTillLaunch = timeTillLaunch;
