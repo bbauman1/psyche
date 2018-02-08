@@ -36,15 +36,11 @@ export default class HomeScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.countdownContainer}>
-          <MonoText style={styles.countdownText}>{countdown.years} Ys</MonoText>
-          <MonoText style={styles.countdownText}>{countdown.days} Ds</MonoText>
-          <MonoText style={styles.countdownText}>{countdown.hours} Hs</MonoText>
-          <MonoText style={styles.countdownText}>
-            {countdown.minutes} Ms
-          </MonoText>
-          <MonoText style={styles.countdownText}>
-            {countdown.seconds} Ss
-          </MonoText>
+          <MonoText style={styles.countdownText}>{countdown.years}</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.days}</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.hours}</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.minutes}</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.seconds}</MonoText>
         </View>
       </ScrollView>
     );
