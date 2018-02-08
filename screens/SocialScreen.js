@@ -26,20 +26,12 @@ export default class SocialScreen extends React.Component {
   _renderHeader = props => {
     return (
       <View style={[styles.container, {paddingTop: 10}]}>
-        <LinearGradient
-          colors={['#7F7F7F', '#C0C0C0']}
-          start={[0.1,0.0]}
-          end = {[0.9,0.0]}
-          style={{height: 50, width: 200, alignItems: 'center', justifyContent: 'center'}}>
-          <View style={[styles.container, {borderWidth: 10, width: '100%'}]}>
-            <TabBar
-              {...props}
-              indicatorStyle={styles.indicator}
-              renderIcon={this._renderIcon}
-              style={[styles.tabbar, {position: 'absolute'}]}
-            />
-          </View>
-        </LinearGradient>
+        <TabBar
+          {...props}
+          indicatorStyle={styles.indicator}
+          renderIcon={this._renderIcon}
+          style={[styles.tabbar, {position: 'absolute'}]}
+        />
       </View>
     );
   };
@@ -63,14 +55,20 @@ export default class SocialScreen extends React.Component {
 
   render() {
     return (
-      <TabViewAnimated
-        style={[styles.container, this.props.style]}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onIndexChange={this._handleIndexChange}
-      />
-
+      <View
+        style={{
+          height: 300,
+          padding: 10,
+          backgroundColor: '#302144'
+        }}>
+        <TabViewAnimated
+          style={[styles.container, this.props.style]}
+          navigationState={this.state}
+          renderScene={this._renderScene}
+          renderHeader={this._renderHeader}
+          onIndexChange={this._handleIndexChange}
+        />
+      </View>
     );
   }
 }
