@@ -25,17 +25,20 @@ export default class SocialScreen extends React.Component {
 
   _renderHeader = props => {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {paddingTop: 10}]}>
         <LinearGradient
-          colors={['#7F7F7F', '#C0C0C0']}>
-          style={styles.gradient}
-          >
+          colors={['#7F7F7F', '#C0C0C0']}
+          start={[0.1,0.0]}
+          end = {[0.9,0.0]}
+          style={{height: 50, width: 200, alignItems: 'center', justifyContent: 'center'}}>
+          <View style={[styles.container, {borderWidth: 10, width: '100%'}]}>
             <TabBar
               {...props}
               indicatorStyle={styles.indicator}
               renderIcon={this._renderIcon}
-              style={styles.tabbar}
-            />        
+              style={[styles.tabbar, {position: 'absolute'}]}
+            />
+          </View>
         </LinearGradient>
       </View>
     );
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: "#222"
   },
-  gradient: {
-    flex: 1
+  tabGradient: {
+    height: 50
   }
 });
