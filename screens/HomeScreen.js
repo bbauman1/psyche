@@ -94,13 +94,11 @@ const styles = StyleSheet.create({
   },
   countdownTextDuration: {
     fontWeight: "bold",
-    fontSize: 26,
-    color: "purple"
+    fontSize: 26
   },
   countdownText: {
     fontWeight: "bold",
-    fontSize: 52,
-    color: "purple"
+    fontSize: 52
   },
   countdownContainer: {
     flex: 1,
