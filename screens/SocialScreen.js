@@ -2,7 +2,10 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
+import { LinearGradient } from 'expo';
 import Colors from "../constants/Colors";
+
+/*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 
 export default class SocialScreen extends React.Component {
   state = {
@@ -22,12 +25,19 @@ export default class SocialScreen extends React.Component {
 
   _renderHeader = props => {
     return (
-      <TabBar
-        {...props}
-        indicatorStyle={styles.indicator}
-        renderIcon={this._renderIcon}
-        style={styles.tabbar}
-      />
+      <View style={styles.container}>
+        <LinearGradient
+          colors={['#7F7F7F', '#C0C0C0']}>
+          style={styles.gradient}
+          >
+            <TabBar
+              {...props}
+              indicatorStyle={styles.indicator}
+              renderIcon={this._renderIcon}
+              style={styles.tabbar}
+            />        
+        </LinearGradient>
+      </View>
     );
   };
 
@@ -57,6 +67,7 @@ export default class SocialScreen extends React.Component {
         renderHeader={this._renderHeader}
         onIndexChange={this._handleIndexChange}
       />
+
     );
   }
 }
@@ -66,9 +77,14 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tabbar: {
-    backgroundColor: "#000"
+    backgroundColor: "#302144",
+    borderTopColor: 'black',
+    borderTopWidth: 5
   },
   indicator: {
     backgroundColor: "#222"
+  },
+  gradient: {
+    flex: 1
   }
 });
