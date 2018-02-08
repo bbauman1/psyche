@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollView, StyleSheet, View, Text } from "react-native";
+import { MonoText } from "../components/StyledText";
 import timeTillLaunch from "../util/countdown";
 import launchDate from "../constants/Dates";
 
@@ -35,11 +36,15 @@ export default class HomeScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.countdownContainer}>
-          <Text style={styles.countdownText}>{countdown.years} Ys</Text>
-          <Text style={styles.countdownText}>{countdown.days} Ds</Text>
-          <Text style={styles.countdownText}>{countdown.hours} Hs</Text>
-          <Text style={styles.countdownText}>{countdown.minutes} Ms</Text>
-          <Text style={styles.countdownText}>{countdown.seconds} Ss</Text>
+          <MonoText style={styles.countdownText}>{countdown.years} Ys</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.days} Ds</MonoText>
+          <MonoText style={styles.countdownText}>{countdown.hours} Hs</MonoText>
+          <MonoText style={styles.countdownText}>
+            {countdown.minutes} Ms
+          </MonoText>
+          <MonoText style={styles.countdownText}>
+            {countdown.seconds} Ss
+          </MonoText>
         </View>
       </ScrollView>
     );

@@ -13,5 +13,3 @@ function timeTillLaunch(nowTime, launchTime) {
 }
 
 exports.timeTillLaunch = timeTillLaunch;
-// time to launch I think
-console.log(timeTillLaunch(new Date().getTime(), "2022-08-20T06:59:00Z"));
