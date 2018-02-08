@@ -13,8 +13,7 @@ function timeTillLaunch(nowTime, launchTime) {
   };
   for (var key in data) {
     if (data.hasOwnProperty(key)) {
-      s = data[key];
-      s = s.toString();
+      s = data[key].toString();
       if (s.length < 2) {
         s = "0" + s;
       }
