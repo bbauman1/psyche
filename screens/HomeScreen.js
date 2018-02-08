@@ -6,7 +6,6 @@ import launchDate from "../constants/Dates";
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.set;
   }
 
   componentDidMount() {
@@ -27,7 +26,7 @@ export default class HomeScreen extends React.Component {
   _get_current_countdown() {
     return timeTillLaunch.timeTillLaunch(
       new Date().getTime(),
-      "2022-08-20T06:59:00Z"
+      launchDate.launchDate
     );
   }
 
@@ -50,6 +49,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   countdownText: {
     fontWeight: "bold",
+    fontSize: 52,
     color: "purple"
   },
   countdownContainer: {
