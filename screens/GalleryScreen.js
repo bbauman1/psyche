@@ -136,8 +136,8 @@ class MediaInfoViewer extends React.Component
 	
 	doPress = () =>
 	{
-		const {navigate} = this.props.navigation;
-		navigate('Main',{});//ISSUE -> We don't want to STACK onto (TODO)
+		const {goBack} = this.props.navigation;
+		goBack(null);
 	}
 	
 	loadPicture = (width, height) =>
@@ -172,18 +172,18 @@ class MediaInfoViewer extends React.Component
 
 /*** GLOBAL SCREEN ***/
 const LocalPageNavigator = StackNavigator(
-										  {
-										  Main:{
-										  screen: Gallery
-										  },
-										  Media:{
-										  screen: MediaInfoViewer
-										  }
-										  },
-										  {
-										  headerMode: 'screen'
-										  }
-										  )
+	  {
+	  Main:{
+	  screen: Gallery
+	  },
+	  Media:{
+	  screen: MediaInfoViewer
+	  }
+	  },
+	  {
+	  headerMode: 'screen'
+	  }
+	  )
 
 export default class GalleryScreen extends React.Component
 {
