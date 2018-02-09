@@ -161,9 +161,9 @@ class MediaInfoViewer extends React.Component
 			let localWidth = Dimensions.get('window').width;
 			return (
 			<TouchableHighlight onPress = {this.doPress}>
-			<View style={{flex:1, justifyContent: 'center', position: 'relative'}}>
+				<View style={{flex:1}}>
 					<Image source = {{uri: this.imgURI}} style = {{width: localWidth, height: localWidth/aspectRatio}}/>
-			</View>
+				</View>
 			</TouchableHighlight>
 					)
 		}
