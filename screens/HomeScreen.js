@@ -1,6 +1,8 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text } from "react-native";
+import { ScrollView, StyleSheet, View, Text, Button } from "react-native";
+import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
+import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
 import timeTillLaunch from "../util/countdown";
 import launchDate from "../constants/Dates";
@@ -21,8 +23,19 @@ export default class HomeScreen extends React.Component {
       1000
     );
   }
-  static navigationOptions = {
-    title: "Countdown"
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: "Countdown",
+      headerLeft: (
+        <Ionicons
+          name={"ios-camera-outline"}
+          size={32}
+          color={"#000"}
+          style={{ marginLeft: 18 }}
+          onPress={() => navigation.navigate("Modal")}
+        />
+      )
+    };
   };
 
   _get_current_countdown() {
