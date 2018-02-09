@@ -4,8 +4,8 @@ import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
-import timeTillLaunch from "../util/countdown";
-import launchDate from "../constants/Dates";
+import countdown from "../util/countdown";
+import Dates from "../constants/Dates";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -39,10 +39,7 @@ export default class HomeScreen extends React.Component {
   };
 
   _get_current_countdown() {
-    return timeTillLaunch.timeTillLaunch(
-      new Date().getTime(),
-      launchDate.launchDate
-    );
+    return countdown.timeTillLaunch(new Date().getTime(), Dates.launch);
   }
 
   render() {
