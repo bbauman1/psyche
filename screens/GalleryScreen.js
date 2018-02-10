@@ -1,6 +1,7 @@
 import React from "react";
 import { ScrollView, StyleSheet, Text, Image, View, TouchableHighlight, Button, Alert, Dimensions } from "react-native";
 import { StackNavigator } from "react-navigation"
+import { Video } from 'react-native-video'
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 /* NOTE: Formatting will be taken care of soon! */
 
@@ -25,10 +26,11 @@ class Gallery extends React.Component
 		base = 'http://nasa.aaronb.us/';
 		
 		files = [];
-		files[0] = '1.jpg';
-		files[1] = '2.jpg';
-		files[2] = '3.jpg';
-		files[3] = '4.jpg';
+		files[0] = {name: '1.jpg', mediaType: 'image'};
+		files[1] = {name: '2.jpg', mediaType: 'image'};
+		files[2] = {name: '3.jpg', mediaType: 'image'};
+		files[3] = {name: '4.jpg', mediaType: 'image'};
+		files[4] = {name: 'test.mov', mediaType: 'video'};
 		//We will finish getting index.txt later
 		this.width = Dimensions.get('window').width;
 		this.height = Dimensions.get('window').height;
@@ -39,8 +41,9 @@ class Gallery extends React.Component
 			row = [];
 			for(let j = 0; j < 3 && i*3 + j < files.length;j++)
 			{
-				let fileName = files[i*3 + j];
-				row[j] = <MediaContainer key = {fileName} width = {square} uriMedia = {base + fileName} callback = {this.selectCallback}/>;
+				let fileName = files[i*3 + j].name;
+				let mediaType = files[i*3 +j].mediaType;
+				row[j] = <MediaContainer key = {fileName} width = {square} uriMedia = {base + fileName} mediaType = {mediaType} callback = {this.selectCallback}/>;
 			}
 			this.rows[i] = <MediaRow key = {i} frames = {row}/>
 		}
@@ -108,10 +111,10 @@ class MediaContainer extends React.Component
 	onPress = () => {
 		//Alert.alert("Open " + this.props.uriMedia);
 		//this.props.callback(this.props.uriMedia);
-		this.props.callback({mediaShown: this.props.uriMedia, mediaType: 1});//TEST only type 1 right now
+		this.props.callback({mediaShown: this.props.uriMedia, mediaType: this.props.mediaType});
 	}
 	render()
-	{
+	{//uriMedia at {{uri will be changed to PREVIEW version
 		return (
 				<TouchableHighlight onPress={this.onPress} underlayColor = {"#fff"} style = {{alignItems: 'center'}}>
 					<Image source = {{uri: this.props.uriMedia}} style = {{width:this.props.width, height:this.props.width, borderWidth: 1.0, borderColor: "#fff"}} />
@@ -130,8 +133,8 @@ class MediaInfoViewer extends React.Component
 	{
 		super(props);
 		this.state = {loadingPicture: true};
-		this.imgURI = this.props.navigation.state.params.mediaShown;
-		
+		this.mediaURI = this.props.navigation.state.params.mediaShown;
+		this.mediaType = this.props.navigation.state.params.mediaType;
 	}
 	
 	doPress = () =>
@@ -149,23 +152,61 @@ class MediaInfoViewer extends React.Component
 	
 	render()
 	{
-		
-		if(this.state.loadingPicture === true)
+		if(this.mediaType === 'image')
 		{
-			Image.getSize(this.imgURI, this.loadPicture);
-			return <Text>Loading...</Text>
+			if(this.state.loadingPicture === true)
+			{
+				Image.getSize(this.mediaURI, this.loadPicture);
+				return <Text>Loading...</Text>
+			}
+			else
+			{
+				let aspectRatio = this.width / this.height;
+				let localWidth = Dimensions.get('window').width;
+				return (
+				<TouchableHighlight onPress = {this.doPress}>
+					<View style={{flex:1}}>
+						<Image source = {{uri: this.mediaURI}} style = {{width: localWidth, height: localWidth/aspectRatio}}/>
+					</View>
+				</TouchableHighlight>
+						)
+			}
+		}
+		else if(this.mediaType === 'video')
+		{
+			return (
+				<Text>Video</Text>
+					)
+			/*
+			 return ( <Video source={{uri: this.mediaURI}}   // Can be a URL or a local file.
+			 ref={(ref) => {
+			 this.player = ref
+			 }}                                      // Store reference
+			 rate={1.0}                              // 0 is paused, 1 is normal.
+			 volume={1.0}                            // 0 is muted, 1 is normal.
+			 muted={false}                           // Mutes the audio entirely.
+			 paused={false}                          // Pauses playback entirely.
+			 resizeMode="cover"                      // Fill the whole screen at aspect ratio.*
+			 repeat={true}                           // Repeat forever.
+			 playInBackground={false}                // Audio continues to play when app entering background.
+			 playWhenInactive={false}                // [iOS] Video continues to play when control or notification center are shown.
+			 ignoreSilentSwitch={"ignore"}           // [iOS] ignore | obey - When 'ignore', audio will still play with the iOS hard silent switch set to silent. When 'obey', audio will toggle with the switch. When not specified, will inherit audio settings as usual.
+			 progressUpdateInterval={250.0}          // [iOS] Interval to fire onProgress (default to ~250ms)
+			 onLoadStart={this.loadStart}            // Callback when video starts to load
+			 onLoad={this.setDuration}               // Callback when video loads
+			 onProgress={this.setTime}               // Callback every ~250ms with currentTime
+			 onEnd={this.onEnd}                      // Callback when playback finishes
+			 onError={this.videoError}               // Callback when video cannot be loaded
+			 onBuffer={this.onBuffer}                // Callback when remote video is buffering
+			 onTimedMetadata={this.onTimedMetadata}  // Callback when the stream receive some metadata
+			 style={{styles.backgroundVideo}} />
+			 */
 		}
 		else
 		{
-			let aspectRatio = this.width / this.height;
-			let localWidth = Dimensions.get('window').width;
-			return (
-			<TouchableHighlight onPress = {this.doPress}>
-				<View style={{flex:1}}>
-					<Image source = {{uri: this.imgURI}} style = {{width: localWidth, height: localWidth/aspectRatio}}/>
-				</View>
-			</TouchableHighlight>
-					)
+			let msg = 'Type of media not supported';
+			Alert.alert(msg);
+			return <Text>{msg}</Text>
 		}
 	}
 }
