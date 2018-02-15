@@ -2,10 +2,20 @@ import React from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
-import { LinearGradient } from 'expo';
+import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
+//Constants for scenes to be shown in the tabs
+const FacebookRoute = () => (
+  <View style={[styles.container, { backgroundColor: "red" }]} />
+);
+const InstagramRoute = () => (
+  <View style={[styles.container, { backgroundColor: "white" }]} />
+);
+const TwitterRoute = () => (
+  <View style={[styles.container, { backgroundColor: "black" }]} />
+);
 
 export default class SocialScreen extends React.Component {
   state = {
@@ -23,19 +33,6 @@ export default class SocialScreen extends React.Component {
 
   _handleIndexChange = index => this.setState({ index });
 
-  _renderHeader = props => {
-    return (
-      <View style={[styles.container, {paddingTop: 10}]}>
-        <TabBar
-          {...props}
-          indicatorStyle={styles.indicator}
-          renderIcon={this._renderIcon}
-          style={[styles.tabbar, {position: 'absolute'}]}
-        />
-      </View>
-    );
-  };
-
   _renderIcon = ({ route }) => (
     <Ionicons name={route.icon} size={24} color="white" />
   );
@@ -43,24 +40,35 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-        return <View />;
+        return <FacebookRoute />;
       case "second":
-        return <View />;
+        return <InstagramRoute />;
       case "third":
-        return <View />;
+        return <TwitterRoute />;
       default:
         return null;
     }
+  };
+
+  _renderHeader = props => {
+    return (
+      <TabBar
+        {...props}
+        indicatorStyle={styles.indicator}
+        renderIcon={this._renderIcon}
+        style={[styles.tabbar]}
+      />
+    );
   };
 
   render() {
     return (
       <View
         style={{
-          height: 300,
-          padding: 10,
-          backgroundColor: '#302144'
-        }}>
+          height: "100%",
+          backgroundColor: "#302144"
+        }}
+      >
         <TabViewAnimated
           style={[styles.container, this.props.style]}
           navigationState={this.state}
@@ -79,13 +87,13 @@ const styles = StyleSheet.create({
   },
   tabbar: {
     backgroundColor: "#302144",
-    borderTopColor: 'black',
+    borderTopColor: "black",
     borderTopWidth: 5
   },
   indicator: {
     backgroundColor: "#222"
-  },
-  tabGradient: {
-    height: 50
   }
+  // tabGradient: {
+  //   height: 50
+  // }
 });
