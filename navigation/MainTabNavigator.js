@@ -1,64 +1,70 @@
-import React from 'react';
-import { Platform } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { TabNavigator, TabBarBottom } from 'react-navigation';
+import React from "react";
+import { Platform } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { TabNavigator, TabBarBottom } from "react-navigation";
 
-import Colors from '../constants/Colors';
+import Colors from "../constants/Colors";
 
-import HomeScreen from '../screens/HomeScreen';
-import SocialScreen from '../screens/SocialScreen';
-import GalleryScreen from '../screens/GalleryScreen';
-import TimelineScreen from '../screens/TimelineScreen';
-import FactsScreen from '../screens/FactsScreen';
+import HomeScreen from "../screens/HomeScreen";
+import SocialScreen from "../screens/SocialScreen";
+import GalleryScreen from "../screens/GalleryScreen";
+import TimelineScreen from "../screens/TimelineScreen";
+import FactsScreen from "../screens/FactsScreen";
 
 export default TabNavigator(
   {
     Facts: {
-      screen: FactsScreen,
+      screen: FactsScreen
     },
     Timeline: {
-      screen: TimelineScreen,
-    },    
+      screen: TimelineScreen
+    },
     Home: {
-      screen: HomeScreen,
+      screen: HomeScreen
     },
     Social: {
-      screen: SocialScreen,
+      screen: SocialScreen
     },
     Gallery: {
-      screen: GalleryScreen,
-    },
+      screen: GalleryScreen
+    }
   },
   {
+    initialRouteName: "Home",
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
         let iconName;
         switch (routeName) {
-          case 'Facts':
-            iconName = Platform.OS === 'ios'
-              ? `ios-information-circle${focused ? '' : '-outline'}`
-              : 'md-information-circle';
+          case "Facts":
+            iconName =
+              Platform.OS === "ios"
+                ? `ios-information-circle${focused ? "" : "-outline"}`
+                : "md-information-circle";
             break;
-          case 'Timeline':
-            iconName = Platform.OS === 'ios' 
-              ? `ios-time${focused ? '' : '-outline'}` 
-              : 'md-time';
+          case "Timeline":
+            iconName =
+              Platform.OS === "ios"
+                ? `ios-time${focused ? "" : "-outline"}`
+                : "md-time";
             break;
-          case 'Home':
-            iconName = Platform.OS === 'ios' 
-              ? `ios-home${focused ? '' : '-outline'}` 
-              : 'md-home';
+          case "Home":
+            iconName =
+              Platform.OS === "ios"
+                ? `ios-home${focused ? "" : "-outline"}`
+                : "md-home";
             break;
-          case 'Social':
-            iconName = Platform.OS === 'ios' 
-              ? `ios-chatbubbles${focused ? '' : '-outline'}` 
-              : 'md-chatbubbles';
+          case "Social":
+            iconName =
+              Platform.OS === "ios"
+                ? `ios-chatbubbles${focused ? "" : "-outline"}`
+                : "md-chatbubbles";
             break;
-          case 'Gallery':
-            iconName = Platform.OS === 'ios' 
-              ? `ios-images${focused ? '' : '-outline'}` 
-              : 'md-images';
+          case "Gallery":
+            iconName =
+              Platform.OS === "ios"
+                ? `ios-images${focused ? "" : "-outline"}`
+                : "md-images";
             break;
         }
         return (
@@ -69,11 +75,11 @@ export default TabNavigator(
             color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
           />
         );
-      },
+      }
     }),
     tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
+    tabBarPosition: "bottom",
     animationEnabled: false,
-    swipeEnabled: false,
+    swipeEnabled: false
   }
 );

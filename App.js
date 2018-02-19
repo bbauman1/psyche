@@ -1,12 +1,12 @@
-import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { AppLoading, Asset, Font } from 'expo';
-import { Ionicons } from '@expo/vector-icons';
-import RootNavigation from './navigation/RootNavigation';
+import React from "react";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { AppLoading, Asset, Font } from "expo";
+import { Ionicons } from "@expo/vector-icons";
+import RootNavigation from "./navigation/RootNavigation";
 
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false,
+    isLoadingComplete: false
   };
 
   render() {
@@ -21,8 +21,10 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
+          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          {Platform.OS === "android" && (
+            <View style={styles.statusBarUnderlay} />
+          )}
           <RootNavigation />
         </View>
       );
@@ -33,16 +35,16 @@ export default class App extends React.Component {
     return Promise.all([
       Asset.loadAsync([
         // Kept this for later as an example of loading assets
-        // require('./assets/images/robot-dev.png'),        
+        // require('./assets/images/robot-dev.png'),
       ]),
-      Font.loadAsync({        
-        ...Ionicons.font,        
-        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-      }),
+      Font.loadAsync({
+        ...Ionicons.font,
+        "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf")
+      })
     ]);
   };
 
-  _handleLoadingError = error => {    
+  _handleLoadingError = error => {
     console.warn(error);
   };
 
@@ -54,10 +56,10 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   statusBarUnderlay: {
     height: 24,
-    backgroundColor: 'rgba(0,0,0,0.2)',
-  },
+    backgroundColor: "rgba(0,0,0,0.2)"
+  }
 });

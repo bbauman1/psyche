@@ -1,22 +1,29 @@
+<<<<<<< HEAD
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'; 
 import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
+=======
+import React from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { TabViewAnimated, TabBar, SceneMap } from "react-native-tab-view";
+import Colors from "../constants/Colors";
+>>>>>>> master
 
 export default class FactsScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'Mission' },
-      { key: 'second', title: 'Spacecraft' },
-      { key: 'third', title: 'Asteroid' },
-    ],
+      { key: "first", title: "Mission" },
+      { key: "second", title: "Spacecraft" },
+      { key: "third", title: "Asteroid" }
+    ]
   };
 
   static navigationOptions = {
-    title: 'Facts',
+    title: "Facts"
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -29,7 +36,7 @@ export default class FactsScreen extends React.Component {
         style = {styles.tabbar}
       />
     );
-  };  
+  };
 
   _renderScene = ({ route }) => {
     switch (route.key) {
@@ -172,8 +179,44 @@ export default class FactsScreen extends React.Component {
       case 'third':
         sections = [
           {
-            title: '\t- ',
-            content: '\t\t\t+ '
+            title: '\t- When and who discovered Psyche?',
+            content: '\t\t\t+ Psyche was discovered in 1852, by Italian astronomer Annibale de Gasparis. \n\t\t\t+ Also Psyche is the 16th asteroid to be discovered.'
+          },
+          {
+            tile: '\t- Where is the name "Psyche" came from?',
+            content: '\t\t\t+ "Psyche" is the named for the goddess of the soul in ancient Greek mythology.'
+          },
+          {
+            title: '\t- How do we know?',
+            content: '\t\t\t+ Radar albedo (Radar albedo is the “ratio of a target’s radar cross section in a specified polarization to its projected area; hence, a measure of the target’s radar reflectivity”). \n\t\t\t+ Thermal inertia (Thermal inertia “refers to the ability of a material to conduct and store heat, and in planetary science, its measure of the sub surface’s ability to store heat during the day and reradiate it during the night”).'
+          },
+          {
+            title: '\t- Why is this asteroid important?',
+            content: '\t\t\t+ Scientists believe Psyche is the exposed nickel-iron core of an early planet, one of the building blocks of our solar system. \n\t\t\t+ Psyche is most likely a survivor of multiple violent hit-and-run collisions, common when the solar system was forming. \n\t\t\t+ The asteroid Psyche may be able to tell us how Earth’s core and the cores of the other terrestrial (rocky) planets came to be. (The terrestrial planets are Mercury, Venus, Earth, and Mars).'
+          },
+          {
+            title: '\t- Where does Psyche located?',
+            content: '\t\t\t+ Psyche lies in the main asteroid belt between Mars and Jupiter.'
+          },
+          {
+            title: '\t- What is the time different on Psyche compare to Earth?',
+            content: '\t\t\t+ A day on Psyche is about 4 hours and 12 minutes. \n\t\t\t+ This is the sidereal rotation period, or the "amount of time it takes for a (body) to completely spin around and make one full roration. \n\t\t\t+ You could live through just under six "days" on Psyche in the same time as one day on Earth. \n\t\t\t+ A year on Psyche lasts about five Earth years (about 1828 Earth days).'
+          },
+          {
+            title: '\t- What is the different between Psyche and Earth orbiting?',
+            content: '\t\t\t+ Psyche orbit the Sun at an average distance of 3 astronomical units (AU) (about 280 million miles); Earth orbits at 1 AU (about 93 million miles).'
+          },
+          {
+            title: '\t- What is the density of Psyche?',
+            content: '\t\t\t+ Psyche is dense--perhaps as dense as 7,000 kilograms per cubic meter (kg/m3) (similar to the density of a bar of steel).'
+          },
+          {
+            title: '\t- What is the gravity on Psyche?',
+            content: '\t\t\t+ The surface gravity on Psyche is much less than Earth, and even less than the Moon. On Psyche, lifting a car would feel as light as lifting a dog or a 2nd grader!'
+          },
+          {
+            title: '\t- What is the size of Psyche?',
+            content: '\t\t\t+ As asteroids go, Psyche is relatively large and has an irregular shape: \n\t\t\t\t\t\t+ 279 x 232 x 189 kilometers (173 x 144 x 117 miles). \n\t\t\t\t\t\t+ If Psyche were a perfect sphere, it would have a diameter of 226 kilometers (140 miles): \n\t\t\t\t\t\t\t\t\t+ That is about the length of the state of Massachusetts (leaving out Cape Cod); If it were in Arizona it would stretch between Phoenix and Flagstaff! \n\t\t\t\t\t\t\t\t\t+ A surface area of about 641,800 square kilometers (246,300 square miles), making it just smaller than the area of the state of Texas and quite a bit larger than the area of California.'
           }
         ]
         return (
@@ -203,7 +246,7 @@ export default class FactsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,    
+    flex: 1
   },
   tabbar: {
     backgroundColor: '#800080',

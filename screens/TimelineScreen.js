@@ -1,16 +1,19 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default class TimelineScreen extends React.Component {
+  constructor() {
+    super()
+  }
+
   static navigationOptions = {
-    title: 'Timeline',
+    title: "Timeline"
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        
-      </ScrollView>
+      <View style={styles.container}>
+      </View>
     );
   }
 }
@@ -18,7 +21,7 @@ export default class TimelineScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
+    paddingTop: 0,
+    backgroundColor: "#FFFFFF",
   },
 });
