@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'; 
 import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
-=======
-import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import { TabViewAnimated, TabBar, SceneMap } from "react-native-tab-view";
-import Colors from "../constants/Colors";
->>>>>>> master
 
 export default class FactsScreen extends React.Component {
   state = {
