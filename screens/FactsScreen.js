@@ -16,14 +16,14 @@ export default class FactsScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: "first", title: "Mission" },
-      { key: "second", title: "Spacecraft" },
-      { key: "third", title: "Asteroid" }
+      { key: 'first', title: 'Mission' },
+      { key: 'second', title: 'Spacecraft' },
+      { key: 'third', title: 'Asteroid' }
     ]
   };
 
   static navigationOptions = {
-    title: "Facts"
+    title: 'Facts'
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -246,7 +246,7 @@ export default class FactsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   tabbar: {
     backgroundColor: '#800080',
