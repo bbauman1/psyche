@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View, WebView } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
@@ -75,6 +75,10 @@ export default class SocialScreen extends React.Component {
           renderScene={this._renderScene}
           renderHeader={this._renderHeader}
           onIndexChange={this._handleIndexChange}
+        />
+        <WebView
+          source = {{uri: 'https://www.jpl.nasa.gov/missions/psyche/'}}
+          style = {{marginTop: 20}}
         />
       </View>
     );
