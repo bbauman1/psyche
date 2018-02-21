@@ -1,6 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, WebView, Dimensions } from 'react-native';
+import * as Layout from '../constants/Layout';
 
-export default class SocialWindow extends React.Component {
-    render();
+const SocialWindow = (props) => {
+    return (
+        <WebView
+            source = {{uri: props.uri}}
+            style = {[styles.socialWindow]}
+        />
+    )
 }
+
+const styles = StyleSheet.create({
+    socialWindow: {
+        flex: 1,
+        marginTop: 20,
+        width: Dimensions.get("window").width,
+        height: Dimensions.get("window").height
+    }
+})
+
+export default SocialWindow;

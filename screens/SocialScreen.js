@@ -4,11 +4,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
+import SocialWindow from "../components/SocialWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 //Constants for scenes to be shown in the tabs
 const FacebookRoute = () => (
-  <View style={[styles.container, { backgroundColor: "red" }]} />
+  <SocialWindow
+    uri = "https://www.jpl.nasa.gov/missions/psyche/"
+  />
 );
 const InstagramRoute = () => (
   <View style={[styles.container, { backgroundColor: "white" }]} />
@@ -40,10 +43,13 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
+      //Render the SocialWindow component with Psyche facebook showing
         return <FacebookRoute />;
       case "second":
+      //Render the SocialWindow component with Psyche Instagram showing
         return <InstagramRoute />;
       case "third":
+      //Render the SocialWindow component with Psyche Twitter showing
         return <TwitterRoute />;
       default:
         return null;
@@ -76,10 +82,10 @@ export default class SocialScreen extends React.Component {
           renderHeader={this._renderHeader}
           onIndexChange={this._handleIndexChange}
         />
-        <WebView
+        {/* <WebView
           source = {{uri: 'https://www.jpl.nasa.gov/missions/psyche/'}}
           style = {{marginTop: 20}}
-        />
+        /> */}
       </View>
     );
   }
