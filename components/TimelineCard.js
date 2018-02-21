@@ -16,7 +16,7 @@ export default class TimelineCard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: 260,
-    width: 340,
+    alignSelf: "stretch",
     margin: 20,
     borderRadius: 5,
     backgroundColor: "#302144",
