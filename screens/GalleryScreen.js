@@ -141,6 +141,7 @@ class MediaInfoViewer extends React.Component {
   };
 
   render() {
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
     if (this.mediaType === "image") {
       if (this.state.loadingPicture === true) {
         Image.getSize(this.mediaURI, this.loadPicture);
