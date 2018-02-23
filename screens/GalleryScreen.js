@@ -11,14 +11,14 @@ import {
   Alert,
   Dimensions
 } from "react-native";
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, HeaderBackButton } from "react-navigation";
 import { Video } from "expo";
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
 /*** GALLERY ***/
 class Gallery extends React.Component {
   static navigationOptions = {
-    header: null
+    title: "Gallery"
   };
 
   constructor(props) {
@@ -66,7 +66,6 @@ class Gallery extends React.Component {
 }
 class MediaRow extends React.Component {
   render() {
-    
     return <View style={{ flexDirection: "row" }}>{this.props.frames}</View>;
   }
 }
@@ -104,7 +103,7 @@ class MediaContainer extends React.Component {
 /*** MEDIAINFOVIEWER ***/
 class MediaInfoViewer extends React.Component {
   static navigationOptions = {
-    header: null
+    
   };
   constructor(props) {
     super(props);
@@ -210,7 +209,7 @@ class VideoWrapper extends React.Component {
         ref={ref => {
           this.player = ref;
         }}
-        useNativeControls = {true}
+        useNativeControls={true}
       />
     );
   }
@@ -225,8 +224,8 @@ const LocalPageNavigator = StackNavigator(
     Media: {
       screen: MediaInfoViewer,
       navigationOptions: {
-        gesturesEnabled: false,
-    },
+        gesturesEnabled: false
+      }
     }
   },
   {
@@ -236,7 +235,7 @@ const LocalPageNavigator = StackNavigator(
 
 export default class GalleryScreen extends React.Component {
   static navigationOptions = {
-    title: "Gallery"
+    header: null
   };
 
   render() {
