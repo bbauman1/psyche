@@ -66,13 +66,14 @@ class Gallery extends React.Component {
 }
 class MediaRow extends React.Component {
   render() {
+    
     return <View style={{ flexDirection: "row" }}>{this.props.frames}</View>;
   }
 }
+
+/*** MEDIACONTAINER ***/
 class MediaContainer extends React.Component {
   onPress = () => {
-    //Alert.alert("Open " + this.props.uriMedia);
-    //this.props.callback(this.props.uriMedia);
     this.props.callback({
       mediaShown: this.props.uriMedia,
       mediaType: this.props.mediaType
@@ -222,7 +223,10 @@ const LocalPageNavigator = StackNavigator(
       screen: Gallery
     },
     Media: {
-      screen: MediaInfoViewer
+      screen: MediaInfoViewer,
+      navigationOptions: {
+        gesturesEnabled: false,
+    },
     }
   },
   {
