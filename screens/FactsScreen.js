@@ -1,29 +1,22 @@
-<<<<<<< HEAD
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'; 
 import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
-=======
-import React from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
-import { TabViewAnimated, TabBar, SceneMap } from "react-native-tab-view";
-import Colors from "../constants/Colors";
->>>>>>> master
 
 export default class FactsScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: "first", title: "Mission" },
-      { key: "second", title: "Spacecraft" },
-      { key: "third", title: "Asteroid" }
+      { key: 'first', title: 'Mission' },
+      { key: 'second', title: 'Spacecraft' },
+      { key: 'third', title: 'Asteroid' }
     ]
   };
 
   static navigationOptions = {
-    title: "Facts"
+    title: 'Facts'
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -166,7 +159,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- Where does the DSOC team based?',
-            content: '\t\t\t+ The DSOC team is based at the Jet Propulsion Laboratory'
+            content: '\t\t\t+ The DSOC team is based at the Jet Propulsion Laboratory.'
           }
         ]
         return (
@@ -200,7 +193,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- What is the time different on Psyche compare to Earth?',
-            content: '\t\t\t+ A day on Psyche is about 4 hours and 12 minutes. \n\t\t\t+ This is the sidereal rotation period, or the "amount of time it takes for a (body) to completely spin around and make one full roration. \n\t\t\t+ You could live through just under six "days" on Psyche in the same time as one day on Earth. \n\t\t\t+ A year on Psyche lasts about five Earth years (about 1828 Earth days).'
+            content: '\t\t\t+ A day on Psyche is about 4 hours and 12 minutes. \n\t\t\t+ This is the sidereal rotation period, or the amount of time it takes for a (body) to completely spin around and make one full roration. \n\t\t\t+ You could live through just under six "days" on Psyche in the same time as one day on Earth. \n\t\t\t+ A year on Psyche lasts about five Earth years (about 1828 Earth days).'
           },
           {
             title: '\t- What is the different between Psyche and Earth orbiting?',
@@ -246,7 +239,7 @@ export default class FactsScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   tabbar: {
     backgroundColor: '#800080',
