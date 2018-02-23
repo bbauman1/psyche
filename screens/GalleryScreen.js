@@ -102,9 +102,14 @@ class MediaContainer extends React.Component {
 
 /*** MEDIAINFOVIEWER ***/
 class MediaInfoViewer extends React.Component {
-  static navigationOptions = {
-    
+  /*
+  static navigationOptions = ({navigation}) => {
+    headerLeft: <HeaderBackButton title = "Back to Gallery" onPress = {() => {
+       navigation.goBack(null);
+      }
+    } />
   };
+  */
   constructor(props) {
     super(props);
     this.state = { loadingPicture: true };
@@ -114,6 +119,7 @@ class MediaInfoViewer extends React.Component {
 
   doPressGoBack = () => {
     const { goBack } = this.props.navigation;
+    Alert.alert("HI");
     goBack(null);
   };
 
@@ -216,6 +222,12 @@ class VideoWrapper extends React.Component {
 }
 
 /*** GLOBAL SCREEN ***/
+/*
+<HeaderBackButton title = "Back to Gallery" onPress = {() => {
+       navigation.goBack(null);
+      }
+    } />
+*/
 const LocalPageNavigator = StackNavigator(
   {
     Main: {
@@ -223,9 +235,12 @@ const LocalPageNavigator = StackNavigator(
     },
     Media: {
       screen: MediaInfoViewer,
-      navigationOptions: {
-        gesturesEnabled: false
-      }
+      navigationOptions: ({navigation}) => ({
+        gesturesEnabled: false,
+        headerLeft: <HeaderBackButton onPress={() => {
+          Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT); 
+          navigation.goBack(null)}} />
+      })
     }
   },
   {
