@@ -12,9 +12,11 @@
     "expo": "^24.0.0",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
+    "react-native-collapsible": "^0.10.0",
+    "react-native-easy-grid": "^0.1.17",
     "react-native-gesture-handler": "^1.0.0-alpha.37",
     "react-native-tab-view": "^0.0.74",
-    "react-native-video": "^2.0.0",
+    "react-native-timeline-listview": "^0.2.2",
     "react-navigation": "^1.0.0-beta.21"
   },
   "devDependencies": {
