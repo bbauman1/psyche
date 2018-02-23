@@ -1,20 +1,37 @@
 import React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { StyleSheet, ScrollView, View, Text } from "react-native";
+import TimelineCard from "../components/TimelineCard.js";
 
 export default class TimelineScreen extends React.Component {
+  constructor() {
+    super();
+  }
+
   static navigationOptions = {
     title: "Timeline"
   };
 
   render() {
-    return <ScrollView style={styles.container} />;
+    return (
+      <View style={{ flex: 1 }}>
+        <ScrollView
+          contentContainerStyle={styles.container}
+          centerContent={true}
+        >
+          <TimelineCard />
+          <TimelineCard />
+          <TimelineCard />
+          <TimelineCard />
+          <TimelineCard />
+        </ScrollView>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: "#fff"
+    alignItems: "center",
+    backgroundColor: "#FFFFFF"
   }
 });
