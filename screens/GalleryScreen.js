@@ -13,6 +13,9 @@ import {
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import { Video } from "expo";
+import GestureRecognizer, {
+  swipeDirections
+} from "react-native-swipe-gestures";
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
 /*** GALLERY ***/
@@ -24,31 +27,32 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
-    base = "http://nasa.aaronb.us/";
+    base = "http://www.public.asu.edu/~abetczyn/";
 
-    files = [];
-    files[0] = { name: "1.jpg", mediaType: "image" };
-    files[1] = { name: "2.jpg", mediaType: "image" };
-    files[2] = { name: "3.jpg", mediaType: "image" };
-    files[3] = { name: "4.jpg", mediaType: "image" };
-    files[4] = { name: "test.mov", mediaType: "video" };
+    this.files = [];
+    this.files[0] = { name: "1.jpg", mediaType: "image" };
+    this.files[1] = { name: "2.jpg", mediaType: "image" };
+    this.files[2] = { name: "3.jpg", mediaType: "image" };
+    //files[3] = { name: "4.jpg", mediaType: "image" };
+    //files[4] = { name: "test.mov", mediaType: "video" };
     //We will finish getting index.txt later
     this.width = Dimensions.get("window").width;
     this.height = Dimensions.get("window").height;
     const square = Math.floor(Dimensions.get("window").width / 3);
-    this.rows = new Array(Math.ceil(files.length / 3));
+    this.rows = new Array(Math.ceil(this.files.length / 3));
     for (let i = 0; i < this.rows.length; i++) {
       row = [];
-      for (let j = 0; j < 3 && i * 3 + j < files.length; j++) {
-        let fileName = files[i * 3 + j].name;
-        let mediaType = files[i * 3 + j].mediaType;
+      for (let j = 0; j < 3 && i * 3 + j < this.files.length; j++) {
+        let fileName = this.files[i * 3 + j].name;
+        let mediaType = this.files[i * 3 + j].mediaType;
         row[j] = (
           <MediaContainer
-            key={fileName}
+            key = {i * 3 + j}
+            index = {i * 3 + j}
             width={square}
-            uriMedia={base + fileName}
-            mediaType={mediaType}
+            file_db_ref = {this.files}
             callback={this.selectCallback}
+            base={base}
           />
         );
       }
@@ -72,10 +76,17 @@ class MediaRow extends React.Component {
 
 /*** MEDIACONTAINER ***/
 class MediaContainer extends React.Component {
+  constructor(props)
+  {
+    super(props);
+    this.uriMedia = this.props.base + this.props.file_db_ref[this.props.index].name;
+    this.mediaType = this.props.file_db_ref[this.props.index].mediaType;
+  }
   onPress = () => {
     this.props.callback({
-      mediaShown: this.props.uriMedia,
-      mediaType: this.props.mediaType
+      index : this.props.index,
+      file_db_ref : this.props.file_db_ref,
+      base : this.props.base
     });
   };
   render() {
@@ -87,7 +98,7 @@ class MediaContainer extends React.Component {
         style={{ alignItems: "center" }}
       >
         <Image
-          source={{ uri: this.props.uriMedia }}
+          source={{ uri: this.uriMedia }}
           style={{
             width: this.props.width,
             height: this.props.width,
@@ -102,26 +113,15 @@ class MediaContainer extends React.Component {
 
 /*** MEDIAINFOVIEWER ***/
 class MediaInfoViewer extends React.Component {
-  /*
-  static navigationOptions = ({navigation}) => {
-    headerLeft: <HeaderBackButton title = "Back to Gallery" onPress = {() => {
-       navigation.goBack(null);
-      }
-    } />
-  };
-  */
   constructor(props) {
     super(props);
-    this.state = { loadingPicture: true };
-    this.mediaURI = this.props.navigation.state.params.mediaShown;
-    this.mediaType = this.props.navigation.state.params.mediaType;
+    this.state = { loadingPicture: true, readySwipe: true };
+    this.file_db_ref = this.props.navigation.state.params.file_db_ref;
+    this.index = this.props.navigation.state.params.index;
+    
+    this.mediaURI = this.props.navigation.state.params.base + this.file_db_ref[this.index].name;
+    this.mediaType = this.file_db_ref[this.index].mediaType;
   }
-
-  doPressGoBack = () => {
-    const { goBack } = this.props.navigation;
-    Alert.alert("HI");
-    goBack(null);
-  };
 
   loadPicture = (width, height) => {
     this.width = width;
@@ -136,6 +136,10 @@ class MediaInfoViewer extends React.Component {
     }
   };
 
+  toggleReadySwipe = () => {
+    this.setState({ readySwipe: !this.state.readySwipe });
+  };
+
   doResetImageZoom = event => {
     this.scrollResponderReference.scrollResponderZoomTo({
       x: 0,
@@ -144,7 +148,23 @@ class MediaInfoViewer extends React.Component {
       height: Dimensions.get("window").height,
       animated: true
     });
+    this.toggleReadySwipe();
   };
+
+  doSwipe = indexChange => {
+    this.index = indexChange;
+    this.mediaURI = this.props.navigation.state.params.base + this.file_db_ref[this.index].name;
+    this.mediaType = this.file_db_ref[this.index].mediaType;
+    this.setState({ loadingPicture: true });
+  }
+
+  doLeftSwipe = () => {
+    this.doSwipe((this.index === 0 ? this.file_db_ref.length - 1 : this.index - 1));
+  };
+
+  doRightSwipe = () => {
+    this.doSwipe((this.index + 1) % this.file_db_ref.length);
+  }
 
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
@@ -162,30 +182,40 @@ class MediaInfoViewer extends React.Component {
       } else {
         let aspectRatio = this.width / this.height;
         let localWidth = Dimensions.get("window").width;
-        return (
-          <ScrollView
+        let img = (
+          <Image
+            source={{ uri: this.mediaURI }}
+            style={{
+              width: localWidth,
+              height: localWidth / aspectRatio
+            }}
+          />
+        );
+
+          return (
+            <ScrollView
             contentContainerStyle={{
               alignItems: "center",
               justifyContent: "center"
             }}
-            centerContent
-            showsHorizontalScrollIndicator={false}
-            showsVerticalScrollIndicator={false}
-            maximumZoomScale={3}
-            minimumZoomScale={1}
-            ref={this.setZoomReference}
-          >
-            <TouchableHighlight
-              onPress={this.doResetImageZoom}
-              activeOpacity={100}
+              centerContent
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              maximumZoomScale={4}
+              minimumZoomScale={1}
+              ref={this.setZoomReference}
             >
-              <Image
-                source={{ uri: this.mediaURI }}
-                style={{ width: localWidth, height: localWidth / aspectRatio }}
-              />
-            </TouchableHighlight>
-          </ScrollView>
-        );
+              <TouchableHighlight
+                onPress={this.doResetImageZoom}
+                activeOpacity={100}
+              >
+                {img}
+              </TouchableHighlight>
+              {this.state.readySwipe && <Button title = "<" onPress = {this.doLeftSwipe}/>}
+              {this.state.readySwipe && <Button title = ">" onPress = {this.doRightSwipe}/>}
+            </ScrollView>
+          );
+        
       }
     } else if (this.mediaType === "video") {
       return <VideoWrapper mediaURI={this.mediaURI} />;
@@ -222,12 +252,6 @@ class VideoWrapper extends React.Component {
 }
 
 /*** GLOBAL SCREEN ***/
-/*
-<HeaderBackButton title = "Back to Gallery" onPress = {() => {
-       navigation.goBack(null);
-      }
-    } />
-*/
 const LocalPageNavigator = StackNavigator(
   {
     Main: {
@@ -235,11 +259,19 @@ const LocalPageNavigator = StackNavigator(
     },
     Media: {
       screen: MediaInfoViewer,
-      navigationOptions: ({navigation}) => ({
+      navigationOptions: ({ navigation }) => ({
         gesturesEnabled: false,
-        headerLeft: <HeaderBackButton onPress={() => {
-          Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT); 
-          navigation.goBack(null)}} />
+        headerLeft: (
+          <HeaderBackButton
+            title="Back to Gallery"
+            onPress={() => {
+              Expo.ScreenOrientation.allow(
+                Expo.ScreenOrientation.Orientation.PORTRAIT
+              );
+              navigation.goBack(null);
+            }}
+          />
+        )
       })
     }
   },
@@ -264,6 +296,13 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   backgroundVideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0
+  },
+  mediaInfoViewerArrows: {//This will need editing
     position: "absolute",
     top: 0,
     left: 0,
