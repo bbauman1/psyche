@@ -13,11 +13,8 @@ export default class TimelineScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollView
-          contentContainerStyle={styles.container}
-          centerContent={true}
-        >
+      <View style={styles.parent}>
+        <ScrollView contentContainerStyle={styles.container}>
           <TimelineCard />
           <TimelineCard />
           <TimelineCard />
@@ -32,6 +29,10 @@ export default class TimelineScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    backgroundColor: "#FFFFFF"
+  },
+  parent: {
+    flex: 1,
     backgroundColor: "#FFFFFF"
   }
 });
