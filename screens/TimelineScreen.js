@@ -7,7 +7,6 @@ import {
   Button,
   TouchableWithoutFeedback
 } from "react-native";
-import TimelineCard from "../components/TimelineCard.js";
 import { LinearGradient } from "expo";
 
 export default class TimelineScreen extends React.Component {
