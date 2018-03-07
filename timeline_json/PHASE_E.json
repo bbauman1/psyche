@@ -1,0 +1,34 @@
+{
+  "phase": "PHASE E",
+  "title": "MARS GRAVITY ASSIST",
+  "date": "May 2023 - Oct 2027",
+  "checkpoints": [
+    {
+      "title": "MARS GRAVITY ASSIST",
+      "date": "May 2023",
+      "bullets": [
+        "Phase E begins after the Post Launch Assessment Review is conducted.",
+        "The spacecraft will use the gravity of Mars to increase speed and to set its trajectory to intersect with Psyche’s orbit around the Sun",
+        "It does this by entering and leaving the gravitational field of Mars.",
+        "This slingshot maneuver will save propellant, time and expense."
+      ]
+    },
+    {
+      "title": "ARRIVAL AT PSYCHE",
+      "date": "Jan 2026",
+      "bullets": [
+        "Leading up to arrival at Psyche, the spacecraft will spend 100 days in the approach phase",
+        "The spacecraft will also measure the asteroid’s spin axis and rotation."
+      ]
+    },
+    {
+      "title": "ORBITING PSYCHE",
+      "date": "Jan 2026 - Oct 2027",
+      "bullets": [
+        "The spacecraft will orbit the asteroid for 21 months.",
+        "It will perform science operations from four different orbits, each successively closer to the asteroid",
+        "In each orbit, the instruments on board will send data back to Earth to be analyzed by the mission’s science team."
+      ]
+    }
+  ]
+}

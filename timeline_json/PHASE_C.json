@@ -1,0 +1,20 @@
+{
+  "phase": "PHASE C",
+  "title": "CRITICAL DESIGN & BUILD OF ALL INSTRUMENTS & SPACECRAFT",
+  "date": "May 2019 – Jan 2021",
+  "checkpoints": [
+    {
+      "title": "CRITICAL DESIGN & BUILD OF ALL INSTRUMENTS & SPACECRAFT",
+      "date": "May 2019 – Jan 2021",
+      "bullets": [
+        "Science and engineering teams begin to build their instruments.",
+        "The instruments consist of a magnetometer, a multispectral imager, and a gamma ray and neutron spectrometer.",
+        "The mission will use an X-band radio telecommunications system to measure Psyche’s gravity field to high precision. When combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche.",
+        "The mission will also test a sophisticated new laser communication technology that encodes data in photons (rather than radio waves) to communicate between a probe in deep space and Earth. Using light instead of radio allows the spacecraft to communicate more data in a given amount of time.",
+        "April 2020, the teams will undergo Project and Flight System Critical Design Review, this is an integral step in the instrument engineering process.",
+        "The bus or “body” of the spacecraft will be completed by May 2020",
+        "In January 2021, the team will conduct the Systems Integration Review to ensure that the system is ready to be integrated. The last step in Phase C is Key Decision Point D that will give the team the official approval to move to the next phase."
+      ]
+    }
+  ]
+}
