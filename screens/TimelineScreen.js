@@ -8,24 +8,22 @@ import {
   TouchableWithoutFeedback
 } from "react-native";
 import { LinearGradient } from "expo";
+import { StackNavigator } from "react-navigation";
 
-export default class TimelineScreen extends React.Component {
-  constructor() {
-    super();
-  }
-
+class Timeline extends React.Component {
   static navigationOptions = {
     title: "Timeline"
   };
+  constructor() {
+    super();
+  }
 
   render() {
     return (
       <View style={styles.parent}>
         <ScrollView contentContainerStyle={styles.container}>
           <TouchableWithoutFeedback
-            onPress={() => {
-              console.log("Fire Tap");
-            }}
+            onPress={() => this.props.navigation.navigate("Details")}
           >
             <View style={styles.card}>
               <LinearGradient
@@ -49,6 +47,18 @@ export default class TimelineScreen extends React.Component {
             </LinearGradient>
           </View>
         </ScrollView>
+      </View>
+    );
+  }
+}
+
+class DetailsScreen extends React.Component {
+  static navigationOptions = {};
+
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Details Screen</Text>
       </View>
     );
   }
@@ -94,3 +104,31 @@ const styles = StyleSheet.create({
     fontSize: 18
   }
 });
+
+const RootStack = StackNavigator(
+  {
+    Timeline: {
+      screen: Timeline
+    },
+    Details: {
+      screen: DetailsScreen
+    }
+  },
+  {
+    mode: "modal",
+    navigationOptions: () => ({
+      headerTitleStyle: {
+        fontWeight: "normal"
+      }
+    })
+  }
+);
+
+export default class TimelineScreen extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+  render() {
+    return <RootStack />;
+  }
+}
