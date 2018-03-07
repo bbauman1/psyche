@@ -10,6 +10,9 @@ import {
 import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
 
+// Import timeline string data stored as JSON
+var PHASE_A = require("../timeline_json/PHASE_A.json");
+
 class Timeline extends React.Component {
   static navigationOptions = {
     title: "Timeline"
