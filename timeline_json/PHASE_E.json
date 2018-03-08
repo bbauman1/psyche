@@ -5,6 +5,7 @@
   "checkpoints": [
     {
       "title": "MARS GRAVITY ASSIST",
+      "id": "7",
       "date": "May 2023",
       "bullets": [
         "Phase E begins after the Post Launch Assessment Review is conducted.",
@@ -15,6 +16,7 @@
     },
     {
       "title": "ARRIVAL AT PSYCHE",
+      "id": "8",
       "date": "Jan 2026",
       "bullets": [
         "Leading up to arrival at Psyche, the spacecraft will spend 100 days in the approach phase",
@@ -23,6 +25,7 @@
     },
     {
       "title": "ORBITING PSYCHE",
+      "id": "9",
       "date": "Jan 2026 - Oct 2027",
       "bullets": [
         "The spacecraft will orbit the asteroid for 21 months.",

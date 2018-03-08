@@ -5,6 +5,7 @@
   "checkpoints": [
     {
       "title": "INSTRUMENT & SPACECRAFT BUILD & ASSEMBLY",
+      "id": "4",
       "date": "Jan 2021",
       "bullets": [
         "During this phase, all the spacecraft subsystems are integrated onto the spacecraft bus.",
@@ -16,6 +17,7 @@
     },
     {
       "title": "SPACECRAFT SHIPS TO LAUNCH SITE",
+      "id": "5",
       "date": "May 2022",
       "bullets": [
         "The Psyche spacecraft, now fully assembled, includes solar panels, which fold during transport and launch.",
@@ -25,6 +27,7 @@
     },
     {
       "title": "LAUNCH",
+      "id": "6",
       "date": "Aug 2022",
       "bullets": [
         "At the launch site the team will conduct an entire re-check of the spacecraft before integrating into the launch vehicle.",
