@@ -47,10 +47,10 @@ class Gallery extends React.Component {
         let mediaType = this.files[i * 3 + j].mediaType;
         row[j] = (
           <MediaContainer
-            key = {i * 3 + j}
-            index = {i * 3 + j}
+            key={i * 3 + j}
+            index={i * 3 + j}
             width={square}
-            file_db_ref = {this.files}
+            file_db_ref={this.files}
             callback={this.selectCallback}
             base={base}
           />
@@ -76,17 +76,17 @@ class MediaRow extends React.Component {
 
 /*** MEDIACONTAINER ***/
 class MediaContainer extends React.Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
-    this.uriMedia = this.props.base + this.props.file_db_ref[this.props.index].name;
+    this.uriMedia =
+      this.props.base + this.props.file_db_ref[this.props.index].name;
     this.mediaType = this.props.file_db_ref[this.props.index].mediaType;
   }
   onPress = () => {
     this.props.callback({
-      index : this.props.index,
-      file_db_ref : this.props.file_db_ref,
-      base : this.props.base
+      index: this.props.index,
+      file_db_ref: this.props.file_db_ref,
+      base: this.props.base
     });
   };
   render() {
@@ -118,8 +118,10 @@ class MediaInfoViewer extends React.Component {
     this.state = { loadingPicture: true, readySwipe: true };
     this.file_db_ref = this.props.navigation.state.params.file_db_ref;
     this.index = this.props.navigation.state.params.index;
-    
-    this.mediaURI = this.props.navigation.state.params.base + this.file_db_ref[this.index].name;
+
+    this.mediaURI =
+      this.props.navigation.state.params.base +
+      this.file_db_ref[this.index].name;
     this.mediaType = this.file_db_ref[this.index].mediaType;
   }
 
@@ -148,24 +150,35 @@ class MediaInfoViewer extends React.Component {
       height: Dimensions.get("window").height,
       animated: true
     });
-    this.toggleReadySwipe();
+    this.setState({ readySwipe: true });
   };
 
   doSwipe = indexChange => {
     this.index = indexChange;
-    this.mediaURI = this.props.navigation.state.params.base + this.file_db_ref[this.index].name;
+    this.mediaURI =
+      this.props.navigation.state.params.base +
+      this.file_db_ref[this.index].name;
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.setState({ loadingPicture: true });
-  }
+  };
 
   doLeftSwipe = () => {
-    this.doSwipe((this.index === 0 ? this.file_db_ref.length - 1 : this.index - 1));
+    this.doSwipe(
+      this.index === 0 ? this.file_db_ref.length - 1 : this.index - 1
+    );
   };
 
   doRightSwipe = () => {
     this.doSwipe((this.index + 1) % this.file_db_ref.length);
-  }
+  };
 
+  handleScrollSwipe = event => {
+    if (event.nativeEvent.contentOffset.x < -2.5) {
+      this.doLeftSwipe();
+    } else if (event.nativeEvent.contentOffset.x > 2.5) {
+      this.doRightSwipe();
+    }
+  };
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
     if (this.mediaType === "image") {
@@ -192,12 +205,18 @@ class MediaInfoViewer extends React.Component {
           />
         );
 
-          return (
+        return (
+          <ScrollView
+            vertical={false}
+            horizontal={true}
+            onScroll={this.handleScrollSwipe}
+            scrollEventThrottle={2}
+          >
             <ScrollView
-            contentContainerStyle={{
-              alignItems: "center",
-              justifyContent: "center"
-            }}
+              contentContainerStyle={{
+                alignItems: "center",
+                justifyContent: "center"
+              }}
               centerContent
               showsHorizontalScrollIndicator={false}
               showsVerticalScrollIndicator={false}
@@ -211,14 +230,21 @@ class MediaInfoViewer extends React.Component {
               >
                 {img}
               </TouchableHighlight>
-              {this.state.readySwipe && <Button title = "<" onPress = {this.doLeftSwipe}/>}
-              {this.state.readySwipe && <Button title = ">" onPress = {this.doRightSwipe}/>}
             </ScrollView>
-          );
-        
+          </ScrollView>
+        );
       }
     } else if (this.mediaType === "video") {
-      return <VideoWrapper mediaURI={this.mediaURI} />;
+      return (
+        <ScrollView
+          vertical={false}
+          horizontal={true}
+          onScroll={this.handleScrollSwipe}
+          scrollEventThrottle={2}
+        >
+          <VideoWrapper mediaURI={this.mediaURI} />
+        </ScrollView>
+      );
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
@@ -286,6 +312,7 @@ export default class GalleryScreen extends React.Component {
   };
 
   render() {
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return <LocalPageNavigator />;
   }
 }
@@ -302,7 +329,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0
   },
-  mediaInfoViewerArrows: {//This will need editing
+  mediaInfoViewerArrows: {
+    //This will need editing
     position: "absolute",
     top: 0,
     left: 0,
