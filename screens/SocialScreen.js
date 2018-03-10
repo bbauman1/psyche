@@ -30,6 +30,26 @@ export default class SocialScreen extends React.Component {
     ]
   };
 
+  instagramState = {
+    loaded: false,
+    feedData: null,
+    comments: []
+  };
+
+  componentDidMount() {
+    this.fetchInstagramFeed();
+  }
+
+
+  async fetchInstagramFeed() {
+    let response = await fetch (
+      'https://www.instagram.com/nasapsyche/?__a=1'
+    )
+
+    let posts = await response.json();
+    let comments = await this.makeCommentList(posts.feedData);
+  }
+
   static navigationOptions = {
     title: "Social Media"
   };
