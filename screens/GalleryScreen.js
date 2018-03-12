@@ -9,7 +9,8 @@ import {
   TouchableHighlight,
   Button,
   Alert,
-  Dimensions
+  Dimensions,
+  PanResponder
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import { Video } from "expo";
@@ -115,7 +116,8 @@ class MediaContainer extends React.Component {
 class MediaInfoViewer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loadingPicture: true, readySwipe: true };
+    this.state = { loadingPicture: true, readySwipe: true, xTrans: 0, windowDim: Dimensions.get("window") };
+
     this.file_db_ref = this.props.navigation.state.params.file_db_ref;
     this.index = this.props.navigation.state.params.index;
 
@@ -131,15 +133,19 @@ class MediaInfoViewer extends React.Component {
     this.setState({ loadingPicture: false });
   };
 
+  orientationSwitchLayout = (event) => {
+    this.setState(
+      {
+        windowDim: Dimensions.get("window")
+      }
+    )
+  }
+
   setZoomReference = reference => {
     if (reference) {
       this.zoomReference = reference;
       this.scrollResponderReference = this.zoomReference.getScrollResponder();
     }
-  };
-
-  toggleReadySwipe = () => {
-    this.setState({ readySwipe: !this.state.readySwipe });
   };
 
   doResetImageZoom = event => {
@@ -159,7 +165,7 @@ class MediaInfoViewer extends React.Component {
       this.props.navigation.state.params.base +
       this.file_db_ref[this.index].name;
     this.mediaType = this.file_db_ref[this.index].mediaType;
-    this.setState({ loadingPicture: true });
+    this.setState({ loadingPicture: true, xTrans: 0 });
   };
 
   doLeftSwipe = () => {
@@ -172,12 +178,67 @@ class MediaInfoViewer extends React.Component {
     this.doSwipe((this.index + 1) % this.file_db_ref.length);
   };
 
-  handleScrollSwipe = event => {
-    if (event.nativeEvent.contentOffset.x < -2.5) {
-      this.doLeftSwipe();
-    } else if (event.nativeEvent.contentOffset.x > 2.5) {
-      this.doRightSwipe();
-    }
+  componentWillMount = () => {
+    this._panResponder = PanResponder.create({
+      // Ask to be the responder:
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+
+      onPanResponderGrant: (evt, gestureState) => {
+        // The gesture has started. Show visual feedback so the user knows
+        // what is happening!
+        // gestureState.d{x,y} will be set to zero now
+        console.log("Start")
+      },
+      onPanResponderMove: (evt, gestureState) => {
+        // The most recent move distance is gestureState.move{X,Y}
+        // The accumulated gesture distance since becoming responder is
+        // gestureState.d{x,y}
+        console.log("Move");
+        this.setState({ xTrans: gestureState.dx });
+      },
+      onPanResponderTerminationRequest: (evt, gestureState) => true,
+      onPanResponderRelease: (evt, gestureState) => {
+        // The user has released all touches while this view is the
+        // responder. This typically means a gesture has succeeded
+        console.log(gestureState);
+        const threshold = 30;
+        if(gestureState.dx > threshold)
+        {
+          this.doLeftSwipe();
+        }
+        else if(gestureState.dx < -1*threshold)
+        {
+          this.doRightSwipe();
+        }
+        else
+        {
+          // Animated.timing(
+          //   this.state.xTrans,
+          //   {
+          //   toValue: 0,
+          //   duration: 1000
+          //   }
+          // ).start(() => this.setState({xTrans: 0}));
+          this.setState({xTrans: 0})
+        }
+      },
+      onPanResponderTerminate: (evt, gestureState) => {
+        // Another component has become the responder, so this gesture
+        // should be cancelled
+      },
+      onShouldBlockNativeResponder: (evt, gestureState) => {
+        // Returns whether this component should block native components from becoming the JS
+        // responder. Returns true by default. Is currently only supported on android.
+        return true;
+      }
+    });
+  };
+
+  componentWillUnmount = () => {
+    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   };
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
@@ -193,58 +254,60 @@ class MediaInfoViewer extends React.Component {
           </View>
         );
       } else {
-        let aspectRatio = this.width / this.height;
-        let localWidth = Dimensions.get("window").width;
+        const imgAspectRatio = this.width / this.height;
+        const windowWidth = this.state.windowDim.width 
+        const windowHeight = this.state.windowDim.height//Change dependong on orientation AND window size
+        const windowAspectRatio = windowWidth/windowHeight;
+        
+        //rs > ri ? (wi * hs/hi, hs) : (ws, hi * ws/wi) -> rs is windowAspectRatio
+
         let img = (
           <Image
             source={{ uri: this.mediaURI }}
             style={{
-              width: localWidth,
-              height: localWidth / aspectRatio
+              width: (windowAspectRatio > imgAspectRatio ? this.width * windowHeight / this.height : windowWidth),
+              height: (windowAspectRatio > imgAspectRatio ? windowHeight : this.height * windowWidth / this.width)
             }}
           />
         );
-
         return (
-          <ScrollView
-            vertical={false}
-            horizontal={true}
-            onScroll={this.handleScrollSwipe}
-            scrollEventThrottle={2}
+          <View
+            onLayout = {this.orientationSwitchLayout} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: this.state.xTrans }] }}
+            {...this._panResponder.panHandlers}
           >
-            <ScrollView
-              contentContainerStyle={{
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-              centerContent
-              showsHorizontalScrollIndicator={false}
-              showsVerticalScrollIndicator={false}
-              maximumZoomScale={4}
-              minimumZoomScale={1}
-              ref={this.setZoomReference}
-            >
-              <TouchableHighlight
-                onPress={this.doResetImageZoom}
-                activeOpacity={100}
-              >
-                {img}
-              </TouchableHighlight>
-            </ScrollView>
-          </ScrollView>
+            {img}
+          </View>
         );
+        // if (this.state.readySwipe) {
+        //   console.log(...this._panResponder.panHandlers);
+        //   return <View {...this._panResponder.panHandlers}>{img}</View>;
+        // } else {
+        //   console.log("ZOOM_MODE");
+        //   return (
+        //     <ScrollView
+        //       contentContainerStyle={{
+        //         alignItems: "center",
+        //         justifyContent: "center"
+        //       }}
+        //       centerContent
+        //       showsHorizontalScrollIndicator={false}
+        //       showsVerticalScrollIndicator={false}
+        //       maximumZoomScale={4}
+        //       minimumZoomScale={1}
+        //       ref={this.setZoomReference}
+        //     >
+        //       <TouchableHighlight
+        //         onPress={this.doResetImageZoom}
+        //         activeOpacity={100}
+        //       >
+        //         {img}
+        //       </TouchableHighlight>
+        //     </ScrollView>
+        //   );
+        // }
       }
     } else if (this.mediaType === "video") {
-      return (
-        <ScrollView
-          vertical={false}
-          horizontal={true}
-          onScroll={this.handleScrollSwipe}
-          scrollEventThrottle={2}
-        >
-          <VideoWrapper mediaURI={this.mediaURI} />
-        </ScrollView>
-      );
+      return <VideoWrapper mediaURI={this.mediaURI} />;
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
