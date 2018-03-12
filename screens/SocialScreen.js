@@ -8,10 +8,10 @@ import SocialWindow from "../components/SocialWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 //Constants for scenes to be shown in the tabs
+const source = { uri: "https://www.instagram.com/nasapsyche/?hl=en" };
+
 const FacebookRoute = () => (
-  <SocialWindow
-    uri = "https://www.jpl.nasa.gov/missions/psyche/"
-  />
+  <SocialWindow uri="https://www.jpl.nasa.gov/missions/psyche/" />
 );
 const InstagramRoute = () => (
   <View style={[styles.container, { backgroundColor: "white" }]} />
@@ -29,27 +29,7 @@ export default class SocialScreen extends React.Component {
       { key: "third", icon: "logo-twitter" }
     ]
   };
-
-  instagramState = {
-    loaded: false,
-    feedData: null,
-    comments: []
-  };
-
-  componentDidMount() {
-    this.fetchInstagramFeed();
-  }
-
-
-  async fetchInstagramFeed() {
-    let response = await fetch (
-      'https://www.instagram.com/nasapsyche/?__a=1'
-    )
-
-    let posts = await response.json();
-    let comments = await this.makeCommentList(posts.feedData);
-  }
-
+  
   static navigationOptions = {
     title: "Social Media"
   };
@@ -63,13 +43,13 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-      //Render the SocialWindow component with Psyche facebook showing
+        //Render the SocialWindow component with Psyche facebook showing
         return <FacebookRoute />;
       case "second":
-      //Render the SocialWindow component with Psyche Instagram showing
+        //Render the SocialWindow component with Psyche Instagram showing
         return <InstagramRoute />;
       case "third":
-      //Render the SocialWindow component with Psyche Twitter showing
+        //Render the SocialWindow component with Psyche Twitter showing
         return <TwitterRoute />;
       default:
         return null;
@@ -102,10 +82,6 @@ export default class SocialScreen extends React.Component {
           renderHeader={this._renderHeader}
           onIndexChange={this._handleIndexChange}
         />
-        {/* <WebView
-          source = {{uri: 'https://www.jpl.nasa.gov/missions/psyche/'}}
-          style = {{marginTop: 20}}
-        /> */}
       </View>
     );
   }
@@ -122,8 +98,11 @@ const styles = StyleSheet.create({
   },
   indicator: {
     backgroundColor: "#222"
+  },
+  socialWindow: {
+    flex: 1,
+    marginTop: 20,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height
   }
-  // tabGradient: {
-  //   height: 50
-  // }
 });

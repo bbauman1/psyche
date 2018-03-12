@@ -7,4 +7,5 @@ fetch(instagramRequest)
     .then(blob => {
         stuff.src = URL.createObjectURL(blob);
     });
+    
 export default fetchInstagramJson;

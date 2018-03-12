@@ -7,6 +7,9 @@ const SocialWindow = (props) => {
         <WebView
             source = {{uri: props.uri}}
             style = {[styles.socialWindow]}
+            onLoad = {this.onLoad.bind(this)}
+            onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest}
+            onNavigationStateChange = {this._onShouldStartLoadWithRequest} 
         />
     )
 }
