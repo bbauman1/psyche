@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^24.0.0",
+    "native-base": "^2.3.10",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
     "react-native-collapsible": "^0.10.0",

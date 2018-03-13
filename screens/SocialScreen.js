@@ -1,10 +1,11 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, WebView } from "react-native";
+import { ScrollView, StyleSheet, View, WebView, Dimensions } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
 import SocialWindow from "../components/SocialWindow";
+import InstagramWindow from "../components/InstagramWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 //Constants for scenes to be shown in the tabs
@@ -14,7 +15,8 @@ const FacebookRoute = () => (
   <SocialWindow uri="https://www.jpl.nasa.gov/missions/psyche/" />
 );
 const InstagramRoute = () => (
-  <View style={[styles.container, { backgroundColor: "white" }]} />
+  <InstagramWindow/>
+  // <View style={[styles.container, { backgroundColor: "white" }]} />
 );
 const TwitterRoute = () => (
   <View style={[styles.container, { backgroundColor: "black" }]} />
