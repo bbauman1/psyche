@@ -1,43 +1,76 @@
 import React from "react";
-import { View, Text, Button, Image, StyleSheet } from "react-native";
+import { View, Button, Image, StyleSheet, CameraRoll } from "react-native";
 import { StackNavigator } from "react-navigation";
-import { ImagePicker, BlurView } from "expo";
+import { ImagePicker, BlurView, takeSnapshotAsync } from "expo";
 
 export default class CameraScreen extends React.Component {
-  state = {
-    image: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: null
+    };
+  }
 
   static navigationOptions = {
     header: null
   };
 
   render() {
-    let { image } = this.state;
-
+    let image = this.state.image;
     return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Button
-          title="Pick an image from camera roll"
-          onPress={this._pickImage}
-        />
+      <View style={{ flex: 1 }}>
+        {!image && (
+          <Button
+            title="Pick an image from camera roll"
+            onPress={this._pickImage}
+          />
+        )}
         {image && (
-          <View>
-            <Image
-              source={{ uri: image }}
-              style={{ width: 720, height: 720 }}
-            />
+          <View style={{ flex: 1 }}>
+            <View
+              ref={view => {
+                this._container = view;
+              }}
+              style={{
+                flex: 1,
+                flexDirection: "column-reverse"
+              }}
+            >
+              <Image
+                source={{ uri: image }}
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  top: 64 + Expo.Constants.statusBarHeight,
+                  bottom: 0,
+                  width: undefined,
+                  height: undefined,
+                  alignSelf: "stretch"
+                }}
+              />
 
-            <BlurView tint="dark" intensity={100} style={styles.blurredView}>
+              <Image
+                source={require("../assets/images/badge-solid.png")}
+                style={{
+                  marginLeft: 9,
+                  marginBottom: 9,
+                  height: 128,
+                  width: 128,
+                  alignSelf: "flex-start"
+                }}
+              />
+            </View>
+            <BlurView tint="dark" intensity={50} style={styles.blurredView}>
               <Button
-                style={{ width: 96, height: 96, color: "#fff" }}
+                style={{ width: 96, height: 96 }}
                 title="Cancel"
                 onPress={() => this.props.navigation.goBack()}
               />
               <Button
-                style={{ width: 96, height: 96, color: "#fff" }}
+                style={{ width: 96, height: 96 }}
                 title="Done"
-                onPress={() => this.props.navigation.goBack()}
+                onPress={() => this._saveImage()}
               />
             </BlurView>
           </View>
@@ -46,9 +79,21 @@ export default class CameraScreen extends React.Component {
     );
   }
 
+  _saveImage = async () => {
+    let result = await takeSnapshotAsync(this._container, {
+      format: "png",
+      result: "file"
+    });
+
+    let saveResult = await CameraRoll.saveToCameraRoll(result, "photo");
+    console.log(saveResult);
+    this.setState({ cameraRollUri: saveResult });
+    this.props.navigation.goBack();
+  };
+
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
+      allowsEditing: false,
       aspect: [4, 3]
     });
 
@@ -73,8 +118,5 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center"
-  },
-  blurContainer: {
-    flex: 1
   }
 });
