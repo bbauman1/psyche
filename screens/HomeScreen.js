@@ -5,6 +5,7 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
 import { connectActionSheet } from '@expo/react-native-action-sheet';
+import { ImagePicker } from 'expo';
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 
@@ -58,9 +59,29 @@ export default class HomeScreen extends React.Component {
         cancelButtonIndex,
       },
       buttonIndex => {
-        // Do something here depending on the button index selected
+        if (buttonIndex == 0) {
+
+        }
+        else if (buttonIndex == 1) {
+          this._pickImage();
+        }
       }
     );
+  };
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: false,
+      aspect: [4, 3]
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      this.props.navigation.navigate('Modal', {
+        image: result.uri
+      });
+    }
   };
 
 

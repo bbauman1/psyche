@@ -6,9 +6,6 @@ import { ImagePicker, BlurView, takeSnapshotAsync } from "expo";
 export default class CameraScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      image: null
-    };
   }
 
   static navigationOptions = {
@@ -16,7 +13,9 @@ export default class CameraScreen extends React.Component {
   };
 
   render() {
-    let image = this.state.image;
+    const { params } = this.props.navigation.state;
+    const image = params ? params.image : null;
+
     return (
       <View style={{ flex: 1 }}>
         {!image && (

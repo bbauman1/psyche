@@ -17,6 +17,7 @@ const RootStackNavigator = StackNavigator(
   },
   {
     mode: "modal",
+    animationType: 'none',
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: "normal"
