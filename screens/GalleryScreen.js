@@ -18,6 +18,7 @@ import { StackNavigator, HeaderBackButton } from "react-navigation";
 // import GestureRecognizer, {
 //   swipeDirections
 // } from "react-native-swipe-gestures";
+
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
 /*** GALLERY ***/
@@ -29,15 +30,14 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
-    base = "http://www.public.asu.edu/~abetczyn/";
-
-    this.files = [];
-    this.files[0] = { name: "1.jpg", mediaType: "image" };
-    this.files[1] = { name: "2.jpg", mediaType: "image" };
-    this.files[2] = { name: "3.jpg", mediaType: "image" };
-    //files[3] = { name: "4.jpg", mediaType: "image" };
-    this.files[3] = { name: "https://player.vimeo.com/video/194399729", mediaType: "video" };
+    this.files = require('../assets/gallery_db.json');
+    // this.files = [];
+    // this.files[0] = { name: "http://www.public.asu.edu/~abetczyn/1.jpg", mediaType: "image" };
+    // this.files[1] = { name: "http://www.public.asu.edu/~abetczyn/2.jpg", mediaType: "image" };
+    // this.files[2] = { name: "http://www.public.asu.edu/~abetczyn/3.jpg", mediaType: "image" };
+    // this.files[3] = { name: "https://player.vimeo.com/video/194399729", mediaType: "video" };
     //We will finish getting index.txt later
+
     this.width = Dimensions.get("window").width;
     this.height = Dimensions.get("window").height;
     const square = Math.floor(Dimensions.get("window").width / 3);
@@ -47,6 +47,7 @@ class Gallery extends React.Component {
       for (let j = 0; j < 3 && i * 3 + j < this.files.length; j++) {
         let fileName = this.files[i * 3 + j].name;
         let mediaType = this.files[i * 3 + j].mediaType;
+        let uri = this.files[i * 3 + j].uri;
         row[j] = (
           <MediaContainer
             key={i * 3 + j}
@@ -54,7 +55,6 @@ class Gallery extends React.Component {
             width={square}
             file_db_ref={this.files}
             callback={this.selectCallback}
-            base={base}
           />
         );
       }
@@ -80,15 +80,14 @@ class MediaRow extends React.Component {
 class MediaContainer extends React.Component {
   constructor(props) {
     super(props);
-    this.uriMedia =
-      this.props.base + this.props.file_db_ref[this.props.index].name;
+    
     this.mediaType = this.props.file_db_ref[this.props.index].mediaType;
+    this.uriMedia = (this.mediaType === "image" ? this.props.file_db_ref[this.props.index].uri : this.props.file_db_ref[this.props.index].prev);
   }
   onPress = () => {
     this.props.callback({
       index: this.props.index,
       file_db_ref: this.props.file_db_ref,
-      base: this.props.base
     });
   };
   render() {
@@ -127,10 +126,9 @@ class MediaInfoViewer extends React.Component {
     this.file_db_ref = this.props.navigation.state.params.file_db_ref;
     this.index = this.props.navigation.state.params.index;
 
-    this.mediaURI =
-      this.props.navigation.state.params.base +
-      this.file_db_ref[this.index].name;
+    this.mediaURI = this.file_db_ref[this.index].uri;
     this.mediaType = this.file_db_ref[this.index].mediaType;
+    this.title = this.file_db_ref[this.index].name;
   }
 
   loadPicture = (width, height) => {
@@ -165,9 +163,7 @@ class MediaInfoViewer extends React.Component {
 
   doSwipe = indexChange => {
     this.index = indexChange;
-    this.mediaURI =
-      this.props.navigation.state.params.base +
-      this.file_db_ref[this.index].name;
+    this.mediaURI = this.file_db_ref[this.index].uri;
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.setState({ loadingPicture: true, xTrans: 0 });
   };
@@ -199,7 +195,6 @@ class MediaInfoViewer extends React.Component {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
-        console.log("state", gestureState);
         this.setState({ xTrans: gestureState.dx });
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
@@ -320,7 +315,7 @@ class MediaInfoViewer extends React.Component {
           {...this._panResponder.panHandlers}
         >
           <WebView 
-            source={{uri: this.file_db_ref[this.index].name}}
+            source={{uri: this.mediaURI}}
             style={{flex: 1}}
           />
         </View>
@@ -330,30 +325,6 @@ class MediaInfoViewer extends React.Component {
       Alert.alert(msg);
       return <Text>{msg}</Text>;
     }
-  }
-}
-
-/*** Video Wrapper ***/
-class VideoWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Video
-        source={{ uri: this.props.mediaURI }}
-        rate={1.0}
-        volume={1.0}
-        isMuted={false}
-        resizeMode={"contain"}
-        shouldPlay
-        style={{ flex: 1 }}
-        ref={ref => {
-          this.player = ref;
-        }}
-        useNativeControls={true}
-      />
-    );
   }
 }
 
@@ -369,7 +340,7 @@ const LocalPageNavigator = StackNavigator(
         gesturesEnabled: false,
         headerLeft: (
           <HeaderBackButton
-            title="Back to Gallery"
+            title="Gallery"
             onPress={() => {
               Expo.ScreenOrientation.allow(
                 Expo.ScreenOrientation.Orientation.PORTRAIT
@@ -409,12 +380,4 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0
   },
-  mediaInfoViewerArrows: {
-    //This will need editing
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0
-  }
 });
