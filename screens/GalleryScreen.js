@@ -10,13 +10,14 @@ import {
   Button,
   Alert,
   Dimensions,
-  PanResponder
+  PanResponder,
+  WebView
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
-import { Video } from "expo";
-import GestureRecognizer, {
-  swipeDirections
-} from "react-native-swipe-gestures";
+
+// import GestureRecognizer, {
+//   swipeDirections
+// } from "react-native-swipe-gestures";
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
 /*** GALLERY ***/
@@ -35,7 +36,7 @@ class Gallery extends React.Component {
     this.files[1] = { name: "2.jpg", mediaType: "image" };
     this.files[2] = { name: "3.jpg", mediaType: "image" };
     //files[3] = { name: "4.jpg", mediaType: "image" };
-    //files[4] = { name: "test.mov", mediaType: "video" };
+    this.files[3] = { name: "https://player.vimeo.com/video/194399729", mediaType: "video" };
     //We will finish getting index.txt later
     this.width = Dimensions.get("window").width;
     this.height = Dimensions.get("window").height;
@@ -116,7 +117,12 @@ class MediaContainer extends React.Component {
 class MediaInfoViewer extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loadingPicture: true, readySwipe: true, xTrans: 0, windowDim: Dimensions.get("window") };
+    this.state = {
+      loadingPicture: true,
+      readySwipe: true,
+      xTrans: 0,
+      windowDim: Dimensions.get("window")
+    };
 
     this.file_db_ref = this.props.navigation.state.params.file_db_ref;
     this.index = this.props.navigation.state.params.index;
@@ -133,13 +139,11 @@ class MediaInfoViewer extends React.Component {
     this.setState({ loadingPicture: false });
   };
 
-  orientationSwitchLayout = (event) => {
-    this.setState(
-      {
-        windowDim: Dimensions.get("window")
-      }
-    )
-  }
+  orientationSwitchLayout = event => {
+    this.setState({
+      windowDim: Dimensions.get("window")
+    });
+  };
 
   setZoomReference = reference => {
     if (reference) {
@@ -190,39 +194,25 @@ class MediaInfoViewer extends React.Component {
         // The gesture has started. Show visual feedback so the user knows
         // what is happening!
         // gestureState.d{x,y} will be set to zero now
-        console.log("Start")
       },
       onPanResponderMove: (evt, gestureState) => {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
-        console.log("Move");
+        console.log("state", gestureState);
         this.setState({ xTrans: gestureState.dx });
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
-        console.log(gestureState);
         const threshold = 30;
-        if(gestureState.dx > threshold)
-        {
+        if (gestureState.dx > threshold) {
           this.doLeftSwipe();
-        }
-        else if(gestureState.dx < -1*threshold)
-        {
+        } else if (gestureState.dx < -1 * threshold) {
           this.doRightSwipe();
-        }
-        else
-        {
-          // Animated.timing(
-          //   this.state.xTrans,
-          //   {
-          //   toValue: 0,
-          //   duration: 1000
-          //   }
-          // ).start(() => this.setState({xTrans: 0}));
-          this.setState({xTrans: 0})
+        } else {
+          this.setState({ xTrans: 0 });
         }
       },
       onPanResponderTerminate: (evt, gestureState) => {
@@ -254,25 +244,37 @@ class MediaInfoViewer extends React.Component {
           </View>
         );
       } else {
+        //constants for calculating correct fitting
         const imgAspectRatio = this.width / this.height;
-        const windowWidth = this.state.windowDim.width 
-        const windowHeight = this.state.windowDim.height//Change dependong on orientation AND window size
-        const windowAspectRatio = windowWidth/windowHeight;
-        
-        //rs > ri ? (wi * hs/hi, hs) : (ws, hi * ws/wi) -> rs is windowAspectRatio
+        const windowWidth = this.state.windowDim.width;
+        const windowHeight = this.state.windowDim.height;
+        const windowAspectRatio = windowWidth / windowHeight;
 
+        //create image component with fititng calculation
         let img = (
           <Image
             source={{ uri: this.mediaURI }}
             style={{
-              width: (windowAspectRatio > imgAspectRatio ? this.width * windowHeight / this.height : windowWidth),
-              height: (windowAspectRatio > imgAspectRatio ? windowHeight : this.height * windowWidth / this.width)
+              width:
+                windowAspectRatio > imgAspectRatio
+                  ? this.width * windowHeight / this.height
+                  : windowWidth,
+              height:
+                windowAspectRatio > imgAspectRatio
+                  ? windowHeight
+                  : this.height * windowWidth / this.width
             }}
           />
         );
         return (
           <View
-            onLayout = {this.orientationSwitchLayout} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', transform: [{ translateX: this.state.xTrans }] }}
+            onLayout={this.orientationSwitchLayout}
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [{ translateX: this.state.xTrans }]
+            }}
             {...this._panResponder.panHandlers}
           >
             {img}
@@ -307,7 +309,22 @@ class MediaInfoViewer extends React.Component {
         // }
       }
     } else if (this.mediaType === "video") {
-      return <VideoWrapper mediaURI={this.mediaURI} />;
+      return (
+        <View
+          onLayout={this.orientationSwitchLayout}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            transform: [{ translateX: this.state.xTrans }]
+          }}
+          {...this._panResponder.panHandlers}
+        >
+          <WebView 
+            source={{uri: this.file_db_ref[this.index].name}}
+            style={{flex: 1}}
+          />
+        </View>
+      );
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
