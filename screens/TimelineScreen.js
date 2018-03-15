@@ -1,29 +1,133 @@
 import React from "react";
-import { StyleSheet, ScrollView, View, Text } from "react-native";
-import TimelineCard from "../components/TimelineCard.js";
+import {
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  Button,
+  TouchableWithoutFeedback
+} from "react-native";
+import { LinearGradient } from "expo";
+import { StackNavigator } from "react-navigation";
 
-export default class TimelineScreen extends React.Component {
+// Import timeline string data stored as JSON
+var PHASES = require("../timeline_json/PHASES.json");
+
+class Timeline extends React.Component {
+  static navigationOptions = {
+    title: "Timeline"
+  };
   constructor() {
     super();
   }
 
-  static navigationOptions = {
-    title: "Timeline"
-  };
+  render() {
+    return (
+      <View style={styles.parent}>
+        <ScrollView contentContainerStyle={styles.container}>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE A CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_A.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE B CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_B.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE C CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_C.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE D CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_D.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE E CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_E.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
+            onPress={() => this.props.navigation.navigate("Details")}
+          >
+            {/* PHASE F CARD */}
+            <View style={styles.card}>
+              <LinearGradient
+                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                style={styles.gradient}
+              >
+                <Text style={styles.phaseText}>{PHASES.PHASE_F.phase}</Text>
+                <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
+                <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
+              </LinearGradient>
+            </View>
+          </TouchableWithoutFeedback>
+        </ScrollView>
+      </View>
+    );
+  }
+}
+
+class DetailsScreen extends React.Component {
+  static navigationOptions = {};
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <ScrollView
-          contentContainerStyle={styles.container}
-          centerContent={true}
-        >
-          <TimelineCard />
-          <TimelineCard />
-          <TimelineCard />
-          <TimelineCard />
-          <TimelineCard />
-        </ScrollView>
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ScrollView />
       </View>
     );
   }
@@ -33,5 +137,67 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     backgroundColor: "#FFFFFF"
+  },
+  parent: {
+    flex: 1,
+    backgroundColor: "#FFFFFF"
+  },
+  gradient: {
+    height: 260,
+    width: "90%",
+    margin: 20,
+    borderRadius: 5,
+    backgroundColor: "transparent",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  card: {
+    backgroundColor: "transparent",
+    height: 280,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%"
+  },
+  phaseText: {
+    fontSize: 40,
+    color: "#FFFFFF"
+  },
+  titleText: {
+    color: "#FFFFFF",
+    marginTop: 10,
+    fontSize: 18
+  },
+  dateText: {
+    color: "#FFFFFF",
+    marginTop: 10,
+    fontSize: 18
   }
 });
+
+const RootStack = StackNavigator(
+  {
+    Timeline: {
+      screen: Timeline
+    },
+    Details: {
+      screen: DetailsScreen
+    }
+  },
+  {
+    mode: "modal",
+    navigationOptions: () => ({
+      headerTitleStyle: {
+        fontWeight: "normal"
+      }
+    })
+  }
+);
+
+export default class TimelineScreen extends React.Component {
+  static navigationOptions = {
+    header: null
+  };
+  render() {
+    return <RootStack />;
+  }
+}
