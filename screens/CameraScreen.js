@@ -18,62 +18,52 @@ export default class CameraScreen extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        {!image && (
-          <Button
-            title="Pick an image from camera roll"
-            onPress={this._pickImage}
+        <View
+          ref={view => {
+            this._container = view;
+          }}
+          style={{
+            flex: 1,
+            flexDirection: "column-reverse"
+          }}
+        >
+          <Image
+            source={{ uri: image }}
+            style={{
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: undefined,
+              height: undefined,
+              alignSelf: "stretch"
+            }}
           />
-        )}
-        {image && (
-          <View style={{ flex: 1 }}>
-            <View
-              ref={view => {
-                this._container = view;
-              }}
-              style={{
-                flex: 1,
-                flexDirection: "column-reverse"
-              }}
-            >
-              <Image
-                source={{ uri: image }}
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  top: 64 + Expo.Constants.statusBarHeight,
-                  bottom: 0,
-                  width: undefined,
-                  height: undefined,
-                  alignSelf: "stretch"
-                }}
-              />
 
-              <Image
-                source={require("../assets/images/badge-solid.png")}
-                style={{
-                  marginLeft: 9,
-                  marginBottom: 9,
-                  height: 128,
-                  width: 128,
-                  alignSelf: "flex-start"
-                }}
-              />
-            </View>
-            <BlurView tint="dark" intensity={50} style={styles.blurredView}>
-              <Button
-                style={{ width: 96, height: 96 }}
-                title="Cancel"
-                onPress={() => this.props.navigation.goBack()}
-              />
-              <Button
-                style={{ width: 96, height: 96 }}
-                title="Done"
-                onPress={() => this._saveImage()}
-              />
-            </BlurView>
-          </View>
-        )}
+          <Image
+            source={require("../assets/images/badge-solid.png")}
+            style={{
+              marginLeft: 9,
+              marginBottom: 9,
+              height: 128,
+              width: 128,
+              alignSelf: "flex-start"
+            }}
+          />
+        </View>
+        <View style={styles.blurredView}>
+          <Button
+            style={{ width: 96, height: 96 }}
+            title="Cancel"
+            onPress={() => this.props.navigation.goBack()}
+          />
+          <Button
+            style={{ width: 96, height: 96 }}
+            title="Save"
+            onPress={() => this._saveImage()}
+          />
+        </View>
       </View>
     );
   }
