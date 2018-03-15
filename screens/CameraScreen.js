@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Button, Image, StyleSheet, CameraRoll } from "react-native";
 import { StackNavigator } from "react-navigation";
-import { ImagePicker, BlurView, takeSnapshotAsync } from "expo";
+import { ImagePicker, takeSnapshotAsync } from "expo";
 
 export default class CameraScreen extends React.Component {
   constructor(props) {
