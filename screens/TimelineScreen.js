@@ -149,16 +149,16 @@ class DetailsScreen extends React.Component {
   static navigationOptions = {};
 
   render() {
-    /* 2. Read the params from the navigation state */
+    /* Read the params from the navigation state */
     const { params } = this.props.navigation.state;
     const phase_prop = params ? params.phase : null;
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ScrollView>
           {phase_prop.checkpoints.map(checkpoint => (
-            <View key={phase_prop.id}>
-              <Text>{checkpoint.title}</Text>
-              <Text>{checkpoint.date}</Text>
+            <View key={Math.random()}>
+              <Text key={Math.random()}>{checkpoint.title}</Text>
+              <Text key={Math.random()}>{checkpoint.date}</Text>
               {checkpoint.bullets.map(bullet => (
                 <Text key={Math.random()}>{bullet}</Text>
               ))}
