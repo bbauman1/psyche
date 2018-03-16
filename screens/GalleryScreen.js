@@ -11,7 +11,8 @@ import {
   Alert,
   Dimensions,
   PanResponder,
-  WebView
+  WebView,
+  Modal
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 
@@ -30,13 +31,7 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
 
-    this.files = require('../assets/gallery_db.json');
-    // this.files = [];
-    // this.files[0] = { name: "http://www.public.asu.edu/~abetczyn/1.jpg", mediaType: "image" };
-    // this.files[1] = { name: "http://www.public.asu.edu/~abetczyn/2.jpg", mediaType: "image" };
-    // this.files[2] = { name: "http://www.public.asu.edu/~abetczyn/3.jpg", mediaType: "image" };
-    // this.files[3] = { name: "https://player.vimeo.com/video/194399729", mediaType: "video" };
-    //We will finish getting index.txt later
+    this.files = require("../assets/gallery_db.json");
 
     this.width = Dimensions.get("window").width;
     this.height = Dimensions.get("window").height;
@@ -80,14 +75,17 @@ class MediaRow extends React.Component {
 class MediaContainer extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.mediaType = this.props.file_db_ref[this.props.index].mediaType;
-    this.uriMedia = (this.mediaType === "image" ? this.props.file_db_ref[this.props.index].uri : this.props.file_db_ref[this.props.index].prev);
+    this.uriMedia =
+      this.mediaType === "image"
+        ? this.props.file_db_ref[this.props.index].uri
+        : this.props.file_db_ref[this.props.index].prev;
   }
   onPress = () => {
     this.props.callback({
       index: this.props.index,
-      file_db_ref: this.props.file_db_ref,
+      file_db_ref: this.props.file_db_ref
     });
   };
   render() {
@@ -114,22 +112,34 @@ class MediaContainer extends React.Component {
 
 /*** MEDIAINFOVIEWER ***/
 class MediaInfoViewer extends React.Component {
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    
+      return{  headerRight: <Button title={"Info"} onPress={() => params._toggleModal()} />
+  }
+
+};
   constructor(props) {
     super(props);
     this.state = {
       loadingPicture: true,
-      readySwipe: true,
       xTrans: 0,
-      windowDim: Dimensions.get("window")
+      windowDim: Dimensions.get("window"),
+      modalVisible: false
     };
 
     this.file_db_ref = this.props.navigation.state.params.file_db_ref;
     this.index = this.props.navigation.state.params.index;
 
+    this.setLocalParams();
+  }
+
+  setLocalParams = () => {
     this.mediaURI = this.file_db_ref[this.index].uri;
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.title = this.file_db_ref[this.index].name;
-  }
+    this.credit = this.file_db_ref[this.index].credit;
+  };
 
   loadPicture = (width, height) => {
     this.width = width;
@@ -143,29 +153,34 @@ class MediaInfoViewer extends React.Component {
     });
   };
 
-  setZoomReference = reference => {
-    if (reference) {
-      this.zoomReference = reference;
-      this.scrollResponderReference = this.zoomReference.getScrollResponder();
-    }
-  };
+  toggleModal = () => {
+    this.setState({modalVisible: !this.state.modalVisible})
+  }
 
-  doResetImageZoom = event => {
-    this.scrollResponderReference.scrollResponderZoomTo({
-      x: 0,
-      y: 0,
-      width: Dimensions.get("window").width,
-      height: Dimensions.get("window").height,
-      animated: true
-    });
-    this.setState({ readySwipe: true });
-  };
+  // setZoomReference = reference => {
+  //   if (reference) {
+  //     this.zoomReference = reference;
+  //     this.scrollResponderReference = this.zoomReference.getScrollResponder();
+  //   }
+  // };
+
+  // doResetImageZoom = event => {
+  //   this.scrollResponderReference.scrollResponderZoomTo({
+  //     x: 0,
+  //     y: 0,
+  //     width: Dimensions.get("window").width,
+  //     height: Dimensions.get("window").height,
+  //     animated: true
+  //   });
+  //   this.setState({ readySwipe: true });
+  // };
 
   doSwipe = indexChange => {
     this.index = indexChange;
     this.mediaURI = this.file_db_ref[this.index].uri;
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.setState({ loadingPicture: true, xTrans: 0 });
+    this.setLocalParams();
   };
 
   doLeftSwipe = () => {
@@ -179,12 +194,15 @@ class MediaInfoViewer extends React.Component {
   };
 
   componentWillMount = () => {
+    this.props.navigation.setParams({
+      _toggleModal: this.toggleModal
+    })
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) => !this.state.modalVisible,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) => !this.state.modalVisible,
 
       onPanResponderGrant: (evt, gestureState) => {
         // The gesture has started. Show visual feedback so the user knows
@@ -227,7 +245,17 @@ class MediaInfoViewer extends React.Component {
   };
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
+
+    //Loading indicator
+    let loadingIndicator = (
+      <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+        <ActivityIndicator size="large" color="#0000ee" />
+        <Text color="#0000ee">Loading</Text>
+      </View>
+    );
+
     if (this.mediaType === "image") {
+      //The image is loading
       if (this.state.loadingPicture === true) {
         Image.getSize(this.mediaURI, this.loadPicture);
         return (
@@ -239,6 +267,8 @@ class MediaInfoViewer extends React.Component {
           </View>
         );
       } else {
+        //The image has been downloaded and cached
+
         //constants for calculating correct fitting
         const imgAspectRatio = this.width / this.height;
         const windowWidth = this.state.windowDim.width;
@@ -261,6 +291,7 @@ class MediaInfoViewer extends React.Component {
             }}
           />
         );
+        //Display image with swipe gesture and information
         return (
           <View
             onLayout={this.orientationSwitchLayout}
@@ -268,40 +299,26 @@ class MediaInfoViewer extends React.Component {
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
+              marginTop: 30,
               transform: [{ translateX: this.state.xTrans }]
             }}
             {...this._panResponder.panHandlers}
           >
-            {img}
+          {img}
+            <Modal
+              animationType="slide"
+              transparent={false}
+              visible={this.state.modalVisible}
+              style={{ flex: 0, marginTop: 30}}
+            >
+            <View>
+              <Button title="X" onPress={this.toggleModal}/>
+              <InformationPanel title={this.title} credit={this.credit} />
+            </View>
+            </Modal>
+            
           </View>
         );
-        // if (this.state.readySwipe) {
-        //   console.log(...this._panResponder.panHandlers);
-        //   return <View {...this._panResponder.panHandlers}>{img}</View>;
-        // } else {
-        //   console.log("ZOOM_MODE");
-        //   return (
-        //     <ScrollView
-        //       contentContainerStyle={{
-        //         alignItems: "center",
-        //         justifyContent: "center"
-        //       }}
-        //       centerContent
-        //       showsHorizontalScrollIndicator={false}
-        //       showsVerticalScrollIndicator={false}
-        //       maximumZoomScale={4}
-        //       minimumZoomScale={1}
-        //       ref={this.setZoomReference}
-        //     >
-        //       <TouchableHighlight
-        //         onPress={this.doResetImageZoom}
-        //         activeOpacity={100}
-        //       >
-        //         {img}
-        //       </TouchableHighlight>
-        //     </ScrollView>
-        //   );
-        // }
       }
     } else if (this.mediaType === "video") {
       return (
@@ -314,9 +331,13 @@ class MediaInfoViewer extends React.Component {
           }}
           {...this._panResponder.panHandlers}
         >
-          <WebView 
-            source={{uri: this.mediaURI}}
-            style={{flex: 1}}
+          <WebView
+            source={{ uri: this.mediaURI }}
+            style={{ flex: 1 }}
+            renderLoading={() => {
+              return loadingIndicator;
+            }}
+            startInLoadingState={true}
           />
         </View>
       );
@@ -325,6 +346,20 @@ class MediaInfoViewer extends React.Component {
       Alert.alert(msg);
       return <Text>{msg}</Text>;
     }
+  }
+}
+
+/***  INFORMATION PANEL ***/
+class InformationPanel extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <Text>Title</Text>
+        <Text>{this.props.title}</Text>
+        <Text>Credit</Text>
+        <Text>{this.props.credit}</Text>
+      </View>
+    );
   }
 }
 
@@ -379,5 +414,5 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0
-  },
+  }
 });
