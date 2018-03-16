@@ -85,7 +85,7 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ScrollView> 
+          <ScrollView style = {styles.background}> 
             <AccordionView 
               content = {sections}
             />
@@ -163,7 +163,7 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ScrollView>
+          <ScrollView style = {styles.background}>
             <AccordionView 
               content = {sections}
             />
@@ -213,7 +213,7 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ScrollView>
+          <ScrollView style = {styles.background}>
             <AccordionView 
               content = {sections}
             />
@@ -256,6 +256,9 @@ const styles = StyleSheet.create({
   textContentSetup: {    
     color: 'white',
     fontSize: 15,
+    backgroundColor: '#800080',
+  },
+  background: {
     backgroundColor: '#800080',
   }
 });
