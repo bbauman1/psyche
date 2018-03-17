@@ -7,7 +7,7 @@ const psycheDarkPurple = "#302144"
 export default {
   tintColor,
   tabIconDefault: "#ccc",
-  tabIconSelected: tintColor,
+  tabIconSelected: "#ccc",
   tabBar: "#fefefe",
   primaryColor: psycheDarkPurple
 
