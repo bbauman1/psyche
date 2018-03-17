@@ -12,14 +12,15 @@ import InstagramWindow from "../components/InstagramWindow";
 const source = { uri: "https://www.instagram.com/nasapsyche/?hl=en" };
 
 const FacebookRoute = () => (
-  <SocialWindow uri="https://www.jpl.nasa.gov/missions/psyche/" />
+  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" />
 );
 const InstagramRoute = () => (
   <InstagramWindow/>
   // <View style={[styles.container, { backgroundColor: "white" }]} />
 );
 const TwitterRoute = () => (
-  <View style={[styles.container, { backgroundColor: "black" }]} />
+  // <View style={[styles.container, { backgroundColor: "black" }]} />
+  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" />
 );
 
 export default class SocialScreen extends React.Component {

@@ -1,30 +1,34 @@
 import React from "react";
 import { StyleSheet, View, Text, WebView, Dimensions } from "react-native";
 import { Content, Card, CardItem, Body } from "native-base";
+import InstagramData from './InstagramData';
 
 export default class InstagramWindow extends React.Component {
+
+    constructor(props) {
+        super();
+        this.state = {
+            feedData: []
+        }
+    }
   getFeedData() {
     return fetch("https://www.instagram.com/nasapsyche/?__a=1")
-      .then(response => response.json())
-      .then(responseJson => {
-        alert(responseJson);
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({feedData: responseJson.user.media.nodes})
+      })
+      .catch((error) => {
+          console.error(error);
       });
   }
+
   componentDidMount() {
     this.getFeedData();
   }
 
   render() {
     return (
-      <Content>
-        <Card>
-          <CardItem>
-            <Body>
-              <Text>InstagramWindow</Text>
-            </Body>
-          </CardItem>
-        </Card>
-      </Content>
+      <InstagramData feedData = {this.state.feedData}/>
     );
   }
 }
