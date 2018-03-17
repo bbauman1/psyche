@@ -9,6 +9,8 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
+import Colors from "../constants/Colors.js";
+
 
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
@@ -187,7 +189,12 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
+        fontWeight: "normal",
+      },
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: Colors.primaryColor,
+        borderBottomColor: 'transparent',
       }
     })
   }
