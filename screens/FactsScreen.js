@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'; 
+import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
@@ -21,12 +21,12 @@ export default class FactsScreen extends React.Component {
 
   _handleIndexChange = index => this.setState({ index });
 
-  _renderHeader = props  => {
+  _renderHeader = props => {
     return (
       <TabBar
         {...props}
-        indicatorStyle = {styles.indicator}        
-        style = {styles.tabbar}
+        indicatorStyle={styles.indicator}
+        style={styles.tabbar}
       />
     );
   };
@@ -85,9 +85,9 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ScrollView> 
-            <AccordionView 
-              content = {sections}
+          <ScrollView>
+            <AccordionView
+              content={sections}
             />
           </ScrollView>
         );
@@ -108,19 +108,19 @@ export default class FactsScreen extends React.Component {
           {
             title: '\t- What type of gas is using in Psyche spacecraft?',
             content: '\t\t\t+ The Psyche spacecraft is using Xenon.'
-          },          
+          },
           {
             title: '\t- What is Xenon?',
             content: '\t\t\t+ Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\n\t\t\t+ Xenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\t\t\t+ “The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”'
-          },          
+          },
           {
             title: '\t- What is the size of The Psyche spacecraft?',
             content: '\t\t\t+ The full spacecraft, including the solar panels, is 24.76 meters (~81 feet) long by 7.34 meters (~24 feet) wide. That is about the size of a (singles) tennis court.'
-          },          
+          },
           {
             title: '\t- What is the size of the Bus?',
             content: '\t\t\t+ The bus (body) of the spacecraft is 3.1 meters (~10 feet) long by 2.4 meters (almost 8 feet) wide.\n\t\t\t+ A few size comparisons:\n\t\t\t\t\t\to It is slightly bigger than a Smart Car.\n\t\t\t\t\t\to It about the size of a garden storage shed.\n\t\t\t\t\t\to It is as tall as a regulation basketball hoop!'
-          },          
+          },
           {
             title: '\t- What is The Psyche’s Multispectral Imager?',
             content: '\t\t\t+ Provides high-resolution images using filters to discriminate between Psyche’s metallic and silicate constituents.\n\t\t\t+ Consists of a pair of identical cameras designed to acquire geologic, compositional, and topographic data.\n\t\t\t+ Purpose of the second camera is to provide redundancy for mission-critical optical navigation.'
@@ -128,15 +128,15 @@ export default class FactsScreen extends React.Component {
           {
             title: '\t- Where does the Multispectral Imager team based?',
             content: '\t\t\t+ The team is based at Arizona State University.'
-          },          
+          },
           {
             title: '\t- What is The Psyche’s Gamma Ray and Neutron Spectrometer?',
             content: '\t\t\t+ Will detect, measure, and map Psyche’s elemental composition.\n\t\t\t+ Mounted on a 2-meter (6-foot) boom (“arm”) to:\n\t\t\t\t\t\to Distance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
-          },    
+          },
           {
             title: '\t- Where does the Gamma Ray and Neutron Spectrometer team based?',
             content: '\t\t\t+ The team is based at the Applied Physics Laboratory at Johns Hopkins University.'
-          },       
+          },
           {
             title: '\t- What is The Psyche’s Magnetometer?',
             content: '\t\t\t+ Designed to detect and measure the remnant magnetic field of the asteroid.\n\t\t\t+ Composed of two identical high-sensitivity magnetic field sensors located at the middle and outer end of a 2-meter (6-foot) boom (“arm”).'
@@ -144,7 +144,7 @@ export default class FactsScreen extends React.Component {
           {
             title: '\t- Where does the Magnetometer team based?',
             content: '\t\t\t+ The team is based at Massachusetts Institute of Technology (MIT) and the University of California Los Angeles (UCLA).'
-          },            
+          },
           {
             title: '\t- What is The Psyche’s Radio Science?',
             content: '\t\t\t+ The Psyche mission will use the X-band radio telecommunications system to measure Psyche’s gravity field to high precision.\n\t\t\t+ When combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche.'
@@ -152,7 +152,7 @@ export default class FactsScreen extends React.Component {
           {
             title: '\t- Where does the Radio Science team based?',
             content: '\t\t\t+ The team is based at MIT and JPL.'
-          },            
+          },
           {
             title: '\t- What is The Psyche’s Deep Space Optical Communication (DSOC)?',
             content: '\t\t\t+ The Psyche mission will test a sophisticated new laser communication technology that encodes data in photons (rather than radio waves) to communicate between a probe in deep space and Earth.\n\t\t\t+ Using light instead of radio allows the spacecraft to communicate more data in a given amount of time.'
@@ -164,8 +164,8 @@ export default class FactsScreen extends React.Component {
         ]
         return (
           <ScrollView>
-            <AccordionView 
-              content = {sections}
+            <AccordionView
+              content={sections}
             />
           </ScrollView>
         );
@@ -214,8 +214,8 @@ export default class FactsScreen extends React.Component {
         ]
         return (
           <ScrollView>
-            <AccordionView 
-              content = {sections}
+            <AccordionView
+              content={sections}
             />
           </ScrollView>
         );
@@ -227,11 +227,11 @@ export default class FactsScreen extends React.Component {
   render() {
     return (
       <TabViewAnimated
-        style = {[styles.container, this.props.style]}
-        navigationState = {this.state}
-        renderScene = {this._renderScene}
-        renderHeader = {this._renderHeader}
-        onIndexChange = {this._handleIndexChange}
+        style={[styles.container, this.props.style]}
+        navigationState={this.state}
+        renderScene={this._renderScene}
+        renderHeader={this._renderHeader}
+        onIndexChange={this._handleIndexChange}
       />
     );
   }
@@ -242,10 +242,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabbar: {
-    backgroundColor: '#800080',
+    backgroundColor: Colors.primaryColor,
   },
   indicator: {
-    backgroundColor: '#ff00ff',
+    backgroundColor: '#fff',
   },
   textHeaderSetup: {
     color: 'white',
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     backgroundColor: '#800080',
   },
-  textContentSetup: {    
+  textContentSetup: {
     color: 'white',
     fontSize: 15,
     backgroundColor: '#800080',
@@ -263,26 +263,26 @@ const styles = StyleSheet.create({
 class AccordionView extends React.Component {
   _renderHeader(section) {
     return (
-      <View style = {styles.container}>
-        <Text style = {styles.textHeaderSetup}>{section.title}</Text>
+      <View style={styles.container}>
+        <Text style={styles.textHeaderSetup}>{section.title}</Text>
       </View>
     );
   }
 
   _renderContent(section) {
     return (
-      <View style = {styles.content}>
-        <Text style = {styles.textContentSetup}>{section.content}</Text>
+      <View style={styles.content}>
+        <Text style={styles.textContentSetup}>{section.content}</Text>
       </View>
     );
   }
 
   render() {
     return (
-      <Accordion      
-        sections = {this.props.content}
-        renderHeader = {this._renderHeader}
-        renderContent = {this._renderContent}
+      <Accordion
+        sections={this.props.content}
+        renderHeader={this._renderHeader}
+        renderContent={this._renderContent}
       />
     );
   }
