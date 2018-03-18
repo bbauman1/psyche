@@ -4,6 +4,7 @@ import { StackNavigator } from "react-navigation";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
+import Colors from "../constants/Colors.js"
 
 const RootStackNavigator = StackNavigator(
   {
@@ -15,10 +16,23 @@ const RootStackNavigator = StackNavigator(
     }
   },
   {
+    initialRouteName: 'Main',
+    navigationOptions: () => ({
+      headerTitleStyle: {
+        fontWeight: "normal",
+      },
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: Colors.primaryColor,
+        borderBottomColor: 'transparent',
+      }
+    })
+  },
+  {
     mode: "modal",
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
+        fontWeight: "normal",
       }
     })
   }
