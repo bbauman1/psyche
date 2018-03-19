@@ -364,7 +364,7 @@ const LocalPageNavigator = StackNavigator(
       screen: MediaInfoViewer,
       navigationOptions: ({ navigation }) => ({
         gesturesEnabled: false,
-        headerStyle: { backgroundColor: "#1b1226" },
+        headerStyle: { backgroundColor: Colors.primaryColor },
         headerTitleStyle: { color: "white" },
         headerLeft: (
           <HeaderBackButton
