@@ -2,16 +2,27 @@ import React from 'react';
 import { StyleSheet, View, Text, WebView, Dimensions } from 'react-native';
 import * as Layout from '../constants/Layout';
 
-const SocialWindow = (props) => {
-    return (
-        <WebView
-            source = {{uri: props.uri}}
-            style = {[styles.socialWindow]}
-            // onLoad = {this.onLoad.bind(this)}
-            // onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest}
-            // onNavigationStateChange = {this._onShouldStartLoadWithRequest} 
-        />
-    )
+export default class SocialWindow extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    SocialWindow = (props) => {
+        return (
+            <WebView
+                source = {{uri: props.uri}}
+                style = {[styles.socialWindow]}
+                onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+                // onLoad = {this.onLoad.bind(this)}
+                // onShouldStartLoadWithRequest={this._onShouldStartLoadWithRequest}
+                // onNavigationStateChange = {this._onShouldStartLoadWithRequest} 
+            />
+        );
+    }
+
+    _onNavigationStateChange(webViewState){
+        console.log(webViewState.url)
+    }
 }
 
 const styles = StyleSheet.create({

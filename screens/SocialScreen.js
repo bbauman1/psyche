@@ -9,7 +9,7 @@ import InstagramWindow from "../components/InstagramWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 //Constants for scenes to be shown in the tabs
-const source = { uri: "https://www.instagram.com/nasapsyche/?hl=en" };
+const source = { uri: "https://www.instagram.com/nasapsyche/?__a=1" };
 
 const FacebookRoute = () => (
   <SocialWindow uri="https://www.facebook.com/NASAPsyche/" />
