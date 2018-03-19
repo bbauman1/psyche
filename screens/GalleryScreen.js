@@ -12,20 +12,19 @@ import {
   Dimensions,
   PanResponder,
   WebView,
-  Modal
+  Modal,
+  StatusBar
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
-
-// import GestureRecognizer, {
-//   swipeDirections
-// } from "react-native-swipe-gestures";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
 /*** GALLERY ***/
 class Gallery extends React.Component {
   static navigationOptions = {
-    title: "Gallery"
+    title: "Gallery",
+    headerStyle: { backgroundColor: "#1b1226" },
+    headerTitleStyle: { color: "white" }
   };
 
   constructor(props) {
@@ -70,6 +69,7 @@ class MediaRow extends React.Component {
     return <View style={{ flexDirection: "row" }}>{this.props.frames}</View>;
   }
 }
+/*** END GALLERY ***/
 
 /*** MEDIACONTAINER ***/
 class MediaContainer extends React.Component {
@@ -109,16 +109,19 @@ class MediaContainer extends React.Component {
     );
   }
 }
+/*** END MEDIACONTAINER ***/
 
 /*** MEDIAINFOVIEWER ***/
 class MediaInfoViewer extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    
-      return{  headerRight: <Button title={"Info"} onPress={() => params._toggleModal()} />
-  }
 
-};
+    return {
+      headerRight: (
+        <Button title={"Info"} onPress={() => params._toggleModal()} />
+      )
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -154,26 +157,10 @@ class MediaInfoViewer extends React.Component {
   };
 
   toggleModal = () => {
-    this.setState({modalVisible: !this.state.modalVisible})
-  }
-
-  // setZoomReference = reference => {
-  //   if (reference) {
-  //     this.zoomReference = reference;
-  //     this.scrollResponderReference = this.zoomReference.getScrollResponder();
-  //   }
-  // };
-
-  // doResetImageZoom = event => {
-  //   this.scrollResponderReference.scrollResponderZoomTo({
-  //     x: 0,
-  //     y: 0,
-  //     width: Dimensions.get("window").width,
-  //     height: Dimensions.get("window").height,
-  //     animated: true
-  //   });
-  //   this.setState({ readySwipe: true });
-  // };
+    this.setState({
+      modalVisible: !this.state.modalVisible && this.mediaType === "image"
+    });
+  };
 
   doSwipe = indexChange => {
     this.index = indexChange;
@@ -196,13 +183,15 @@ class MediaInfoViewer extends React.Component {
   componentWillMount = () => {
     this.props.navigation.setParams({
       _toggleModal: this.toggleModal
-    })
+    });
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => !this.state.modalVisible,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) =>
+        !this.state.modalVisible,
       onMoveShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => !this.state.modalVisible,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
+        !this.state.modalVisible,
 
       onPanResponderGrant: (evt, gestureState) => {
         // The gesture has started. Show visual feedback so the user knows
@@ -304,19 +293,18 @@ class MediaInfoViewer extends React.Component {
             }}
             {...this._panResponder.panHandlers}
           >
-          {img}
+            {img}
             <Modal
               animationType="slide"
               transparent={false}
               visible={this.state.modalVisible}
-              style={{ flex: 0, marginTop: 30}}
+              style={{ flex: 0, marginTop: 30 }}
             >
-            <View>
-              <Button title="X" onPress={this.toggleModal}/>
-              <InformationPanel title={this.title} credit={this.credit} />
-            </View>
+              <View>
+                <Button title="X" onPress={this.toggleModal} />
+                <InformationPanel title={this.title} credit={this.credit} />
+              </View>
             </Modal>
-            
           </View>
         );
       }
@@ -348,6 +336,7 @@ class MediaInfoViewer extends React.Component {
     }
   }
 }
+/*** END MEDIAINFOVIEWER ***/
 
 /***  INFORMATION PANEL ***/
 class InformationPanel extends React.Component {
@@ -362,8 +351,9 @@ class InformationPanel extends React.Component {
     );
   }
 }
+/*** END INFORMATION PANEL */
 
-/*** GLOBAL SCREEN ***/
+/*** GLOBAL SCREEN StackNavigator ***/
 const LocalPageNavigator = StackNavigator(
   {
     Main: {
@@ -373,6 +363,8 @@ const LocalPageNavigator = StackNavigator(
       screen: MediaInfoViewer,
       navigationOptions: ({ navigation }) => ({
         gesturesEnabled: false,
+        headerStyle: { backgroundColor: "#1b1226" },
+        headerTitleStyle: { color: "white" },
         headerLeft: (
           <HeaderBackButton
             title="Gallery"
@@ -399,14 +391,22 @@ export default class GalleryScreen extends React.Component {
 
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
-    return <LocalPageNavigator />;
+    return (
+      <View style = {{flex: 1}}>
+        <StatusBar
+          barStyle="light-content"
+        />
+        <LocalPageNavigator />
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
   gallery: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: "column",
+    backgroundColor: "#1b1226"
   },
   backgroundVideo: {
     position: "absolute",
