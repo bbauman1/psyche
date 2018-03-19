@@ -16,6 +16,7 @@ import {
   StatusBar
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
+import Colors from "../constants/Colors.js"
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
@@ -23,7 +24,7 @@ import { StackNavigator, HeaderBackButton } from "react-navigation";
 class Gallery extends React.Component {
   static navigationOptions = {
     title: "Gallery",
-    headerStyle: { backgroundColor: "#1b1226" },
+    headerStyle: { backgroundColor: Colors.primaryColor },
     headerTitleStyle: { color: "white" }
   };
 
@@ -101,8 +102,8 @@ class MediaContainer extends React.Component {
           style={{
             width: this.props.width,
             height: this.props.width,
-            borderWidth: 1.0,
-            borderColor: "#fff"
+            borderWidth: 0.8,
+            borderColor: styles.gallery.backgroundColor
           }}
         />
       </TouchableHighlight>
@@ -407,12 +408,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#1b1226"
-  },
-  backgroundVideo: {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0
   }
 });
