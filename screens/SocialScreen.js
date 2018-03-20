@@ -11,7 +11,6 @@ import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
 import SocialWindow from "../components/SocialWindow";
-import InstagramWindow from "../components/InstagramWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => (
