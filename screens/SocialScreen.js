@@ -95,18 +95,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  tabbar: {
-    backgroundColor: "#302144",
-    borderTopColor: "black",
-    borderTopWidth: 5
-  },
   indicator: {
     backgroundColor: "#222"
-  },
-  socialWindow: {
-    flex: 1,
-    marginTop: 20,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height
   }
 });
