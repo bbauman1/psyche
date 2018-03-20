@@ -34,7 +34,7 @@ export default class SocialScreen extends React.Component {
   };
 
   static navigationOptions = {
-    title: "Social Media",
+    title: "Social Media"
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tabbar: {
-    backgroundColor: Colors.primaryColor,
+    backgroundColor: Colors.primaryColor
   },
   indicator: {
     backgroundColor: "#fff"

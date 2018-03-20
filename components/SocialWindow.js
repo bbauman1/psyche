@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, Text, WebView, Dimensions } from "react-native";
-import AppLink from "react-native-app-link";
 import * as Layout from "../constants/Layout";
 
 class SocialWindow extends React.Component {
