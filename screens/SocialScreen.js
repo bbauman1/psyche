@@ -95,7 +95,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  tabbar: {
+    backgroundColor: Colors.primaryColor,
+  },
   indicator: {
-    backgroundColor: "#222"
+    backgroundColor: "#fff"
   }
 });
