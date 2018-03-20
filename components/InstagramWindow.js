@@ -15,7 +15,7 @@ export default class InstagramWindow extends React.Component {
       .then(response => response.json())
       .then(responseJson => {
         // this.setState({feedData: responseJson.user.media.nodes})
-        console.log(responseJson);
+        console.log("Instagram Window");
       })
       .catch(error => {
         console.error(error);

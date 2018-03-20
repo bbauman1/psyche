@@ -15,11 +15,9 @@ const FacebookRoute = () => (
   <SocialWindow uri="https://www.facebook.com/NASAPsyche/" />
 );
 const InstagramRoute = () => (
-  <InstagramWindow/>
-  // <View style={[styles.container, { backgroundColor: "white" }]} />
+  <SocialWindow uri="https://www.instagram.com/nasapsyche/?hl=en" />
 );
 const TwitterRoute = () => (
-  // <View style={[styles.container, { backgroundColor: "black" }]} />
   <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" />
 );
 
