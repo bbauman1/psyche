@@ -80,6 +80,14 @@ export default TabNavigator(
     tabBarComponent: TabBarBottom,
     tabBarPosition: "bottom",
     animationEnabled: false,
-    swipeEnabled: false
+    swipeEnabled: false,
+    tabBarOptions: {
+      style: {
+        backgroundColor: Colors.primaryColor,
+      },
+      labelStyle: {
+        color: "#ccc"
+      }
+    }
   }
 );

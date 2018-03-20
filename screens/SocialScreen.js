@@ -35,7 +35,7 @@ export default class SocialScreen extends React.Component {
   };
 
   static navigationOptions = {
-    title: "Social Media"
+    title: "Social Media",
   };
 
   _handleIndexChange = index => this.setState({ index });
