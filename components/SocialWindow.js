@@ -9,10 +9,17 @@ import {
 } from "react-native";
 import * as Layout from "../constants/Layout";
 
+const initialUrl = this.props.uri;
+let url = '';
 // const navAlert = () => {
 // };
 
 class SocialWindow extends React.Component {
+
+  state = {
+    url: initialUrl,
+  };
+
   navigationAlert = () => {
     Alert.alert(
       "You are about to navigate away from this application. Continue?",
@@ -24,9 +31,10 @@ class SocialWindow extends React.Component {
     );
   };
 
-  _onNavigationStateChange(webViewState) {
+  _onNavigationStateChange = webViewState => {
+    // if (navState.url.indexOf('https://www.google.com') === 0) {
     console.log(webViewState.url);
-    this.navigationAlert;
+    alert(webViewState.url);
   }
 
   render() {
@@ -35,6 +43,7 @@ class SocialWindow extends React.Component {
         source={{ uri: this.props.uri }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+        scalesPageToFit
       />
     );
   }
