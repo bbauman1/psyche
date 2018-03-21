@@ -155,12 +155,12 @@ class DetailsScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ScrollView>
-          {phase_prop.checkpoints.map(checkpoint => (
-            <View key={Math.random()}>
-              <Text key={Math.random()}>{checkpoint.title}</Text>
-              <Text key={Math.random()}>{checkpoint.date}</Text>
-              {checkpoint.bullets.map(bullet => (
-                <Text key={Math.random()}>{bullet}</Text>
+          {phase_prop.checkpoints.map((checkpoint, i) => (
+            <View key={i}>
+              <Text key={i + 1}>{checkpoint.title}</Text>
+              <Text key={i + 2}>{checkpoint.date}</Text>
+              {checkpoint.bullets.map((bullet, k) => (
+                <Text key={k}>{bullet}</Text>
               ))}
             </View>
           ))}
