@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text, Button, StatusBar, Image } from "react-native";
+import { ScrollView, StyleSheet, View, Text, Button, Image } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
@@ -33,7 +33,7 @@ export default class HomeScreen extends React.Component {
       headerRight: (
         <Image
           source={require("../assets/images/meatball.png")}
-          style={{ width: 32, height: 32, marginRight: 18 }}
+          style={{ width: 48, height: 48, marginRight: 18 }}
         />
       ),
       headerLeft: (
@@ -107,7 +107,6 @@ export default class HomeScreen extends React.Component {
 
     return (
       <ScrollView style={styles.container}>
-        <StatusBar barStyle='light-content' />
         <Grid>
           <Col size={4} />
           <Col size={2}>

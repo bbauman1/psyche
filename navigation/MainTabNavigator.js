@@ -51,14 +51,8 @@ export default TabNavigator(
           case "Home":
             return (
               <Image source={require("../assets/images/psyche-icon.png")} style={{ height: 32, width: 32 }} />
-
             );
             break;
-          // iconName =
-          //   Platform.OS === "ios"
-          //     ? `ios-home${focused ? "" : "-outline"}`
-          //     : "md-home";
-          // break;
           case "Social":
             iconName =
               Platform.OS === "ios"

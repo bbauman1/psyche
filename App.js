@@ -21,7 +21,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          {Platform.OS === "ios" && <StatusBar barStyle="light-content" />}
           {Platform.OS === "android" && (
             <View style={styles.statusBarUnderlay} />
           )}
@@ -36,6 +36,8 @@ export default class App extends React.Component {
       Asset.loadAsync([
         // Kept this for later as an example of loading assets
         // require('./assets/images/robot-dev.png'),
+        require('./assets/images/psyche-icon.png'),
+        require('./assets/images/meatball.png')
       ]),
       Font.loadAsync({
         ...Ionicons.font,
