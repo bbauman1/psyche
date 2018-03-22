@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text, Button, StatusBar } from "react-native";
+import { ScrollView, StyleSheet, View, Text, Button, StatusBar, Image } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
@@ -30,6 +30,12 @@ export default class HomeScreen extends React.Component {
     const { params = {} } = navigation.state;
     return {
       title: "Countdown",
+      headerRight: (
+        <Image
+          source={require("../assets/images/meatball.png")}
+          style={{ width: 32, height: 32, marginRight: 18 }}
+        />
+      ),
       headerLeft: (
         <Ionicons
           name={"ios-camera-outline"}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TabNavigator, TabBarBottom } from "react-navigation";
 
@@ -49,11 +49,16 @@ export default TabNavigator(
                 : "md-time";
             break;
           case "Home":
-            iconName =
-              Platform.OS === "ios"
-                ? `ios-home${focused ? "" : "-outline"}`
-                : "md-home";
+            return (
+              <Image source={require("../assets/images/psyche-icon.png")} style={{ height: 32, width: 32 }} />
+
+            );
             break;
+          // iconName =
+          //   Platform.OS === "ios"
+          //     ? `ios-home${focused ? "" : "-outline"}`
+          //     : "md-home";
+          // break;
           case "Social":
             iconName =
               Platform.OS === "ios"
@@ -70,9 +75,9 @@ export default TabNavigator(
         return (
           <Ionicons
             name={iconName}
-            size={28}
+            size={32}
             style={{ marginBottom: -3 }}
-            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+            color={focused ? Colors.primaryColor : Colors.tabIconDefault}
           />
         );
       }
@@ -83,11 +88,9 @@ export default TabNavigator(
     swipeEnabled: false,
     tabBarOptions: {
       style: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: "#fff",
       },
-      labelStyle: {
-        color: "#ccc"
-      }
+      activeTintColor: Colors.primaryColor,
     }
   }
 );
