@@ -28,7 +28,11 @@ class Timeline extends React.Component {
       <View style={styles.parent}>
         <ScrollView contentContainerStyle={styles.container}>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_A
+              })
+            }
           >
             {/* PHASE A CARD */}
             <View style={styles.card}>
@@ -43,7 +47,11 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_B
+              })
+            }
           >
             {/* PHASE B CARD */}
             <View style={styles.card}>
@@ -58,7 +66,11 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_C
+              })
+            }
           >
             {/* PHASE C CARD */}
             <View style={styles.card}>
@@ -73,7 +85,11 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_D
+              })
+            }
           >
             {/* PHASE D CARD */}
             <View style={styles.card}>
@@ -88,7 +104,11 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_E
+              })
+            }
           >
             {/* PHASE E CARD */}
             <View style={styles.card}>
@@ -103,7 +123,11 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
-            onPress={() => this.props.navigation.navigate("Details")}
+            onPress={() =>
+              this.props.navigation.navigate("Details", {
+                phase: PHASES.PHASE_F
+              })
+            }
           >
             {/* PHASE F CARD */}
             <View style={styles.card}>
@@ -127,9 +151,22 @@ class DetailsScreen extends React.Component {
   static navigationOptions = {};
 
   render() {
+    /* Read the params from the navigation state */
+    const { params } = this.props.navigation.state;
+    const phase_prop = params ? params.phase : null;
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <ScrollView />
+        <ScrollView>
+          {phase_prop.checkpoints.map((checkpoint, i) => (
+            <View key={i}>
+              <Text key={i + 1}>{checkpoint.title}</Text>
+              <Text key={i + 2}>{checkpoint.date}</Text>
+              {checkpoint.bullets.map((bullet, k) => (
+                <Text key={k}>{bullet}</Text>
+              ))}
+            </View>
+          ))}
+        </ScrollView>
       </View>
     );
   }
