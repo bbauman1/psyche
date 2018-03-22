@@ -43,7 +43,7 @@ class SocialWindow extends React.Component {
             navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
             navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
           ) {
-            console.log(navEvent.url);
+            console.log(navEvent.url);            
           }
         }}
         scalesPageToFit
@@ -55,9 +55,7 @@ class SocialWindow extends React.Component {
 const styles = StyleSheet.create({
   socialWindow: {
     flex: 1,
-    marginTop: 20,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height
+    marginTop: 20
   }
 });
 
