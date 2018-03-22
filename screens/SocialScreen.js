@@ -14,13 +14,13 @@ import SocialWindow from "../components/SocialWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => (
-  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" />
+  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" windowName = "facebook" />
 );
 const InstagramRoute = () => (
-  <SocialWindow uri="https://www.instagram.com/nasapsyche/?hl=en" />
+  <SocialWindow uri="https://www.instagram.com/nasapsyche/?hl=en" windowName = "instagram" />
 );
 const TwitterRoute = () => (
-  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" />
+  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" windowName = "twitter"/>
 );
 
 export default class SocialScreen extends React.Component {

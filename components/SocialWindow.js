@@ -5,44 +5,53 @@ import {
   Text,
   WebView,
   Dimensions,
-  Alert
+  Alert,
+  Linking
 } from "react-native";
 import * as Layout from "../constants/Layout";
 
-const initialUrl = this.props.uri;
-let url = '';
 // const navAlert = () => {
 // };
 
 class SocialWindow extends React.Component {
-
-  state = {
-    url: initialUrl,
-  };
-
-  navigationAlert = () => {
-    Alert.alert(
-      "You are about to navigate away from this application. Continue?",
-      [
-        { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-  };
-
-  _onNavigationStateChange = webViewState => {
-    // if (navState.url.indexOf('https://www.google.com') === 0) {
-    console.log(webViewState.url);
-    alert(webViewState.url);
-  }
+  // navigationAlert = () => {
+  //   Alert.alert(
+  //     "You are about to navigate away from this application. Continue?",
+  //     [
+  //       { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
+  //       { text: "OK", onPress: () => console.log("OK Pressed") }
+  //     ],
+  //     { cancelable: false }
+  //   );
+  // };
 
   render() {
+    const initialUrl = this.props.uri;
+    const windowName = this.props.windowName;
+    console.log(initialUrl);
+    console.log(windowName);
+    let url = "";
+
     return (
       <WebView
-        source={{ uri: this.props.uri }}
+        ref={ref => {
+          this.WebView = ref;
+        }}
+        source={{ initialUrl }}
         style={[styles.socialWindow]}
-        onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+        onNavigationStateChange={navEvent => {
+          if (
+            navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
+            navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
+            navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
+          ) {
+            this.WebView.stopLoading();
+            alert(navEvent.url);
+            Linking.openURL(navEvent.url).catch(err =>
+              console.error("An error occurred with that link", err)
+            );
+          }
+        }}
         scalesPageToFit
       />
     );
