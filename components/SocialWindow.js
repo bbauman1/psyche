@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, WebView, Dimensions } from "react-native";
-import * as Layout from "../constants/Layout";
+import Layout from "../constants/Layout";
 
 class SocialWindow extends React.Component {
   _onNavigationStateChange(webViewState) {
@@ -21,9 +21,8 @@ class SocialWindow extends React.Component {
 const styles = StyleSheet.create({
   socialWindow: {
     flex: 1,
-    marginTop: 20,
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height
+    width: Layout.width,
+    height: Layout.height
   }
 });
 
