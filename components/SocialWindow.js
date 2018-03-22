@@ -9,9 +9,11 @@ import {
   Linking
 } from "react-native";
 import * as Layout from "../constants/Layout";
+import SocialMedia from "../constants/SocialMedia";
 
 // const navAlert = () => {
 // };
+const WEBVIEW_REF = "webview";
 
 class SocialWindow extends React.Component {
   // navigationAlert = () => {
@@ -25,28 +27,29 @@ class SocialWindow extends React.Component {
   //   );
   // };
 
+  _onNavigationStateChange(navEvent) {
+    if (
+      navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
+      navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
+      navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
+    ) {
+      //Alert user they are navigating to the browser.
+      alert("Oh no!");
+      //this.refs[WEBVIEW_REF].stopLoading();
+      console.log(navEvent.url);
+    }
+  }
+
   render() {
     const initialUrl = this.props.uri;
     const windowName = this.props.windowName;
     let url = "";
-
     return (
       <WebView
-        ref={ref => {
-          this.WebView = ref;
-        }}
+        ref={WEBVIEW_REF}
         source={{ uri: initialUrl }}
         style={[styles.socialWindow]}
-        onNavigationStateChange={navEvent => {
-          if (
-            navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
-            navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
-            navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
-          ) {
-            console.log(navEvent.url);            
-          }
-        }}
-        scalesPageToFit
+        onNavigationStateChange={this._onNavigationStateChange.bind(this)}
       />
     );
   }
