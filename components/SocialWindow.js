@@ -28,8 +28,6 @@ class SocialWindow extends React.Component {
   render() {
     const initialUrl = this.props.uri;
     const windowName = this.props.windowName;
-    console.log(initialUrl);
-    console.log(windowName);
     let url = "";
 
     return (
@@ -37,7 +35,7 @@ class SocialWindow extends React.Component {
         ref={ref => {
           this.WebView = ref;
         }}
-        source={{ initialUrl }}
+        source={{ uri: initialUrl }}
         style={[styles.socialWindow]}
         onNavigationStateChange={navEvent => {
           if (
@@ -45,11 +43,7 @@ class SocialWindow extends React.Component {
             navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
             navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
           ) {
-            this.WebView.stopLoading();
-            alert(navEvent.url);
-            Linking.openURL(navEvent.url).catch(err =>
-              console.error("An error occurred with that link", err)
-            );
+            console.log(navEvent.url);
           }
         }}
         scalesPageToFit
