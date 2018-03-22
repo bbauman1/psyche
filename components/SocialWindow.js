@@ -11,11 +11,12 @@ import {
 import * as Layout from "../constants/Layout";
 import SocialMedia from "../constants/SocialMedia";
 
-// const navAlert = () => {
-// };
 const WEBVIEW_REF = "webview";
 
-class SocialWindow extends React.Component {
+class SocialWindow extends React.Component {  
+  state = {
+    url: this.props.uri
+  }
   // navigationAlert = () => {
   //   Alert.alert(
   //     "You are about to navigate away from this application. Continue?",
@@ -41,8 +42,8 @@ class SocialWindow extends React.Component {
   }
 
   render() {
-    const initialUrl = this.props.uri;
-    const windowName = this.props.windowName;
+    const initialUrl = this.state.url;
+    // const windowName = this.props.windowName;
     let url = "";
     return (
       <WebView
