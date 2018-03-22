@@ -1,6 +1,6 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Text } from 'react-native';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import { ScrollView, StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
+import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view'; 
 import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
@@ -41,11 +41,11 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- What is the different between this mission compare to the others?',
-            content: '\t\t\t+ Psyche is the first mission to a world made of metal rather than rock or ice.'
+            content: '\t\t\t+ Psyche is the first mission to a world made of metal rather than rock or ice.'           
           },
           {
             title: '\t- When did NASA choose this mission?',
-            content: '\t\t\t+ The Psyche mission is chosen by NASA on January 4, 2017'
+            content: '\t\t\t+ The Psyche mission is chosen by NASA on January 4, 2017.'
           },
           {
             title: '\t- What program did Psyche mission selected for?',
@@ -69,7 +69,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- What is the responsible of Principle Investigator(PI)?',
-            content: '\t\t\t+ The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \n\t\t\t+ The PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \n\t\t\t+ The PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \n\t\t\t+ The PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines.'
+            content: '\t\t\t+ The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \n\t\t\t+ The PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \n\t\t\t+ The PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \n\t\t\t+ The PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines.'  
           },
           {
             title: '\t- Whose are the Co-Investigators?',
@@ -85,11 +85,11 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ScrollView>
-            <AccordionView
-              content={sections}
-            />
-          </ScrollView>
+          <ImageBackground style = {{flex: 1, width: '100%', height: '100%'}} source = {{ uri: 'https://i2-prod.mirror.co.uk/incoming/article11717036.ece/ALTERNATES/s615/SWNS_INTERSTELLAR_ASTEROID_02.jpg'}}>
+            <ScrollView> 
+              <AccordionView content = {sections}/>
+            </ScrollView>
+          </ImageBackground>
         );
       case 'second':
         sections = [
@@ -111,8 +111,8 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- What is Xenon?',
-            content: '\t\t\t+ Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\n\t\t\t+ Xenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\t\t\t+ “The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”'
-          },
+            content: '\t\t\t+ Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\n\t\t\t+ Xenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\t\t\t+ “The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”' 
+          },          
           {
             title: '\t- What is the size of The Psyche spacecraft?',
             content: '\t\t\t+ The full spacecraft, including the solar panels, is 24.76 meters (~81 feet) long by 7.34 meters (~24 feet) wide. That is about the size of a (singles) tennis court.'
@@ -127,8 +127,8 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- Where does the Multispectral Imager team based?',
-            content: '\t\t\t+ The team is based at Arizona State University.'
-          },
+            content: '\t\t\t+ The team is based at Arizona State University.',
+          },          
           {
             title: '\t- What is The Psyche’s Gamma Ray and Neutron Spectrometer?',
             content: '\t\t\t+ Will detect, measure, and map Psyche’s elemental composition.\n\t\t\t+ Mounted on a 2-meter (6-foot) boom (“arm”) to:\n\t\t\t\t\t\to Distance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
@@ -159,25 +159,21 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- Where does the DSOC team based?',
-            content: '\t\t\t+ The DSOC team is based at the Jet Propulsion Laboratory'
+            content: '\t\t\t+ The DSOC team is based at the Jet Propulsion Laboratory.'
           }
         ]
         return (
-          <ScrollView>
-            <AccordionView
-              content={sections}
-            />
-          </ScrollView>
+          <ImageBackground style = {{flex: 1, width: '100%', height: '100%'}} source = {{ uri: 'https://i2-prod.mirror.co.uk/incoming/article11717036.ece/ALTERNATES/s615/SWNS_INTERSTELLAR_ASTEROID_02.jpg'}}>
+            <ScrollView> 
+              <AccordionView content = {sections}/>
+            </ScrollView>
+          </ImageBackground>
         );
       case 'third':
         sections = [
           {
             title: '\t- When and who discovered Psyche?',
             content: '\t\t\t+ Psyche was discovered in 1852, by Italian astronomer Annibale de Gasparis. \n\t\t\t+ Also Psyche is the 16th asteroid to be discovered.'
-          },
-          {
-            tile: '\t- Where is the name "Psyche" came from?',
-            content: '\t\t\t+ "Psyche" is the named for the goddess of the soul in ancient Greek mythology.'
           },
           {
             title: '\t- How do we know?',
@@ -193,7 +189,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: '\t- What is the time different on Psyche compare to Earth?',
-            content: '\t\t\t+ A day on Psyche is about 4 hours and 12 minutes. \n\t\t\t+ This is the sidereal rotation period, or the "amount of time it takes for a (body) to completely spin around and make one full roration. \n\t\t\t+ You could live through just under six "days" on Psyche in the same time as one day on Earth. \n\t\t\t+ A year on Psyche lasts about five Earth years (about 1828 Earth days).'
+            content: '\t\t\t+ A day on Psyche is about 4 hours and 12 minutes. \n\t\t\t+ This is the sidereal rotation period, or the amount of time it takes for a (body) to completely spin around and make one full roration. \n\t\t\t+ You could live through just under six "days" on Psyche in the same time as one day on Earth. \n\t\t\t+ A year on Psyche lasts about five Earth years (about 1828 Earth days).'
           },
           {
             title: '\t- What is the different between Psyche and Earth orbiting?',
@@ -210,14 +206,18 @@ export default class FactsScreen extends React.Component {
           {
             title: '\t- What is the size of Psyche?',
             content: '\t\t\t+ As asteroids go, Psyche is relatively large and has an irregular shape: \n\t\t\t\t\t\t+ 279 x 232 x 189 kilometers (173 x 144 x 117 miles). \n\t\t\t\t\t\t+ If Psyche were a perfect sphere, it would have a diameter of 226 kilometers (140 miles): \n\t\t\t\t\t\t\t\t\t+ That is about the length of the state of Massachusetts (leaving out Cape Cod); If it were in Arizona it would stretch between Phoenix and Flagstaff! \n\t\t\t\t\t\t\t\t\t+ A surface area of about 641,800 square kilometers (246,300 square miles), making it just smaller than the area of the state of Texas and quite a bit larger than the area of California.'
+          },
+          {
+            title: '\t- Where is the name "Psyche" came from?',
+            content: '\t\t\t+ "Psyche" is the named for the goddess of the soul in ancient Greek mythology.'
           }
         ]
         return (
-          <ScrollView>
-            <AccordionView
-              content={sections}
-            />
-          </ScrollView>
+          <ImageBackground style = {{flex: 1, width: '100%', height: '100%'}} source = {{ uri: 'https://i2-prod.mirror.co.uk/incoming/article11717036.ece/ALTERNATES/s615/SWNS_INTERSTELLAR_ASTEROID_02.jpg'}}>
+            <ScrollView> 
+              <AccordionView content = {sections}/>
+            </ScrollView>
+          </ImageBackground>
         );
       default:
         return null;
@@ -249,14 +249,15 @@ const styles = StyleSheet.create({
   },
   textHeaderSetup: {
     color: 'white',
+    height: 55,
     fontSize: 17,
     fontWeight: '400',
-    backgroundColor: '#800080',
+    backgroundColor: 'rgba(255,255,255,0.5)',
   },
   textContentSetup: {
     color: 'white',
     fontSize: 15,
-    backgroundColor: '#800080',
+    backgroundColor: 'rgba(255,255,255,0.5)',
   }
 });
 
