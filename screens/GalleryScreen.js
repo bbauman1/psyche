@@ -20,6 +20,14 @@ import Colors from "../constants/Colors.js"
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
+  //Loading indicator
+  const loadingIndicator = (
+    <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+      <ActivityIndicator size="large" color={Colors.primaryColor}/>
+      <Text color="#0000ee">Loading</Text>
+    </View>
+  );
+
 /*** GALLERY ***/
 class Gallery extends React.Component {
   static navigationOptions = {
@@ -82,6 +90,10 @@ class MediaContainer extends React.Component {
       this.mediaType === "image"
         ? this.props.file_db_ref[this.props.index].uri
         : this.props.file_db_ref[this.props.index].prev;
+    
+    this.state = {
+      loadingPicture: true
+    }
   }
   onPress = () => {
     this.props.callback({
@@ -90,7 +102,6 @@ class MediaContainer extends React.Component {
     });
   };
   render() {
-    //uriMedia at {{uri will be changed to PREVIEW version
     return (
       <TouchableHighlight
         onPress={this.onPress}
@@ -236,13 +247,6 @@ class MediaInfoViewer extends React.Component {
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
 
-    //Loading indicator
-    let loadingIndicator = (
-      <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-        <ActivityIndicator size="large" color="#0000ee" />
-        <Text color="#0000ee">Loading</Text>
-      </View>
-    );
 
     if (this.mediaType === "image") {
       //The image is loading
@@ -252,8 +256,7 @@ class MediaInfoViewer extends React.Component {
           <View
             style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
           >
-            <ActivityIndicator size="large" color="#0000ee" />
-            <Text color="#0000ee">Loading</Text>
+            {loadingIndicator}
           </View>
         );
       } else {
