@@ -4,9 +4,12 @@ import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
+import { connectActionSheet } from '@expo/react-native-action-sheet';
+import { ImagePicker } from 'expo';
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 
+@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -24,6 +27,7 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
     return {
       title: "Countdown",
       headerLeft: (
@@ -32,15 +36,54 @@ export default class HomeScreen extends React.Component {
           size={32}
           color={"#fff"}
           style={{ marginLeft: 18 }}
-          onPress={() => navigation.navigate("Modal")}
+          onPress={() => params.handleActionSheet()}
         />
       )
     };
   };
 
+  componentDidMount() {
+    this.props.navigation.setParams({ handleActionSheet: this._onOpenActionSheet.bind(this) });
+  }
+
   _get_current_countdown() {
     return countdown.timeTillLaunch(new Date().getTime(), Dates.launch);
   }
+
+  _onOpenActionSheet = () => {
+    let options = ['Open Camera', 'Choose From Photos', 'Cancel'];
+    let cancelButtonIndex = 2;
+    this.props.showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex,
+      },
+      buttonIndex => {
+        if (buttonIndex == 0) {
+
+        }
+        else if (buttonIndex == 1) {
+          this._pickImage();
+        }
+      }
+    );
+  };
+
+  _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: false,
+      aspect: [4, 3]
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      this.props.navigation.navigate('Modal', {
+        image: result.uri
+      });
+    }
+  };
+
 
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
