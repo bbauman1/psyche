@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text, Button } from "react-native";
+import { ScrollView, StyleSheet, View, Text, Button, StatusBar } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
@@ -30,7 +30,7 @@ export default class HomeScreen extends React.Component {
         <Ionicons
           name={"ios-camera-outline"}
           size={32}
-          color={"#000"}
+          color={"#fff"}
           style={{ marginLeft: 18 }}
           onPress={() => navigation.navigate("Modal")}
         />
@@ -58,6 +58,7 @@ export default class HomeScreen extends React.Component {
 
     return (
       <ScrollView style={styles.container}>
+        <StatusBar barStyle='light-content' />
         <Grid>
           <Col size={4} />
           <Col size={2}>
