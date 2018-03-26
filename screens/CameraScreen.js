@@ -67,8 +67,6 @@ export default class CameraScreen extends React.Component {
     });
 
     let saveResult = await CameraRoll.saveToCameraRoll(result, "photo");
-    console.log(saveResult);
-    this.setState({ cameraRollUri: saveResult });
     this.props.navigation.goBack();
   };
 

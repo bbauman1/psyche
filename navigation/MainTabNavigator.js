@@ -49,8 +49,13 @@ export default TabNavigator(
                 : "md-time";
             break;
           case "Home":
+            let homeStyle = Platform.OS === "ios"
+              ? { height: 48, width: 48, marginBottom: 10, backgroundColor: "#fff" }
+              : { height: 32, width: 32, marginBottom: -1, backgroundColor: "#fff" };
             return (
-              <Image source={require("../assets/images/psyche-icon.png")} style={{ height: 48, width: 48, marginBottom: 12, backgroundColor: "#fff" }} />
+              <Image
+                source={require("../assets/images/psyche-icon.png")}
+                style={homeStyle} />
             );
             break;
           case "Social":
