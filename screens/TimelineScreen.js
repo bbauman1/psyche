@@ -57,7 +57,7 @@ class Timeline extends React.Component {
             {/* PHASE B CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_B.phase}</Text>
@@ -76,7 +76,7 @@ class Timeline extends React.Component {
             {/* PHASE C CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_C.phase}</Text>
@@ -95,7 +95,7 @@ class Timeline extends React.Component {
             {/* PHASE D CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_D.phase}</Text>
@@ -114,7 +114,7 @@ class Timeline extends React.Component {
             {/* PHASE E CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_E.phase}</Text>
@@ -133,7 +133,7 @@ class Timeline extends React.Component {
             {/* PHASE F CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_F.phase}</Text>
@@ -206,20 +206,24 @@ const styles = StyleSheet.create({
   },
   phaseText: {
     fontSize: 40,
+    fontWeight: "bold",
     color: "#FFFFFF"
   },
   titleText: {
     color: "#FFFFFF",
+    textAlign: "center",
     marginTop: 10,
     fontSize: 18
   },
   dateText: {
     color: "#FFFFFF",
+    fontWeight: "200",
     marginTop: 10,
     fontSize: 18
   },
   detailPhaseTitle: {
-    fontSize: 32,
+    fontSize: 28,
+    fontWeight: "bold",
     marginTop: 8,
     marginRight: 8,
     marginLeft: 8,
@@ -227,6 +231,7 @@ const styles = StyleSheet.create({
   },
   detailDate: {
     fontSize: 18,
+    fontWeight: "200",
     marginTop: 4,
     marginBottom: 2,
     marginLeft: 8,
