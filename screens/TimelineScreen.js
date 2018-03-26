@@ -11,9 +11,9 @@ import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
 import Colors from "../constants/Colors.js";
 
-
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
+var COLORS = require("../constants/Colors.js");
 
 class Timeline extends React.Component {
   static navigationOptions = {
@@ -24,6 +24,7 @@ class Timeline extends React.Component {
   }
 
   render() {
+    console.log(COLORS.psycheMustard);
     return (
       <View style={styles.parent}>
         <ScrollView contentContainerStyle={styles.container}>
@@ -37,7 +38,7 @@ class Timeline extends React.Component {
             {/* PHASE A CARD */}
             <View style={styles.card}>
               <LinearGradient
-                colors={["#4c669f", "#3b5998", "#192f6a"]}
+                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
                 style={styles.gradient}
               >
                 <Text style={styles.phaseText}>{PHASES.PHASE_A.phase}</Text>
@@ -156,13 +157,19 @@ class DetailsScreen extends React.Component {
     const phase_prop = params ? params.phase : null;
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <ScrollView>
+        <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
           {phase_prop.checkpoints.map((checkpoint, i) => (
             <View key={i}>
-              <Text key={i + 1}>{checkpoint.title}</Text>
-              <Text key={i + 2}>{checkpoint.date}</Text>
+              <Text key={i + 1} style={styles.detailPhaseTitle}>
+                {checkpoint.title}
+              </Text>
+              <Text key={i + 2} style={styles.detailDate}>
+                {checkpoint.date}
+              </Text>
               {checkpoint.bullets.map((bullet, k) => (
-                <Text key={k}>{bullet}</Text>
+                <Text key={k} style={styles.detailBullet}>
+                  {bullet}
+                </Text>
               ))}
             </View>
           ))}
@@ -210,6 +217,28 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     marginTop: 10,
     fontSize: 18
+  },
+  detailPhaseTitle: {
+    fontSize: 32,
+    marginTop: 8,
+    marginRight: 8,
+    marginLeft: 8,
+    color: COLORS.psycheCoral
+  },
+  detailDate: {
+    fontSize: 18,
+    marginTop: 4,
+    marginBottom: 2,
+    marginLeft: 8,
+    color: COLORS.psychePurple
+  },
+  detailBullet: {
+    fontSize: 16,
+    marginTop: 6,
+    marginBottom: 6,
+    marginRight: 8,
+    marginLeft: 8,
+    color: COLORS.psycheDarkPurple
   }
 });
 
@@ -226,12 +255,12 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal",
+        fontWeight: "normal"
       },
-      headerTintColor: '#fff',
+      headerTintColor: "#fff",
       headerStyle: {
         backgroundColor: Colors.primaryColor,
-        borderBottomColor: 'transparent',
+        borderBottomColor: "transparent"
       }
     })
   }
