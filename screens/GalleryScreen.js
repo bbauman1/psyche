@@ -245,7 +245,7 @@ class MediaInfoViewer extends React.Component {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   };
   render() {
-    Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
+    //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
 
 
     if (this.mediaType === "image") {
