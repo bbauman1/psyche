@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: '400',
     height: 55,
-    paddingLeft: 10, 
+    paddingLeft: 10,
     paddingRight: 10,
     color: 'rgb(245,125,50)',
   },
