@@ -198,10 +198,10 @@ class MediaInfoViewer extends React.Component {
     });
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onStartShouldSetPanResponder: (evt, gestureState) => false,
       onStartShouldSetPanResponderCapture: (evt, gestureState) =>
         !this.state.modalVisible,
-      onMoveShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => false,
       onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
         !this.state.modalVisible,
 
@@ -292,19 +292,18 @@ class MediaInfoViewer extends React.Component {
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 30,
-              transform: [{ translateX: this.state.xTrans }]
+              transform: [{ translateX: this.state.xTrans }],
             }}
             {...this._panResponder.panHandlers}
           >
             {img}
             <Modal
               animationType="slide"
-              transparent={false}
+              transparent={true}
               visible={this.state.modalVisible}
-              style={{ flex: 0, marginTop: 30 }}
+              style={{ flex: 1}}
             >
-              <View>
+              <View style={{backgroundColor: Colors.primaryColor, marginTop: 30}}>
                 <Button title="X" onPress={this.toggleModal} />
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
@@ -347,10 +346,10 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Text>Title</Text>
-        <Text>{this.props.title}</Text>
-        <Text>Credit</Text>
-        <Text>{this.props.credit}</Text>
+        <Text style={styles.informationPanelHeaders}>Title</Text>
+        <Text style ={styles.informationPanelText}>{this.props.title}</Text>
+        <Text style={styles.informationPanelHeaders}>Credit</Text>
+        <Text style = {styles.informationPanelText}>{this.props.credit}</Text>
       </View>
     );
   }
@@ -411,5 +410,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#1b1226"
+  },
+  informationPanelHeaders: {
+    fontWeight: "bold",
+    color: "white"
+  },
+  informationPanelText: {
+    color: "white"
   }
+
 });
