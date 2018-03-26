@@ -4,12 +4,10 @@ import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
-import { connectActionSheet } from '@expo/react-native-action-sheet';
 import { ImagePicker } from 'expo';
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 
-@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -42,38 +40,19 @@ export default class HomeScreen extends React.Component {
           size={32}
           color={"#fff"}
           style={{ marginLeft: 18 }}
-          onPress={() => params.handleActionSheet()}
+          onPress={() => params.handleLeftHeader()}
         />
       )
     };
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({ handleActionSheet: this._onOpenActionSheet.bind(this) });
+    this.props.navigation.setParams({ handleLeftHeader: this._pickImage.bind(this) });
   }
 
   _get_current_countdown() {
     return countdown.timeTillLaunch(new Date().getTime(), Dates.launch);
   }
-
-  _onOpenActionSheet = () => {
-    let options = ['Open Camera', 'Choose From Photos', 'Cancel'];
-    let cancelButtonIndex = 2;
-    this.props.showActionSheetWithOptions(
-      {
-        options,
-        cancelButtonIndex,
-      },
-      buttonIndex => {
-        if (buttonIndex == 0) {
-
-        }
-        else if (buttonIndex == 1) {
-          this._pickImage();
-        }
-      }
-    );
-  };
 
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
