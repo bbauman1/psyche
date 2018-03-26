@@ -50,7 +50,7 @@ export default TabNavigator(
             break;
           case "Home":
             return (
-              <Image source={require("../assets/images/psyche-icon.png")} style={{ height: 32, width: 32 }} />
+              <Image source={require("../assets/images/psyche-icon.png")} style={{ height: 48, width: 48, marginBottom: 12, backgroundColor: "#fff" }} />
             );
             break;
           case "Social":
