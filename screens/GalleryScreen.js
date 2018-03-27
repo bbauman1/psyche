@@ -130,7 +130,7 @@ class MediaInfoViewer extends React.Component {
 
     return {
       headerRight: (
-        <Button title={"Info"} onPress={() => params._toggleModal()} />
+        <Button title={"Info"} color={"white"} onPress={() => params._toggleModal()} />
       )
     };
   };
@@ -304,7 +304,7 @@ class MediaInfoViewer extends React.Component {
               style={{ flex: 1}}
             >
               <View style={{backgroundColor: Colors.primaryColor, marginTop: 30}}>
-                <Button title="X" onPress={this.toggleModal} />
+                <Button title="Close" color={"white"} onPress={this.toggleModal} />
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
             </Modal>
@@ -354,7 +354,7 @@ class InformationPanel extends React.Component {
     );
   }
 }
-/*** END INFORMATION PANEL */
+/*** END INFORMATION PANEL ***/
 
 /*** GLOBAL SCREEN StackNavigator ***/
 const LocalPageNavigator = StackNavigator(
@@ -417,6 +417,9 @@ const styles = StyleSheet.create({
   },
   informationPanelText: {
     color: "white"
+  },
+  headerButtons: {
+    tintColor: "white"
   }
 
 });
