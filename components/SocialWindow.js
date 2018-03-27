@@ -8,7 +8,7 @@ import {
   Alert,
   Linking
 } from "react-native";
-import AppLink from "react-native-app-link";
+import AppLink from 'react-native-app-link';
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
 
@@ -16,7 +16,8 @@ const WEBVIEW_REF = "webview";
 
 class SocialWindow extends React.Component {
   state = {
-    url: this.props.uri
+    url: this.props.uri,
+    app: this.props.app
   };
 
   navigationAlert = () => {
@@ -36,18 +37,22 @@ class SocialWindow extends React.Component {
       navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
       navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
     ) {
-      //Alert user they are navigating to the browser.
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
       console.log(navEvent.url);
-      AppLink.maybeOpenUrl(url, { appName: 'instagram', appStoreId: AppIds.instagramAppStoreId, playStoreId: AppIds.instagramPlayStoreId }).then(() => {
+      AppLink.maybeOpenUrl(navEvent.url, {
+        appName: this.state.app,
+        appStoreId: AppIds.instagramAppStoreId,
+        playStoreId: AppIds.instagramPlayStoreId
+      }).then(() => {
         //do stuff
-      })
+      });
     }
   }
 
   render() {
     const initialUrl = this.state.url;
+    console.log(this.state.app);
     // const windowName = this.props.windowName;
     let url = "";
     return (

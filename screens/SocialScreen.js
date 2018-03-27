@@ -14,13 +14,16 @@ import SocialWindow from "../components/SocialWindow";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => (
-  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" windowName = "facebook" />
+  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" app="facebook" />
 );
 const InstagramRoute = () => (
-  <SocialWindow uri="https://www.instagram.com/nasapsyche/?hl=en" windowName = "instagram" />
+  <SocialWindow
+    uri="https://www.instagram.com/nasapsyche/?hl=en"
+    app="instagram"
+  />
 );
 const TwitterRoute = () => (
-  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" windowName = "twitter"/>
+  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" app="twitter" />
 );
 
 export default class SocialScreen extends React.Component {
@@ -34,7 +37,7 @@ export default class SocialScreen extends React.Component {
   };
 
   static navigationOptions = {
-    title: "Social Media",
+    title: "Social Media"
   };
 
   _handleIndexChange = index => this.setState({ index });
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tabbar: {
-    backgroundColor: Colors.primaryColor,
+    backgroundColor: Colors.primaryColor
   },
   indicator: {
     backgroundColor: "#fff"
