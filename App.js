@@ -21,10 +21,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
-          {Platform.OS === "android" && (
-            <View style={styles.statusBarUnderlay} />
-          )}
+          {Platform.OS === "ios" && <StatusBar barStyle="light-content" />}
           <RootNavigation />
         </View>
       );
@@ -34,8 +31,8 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        // Kept this for later as an example of loading assets
-        // require('./assets/images/robot-dev.png'),
+        require('./assets/images/psyche-icon.png'),
+        require('./assets/images/meatball.png')
       ]),
       Font.loadAsync({
         ...Ionicons.font,
@@ -57,9 +54,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  statusBarUnderlay: {
-    height: 24,
-    backgroundColor: "rgba(0,0,0,0.2)"
   }
 });

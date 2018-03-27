@@ -1,6 +1,5 @@
 import { Notifications } from "expo";
 import React from "react";
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { StackNavigator } from "react-navigation";
 
 import MainTabNavigator from "./MainTabNavigator";
@@ -41,8 +40,6 @@ const RootStackNavigator = StackNavigator(
 
 export default class RootNavigator extends React.Component {
   render() {
-    return <ActionSheetProvider>
-      <RootStackNavigator />
-    </ActionSheetProvider>;
+    return <RootStackNavigator />
   }
 }
