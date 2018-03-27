@@ -17,16 +17,17 @@ class SocialWindow extends React.Component {
   state = {
     url: this.props.uri
   }
-  // navigationAlert = () => {
-  //   Alert.alert(
-  //     "You are about to navigate away from this application. Continue?",
-  //     [
-  //       { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
-  //       { text: "OK", onPress: () => console.log("OK Pressed") }
-  //     ],
-  //     { cancelable: false }
-  //   );
-  // };
+  
+  navigationAlert = () => {
+    Alert.alert(
+      "You are about to navigate away from this application. Continue?",
+      [
+        { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
+        { text: "OK", onPress: () => console.log("OK Pressed") }
+      ],
+      { cancelable: false }
+    );
+  };
 
   _onNavigationStateChange(navEvent) {
     if (
@@ -35,7 +36,8 @@ class SocialWindow extends React.Component {
       navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
     ) {
       //Alert user they are navigating to the browser.
-      alert("Oh no!");
+      // alert("Oh no!");
+      this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
       console.log(navEvent.url);
     }
