@@ -1,11 +1,22 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text, Button, StatusBar } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  StatusBar
+} from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { Ionicons } from "@expo/vector-icons";
+import {
+  CountDownClockHorizontal,
+  CountDownClockVertical
+} from "../components/Clocks";
 import { MonoText } from "../components/StyledText";
-import { connectActionSheet } from '@expo/react-native-action-sheet';
-import { ImagePicker } from 'expo';
+import { Ionicons } from "@expo/vector-icons";
+import { connectActionSheet } from "@expo/react-native-action-sheet";
+import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 
@@ -43,7 +54,9 @@ export default class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({ handleActionSheet: this._onOpenActionSheet.bind(this) });
+    this.props.navigation.setParams({
+      handleActionSheet: this._onOpenActionSheet.bind(this)
+    });
   }
 
   _get_current_countdown() {
@@ -51,18 +64,16 @@ export default class HomeScreen extends React.Component {
   }
 
   _onOpenActionSheet = () => {
-    let options = ['Open Camera', 'Choose From Photos', 'Cancel'];
+    let options = ["Open Camera", "Choose From Photos", "Cancel"];
     let cancelButtonIndex = 2;
     this.props.showActionSheetWithOptions(
       {
         options,
-        cancelButtonIndex,
+        cancelButtonIndex
       },
       buttonIndex => {
         if (buttonIndex == 0) {
-
-        }
-        else if (buttonIndex == 1) {
+        } else if (buttonIndex == 1) {
           this._pickImage();
         }
       }
@@ -78,12 +89,11 @@ export default class HomeScreen extends React.Component {
     console.log(result);
 
     if (!result.cancelled) {
-      this.props.navigation.navigate('Modal', {
+      this.props.navigation.navigate("Modal", {
         image: result.uri
       });
     }
   };
-
 
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
@@ -98,51 +108,31 @@ export default class HomeScreen extends React.Component {
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
-
+    
     return (
-      <ScrollView style={styles.container}>
-        <StatusBar barStyle='light-content' />
+      <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <Grid>
-          <Col size={4} />
-          <Col size={2}>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.years}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Y</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.months}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> M</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>{countdown.days}</MonoText>
-              <MonoText style={styles.countdownTextDuration}> D</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.hours}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> H</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.minutes}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Min</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.seconds}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
-            </Row>
-          </Col>
-          <Col size={4} />
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="Launch"
+              countDownDate={Dates.launch}
+            />
+          </Row>
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="Mars Encounter"
+              countDownDate={Dates.launch}
+            />
+          </Row>
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="16 Psyche Arrival"
+              countDownDate={Dates.launch}
+            />
+          </Row>
         </Grid>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -153,11 +143,11 @@ const styles = StyleSheet.create({
   },
   countdownTextDuration: {
     fontWeight: "bold",
-    fontSize: 26
+    fontSize: 12
   },
   countdownText: {
     fontWeight: "bold",
-    fontSize: 52
+    fontSize: 24
   },
   container: {
     flex: 1,
