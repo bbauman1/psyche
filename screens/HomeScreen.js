@@ -5,7 +5,8 @@ import {
   View,
   Text,
   Button,
-  StatusBar
+  StatusBar,
+  Image
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -20,7 +21,6 @@ import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 
-@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -41,13 +41,19 @@ export default class HomeScreen extends React.Component {
     const { params = {} } = navigation.state;
     return {
       title: "Countdown",
+      headerRight: (
+        <Image
+          source={require("../assets/images/meatball.png")}
+          style={{ width: 48, height: 48, marginRight: 18 }}
+        />
+      ),
       headerLeft: (
         <Ionicons
           name={"ios-camera-outline"}
           size={32}
           color={"#fff"}
           style={{ marginLeft: 18 }}
-          onPress={() => params.handleActionSheet()}
+          onPress={() => params.handleLeftHeader()}
         />
       )
     };
@@ -55,30 +61,13 @@ export default class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.navigation.setParams({
-      handleActionSheet: this._onOpenActionSheet.bind(this)
+      handleLeftHeader: this._pickImage.bind(this)
     });
   }
 
   _get_current_countdown() {
     return countdown.timeTillLaunch(new Date().getTime(), Dates.launch);
   }
-
-  _onOpenActionSheet = () => {
-    let options = ["Open Camera", "Choose From Photos", "Cancel"];
-    let cancelButtonIndex = 2;
-    this.props.showActionSheetWithOptions(
-      {
-        options,
-        cancelButtonIndex
-      },
-      buttonIndex => {
-        if (buttonIndex == 0) {
-        } else if (buttonIndex == 1) {
-          this._pickImage();
-        }
-      }
-    );
-  };
 
   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -108,9 +97,9 @@ export default class HomeScreen extends React.Component {
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
-    if (false) {
+    if (true) {
       return (
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
           <StatusBar barStyle="light-content" />
           <Grid>
             <Col size={4} />
@@ -154,7 +143,7 @@ export default class HomeScreen extends React.Component {
             </Col>
             <Col size={4} />
           </Grid>
-        </ScrollView>
+        </View>
       );
     }
     return (
