@@ -108,7 +108,55 @@ export default class HomeScreen extends React.Component {
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
-    
+    if (false) {
+      return (
+        <ScrollView style={styles.container}>
+          <StatusBar barStyle="light-content" />
+          <Grid>
+            <Col size={4} />
+            <Col size={2}>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.years}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Y</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.months}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> M</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.days}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> D</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.hours}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> H</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.minutes}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Min</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.seconds}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
+              </Row>
+            </Col>
+            <Col size={4} />
+          </Grid>
+        </ScrollView>
+      );
+    }
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -147,7 +195,7 @@ const styles = StyleSheet.create({
   },
   countdownText: {
     fontWeight: "bold",
-    fontSize: 24
+    fontSize: 50
   },
   container: {
     flex: 1,
