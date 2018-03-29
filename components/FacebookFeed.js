@@ -21,7 +21,7 @@ class FacebookFeed extends React.Component {
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
-      console.log("URL: " + navEvent.url);
+    //   console.log("URL: " + navEvent.url);
       // AppLink.maybeOpenURL(navEvent.url, {
       //   appName: this.state.app,
       //   appStoreId: AppIds.instagramAppStoreId,
