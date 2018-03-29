@@ -11,6 +11,7 @@ import {
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
+import { AppInstalledChecker, CheckPackageInstallation } from 'react-native-check-app-install';
 
 const WEBVIEW_REF = "webview";
 
