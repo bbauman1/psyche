@@ -44,13 +44,20 @@ class TwitterFeed extends React.Component {
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: initialUrl }}
+        source={{ uri: SocialMedia.twitterURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}
       />
     );
-  }
+  } 
 }
+
+const styles = StyleSheet.create({
+    socialWindow: {
+      flex: 1,
+      marginTop: 20
+    }
+  });
 
 export default TwitterFeed;

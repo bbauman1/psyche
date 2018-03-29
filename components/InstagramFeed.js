@@ -44,7 +44,7 @@ class InstagramFeed extends React.Component {
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: initialUrl }}
+        source={{ uri: SocialMedia.InstagramURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}
@@ -52,5 +52,12 @@ class InstagramFeed extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+    socialWindow: {
+      flex: 1,
+      marginTop: 20
+    }
+  });
 
 export default InstagramFeed;

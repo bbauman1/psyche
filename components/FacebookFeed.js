@@ -11,7 +11,6 @@ import {
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
-import SocialWindow from "../components/SocialWindow";
 
 class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
@@ -44,7 +43,7 @@ class FacebookFeed extends React.Component {
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: initialUrl }}
+        source={{ uri: SocialMedia.facebookURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}
@@ -52,5 +51,12 @@ class FacebookFeed extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+    socialWindow: {
+      flex: 1,
+      marginTop: 20
+    }
+  });
 
 export default FacebookFeed;
