@@ -159,13 +159,13 @@ export default class HomeScreen extends React.Component {
           <Row size={20}>
             <CountDownClockHorizontal
               clockTitle="Mars Encounter"
-              countDownDate={Dates.launch}
+              countDownDate={Dates.mars}
             />
           </Row>
           <Row size={20}>
             <CountDownClockHorizontal
               clockTitle="16 Psyche Arrival"
-              countDownDate={Dates.launch}
+              countDownDate={Dates.arrival}
             />
           </Row>
         </Grid>
