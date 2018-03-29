@@ -8,29 +8,12 @@ import {
   Alert,
   Linking
 } from "react-native";
-import AppLink from 'react-native-app-link';
+import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
+import SocialWindow from "../components/SocialWindow";
 
-const WEBVIEW_REF = "webview";
-
-class SocialWindow extends React.Component {
-  state = {
-    url: this.props.uri,
-    app: this.props.app
-  };
-
-  navigationAlert = () => {
-    Alert.alert(
-      "You are about to navigate away from this application. Continue?",
-      [
-        { text: "Cancel", onPress: () => console.log("Cancel Pressed") },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
-  };
-
+class TwitterFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
       navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
@@ -39,7 +22,7 @@ class SocialWindow extends React.Component {
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
-      (console.log("URL: " + navEvent.url));
+      console.log("URL: " + navEvent.url);
       // AppLink.maybeOpenURL(navEvent.url, {
       //   appName: this.state.app,
       //   appStoreId: AppIds.instagramAppStoreId,
@@ -70,11 +53,4 @@ class SocialWindow extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  socialWindow: {
-    flex: 1,
-    marginTop: 20
-  }
-});
-
-export default SocialWindow;
+export default TwitterFeed;

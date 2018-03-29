@@ -10,20 +10,20 @@ import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
-import SocialWindow from "../components/SocialWindow";
+//import SocialWindow from "../components/SocialWindow";
+import FacebookFeed from "../components/FacebookFeed";
+import InstagramFeed from "../components/InstagramFeed";
+import TwitterFeed from "../components/TwitterFeed";
 
 /*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => (
-  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" app="facebook" />
+  <FacebookFeed/>
 );
 const InstagramRoute = () => (
-  <SocialWindow
-    uri="https://www.instagram.com/nasapsyche/?hl=en"
-    app="instagram"
-  />
+  <InstagramFeed/>
 );
 const TwitterRoute = () => (
-  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" app="twitter" />
+  <TwitterFeed/>
 );
 
 export default class SocialScreen extends React.Component {
