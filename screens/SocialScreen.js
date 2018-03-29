@@ -10,12 +10,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
-//import SocialWindow from "../components/SocialWindow";
 import FacebookFeed from "../components/FacebookFeed";
 import InstagramFeed from "../components/InstagramFeed";
 import TwitterFeed from "../components/TwitterFeed";
 
-/*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => (
   <FacebookFeed/>
 );

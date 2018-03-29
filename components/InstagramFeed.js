@@ -13,23 +13,25 @@ import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
 import SocialWindow from "../components/SocialWindow";
 
+const WEBVIEW_REF = "webview";
+
 class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
-      navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
       navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
-      navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
+      navEvent.url !== "about:blank"
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
       console.log("URL: " + navEvent.url);
-      // AppLink.maybeOpenURL(navEvent.url, {
-      //   appName: this.state.app,
-      //   appStoreId: AppIds.instagramAppStoreId,
-      //   playStoreId: AppIds.instagramPlayStoreId
-      // }).then(() => {
-      //   //do stuff
-      // });
+      AppLink.maybeOpenURL(navEvent.url, {
+        appName: "instagram",
+        appStoreId: AppIds.instagramAppStoreId,
+        playStoreId: AppIds.instagramPlayStoreId
+      }).then(() => {
+        //do stuff
+        Alert("Alert thrown");
+      });
       // AppLink.openInStore(AppIds.instagramAppStoreId, AppIds.instagramPlayStoreId).then(() => {
       //   // do stuff
       // })
@@ -37,14 +39,11 @@ class InstagramFeed extends React.Component {
   }
 
   render() {
-    const initialUrl = this.state.url;
-    console.log(this.state.app);
-    // const windowName = this.props.windowName;
     let url = "";
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: SocialMedia.InstagramURL }}
+        source={{ uri: SocialMedia.instagramURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}
@@ -54,10 +53,10 @@ class InstagramFeed extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    socialWindow: {
-      flex: 1,
-      marginTop: 20
-    }
-  });
+  socialWindow: {
+    flex: 1,
+    marginTop: 20
+  }
+});
 
 export default InstagramFeed;

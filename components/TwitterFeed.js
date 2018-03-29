@@ -13,6 +13,8 @@ import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
 import SocialWindow from "../components/SocialWindow";
 
+const WEBVIEW_REF = "webview";
+
 class TwitterFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
@@ -22,7 +24,7 @@ class TwitterFeed extends React.Component {
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
-    //   console.log("URL: " + navEvent.url);
+      //   console.log("URL: " + navEvent.url);
       // AppLink.maybeOpenURL(navEvent.url, {
       //   appName: this.state.app,
       //   appStoreId: AppIds.instagramAppStoreId,
@@ -37,9 +39,6 @@ class TwitterFeed extends React.Component {
   }
 
   render() {
-    const initialUrl = this.state.url;
-    console.log(this.state.app);
-    let url = "";
     return (
       <WebView
         ref={WEBVIEW_REF}
@@ -49,14 +48,14 @@ class TwitterFeed extends React.Component {
         startInLoadingState={true}
       />
     );
-  } 
+  }
 }
 
 const styles = StyleSheet.create({
-    socialWindow: {
-      flex: 1,
-      marginTop: 20
-    }
-  });
+  socialWindow: {
+    flex: 1,
+    marginTop: 20
+  }
+});
 
 export default TwitterFeed;

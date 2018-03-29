@@ -12,6 +12,8 @@ import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
 
+const WEBVIEW_REF = "webview";
+
 class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
@@ -36,9 +38,6 @@ class FacebookFeed extends React.Component {
   }
 
   render() {
-    const initialUrl = this.state.url;
-    console.log(this.state.app);
-    // const windowName = this.props.windowName;
     let url = "";
     return (
       <WebView
