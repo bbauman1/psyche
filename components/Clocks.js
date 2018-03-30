@@ -13,7 +13,7 @@ import { MonoText } from "../components/StyledText";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 
-export class CountDownClockVertical extends React.Component { }
+export class CountDownClockVertical extends React.Component {}
 
 export class CountDownClockHorizontal extends React.Component {
   constructor(props) {
@@ -24,7 +24,6 @@ export class CountDownClockHorizontal extends React.Component {
       countdownDate: props.countDownDate,
       clockTitle: props.clockTitle
     };
-
   }
 
   componentDidMount() {
@@ -59,9 +58,7 @@ export class CountDownClockHorizontal extends React.Component {
       <View style={styles.container}>
         <Grid>
           <Row size={25}>
-            <MonoText style={styles.countDownCol}>
-              {this.state.clockTitle}
-            </MonoText>
+            <MonoText style={styles.title}>{this.state.clockTitle}</MonoText>
           </Row>
           <Row size={25}>
             <Col style={styles.countDownCol}>
@@ -113,8 +110,7 @@ const styles = StyleSheet.create({
   },
   countDownCol: {
     alignItems: "center",
-    width: "100%",
-    textAlign: "center"
+    width: "100%"
   },
   countdownTextDuration: {
     fontWeight: "bold",
@@ -132,5 +128,9 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  title: {
+    textAlign: "center",
+    width: "100%"
   }
 });
