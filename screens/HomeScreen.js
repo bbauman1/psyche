@@ -7,7 +7,8 @@ import {
   Button,
   StatusBar,
   Image,
-  Platform
+  Platform,
+  TouchableOpacity
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -26,7 +27,7 @@ import Colors from "../constants/Colors";
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countdown: false };
+    this.state = { countdown: false, horizontalCountdown: false };
 
     setInterval(
       () =>
@@ -88,7 +89,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
-    let flag = false;
+    let horizontalCountdown = this.state.horizontalCountdown;
     /**
      *  In the future this file will have the preloading/caching for images
      *  and assets since it is the home screen. That'll most likely make this
@@ -99,62 +100,56 @@ export default class HomeScreen extends React.Component {
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
-    if (true) {
-      return (
-        <View style={styles.container}>
-          <View style={styles.timelineButton}>
-            <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
-          </View>
-          <StatusBar barStyle="light-content" />
-          {flag && <Grid>
-            <Col size={4} />
-            <Col size={2}>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.years}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Y</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.months}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> M</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.days}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> D</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.hours}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> H</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.minutes}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Min</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.seconds}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
-              </Row>
-            </Col>
-            <Col size={4} />
-          </Grid>}
-        </View>
-      );
-    }
     return (
       <View style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        {flag && <Grid>
+        <TouchableOpacity
+          style={styles.timelineButton}
+          onPress={() => { this.setState({ horizontalCountdown: !horizontalCountdown }) }}>
+          <Text style={{ color: "#fff", fontWeight: "normal" }}>4 Years Until Launch</Text>
+        </TouchableOpacity>
+        {!horizontalCountdown && <Grid>
+          <Col size={4} />
+          <Col size={2}>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.years}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> Y</MonoText>
+            </Row>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.months}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> M</MonoText>
+            </Row>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.days}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> D</MonoText>
+            </Row>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.hours}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> H</MonoText>
+            </Row>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.minutes}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> Min</MonoText>
+            </Row>
+            <Row style={styles.countDownRow}>
+              <MonoText style={styles.countdownText}>
+                {countdown.seconds}
+              </MonoText>
+              <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
+            </Row>
+          </Col>
+          <Col size={4} />
+        </Grid>}
+        {horizontalCountdown && <Grid>
           <Row size={20}>
             <CountDownClockHorizontal
               clockTitle="Launch"
@@ -179,6 +174,7 @@ export default class HomeScreen extends React.Component {
   }
 }
 
+
 const styles = StyleSheet.create({
   countDownRow: {
     alignItems: "center"
@@ -200,9 +196,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   timelineButton: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
+    // position: 'absolute',
+    // left: 0,
+    // right: 0,
     ...Platform.select({
       ios: {
         shadowColor: 'black',
