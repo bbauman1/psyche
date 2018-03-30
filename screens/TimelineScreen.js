@@ -183,7 +183,6 @@ const styles = StyleSheet.create({
   titleText: {
     color: "#FFFFFF",
     textAlign: "left",
-    marginTop: 10,
     fontSize: 12,
     width: "30%"
   },
