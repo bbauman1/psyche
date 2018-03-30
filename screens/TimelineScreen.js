@@ -10,6 +10,7 @@ import {
 import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
 import Colors from "../constants/Colors.js";
+import { Entypo } from "@expo/vector-icons";
 
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
@@ -37,8 +38,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE A CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -50,8 +53,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE B CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -63,8 +68,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE C CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -76,8 +83,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE D CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -89,8 +98,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE E CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -102,8 +113,10 @@ class Timeline extends React.Component {
           >
             {/* PHASE F CARD */}
             <View style={styles.card}>
-              <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
               <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
+              <View style={styles.circle} />
+              <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
+              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
             </View>
           </TouchableWithoutFeedback>
           <View style={styles.line} />
@@ -169,9 +182,10 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: "#FFFFFF",
-    textAlign: "center",
+    textAlign: "left",
     marginTop: 10,
-    fontSize: 18
+    fontSize: 12,
+    width: "30%"
   },
   dateText: {
     color: "#FFFFFF",
@@ -205,10 +219,16 @@ const styles = StyleSheet.create({
   },
   line: {
     width: 2,
-    left: 10,
+    left: 150,
     backgroundColor: "#FFFFFF",
     position: "absolute",
     height: 1000
+  },
+  circle: {
+    backgroundColor: "#FFFFFF",
+    width: 14,
+    height: 14,
+    borderRadius: 14 / 2
   }
 });
 
