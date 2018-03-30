@@ -41,7 +41,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -56,7 +61,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -71,7 +81,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -86,7 +101,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -101,7 +121,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -116,7 +141,12 @@ class Timeline extends React.Component {
               <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
               <View style={styles.circle} />
               <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
-              <Entypo name="chevron-small-right" size={32} color="#FFFFFF" />
+              <Entypo
+                style={styles.chevron}
+                name="chevron-small-right"
+                size={32}
+                color="#FFFFFF"
+              />
             </View>
           </TouchableWithoutFeedback>
           <View style={styles.line} />
@@ -172,7 +202,7 @@ const styles = StyleSheet.create({
     height: 85,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-around",
+    // justifyContent: "space-around",
     width: "100%"
   },
   phaseText: {
@@ -184,11 +214,15 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     textAlign: "left",
     fontSize: 12,
+    position: "absolute",
+    left: "45%",
     width: "30%"
   },
   dateText: {
     color: "#FFFFFF",
     fontWeight: "bold",
+    position: "absolute",
+    left: "4%",
     fontSize: 18
   },
   detailPhaseTitle: {
@@ -229,6 +263,10 @@ const styles = StyleSheet.create({
     width: 14,
     height: 14,
     borderRadius: 14 / 2
+  },
+  chevron: {
+    position: "absolute",
+    left: "90%"
   }
 });
 
