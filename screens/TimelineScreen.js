@@ -157,8 +157,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255, 255, 255, .3)",
     margin: 20,
     height: 85,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
     width: "100%"
   },
   phaseText: {
