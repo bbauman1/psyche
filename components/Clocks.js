@@ -13,7 +13,7 @@ import { MonoText } from "../components/StyledText";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 
-export class CountDownClockVertical extends React.Component {}
+export class CountDownClockVertical extends React.Component { }
 
 export class CountDownClockHorizontal extends React.Component {
   constructor(props) {
@@ -25,7 +25,10 @@ export class CountDownClockHorizontal extends React.Component {
       clockTitle: props.clockTitle
     };
 
-    setInterval(
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(
       () =>
         this.setState(() => {
           return {
@@ -35,6 +38,11 @@ export class CountDownClockHorizontal extends React.Component {
       1000
     );
   }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
   _get_current_countdown() {
     return countdown.timeTillLaunch(
       new Date().getTime(),
@@ -44,6 +52,9 @@ export class CountDownClockHorizontal extends React.Component {
 
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
+    if (!this.state.countdown) {
+      return <View style={styles.loading} />;
+    }
     return (
       <View style={styles.container}>
         <Grid>
