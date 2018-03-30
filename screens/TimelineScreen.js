@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   parent: {
     flex: 1,
-    backgroundColor: "#FFFFFF"
+    backgroundColor: COLORS.psycheMagenta
   },
   card: {
     backgroundColor: "rgba(255, 255, 255, .3)",
