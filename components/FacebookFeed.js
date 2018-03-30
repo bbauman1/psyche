@@ -26,13 +26,17 @@ class FacebookFeed extends React.Component {
     ) {
       //Navigating away and the app isn't installed on user device
       AppInstalledChecker.isAppInstalled("facebook").then(isInstalled => {
-        AppLink.openInStore(
-          AppIds.facebookAppStoreId,
-          AppIds.facebookPlayStoreId
-        ).then(() => {});
+        if (!isInstalled) {
+          //Open apple or playstore
+          AppLink.openInStore(
+            AppIds.facebookAppStoreId,
+            AppIds.facebookPlayStoreId
+          ).then(() => {});
+        } else {
+          //Open the URL in the app if installed.
+          Linking.openURL(appURL);
+        }
       });
-      //Otherwise, open fbpage...
-      Linking.openURL(appURL);
     }
   }
 

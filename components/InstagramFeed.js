@@ -29,13 +29,18 @@ class InstagramFeed extends React.Component {
       console.log("URL: " + navEvent.url);
       //Navigating away and the app isn't installed on user device
       AppInstalledChecker.isAppInstalled("instagram").then(isInstalled => {
-        AppLink.openInStore(
-          AppIds.instagramAppStoreId,
-          AppIds.instagramPlayStoreId
-        ).then(() => {});
+        if (!isInstalled) {
+          //Open apple or playstore
+          AppLink.openInStore(
+            AppIds.instagramAppStoreId,
+            AppIds.instagramPlayStoreId
+          ).then(() => {});
+        } else {
+          //Open the URL in the app if installed.
+          //Otherwise,
+          Linking.openURL(appURL);
+        }
       });
-      //Otherwise, open twitterpage...
-      Linking.openURL(appURL);
     }
   }
 

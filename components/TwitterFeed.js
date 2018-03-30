@@ -26,13 +26,17 @@ class TwitterFeed extends React.Component {
     ) {
       //Navigating away and the app isn't installed on user device
       AppInstalledChecker.isAppInstalled("twitter").then(isInstalled => {
-        AppLink.openInStore(
-          AppIds.twitterAppStoreId,
-          AppIds.twitterPlayStoreId
-        ).then(() => {});
+        if (!isInstalled) {
+          //Open apple or playstore
+          AppLink.openInStore(
+            AppIds.twitterAppStoreId,
+            AppIds.twitterPlayStoreId
+          ).then(() => {});
+        } else {
+          //Open the URL in the app if installed.
+          Linking.openURL(appURL);
+        }
       });
-      //Otherwise, open twitterpage...
-      Linking.openURL(appURL);
     }
   }
 
