@@ -16,17 +16,17 @@ import {
   StatusBar
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
-import Colors from "../constants/Colors.js"
+import Colors from "../constants/Colors.js";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
-  //Loading indicator
-  const loadingIndicator = (
-    <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-      <ActivityIndicator size="large" color={Colors.primaryColor}/>
-      <Text color="#0000ee">Loading</Text>
-    </View>
-  );
+//Loading indicator
+const loadingIndicator = (
+  <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+    <ActivityIndicator size="large" color={Colors.primaryColor} />
+    <Text color="#0000ee">Loading</Text>
+  </View>
+);
 
 /*** GALLERY ***/
 class Gallery extends React.Component {
@@ -90,10 +90,10 @@ class MediaContainer extends React.Component {
       this.mediaType === "image"
         ? this.props.file_db_ref[this.props.index].uri
         : this.props.file_db_ref[this.props.index].prev;
-    
+
     this.state = {
       loadingPicture: true
-    }
+    };
   }
   onPress = () => {
     this.props.callback({
@@ -130,7 +130,11 @@ class MediaInfoViewer extends React.Component {
 
     return {
       headerRight: (
-        <Button title={"Info"} color={"white"} onPress={() => params._toggleModal()} />
+        <Button
+          title={"Info"}
+          color={"white"}
+          onPress={() => params._toggleModal()}
+        />
       )
     };
   };
@@ -247,7 +251,6 @@ class MediaInfoViewer extends React.Component {
   render() {
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
 
-
     if (this.mediaType === "image") {
       //The image is loading
       if (this.state.loadingPicture === true) {
@@ -292,7 +295,7 @@ class MediaInfoViewer extends React.Component {
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
-              transform: [{ translateX: this.state.xTrans }],
+              transform: [{ translateX: this.state.xTrans }]
             }}
             {...this._panResponder.panHandlers}
           >
@@ -301,10 +304,16 @@ class MediaInfoViewer extends React.Component {
               animationType="slide"
               transparent={true}
               visible={this.state.modalVisible}
-              style={{ flex: 1}}
+              style={{ flex: 1 }}
             >
-              <View style={{backgroundColor: Colors.primaryColor, marginTop: 30}}>
-                <Button title="Close" color={"white"} onPress={this.toggleModal} />
+              <View
+                style={{ backgroundColor: Colors.primaryColor, marginTop: 30 }}
+              >
+                <Button
+                  title="Close"
+                  color={"white"}
+                  onPress={this.toggleModal}
+                />
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
             </Modal>
@@ -347,9 +356,9 @@ class InformationPanel extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <Text style={styles.informationPanelHeaders}>Title</Text>
-        <Text style ={styles.informationPanelText}>{this.props.title}</Text>
+        <Text style={styles.informationPanelText}>{this.props.title}</Text>
         <Text style={styles.informationPanelHeaders}>Credit</Text>
-        <Text style = {styles.informationPanelText}>{this.props.credit}</Text>
+        <Text style={styles.informationPanelText}>{this.props.credit}</Text>
       </View>
     );
   }
@@ -367,9 +376,9 @@ const LocalPageNavigator = StackNavigator(
       navigationOptions: ({ navigation }) => ({
         gesturesEnabled: false,
         headerStyle: { backgroundColor: Colors.primaryColor },
-        headerTitleStyle: { color: "white" },
         headerLeft: (
           <HeaderBackButton
+            tintColor={"white"}
             title="Gallery"
             onPress={() => {
               Expo.ScreenOrientation.allow(
@@ -395,10 +404,8 @@ export default class GalleryScreen extends React.Component {
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return (
-      <View style = {{flex: 1}}>
-        <StatusBar
-          barStyle="light-content"
-        />
+      <View style={{ flex: 1 }}>
+        <StatusBar barStyle="light-content" />
         <LocalPageNavigator />
       </View>
     );
@@ -421,5 +428,4 @@ const styles = StyleSheet.create({
   headerButtons: {
     tintColor: "white"
   }
-
 });
