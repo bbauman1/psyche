@@ -28,16 +28,6 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { countdown: false, horizontalCountdown: false };
-
-    setInterval(
-      () =>
-        this.setState(() => {
-          return {
-            countdown: this._get_current_countdown()
-          };
-        }),
-      1000
-    );
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -66,6 +56,16 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.setParams({
       handleLeftHeader: this._pickImage.bind(this)
     });
+
+    setInterval(
+      () =>
+        this.setState(() => {
+          return {
+            countdown: this._get_current_countdown()
+          };
+        }),
+      1000
+    );
   }
 
   _get_current_countdown() {
@@ -105,7 +105,7 @@ export default class HomeScreen extends React.Component {
         <TouchableOpacity
           style={styles.timelineButton}
           onPress={() => { this.setState({ horizontalCountdown: !horizontalCountdown }) }}>
-          <Text style={{ color: "#fff", fontWeight: "normal" }}>4 Years Until Launch</Text>
+          <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
         </TouchableOpacity>
         {!horizontalCountdown && <Grid>
           <Col size={4} />
@@ -196,9 +196,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff"
   },
   timelineButton: {
-    // position: 'absolute',
-    // left: 0,
-    // right: 0,
     ...Platform.select({
       ios: {
         shadowColor: 'black',

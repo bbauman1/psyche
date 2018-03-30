@@ -50,11 +50,11 @@ export default TabNavigator(
             break;
           case "Home":
             let homeStyle = Platform.OS === "ios"
-              ? { height: 48, width: 48, marginBottom: 10, backgroundColor: "#fff" }
-              : { height: 32, width: 32, marginBottom: -1, backgroundColor: "#fff" };
+              ? { height: 48, width: 48, marginBottom: 10 }
+              : { height: 32, width: 32, marginBottom: -1 };
             return (
               <Image
-                source={require("../assets/images/psyche-icon.png")}
+                source={require("../assets/images/psyche-icon-filled.png")}
                 style={homeStyle} />
             );
             break;
