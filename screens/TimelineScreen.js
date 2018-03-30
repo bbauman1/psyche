@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.psycheMagenta
   },
   card: {
-    backgroundColor: "rgba(255, 255, 255, .3)",
+    backgroundColor: "rgba(255, 255, 255, .15)",
     margin: 20,
     height: 85,
     flexDirection: "row",
