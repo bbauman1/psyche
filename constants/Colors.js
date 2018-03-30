@@ -11,5 +11,6 @@ export default {
   tabIconDefault: "#ccc",
   tabIconSelected: "#ccc",
   tabBar: "#fefefe",
-  primaryColor: psycheDarkPurple
+  primaryColor: psycheDarkPurple,
+  psycheCoral
 };

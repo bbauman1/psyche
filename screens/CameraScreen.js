@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Button, Image, StyleSheet, CameraRoll } from "react-native";
+import { View, Button, Image, StyleSheet, CameraRoll, TouchableOpacity, Text } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ImagePicker, takeSnapshotAsync } from "expo";
+import Colors from "../constants/Colors";
 
 export default class CameraScreen extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class CameraScreen extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <View
+          collapsable={false}
           ref={view => {
             this._container = view;
           }}
@@ -29,18 +31,8 @@ export default class CameraScreen extends React.Component {
         >
           <Image
             source={{ uri: image }}
-            style={{
-              position: "absolute",
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-              width: undefined,
-              height: undefined,
-              alignSelf: "stretch"
-            }}
+            style={styles.backgroundImage}
           />
-
           <Image
             source={require("../assets/images/badge-solid.png")}
             style={{
@@ -53,16 +45,16 @@ export default class CameraScreen extends React.Component {
           />
         </View>
         <View style={styles.blurredView}>
-          <Button
-            style={{ width: 96, height: 96 }}
-            title="Cancel"
-            onPress={() => this.props.navigation.goBack()}
-          />
-          <Button
-            style={{ width: 96, height: 96 }}
-            title="Save"
-            onPress={() => this._saveImage()}
-          />
+          <TouchableOpacity
+            style={[styles.roundedButton, { marginLeft: 10 }]}
+            onPress={() => this.props.navigation.goBack()}>
+            <Text style={{ color: "#fff" }}> Cancel </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.roundedButton, { marginRight: 10 }]}
+            onPress={() => this._saveImage()}>
+            <Text style={{ color: "#fff" }}> Save </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -75,8 +67,6 @@ export default class CameraScreen extends React.Component {
     });
 
     let saveResult = await CameraRoll.saveToCameraRoll(result, "photo");
-    console.log(saveResult);
-    this.setState({ cameraRollUri: saveResult });
     this.props.navigation.goBack();
   };
 
@@ -106,6 +96,25 @@ const styles = StyleSheet.create({
     height: 64,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: 'transparent',
+    borderRadius: 30,
+    overflow: 'hidden'
+  },
+  roundedButton: {
+    borderRadius: 30,
+    padding: 10,
+    backgroundColor: Colors.psycheCoral,
+    alignItems: 'center'
+  },
+  backgroundImage: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    width: undefined,
+    height: undefined,
+    alignSelf: "stretch"
   }
 });
