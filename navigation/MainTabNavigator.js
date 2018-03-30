@@ -54,7 +54,7 @@ export default TabNavigator(
               : { height: 32, width: 32, marginBottom: -1 };
             return (
               <Image
-                source={require("../assets/images/psyche-icon-filled.png")}
+                source={require("../assets/images/psyche-icon.png")}
                 style={homeStyle} />
             );
             break;
