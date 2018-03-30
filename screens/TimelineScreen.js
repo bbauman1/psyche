@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   dateText: {
     color: "#FFFFFF",
-    fontWeight: "200",
+    fontWeight: "bold",
     marginTop: 10,
     fontSize: 18
   },
