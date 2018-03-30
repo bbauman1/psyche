@@ -12,7 +12,6 @@
     "expo": "^24.0.0",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
-    "react-native-action-sheet": "^1.0.0",
     "react-native-collapsible": "^0.10.0",
     "react-native-easy-grid": "^0.1.17",
     "react-native-tab-view": "^0.0.74",
