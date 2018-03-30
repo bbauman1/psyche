@@ -6,7 +6,8 @@ import {
   Text,
   Button,
   StatusBar,
-  Image
+  Image,
+  Platform
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -20,6 +21,7 @@ import { connectActionSheet } from "@expo/react-native-action-sheet";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
+import Colors from "../constants/Colors";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -86,7 +88,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
-
+    let flag = false;
     /**
      *  In the future this file will have the preloading/caching for images
      *  and assets since it is the home screen. That'll most likely make this
@@ -100,8 +102,11 @@ export default class HomeScreen extends React.Component {
     if (true) {
       return (
         <View style={styles.container}>
+          <View style={styles.timelineButton}>
+            <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
+          </View>
           <StatusBar barStyle="light-content" />
-          <Grid>
+          {flag && <Grid>
             <Col size={4} />
             <Col size={2}>
               <Row style={styles.countDownRow}>
@@ -142,14 +147,14 @@ export default class HomeScreen extends React.Component {
               </Row>
             </Col>
             <Col size={4} />
-          </Grid>
+          </Grid>}
         </View>
       );
     }
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
-        <Grid>
+        {flag && <Grid>
           <Row size={20}>
             <CountDownClockHorizontal
               clockTitle="Launch"
@@ -168,7 +173,7 @@ export default class HomeScreen extends React.Component {
               countDownDate={Dates.launch}
             />
           </Row>
-        </Grid>
+        </Grid>}
       </View>
     );
   }
@@ -188,11 +193,29 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: "#fff"
   },
   loading: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  timelineButton: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { height: 3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
+    alignItems: 'center',
+    backgroundColor: Colors.primaryColor,
+    paddingVertical: 20,
   }
 });
