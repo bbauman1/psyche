@@ -54,35 +54,35 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'How much is the mission cost?',
-            content: 'The mission cost is ~850 million included mission development, operations, and science, communication demonstration hardware or operations. \nThis did not include cost for the launch service, Deep Space Optical these are procured separately.'
+            content: 'The mission cost is ~850 million included mission development, operations, and science, communication demonstration hardware or operations. \n\nThis did not include cost for the launch service, Deep Space Optical these are procured separately.'
           },
           {
             title: 'What is the goals for this mission?',
-            content: 'The goals for this mission are to understand a previously unexplored building block of planet formation: iron cores. \nLook inside terrestrial planets, including Earth, by directly examining the interior of a differentiated body, which otherwise could not be seen. \nExplore a new type of world. For the first time, examine a world made not of rock and ice, but metal.'
+            content: 'The goals for this mission are to understand a previously unexplored building block of planet formation: iron cores. \n\nLook inside terrestrial planets, including Earth, by directly examining the interior of a differentiated body, which otherwise could not be seen. \n\nExplore a new type of world. For the first time, examine a world made not of rock and ice, but metal.'
           },
           {
             title: 'What is the mission objectives?',
-            content: 'Determine whether Psyche is a core, or if it is un-melted material. \nDetermine the relative ages of regions of Psyche’s surface. \nDetermine whether small metal bodies incorporate the same light elements as are expected in the Earth’s high-pressure core. \nDetermine whether Psyche was formed under conditions more oxidizing or more reducing than Earth’s core. \nCharacterize Psyche’s morphology.'
+            content: 'Determine whether Psyche is a core, or if it is un-melted material. \n\nDetermine the relative ages of regions of Psyche’s surface. \n\nDetermine whether small metal bodies incorporate the same light elements as are expected in the Earth’s high-pressure core. \n\nDetermine whether Psyche was formed under conditions more oxidizing or more reducing than Earth’s core. \n\nCharacterize Psyche’s morphology.'
           },
           {
             title: 'Whose involved in this mission?',
-            content: 'Principal Investigator (PI): Lindy Elkins-Tanton, Arizona State University (ASU). \nDeputy Principal Investigator (Deputy PI): Jim Bell, ASU.'
+            content: 'Principal Investigator (PI): Lindy Elkins-Tanton, Arizona State University (ASU). \n\nDeputy Principal Investigator (Deputy PI): Jim Bell, ASU.'
           },
           {
             title: 'What is the responsible of Principle Investigator(PI)?',
-            content: 'The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \nThe PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \nThe PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \nThe PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines.'
+            content: 'The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \n\nThe PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \n\nThe PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \n\nThe PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines.'
           },
           {
             title: 'Whose are the Co-Investigators?',
-            content: 'Erik Asphaug, University of Arizona. \nDavid Bercovici, Yale University. \nBruce Bills, Jet Propulsion Laboratory (JPL). \nRichard Binzel, Massachusetts Institute of Technology (MIT). \nWilliam Bottke, Southwest Research Institute (SwRI). \nCatherine Bowman, ASU. \nRalf Jaumann, Deutsches Zentrum für Luft- und Raumfahrt. \nInsoo Jun, JPL. \nDavid Lawrence, Johns Hopkins University, Applied Physics Laboratory (APL). \nSimone Marchi, SwRI. \nTimothy McCoy, Smithsonian Institution. \nRyan Park, JPL. \nPatrick Peplowski, APL. \nCarol Polansky, JPL. \nThomas Prettyman, Planetary Science Institute. \nCarol Raymond, JPL. \nChris Russell, University of California, Los Angeles. \nBenjamin Weiss, MIT. \nDan Wenkert, JPL. \nMark Wieczorek, Observatoire de la Côte d’Azur. \nDavid Williams, ASU. \nMaria Zuber, MIT.'
+            content: 'Erik Asphaug, University of Arizona. \n\nDavid Bercovici, Yale University. \n\nBruce Bills, Jet Propulsion Laboratory (JPL). \n\nRichard Binzel, Massachusetts Institute of Technology (MIT). \n\nWilliam Bottke, Southwest Research Institute (SwRI). \n\nCatherine Bowman, ASU. \n\nRalf Jaumann, Deutsches Zentrum für Luft- und Raumfahrt. \n\nInsoo Jun, JPL. \n\nDavid Lawrence, Johns Hopkins University, Applied Physics Laboratory (APL). \n\nSimone Marchi, SwRI. \n\nTimothy McCoy, Smithsonian Institution. \n\nRyan Park, JPL. \n\nPatrick Peplowski, APL. \n\nCarol Polansky, JPL. \n\nThomas Prettyman, Planetary Science Institute. \n\nCarol Raymond, JPL. \n\nChris Russell, University of California, Los Angeles. \n\nBenjamin Weiss, MIT. \n\nDan Wenkert, JPL. \n\nMark Wieczorek, Observatoire de la Côte d’Azur. \n\nDavid Williams, ASU. \n\nMaria Zuber, MIT.'
           },
           {
             title: 'Whose are The Mission leadership?',
-            content: 'Diane Brown, Program Executive, NASA Headquarters (HQ). \nSarah Noble, Program Scientist, NASA HQ. \nBelinda Wright, Mission Manager, NASA Marshall Space Flight Center (MSFC). \nHenry Stone, Project Manager, JPL. \nRobert Mase, Deputy Project Manager and Acting Mission System Manager, JPL. \nBrian Johnson, Project Business Manager, JPL. \nDavid Oh, Project System Engineer, JPL. \nKalyani Sukhatme, Payload Manager, JPL. \nRob Menke, Mission Assurance Manager, JPL. \nMark Brown, Flight System Manager, JPL. \nSteve Schott, SEP Chassis Program Manager, SSL. \nPeter Lord, SEP Chassis Deputy Program Manager, SSL.'
+            content: 'Diane Brown, Program Executive, NASA Headquarters (HQ). \n\nSarah Noble, Program Scientist, NASA HQ. \n\nBelinda Wright, Mission Manager, NASA Marshall Space Flight Center (MSFC). \n\nHenry Stone, Project Manager, JPL. \n\nRobert Mase, Deputy Project Manager and Acting Mission System Manager, JPL. \n\nBrian Johnson, Project Business Manager, JPL. \n\nDavid Oh, Project System Engineer, JPL. \n\nKalyani Sukhatme, Payload Manager, JPL. \n\nRob Menke, Mission Assurance Manager, JPL. \n\nMark Brown, Flight System Manager, JPL. \n\nSteve Schott, SEP Chassis Program Manager, SSL. \n\nPeter Lord, SEP Chassis Deputy Program Manager, SSL.'
           },
           {
             title: 'Whose are Psyche Science Partners?',
-            content: 'Applied Physics Laboratory (APL). \nDeutsches Zentrum für Luft- und Raumfahrt (DLR). \nGlenn Research Center (GRC). \nJet Propulsion Laboratory (JPL). \nMassachusetts Institute of Technology (MIT). \nMalin Space Science Systems (MSSS). \nObservatoire de la Côte d’Azur. \nPlanetary Science Institute (PSI). \nSmithsonian Institution. \nSouthwest Research Institute (SwRI). \nSSL. \nUniversity of Arizona. \nUniversity of California Los Angeles (UCLA). \nYale University.'
+            content: 'Applied Physics Laboratory (APL). \n\nDeutsches Zentrum für Luft- und Raumfahrt (DLR). \n\nGlenn Research Center (GRC). \n\nJet Propulsion Laboratory (JPL). \n\nMassachusetts Institute of Technology (MIT). \n\nMalin Space Science Systems (MSSS). \n\nObservatoire de la Côte d’Azur. \n\nPlanetary Science Institute (PSI). \n\nSmithsonian Institution. \n\nSouthwest Research Institute (SwRI). \n\nSSL. \n\nUniversity of Arizona. \n\nUniversity of California Los Angeles (UCLA). \n\nYale University.'
           }
         ]
         return (
@@ -112,7 +112,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is Xenon?',
-            content: 'Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\nXenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n“The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”'
+            content: 'Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\n\nXenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\n“The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”'
           },
           {
             title: 'What is the size of The Psyche spacecraft?',
@@ -120,11 +120,11 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is the size of the Bus?',
-            content: 'The bus (body) of the spacecraft is 3.1 meters (~10 feet) long by 2.4 meters (almost 8 feet) wide.\nA few size comparisons:\no It is slightly bigger than a Smart Car.\no It about the size of a garden storage shed.\no It is as tall as a regulation basketball hoop!'
+            content: 'The bus (body) of the spacecraft is 3.1 meters (~10 feet) long by 2.4 meters (almost 8 feet) wide.\n\nA few size comparisons:\n\no It is slightly bigger than a Smart Car.\n\no It about the size of a garden storage shed.\n\no It is as tall as a regulation basketball hoop!'
           },
           {
             title: 'What is The Psyche’s Multispectral Imager?',
-            content: 'Provides high-resolution images using filters to discriminate between Psyche’s metallic and silicate constituents.\nConsists of a pair of identical cameras designed to acquire geologic, compositional, and topographic data.\nPurpose of the second camera is to provide redundancy for mission-critical optical navigation.'
+            content: 'Provides high-resolution images using filters to discriminate between Psyche’s metallic and silicate constituents.\n\nConsists of a pair of identical cameras designed to acquire geologic, compositional, and topographic data.\n\nPurpose of the second camera is to provide redundancy for mission-critical optical navigation.'
           },
           {
             title: 'Where does the Multispectral Imager team based?',
@@ -132,7 +132,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is The Psyche’s Gamma Ray and Neutron Spectrometer?',
-            content: 'Will detect, measure, and map Psyche’s elemental composition.\nMounted on a 2-meter (6-foot) boom (“arm”) to:\no Distance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
+            content: 'Will detect, measure, and map Psyche’s elemental composition.\n\nMounted on a 2-meter (6-foot) boom (“arm”) to:\n\no Distance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
           },
           {
             title: 'Where does the Gamma Ray and Neutron Spectrometer team based?',
@@ -140,7 +140,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is The Psyche’s Magnetometer?',
-            content: 'Designed to detect and measure the remnant magnetic field of the asteroid.\nComposed of two identical high-sensitivity magnetic field sensors located at the middle and outer end of a 2-meter (6-foot) boom (“arm”).'
+            content: 'Designed to detect and measure the remnant magnetic field of the asteroid.\n\nComposed of two identical high-sensitivity magnetic field sensors located at the middle and outer end of a 2-meter (6-foot) boom (“arm”).'
           },
           {
             title: 'Where does the Magnetometer team based?',
@@ -148,7 +148,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is The Psyche’s Radio Science?',
-            content: 'The Psyche mission will use the X-band radio telecommunications system to measure Psyche’s gravity field to high precision.\nWhen combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche.'
+            content: 'The Psyche mission will use the X-band radio telecommunications system to measure Psyche’s gravity field to high precision.\n\nWhen combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche.'
           },
           {
             title: 'Where does the Radio Science team based?',
@@ -156,7 +156,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is The Psyche’s Deep Space Optical Communication (DSOC)?',
-            content: 'The Psyche mission will test a sophisticated new laser communication technology that encodes data in photons (rather than radio waves) to communicate between a probe in deep space and Earth.\nUsing light instead of radio allows the spacecraft to communicate more data in a given amount of time.'
+            content: 'The Psyche mission will test a sophisticated new laser communication technology that encodes data in photons (rather than radio waves) to communicate between a probe in deep space and Earth.\n\nUsing light instead of radio allows the spacecraft to communicate more data in a given amount of time.'
           },
           {
             title: 'Where does the DSOC team based?',
@@ -174,15 +174,15 @@ export default class FactsScreen extends React.Component {
         sections = [
           {
             title: 'When and who discovered Psyche?',
-            content: 'Psyche was discovered in 1852, by Italian astronomer Annibale de Gasparis. \nAlso Psyche is the 16th asteroid to be discovered.'
+            content: 'Psyche was discovered in 1852, by Italian astronomer Annibale de Gasparis. \n\nAlso Psyche is the 16th asteroid to be discovered.'
           },
           {
             title: 'How do we know?',
-            content: 'Radar albedo (Radar albedo is the “ratio of a target’s radar cross section in a specified polarization to its projected area; hence, a measure of the target’s radar reflectivity”). \nThermal inertia (Thermal inertia “refers to the ability of a material to conduct and store heat, and in planetary science, its measure of the sub surface’s ability to store heat during the day and reradiate it during the night”).'
+            content: 'Radar albedo (Radar albedo is the “ratio of a target’s radar cross section in a specified polarization to its projected area; hence, a measure of the target’s radar reflectivity”). \n\nThermal inertia (Thermal inertia “refers to the ability of a material to conduct and store heat, and in planetary science, its measure of the sub surface’s ability to store heat during the day and reradiate it during the night”).'
           },
           {
             title: 'Why is this asteroid important?',
-            content: 'Scientists believe Psyche is the exposed nickel-iron core of an early planet, one of the building blocks of our solar system. \nPsyche is most likely a survivor of multiple violent hit-and-run collisions, common when the solar system was forming. \nThe asteroid Psyche may be able to tell us how Earth’s core and the cores of the other terrestrial (rocky) planets came to be. (The terrestrial planets are Mercury, Venus, Earth, and Mars).'
+            content: 'Scientists believe Psyche is the exposed nickel-iron core of an early planet, one of the building blocks of our solar system. \n\nPsyche is most likely a survivor of multiple violent hit-and-run collisions, common when the solar system was forming. \n\nThe asteroid Psyche may be able to tell us how Earth’s core and the cores of the other terrestrial (rocky) planets came to be. (The terrestrial planets are Mercury, Venus, Earth, and Mars).'
           },
           {
             title: 'Where does Psyche located?',
@@ -190,7 +190,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is the time different on Psyche compare to Earth?',
-            content: 'A day on Psyche is about 4 hours and 12 minutes. \nThis is the sidereal rotation period, or the amount of time it takes for a (body) to completely spin around and make one full roration. \nYou could live through just under six "days" on Psyche in the same time as one day on Earth. \nA year on Psyche lasts about five Earth years (about 1828 Earth days).'
+            content: 'A day on Psyche is about 4 hours and 12 minutes. \n\nThis is the sidereal rotation period, or the amount of time it takes for a (body) to completely spin around and make one full roration. \n\nYou could live through just under six "days" on Psyche in the same time as one day on Earth. \n\nA year on Psyche lasts about five Earth years (about 1828 Earth days).'
           },
           {
             title: 'What is the different between Psyche and Earth orbiting?',
@@ -206,7 +206,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is the size of Psyche?',
-            content: 'As asteroids go, Psyche is relatively large and has an irregular shape: \n279 x 232 x 189 kilometers (173 x 144 x 117 miles). \nIf Psyche were a perfect sphere, it would have a diameter of 226 kilometers (140 miles): \nThat is about the length of the state of Massachusetts (leaving out Cape Cod); If it were in Arizona it would stretch between Phoenix and Flagstaff! \nA surface area of about 641,800 square kilometers (246,300 square miles), making it just smaller than the area of the state of Texas and quite a bit larger than the area of California.'
+            content: 'As asteroids go, Psyche is relatively large and has an irregular shape: \n\n279 x 232 x 189 kilometers (173 x 144 x 117 miles). \n\nIf Psyche were a perfect sphere, it would have a diameter of 226 kilometers (140 miles): \n\nThat is about the length of the state of Massachusetts (leaving out Cape Cod); If it were in Arizona it would stretch between Phoenix and Flagstaff! \n\nA surface area of about 641,800 square kilometers (246,300 square miles), making it just smaller than the area of the state of Texas and quite a bit larger than the area of California.'
           },
           {
             title: 'Where is the name "Psyche" came from?',
@@ -271,7 +271,7 @@ class AccordionView extends React.Component {
   _renderHeader(section) {
     return (
       <View style={styles.container}>
-        <View style={{ flexDirection: 'row', paddingLeft: 5 }}>
+        <View style={{ flexDirection: 'row', paddingLeft: 25 }}>
           <Icon name="plus-circle" size={20} color={'rgb(250,160,0)'} />
           <Text style={styles.textHeaderSetup}>{section.title}</Text>
         </View>
