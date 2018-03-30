@@ -48,13 +48,9 @@ export class CountDownClockHorizontal extends React.Component {
       <View style={styles.container}>
         <Grid>
           <Row size={25}>
-            <Col size={40} />
-            <Col size={50}>
-              <MonoText style={styles.countDownCol}>
-                {this.state.clockTitle}
-              </MonoText>
-            </Col>
-            <Col size={20} />
+            <MonoText style={styles.countDownCol}>
+              {this.state.clockTitle}
+            </MonoText>
           </Row>
           <Row size={25}>
             <Col style={styles.countDownCol}>
@@ -105,7 +101,9 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   countDownCol: {
-    alignItems: "center"
+    alignItems: "center",
+    width: "100%",
+    textAlign: "center"
   },
   countdownTextDuration: {
     fontWeight: "bold",
