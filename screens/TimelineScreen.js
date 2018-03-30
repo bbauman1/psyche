@@ -189,7 +189,6 @@ const styles = StyleSheet.create({
   dateText: {
     color: "#FFFFFF",
     fontWeight: "bold",
-    marginTop: 10,
     fontSize: 18
   },
   detailPhaseTitle: {
@@ -218,13 +217,15 @@ const styles = StyleSheet.create({
   },
   line: {
     width: 2,
-    left: 150,
+    left: "35%",
     backgroundColor: "#FFFFFF",
     position: "absolute",
     height: 1000
   },
   circle: {
     backgroundColor: "#FFFFFF",
+    position: "absolute",
+    left: "33.5%",
     width: 14,
     height: 14,
     borderRadius: 14 / 2
