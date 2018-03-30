@@ -37,14 +37,8 @@ class Timeline extends React.Component {
           >
             {/* PHASE A CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_A.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -56,14 +50,8 @@ class Timeline extends React.Component {
           >
             {/* PHASE B CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_B.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -75,14 +63,8 @@ class Timeline extends React.Component {
           >
             {/* PHASE C CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_C.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -94,14 +76,8 @@ class Timeline extends React.Component {
           >
             {/* PHASE D CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_D.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -113,14 +89,8 @@ class Timeline extends React.Component {
           >
             {/* PHASE E CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_E.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
@@ -132,16 +102,11 @@ class Timeline extends React.Component {
           >
             {/* PHASE F CARD */}
             <View style={styles.card}>
-              <LinearGradient
-                colors={[COLORS.psycheCoral, COLORS.psycheMagenta]}
-                style={styles.gradient}
-              >
-                <Text style={styles.phaseText}>{PHASES.PHASE_F.phase}</Text>
-                <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
-                <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
-              </LinearGradient>
+              <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
+              <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
             </View>
           </TouchableWithoutFeedback>
+          <View style={styles.line} />
         </ScrollView>
       </View>
     );
@@ -182,24 +147,16 @@ class DetailsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: "#FFFFFF"
+    backgroundColor: COLORS.psycheMagenta
   },
   parent: {
     flex: 1,
     backgroundColor: "#FFFFFF"
   },
-  gradient: {
-    height: 260,
-    width: "90%",
-    margin: 20,
-    borderRadius: 5,
-    backgroundColor: "transparent",
-    alignItems: "center",
-    justifyContent: "center"
-  },
   card: {
-    backgroundColor: "transparent",
-    height: 280,
+    backgroundColor: "rgba(255, 255, 255, .3)",
+    margin: 20,
+    height: 85,
     alignItems: "center",
     justifyContent: "center",
     width: "100%"
@@ -244,6 +201,13 @@ const styles = StyleSheet.create({
     marginRight: 8,
     marginLeft: 8,
     color: COLORS.psycheDarkPurple
+  },
+  line: {
+    width: 2,
+    left: 10,
+    backgroundColor: "#FFFFFF",
+    position: "absolute",
+    height: 1000
   }
 });
 
