@@ -11,30 +11,28 @@ import {
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
-import { AppInstalledChecker, CheckPackageInstallation } from 'react-native-check-app-install';
+import {
+  AppInstalledChecker,
+  CheckPackageInstallation
+} from "react-native-check-app-install";
 
 const WEBVIEW_REF = "webview";
 
 class TwitterFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
-      navEvent.url !== "https://www.facebook.com/NASAPsyche/" &&
-      navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
-      navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
+      navEvent.url !== SocialMedia.twitterURL &&
+      navEvent.url !== "about:blank"
     ) {
-      //this.navigationAlert;
-      //this.refs[WEBVIEW_REF].stopLoading();
-      //   console.log("URL: " + navEvent.url);
-      // AppLink.maybeOpenURL(navEvent.url, {
-      //   appName: this.state.app,
-      //   appStoreId: AppIds.instagramAppStoreId,
-      //   playStoreId: AppIds.instagramPlayStoreId
-      // }).then(() => {
-      //   //do stuff
-      // });
-      // AppLink.openInStore(AppIds.instagramAppStoreId, AppIds.instagramPlayStoreId).then(() => {
-      //   // do stuff
-      // })
+      //Navigating away and the app isn't installed on user device
+      AppInstalledChecker.isAppInstalled("twitter").then(isInstalled => {
+        AppLink.openInStore(
+          AppIds.twitterAppStoreId,
+          AppIds.twitterPlayStoreId
+        ).then(() => {});
+      });
+      //Otherwise, open twitterpage...
+      Linking.openURL(appURL);
     }
   }
 

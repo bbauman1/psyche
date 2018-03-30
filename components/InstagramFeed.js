@@ -11,31 +11,31 @@ import {
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
-import SocialWindow from "../components/SocialWindow";
-import { AppInstalledChecker, CheckPackageInstallation } from 'react-native-check-app-install';
+import {
+  AppInstalledChecker,
+  CheckPackageInstallation
+} from "react-native-check-app-install";
 
 const WEBVIEW_REF = "webview";
 
 class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
-      navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
+      navEvent.url !== SocialMedia.instagramURL &&
       navEvent.url !== "about:blank"
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
       console.log("URL: " + navEvent.url);
-      AppLink.maybeOpenURL(navEvent.url, {
-        appName: "instagram",
-        appStoreId: AppIds.instagramAppStoreId,
-        playStoreId: AppIds.instagramPlayStoreId
-      }).then(() => {
-        //do stuff
-        Alert("Alert thrown");
+      //Navigating away and the app isn't installed on user device
+      AppInstalledChecker.isAppInstalled("instagram").then(isInstalled => {
+        AppLink.openInStore(
+          AppIds.instagramAppStoreId,
+          AppIds.instagramPlayStoreId
+        ).then(() => {});
       });
-      // AppLink.openInStore(AppIds.instagramAppStoreId, AppIds.instagramPlayStoreId).then(() => {
-      //   // do stuff
-      // })
+      //Otherwise, open twitterpage...
+      Linking.openURL(appURL);
     }
   }
 
