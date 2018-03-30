@@ -202,7 +202,6 @@ const styles = StyleSheet.create({
     height: 85,
     flexDirection: "row",
     alignItems: "center",
-    // justifyContent: "space-around",
     width: "100%"
   },
   phaseText: {
