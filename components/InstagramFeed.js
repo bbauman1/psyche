@@ -37,8 +37,7 @@ class InstagramFeed extends React.Component {
           ).then(() => {});
         } else {
           //Open the URL in the app if installed.
-          //Otherwise,
-          Linking.openURL(appURL);
+          Linking.openURL("instagram://nasapsyche/?hl=en");
         }
       });
     }

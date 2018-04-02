@@ -34,7 +34,7 @@ class FacebookFeed extends React.Component {
           ).then(() => {});
         } else {
           //Open the URL in the app if installed.
-          Linking.openURL(appURL);
+          Linking.openURL("facebook://NASAPsyche/");
         }
       });
     }

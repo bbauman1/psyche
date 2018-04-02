@@ -34,7 +34,7 @@ class TwitterFeed extends React.Component {
           ).then(() => {});
         } else {
           //Open the URL in the app if installed.
-          Linking.openURL(appURL);
+          Linking.openURL("twitter://nasapsyche?lang=en");
         }
       });
     }
