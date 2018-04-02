@@ -8,7 +8,7 @@ import {
   Alert,
   Linking
 } from "react-native";
-import AppLink from 'react-native-app-link';
+import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMedia from "../constants/SocialMedia";
 
@@ -39,7 +39,7 @@ class SocialWindow extends React.Component {
     ) {
       //this.navigationAlert;
       //this.refs[WEBVIEW_REF].stopLoading();
-      (console.log("URL: " + navEvent.url));
+      console.log("URL: " + navEvent.url);
       // AppLink.maybeOpenURL(navEvent.url, {
       //   appName: this.state.app,
       //   appStoreId: AppIds.instagramAppStoreId,
@@ -73,7 +73,9 @@ class SocialWindow extends React.Component {
 const styles = StyleSheet.create({
   socialWindow: {
     flex: 1,
-    marginTop: 20
+    marginTop: 20,
+    width: Layout.width,
+    height: Layout.height
   }
 });
 
