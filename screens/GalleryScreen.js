@@ -420,7 +420,8 @@ const styles = StyleSheet.create({
   },
   informationPanelHeaders: {
     fontWeight: "bold",
-    color: "white"
+    color: "white",
+    fontSize: 26
   },
   informationPanelText: {
     color: "white"
