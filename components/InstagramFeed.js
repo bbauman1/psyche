@@ -31,6 +31,7 @@ class InstagramFeed extends React.Component {
       AppInstalledChecker.isAppInstalled("instagram").then(isInstalled => {
         if (!isInstalled) {
           //Open apple or playstore
+          console.log("instagramInstalled:" + isInstalled)
           AppLink.openInStore(
             AppIds.instagramAppStoreId,
             AppIds.instagramPlayStoreId

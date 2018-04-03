@@ -20,28 +20,30 @@ const WEBVIEW_REF = "webview";
 
 class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
+    console.log("URL: " + navEvent.url);
     if (
       navEvent.url !== SocialMedia.facebookURL &&
       navEvent.url !== "about:blank"
     ) {
-      //Navigating away and the app isn't installed on user device
-      AppInstalledChecker.isAppInstalled("facebook").then(isInstalled => {
-        if (!isInstalled) {
-          //Open apple or playstore
-          AppLink.openInStore(
-            AppIds.facebookAppStoreId,
-            AppIds.facebookPlayStoreId
-          ).then(() => {});
-        } else {
-          //Open the URL in the app if installed.
-          Linking.openURL("facebook://profile/1598743977091187");
-        }
-      });
+      Linking.canOpenURL('fb://app')
+        .then(supported => {
+          if (!supported) {
+            console.log("Can't handle url: " + url);
+          } else {
+            return Linking.openURL('fb://page/1598743977091187');
+            console.log("Opening app url");
+          }
+        })
+        .catch(err => console.error("An error occurred", err));
+      //Open apple or playstore
+      // AppLink.openInStore(
+      //   AppIds.facebookAppStoreId,
+      //   AppIds.facebookPlayStoreId
+      // ).then(() => {});
     }
   }
 
   render() {
-    let url = "";
     return (
       <WebView
         ref={WEBVIEW_REF}
