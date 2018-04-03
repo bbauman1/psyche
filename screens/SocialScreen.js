@@ -22,9 +22,9 @@ export default class SocialScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: "first", icon: "logo-facebook" },
+      { key: "first", icon: "logo-twitter" },
       { key: "second", icon: "logo-instagram" },
-      { key: "third", icon: "logo-twitter" }
+      { key: "third", icon: "logo-facebook" }
     ]
   };
 
@@ -41,11 +41,11 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-        return <FacebookRoute />;
+        return <TwitterRoute />;
       case "second":
         return <InstagramRoute />;
       case "third":
-        return <TwitterRoute />;
+        return <FacebookRoute />;
       default:
         return null;
     }
