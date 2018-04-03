@@ -25,21 +25,21 @@ class FacebookFeed extends React.Component {
       navEvent.url !== SocialMedia.facebookURL &&
       navEvent.url !== "about:blank"
     ) {
-      Linking.canOpenURL('fb://app')
+      Linking.canOpenURL("fb://app")
         .then(supported => {
           if (!supported) {
-            console.log("Can't handle url: " + url);
+            AppLink.openInStore(
+              AppIds.facebookAppStoreId,
+              AppIds.facebookPlayStoreId
+            ).then(() => {
+              this.refs[WEBVIEW_REF].stopLoading();
+            });
           } else {
-            return Linking.openURL('fb://page/1598743977091187');
-            console.log("Opening app url");
+            return Linking.openURL("fb://page/1598743977091187");
+            this.refs[WEBVIEW_REF].stopLoading();
           }
         })
         .catch(err => console.error("An error occurred", err));
-      //Open apple or playstore
-      // AppLink.openInStore(
-      //   AppIds.facebookAppStoreId,
-      //   AppIds.facebookPlayStoreId
-      // ).then(() => {});
     }
   }
 
