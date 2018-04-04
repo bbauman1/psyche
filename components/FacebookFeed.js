@@ -31,11 +31,10 @@ class FacebookFeed extends React.Component {
               AppIds.facebookAppStoreId,
               AppIds.facebookPlayStoreId
             ).then(() => {
-              this.refs[WEBVIEW_REF].stopLoading();
             });
           } else {
-            Linking.openURL("fb://page/1598743977091187").catch(() => null);
             this.refs[WEBVIEW_REF].stopLoading();
+            Linking.openURL("fb://page/1598743977091187").catch(() => null);
           }
         })
         .catch(err => console.error("An error occurred", err));
