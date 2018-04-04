@@ -35,7 +35,7 @@ class FacebookFeed extends React.Component {
               this.refs[WEBVIEW_REF].stopLoading();
             });
           } else {
-            return Linking.openURL("fb://page/1598743977091187");
+            Linking.openURL("fb://page/1598743977091187").catch(() => null);
             this.refs[WEBVIEW_REF].stopLoading();
           }
         })

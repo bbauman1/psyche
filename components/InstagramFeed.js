@@ -24,23 +24,22 @@ class InstagramFeed extends React.Component {
       navEvent.url !== SocialMedia.instagramURL &&
       navEvent.url !== "about:blank"
     ) {
-      //this.navigationAlert;
-      //this.refs[WEBVIEW_REF].stopLoading();
       console.log("URL: " + navEvent.url);
-      //Navigating away and the app isn't installed on user device
-      AppInstalledChecker.isAppInstalled("instagram").then(isInstalled => {
-        if (!isInstalled) {
-          //Open apple or playstore
-          console.log("instagramInstalled:" + isInstalled)
-          AppLink.openInStore(
-            AppIds.instagramAppStoreId,
-            AppIds.instagramPlayStoreId
-          ).then(() => {});
-        } else {
-          //Open the URL in the app if installed.
-          Linking.openURL("instagram://nasapsyche/?hl=en");
-        }
-      });
+      Linking.canOpenURL("instagram://app")
+        .then(supported => {
+          if (!supported) {
+            AppLink.openInStore(
+              AppIds.instagramAppStoreId,
+              AppIds.instagramPlayStoreId
+            ).then(() => {
+              this.refs[WEBVIEW_REF].stopLoading();
+            });
+          } else {
+            Linking.openURL("instagram://user?username=nasapsyche").catch(() => null);
+            this.refs[WEBVIEW_REF].stopLoading();
+          }
+        })
+        .catch(err => console.error("An error occurred", err));
     }
   }
 
