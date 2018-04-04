@@ -22,8 +22,7 @@ class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     console.log("URL: " + navEvent.url);
     if (
-      navEvent.url !== SocialMedia.facebookURL &&
-      navEvent.url !== "about:blank"
+      navEvent.url !== SocialMedia.facebookURL
     ) {
       Linking.canOpenURL("fb://app")
         .then(supported => {

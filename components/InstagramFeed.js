@@ -21,23 +21,15 @@ const WEBVIEW_REF = "webview";
 class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     if (
-      navEvent.url !== SocialMedia.instagramURL &&
-      navEvent.url !== "about:blank"
+      navEvent.url !== SocialMedia.instagramURL
     ) {
-      console.log("URL: " + navEvent.url);
-      Linking.canOpenURL("instagram://app")
-        .then(supported => {
-          if (!supported) {
-            AppLink.openInStore(
-              AppIds.instagramAppStoreId,
-              AppIds.instagramPlayStoreId
-            ).then(() => {
-              this.refs[WEBVIEW_REF].stopLoading();
-            });
-          } else {
-            Linking.openURL("instagram://user?username=nasapsyche").catch(() => null);
-            this.refs[WEBVIEW_REF].stopLoading();
-          }
+      AppLink.maybeOpenURL("instagram://user?username=nasapsyche", {
+        appName: "instagram",
+        appStoreId: AppIds.instagramAppStoreId,
+        playStoreId: AppIds.instagramPlayStoreId
+      })
+        .then(() => {
+          this.refs[WEBVIEW_REF].stopLoading();
         })
         .catch(err => console.error("An error occurred", err));
     }
