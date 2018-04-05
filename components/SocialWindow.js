@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
-import SocialMedia from "../constants/SocialMedia";
+import SocialMediaURLs from "../constants/SocialMediaURLs";
 
 const WEBVIEW_REF = "webview";
 
@@ -37,19 +37,7 @@ class SocialWindow extends React.Component {
       navEvent.url !== "https://www.instagram.com/nasapsyche/?hl=en" &&
       navEvent.url !== "https://twitter.com/nasapsyche?lang=en"
     ) {
-      //this.navigationAlert;
-      //this.refs[WEBVIEW_REF].stopLoading();
       console.log("URL: " + navEvent.url);
-      // AppLink.maybeOpenURL(navEvent.url, {
-      //   appName: this.state.app,
-      //   appStoreId: AppIds.instagramAppStoreId,
-      //   playStoreId: AppIds.instagramPlayStoreId
-      // }).then(() => {
-      //   //do stuff
-      // });
-      // AppLink.openInStore(AppIds.instagramAppStoreId, AppIds.instagramPlayStoreId).then(() => {
-      //   // do stuff
-      // })
     }
   }
 

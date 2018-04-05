@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
-import SocialMedia from "../constants/SocialMedia";
+import SocialMediaURLs from "../constants/SocialMediaURLs";
 import {
   AppInstalledChecker,
   CheckPackageInstallation
@@ -20,9 +20,7 @@ const WEBVIEW_REF = "webview";
 
 class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
-    if (
-      navEvent.url !== SocialMedia.instagramURL
-    ) {
+    if (navEvent.url !== SocialMediaURLs.instagramURL) {
       AppLink.maybeOpenURL("instagram://user?username=nasapsyche", {
         appName: "instagram",
         appStoreId: AppIds.instagramAppStoreId,
@@ -36,11 +34,10 @@ class InstagramFeed extends React.Component {
   }
 
   render() {
-    let url = "";
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: SocialMedia.instagramURL }}
+        source={{ uri: SocialMediaURLs.instagramURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}

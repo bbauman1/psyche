@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
-import SocialMedia from "../constants/SocialMedia";
+import SocialMediaURLs from "../constants/SocialMediaURLs";
 import {
   AppInstalledChecker,
   CheckPackageInstallation
@@ -20,23 +20,17 @@ const WEBVIEW_REF = "webview";
 
 class TwitterFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
-    if (
-      navEvent.url !== SocialMedia.twitterURL &&
-      navEvent.url !== "about:blank"
-    ) {
-      //Navigating away and the app isn't installed on user device
-      AppInstalledChecker.isAppInstalled("twitter").then(isInstalled => {
-        if (!isInstalled) {
-          //Open apple or playstore
-          AppLink.openInStore(
-            AppIds.twitterAppStoreId,
-            AppIds.twitterPlayStoreId
-          ).then(() => {});
-        } else {
-          //Open the URL in the app if installed.
-          Linking.openURL("twitter://nasapsyche?lang=en");
-        }
-      });
+    console.log("Twitter nav url: " + navEvent.url);
+    if (navEvent.url !== SocialMediaURLs.twitterURL) {
+      AppLink.maybeOpenURL("twitter://user?id=752931114054881280", {
+        appName: "twitter",
+        appStoreId: AppIds.twitterAppStoreId,
+        playStoreId: AppIds.twitterPlayStoreId
+      })
+        .then(() => {
+          this.refs[WEBVIEW_REF].stopLoading();
+        })
+        .catch(err => console.error("An error occurred", err));
     }
   }
 
@@ -44,7 +38,7 @@ class TwitterFeed extends React.Component {
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: SocialMedia.twitterURL }}
+        source={{ uri: SocialMediaURLs.twitterURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}

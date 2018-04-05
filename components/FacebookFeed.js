@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
-import SocialMedia from "../constants/SocialMedia";
+import SocialMediaURLs from "../constants/SocialMediaURLs";
 import {
   AppInstalledChecker,
   CheckPackageInstallation
@@ -20,18 +20,14 @@ const WEBVIEW_REF = "webview";
 
 class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
-    console.log("URL: " + navEvent.url);
-    if (
-      navEvent.url !== SocialMedia.facebookURL
-    ) {
+    if (navEvent.url !== SocialMediaURLs.facebookURL) {
       Linking.canOpenURL("fb://app")
         .then(supported => {
           if (!supported) {
             AppLink.openInStore(
               AppIds.facebookAppStoreId,
               AppIds.facebookPlayStoreId
-            ).then(() => {
-            });
+            ).then(() => {});
           } else {
             this.refs[WEBVIEW_REF].stopLoading();
             Linking.openURL("fb://page/1598743977091187").catch(() => null);
@@ -45,7 +41,7 @@ class FacebookFeed extends React.Component {
     return (
       <WebView
         ref={WEBVIEW_REF}
-        source={{ uri: SocialMedia.facebookURL }}
+        source={{ uri: SocialMediaURLs.facebookURL }}
         style={[styles.socialWindow]}
         onNavigationStateChange={this._onNavigationStateChange.bind(this)}
         startInLoadingState={true}
