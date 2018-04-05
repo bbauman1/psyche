@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
+import Colors from "../constants/Colors";
 
 export class CountDownClockVertical extends React.Component {}
 
@@ -106,6 +107,7 @@ export class CountDownClockHorizontal extends React.Component {
 const styles = StyleSheet.create({
   countDownTitle: {
     justifyContent: "center",
+    color: Colors.primaryColor,
     fontSize: 16
   },
   countDownCol: {
@@ -114,10 +116,12 @@ const styles = StyleSheet.create({
   },
   countdownTextDuration: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 12
   },
   countdownText: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 16
   },
   container: {

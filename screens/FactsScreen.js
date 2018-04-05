@@ -120,7 +120,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is the size of the Bus?',
-            content: 'The bus (body) of the spacecraft is 3.1 meters (~10 feet) long by 2.4 meters (almost 8 feet) wide.\n\nA few size comparisons:\n\no It is slightly bigger than a Smart Car.\n\no It about the size of a garden storage shed.\n\no It is as tall as a regulation basketball hoop!'
+            content: 'The bus (body) of the spacecraft is 3.1 meters (~10 feet) long by 2.4 meters (almost 8 feet) wide.\n\nA few size comparisons:\nIt is slightly bigger than a Smart Car.\nIt about the size of a garden storage shed.\nIt is as tall as a regulation basketball hoop!'
           },
           {
             title: 'What is The Psyche’s Multispectral Imager?',
@@ -132,7 +132,7 @@ export default class FactsScreen extends React.Component {
           },
           {
             title: 'What is The Psyche’s Gamma Ray and Neutron Spectrometer?',
-            content: 'Will detect, measure, and map Psyche’s elemental composition.\n\nMounted on a 2-meter (6-foot) boom (“arm”) to:\n\no Distance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
+            content: 'Will detect, measure, and map Psyche’s elemental composition.\n\nMounted on a 2-meter (6-foot) boom (“arm”) to:\n\nDistance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view.'
           },
           {
             title: 'Where does the Gamma Ray and Neutron Spectrometer team based?',
@@ -241,7 +241,7 @@ export default class FactsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(48,33,68,0.75)'
+    backgroundColor: 'rgba(48,33,68,0.8)'
   },
   tabbar: {
     backgroundColor: 'rgb(48,33,68)',
@@ -249,30 +249,34 @@ const styles = StyleSheet.create({
   indicator: {
     backgroundColor: 'rgb(250,160,0)',
   },
+  headerContainer: {
+    flex: 1,
+    backgroundColor: 'rgba(255,255,255,0.8)',
+  },
   textHeaderSetup: {
     fontSize: 17,
     fontWeight: '400',
     height: 55,
     paddingLeft: 10, 
     paddingRight: 25,
-    color: 'rgb(245,125,50)',
+    color: 'rgb(48,33,68)',
   },
   textContentSetup: {
     fontSize: 15,
-    paddingLeft: 35,
+    paddingLeft: 52,
     paddingRight: 20,
     paddingBottom: 20,
-    color: 'rgb(245,125,50)',
-    backgroundColor: 'rgba(48,33,68,0.75)',
+    color: 'rgb(74,74,74)',
+    backgroundColor: 'rgba(255,255,255,0.8)',
   }
 });
 
 class AccordionView extends React.Component {
   _renderHeader(section) {
     return (
-      <View style={styles.container}>
+      <View style={styles.headerContainer}>
         <View style={{ flexDirection: 'row', paddingLeft: 25 }}>
-          <Icon name="plus-circle" size={20} color={'rgb(250,160,0)'} />
+          <Icon name="plus-circle" size={20} color={'rgb(48,33,68)'} />
           <Text style={styles.textHeaderSetup}>{section.title}</Text>
         </View>
       </View>
