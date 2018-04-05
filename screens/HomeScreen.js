@@ -18,7 +18,6 @@ import {
 } from "../components/Clocks";
 import { MonoText } from "../components/StyledText";
 import { Ionicons } from "@expo/vector-icons";
-import { connectActionSheet } from "@expo/react-native-action-sheet";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
