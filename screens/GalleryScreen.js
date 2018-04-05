@@ -138,7 +138,7 @@ class MediaInfoViewer extends React.Component {
         underlayColor={"#fff"}
         style={{ alignItems: "center" }}
       >
-        {Platform.OS === "ios" ? (
+      
           <Ionicons
             name={"ios-information-circle-outline"}
             size={32}
@@ -146,9 +146,6 @@ class MediaInfoViewer extends React.Component {
             style={{ marginRight: 18 }}
             onPress={() => params._toggleModal()}
           />
-        ) : (
-          <Text style={{ color: "white" }}>Info</Text>
-        )}
       </TouchableHighlight>
     ); //TEST HERE
     return {
@@ -332,7 +329,8 @@ class MediaInfoViewer extends React.Component {
               onRequestClose={this.toggleModal}
             >
               <View
-                style={{ backgroundColor: Colors.primaryColor, marginTop: 90 }}
+                style={{ backgroundColor: Colors.primaryColor, height: this.state.windowDim.height/3, width: this.state.windowDim.width,
+                marginTop: 2*this.state.windowDim.height/3}}
               >
                 <Button
                   title="Close"
@@ -382,6 +380,7 @@ class InformationPanel extends React.Component {
       <View style={{ flex: 1 }}>
         <Text style={styles.informationPanelHeaders}>Title</Text>
         <Text style={styles.informationPanelText}>{this.props.title}</Text>
+        <View style={{flex: 0.2}}/>
         <Text style={styles.informationPanelHeaders}>Credit</Text>
         <Text style={styles.informationPanelText}>{this.props.credit}</Text>
       </View>
@@ -446,12 +445,10 @@ const styles = StyleSheet.create({
   informationPanelHeaders: {
     fontWeight: "bold",
     color: "white",
-    fontSize: 26
+    fontSize: 32
   },
   informationPanelText: {
-    color: "white"
-  },
-  headerButtons: {
-    tintColor: "white"
+    color: "white",
+    fontSize: 24
   }
 });
