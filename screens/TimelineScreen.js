@@ -190,14 +190,14 @@ class DetailsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    backgroundColor: COLORS.psycheMagenta
+    backgroundColor: "#FFFFFF"
   },
   parent: {
     flex: 1,
-    backgroundColor: COLORS.psycheMagenta
+    backgroundColor: "#FFFFFF"
   },
   card: {
-    backgroundColor: "rgba(255, 255, 255, .15)",
+    backgroundColor: "rgba(89,38,81, .15)",
     margin: 20,
     height: 85,
     flexDirection: "row",
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF"
   },
   titleText: {
-    color: "#FFFFFF",
+    color: COLORS.psychePurple,
     textAlign: "left",
     fontSize: 12,
     position: "absolute",
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     width: "30%"
   },
   dateText: {
-    color: "#FFFFFF",
+    color: COLORS.psychePurple,
     fontWeight: "bold",
     position: "absolute",
     left: "4%",
@@ -251,12 +251,12 @@ const styles = StyleSheet.create({
   line: {
     width: 2,
     left: "35%",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.psychePurple,
     position: "absolute",
     height: 1000
   },
   circle: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: COLORS.psychePurple,
     position: "absolute",
     left: "33.5%",
     width: 14,
@@ -265,6 +265,7 @@ const styles = StyleSheet.create({
   },
   chevron: {
     position: "absolute",
+    color: COLORS.psychePurple,
     left: "90%"
   }
 });
