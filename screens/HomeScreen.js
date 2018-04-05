@@ -1,27 +1,33 @@
 import React from "react";
-import { ScrollView, StyleSheet, View, Text, Button, Image } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  StatusBar,
+  Image,
+  Platform,
+  TouchableOpacity
+} from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Col, Row, Grid } from "react-native-easy-grid";
-import { Ionicons } from "@expo/vector-icons";
+import {
+  CountDownClockHorizontal,
+  CountDownClockVertical
+} from "../components/Clocks";
 import { MonoText } from "../components/StyledText";
-import { ImagePicker } from 'expo';
+import { Ionicons } from "@expo/vector-icons";
+import { connectActionSheet } from "@expo/react-native-action-sheet";
+import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
+import Colors from "../constants/Colors";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countdown: false };
-
-    setInterval(
-      () =>
-        this.setState(() => {
-          return {
-            countdown: this._get_current_countdown()
-          };
-        }),
-      1000
-    );
+    this.state = { countdown: false, horizontalCountdown: false };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -47,7 +53,19 @@ export default class HomeScreen extends React.Component {
   };
 
   componentDidMount() {
-    this.props.navigation.setParams({ handleLeftHeader: this._pickImage.bind(this) });
+    this.props.navigation.setParams({
+      handleLeftHeader: this._pickImage.bind(this)
+    });
+
+    setInterval(
+      () =>
+        this.setState(() => {
+          return {
+            countdown: this._get_current_countdown()
+          };
+        }),
+      1000
+    );
   }
 
   _get_current_countdown() {
@@ -63,16 +81,15 @@ export default class HomeScreen extends React.Component {
     console.log(result);
 
     if (!result.cancelled) {
-      this.props.navigation.navigate('Modal', {
+      this.props.navigation.navigate("Modal", {
         image: result.uri
       });
     }
   };
 
-
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
-
+    let horizontalCountdown = this.state.horizontalCountdown;
     /**
      *  In the future this file will have the preloading/caching for images
      *  and assets since it is the home screen. That'll most likely make this
@@ -83,10 +100,14 @@ export default class HomeScreen extends React.Component {
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
-
     return (
-      <ScrollView style={styles.container}>
-        <Grid>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={styles.timelineButton}
+          onPress={() => { this.setState({ horizontalCountdown: !horizontalCountdown }) }}>
+          <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
+        </TouchableOpacity>
+        {!horizontalCountdown && <Grid>
           <Col size={4} />
           <Col size={2}>
             <Row style={styles.countDownRow}>
@@ -102,7 +123,9 @@ export default class HomeScreen extends React.Component {
               <MonoText style={styles.countdownTextDuration}> M</MonoText>
             </Row>
             <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>{countdown.days}</MonoText>
+              <MonoText style={styles.countdownText}>
+                {countdown.days}
+              </MonoText>
               <MonoText style={styles.countdownTextDuration}> D</MonoText>
             </Row>
             <Row style={styles.countDownRow}>
@@ -125,11 +148,32 @@ export default class HomeScreen extends React.Component {
             </Row>
           </Col>
           <Col size={4} />
-        </Grid>
-      </ScrollView>
+        </Grid>}
+        {horizontalCountdown && <Grid>
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="Launch"
+              countDownDate={Dates.launch}
+            />
+          </Row>
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="Mars Encounter"
+              countDownDate={Dates.mars}
+            />
+          </Row>
+          <Row size={20}>
+            <CountDownClockHorizontal
+              clockTitle="16 Psyche Arrival"
+              countDownDate={Dates.arrival}
+            />
+          </Row>
+        </Grid>}
+      </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   countDownRow: {
@@ -137,19 +181,34 @@ const styles = StyleSheet.create({
   },
   countdownTextDuration: {
     fontWeight: "bold",
-    fontSize: 26
+    fontSize: 12
   },
   countdownText: {
     fontWeight: "bold",
-    fontSize: 52
+    fontSize: 50
   },
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: "#fff"
   },
   loading: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  timelineButton: {
+    ...Platform.select({
+      ios: {
+        shadowColor: 'black',
+        shadowOffset: { height: 3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 20,
+      },
+    }),
+    alignItems: 'center',
+    backgroundColor: Colors.primaryColor,
+    paddingVertical: 20,
   }
 });
