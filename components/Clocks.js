@@ -14,16 +14,16 @@ import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Colors from "../constants/Colors";
 
-export class CountDownClockVertical extends React.Component {}
+export class CountDownClockVertical extends React.Component { }
 
 export class CountDownClockHorizontal extends React.Component {
   constructor(props) {
     super(props);
+    this.countDownDate = props.countDownDate;
 
     this.state = {
-      countdown: false,
-      countdownDate: props.countDownDate,
-      clockTitle: props.clockTitle
+      clockTitle: props.clockTitle,
+      countdown: this._get_current_countdown(),
     };
   }
 
@@ -46,7 +46,7 @@ export class CountDownClockHorizontal extends React.Component {
   _get_current_countdown() {
     return countdown.timeTillLaunch(
       new Date().getTime(),
-      this.state.countdownDate
+      this.countDownDate
     );
   }
 

@@ -26,7 +26,7 @@ import Colors from "../constants/Colors";
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countdown: false, horizontalCountdown: false };
+    this.state = { countdown: this._get_current_countdown(), horizontalCountdown: false };
   }
 
   static navigationOptions = ({ navigation }) => {
