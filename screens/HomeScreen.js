@@ -104,76 +104,82 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.timelineButton}
-          onPress={() => { this.setState({ horizontalCountdown: !horizontalCountdown }) }}>
+          onPress={() => {
+            this.setState({ horizontalCountdown: !horizontalCountdown });
+          }}
+        >
           <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
         </TouchableOpacity>
-        {!horizontalCountdown && <Grid>
-          <Col size={4} />
-          <Col size={2}>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.years}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Y</MonoText>
+        {!horizontalCountdown && (
+          <Grid>
+            <Col size={4} />
+            <Col size={2}>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.years}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Y</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.months}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> M</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.days}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> D</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.hours}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> H</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.minutes}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Min</MonoText>
+              </Row>
+              <Row style={styles.countDownRow}>
+                <MonoText style={styles.countdownText}>
+                  {countdown.seconds}
+                </MonoText>
+                <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
+              </Row>
+            </Col>
+            <Col size={4} />
+          </Grid>
+        )}
+        {horizontalCountdown && (
+          <Grid>
+            <Row size={20}>
+              <CountDownClockHorizontal
+                clockTitle="Launch"
+                countDownDate={Dates.launch}
+              />
             </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.months}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> M</MonoText>
+            <Row size={20}>
+              <CountDownClockHorizontal
+                clockTitle="Mars Encounter"
+                countDownDate={Dates.mars}
+              />
             </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.days}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> D</MonoText>
+            <Row size={20}>
+              <CountDownClockHorizontal
+                clockTitle="16 Psyche Arrival"
+                countDownDate={Dates.arrival}
+              />
             </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.hours}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> H</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.minutes}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Min</MonoText>
-            </Row>
-            <Row style={styles.countDownRow}>
-              <MonoText style={styles.countdownText}>
-                {countdown.seconds}
-              </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
-            </Row>
-          </Col>
-          <Col size={4} />
-        </Grid>}
-        {horizontalCountdown && <Grid>
-          <Row size={20}>
-            <CountDownClockHorizontal
-              clockTitle="Launch"
-              countDownDate={Dates.launch}
-            />
-          </Row>
-          <Row size={20}>
-            <CountDownClockHorizontal
-              clockTitle="Mars Encounter"
-              countDownDate={Dates.mars}
-            />
-          </Row>
-          <Row size={20}>
-            <CountDownClockHorizontal
-              clockTitle="16 Psyche Arrival"
-              countDownDate={Dates.arrival}
-            />
-          </Row>
-        </Grid>}
+          </Grid>
+        )}
       </View>
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   countDownRow: {
@@ -181,10 +187,12 @@ const styles = StyleSheet.create({
   },
   countdownTextDuration: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 12
   },
   countdownText: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 50
   },
   container: {
@@ -198,17 +206,17 @@ const styles = StyleSheet.create({
   timelineButton: {
     ...Platform.select({
       ios: {
-        shadowColor: 'black',
+        shadowColor: "black",
         shadowOffset: { height: 3 },
         shadowOpacity: 0.1,
-        shadowRadius: 3,
+        shadowRadius: 3
       },
       android: {
-        elevation: 20,
-      },
+        elevation: 20
+      }
     }),
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: Colors.primaryColor,
-    paddingVertical: 20,
+    paddingVertical: 20
   }
 });
