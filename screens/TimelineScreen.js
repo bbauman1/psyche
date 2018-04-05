@@ -25,7 +25,6 @@ class Timeline extends React.Component {
   }
 
   render() {
-    console.log(COLORS.psycheMustard);
     return (
       <View style={styles.parent}>
         <ScrollView contentContainerStyle={styles.container}>
@@ -166,6 +165,7 @@ class DetailsScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
+          <Text style={styles.detailPhase}>{phase_prop.phase}</Text>
           {phase_prop.checkpoints.map((checkpoint, i) => (
             <View key={i}>
               <Text key={i + 1} style={styles.detailPhaseTitle}>
@@ -224,10 +224,18 @@ const styles = StyleSheet.create({
     left: "4%",
     fontSize: 18
   },
-  detailPhaseTitle: {
-    fontSize: 28,
+  detailPhase: {
+    fontSize: 30,
     fontWeight: "bold",
     marginTop: 8,
+    marginRight: 8,
+    marginLeft: 8,
+    color: COLORS.psychePurple
+  },
+  detailPhaseTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginTop: 2,
     marginRight: 8,
     marginLeft: 8,
     color: COLORS.psycheCoral
