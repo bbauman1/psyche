@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
-  Text,
   Image,
   View,
   TouchableHighlight,
@@ -17,6 +16,7 @@ import {
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import Colors from "../constants/Colors.js";
+import { PsycheText } from "../components/StyledText";
 import { Ionicons } from "@expo/vector-icons";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
@@ -25,14 +25,14 @@ import { Ionicons } from "@expo/vector-icons";
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
-    <Text color="#0000ee">Loading</Text>
+    <PsycheText color="#0000ee">Loading</PsycheText>
   </View>
 );
 
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <Text color="#0000ee">Cannot load content</Text>
+    <PsycheText color="#0000ee">Cannot load content</PsycheText>
   </View>
 );
 
@@ -41,7 +41,11 @@ class Gallery extends React.Component {
   static navigationOptions = {
     title: "Gallery",
     headerStyle: { backgroundColor: Colors.primaryColor },
-    headerTitleStyle: { color: "white" }
+    headerTitleStyle: {
+      fontWeight: "normal",
+      color: "#fff",
+      fontFamily: "Helvetica"
+    }
   };
 
   constructor(props) {
@@ -137,13 +141,12 @@ class MediaInfoViewer extends React.Component {
         underlayColor={"transparent"}
         style={{ alignItems: "center" }}
       >
-      
-          <Ionicons
-            name={"ios-information-circle-outline"}
-            size={32}
-            color={"#fff"}
-            style={{ marginRight: 18 }}
-          />
+        <Ionicons
+          name={"ios-information-circle-outline"}
+          size={32}
+          color={"#fff"}
+          style={{ marginRight: 18 }}
+        />
       </TouchableHighlight>
     );
     return {
@@ -327,22 +330,26 @@ class MediaInfoViewer extends React.Component {
               onRequestClose={this.toggleModal}
             >
               <View
-                style={{ backgroundColor: Colors.primaryColor, height: this.state.windowDim.height/3, width: this.state.windowDim.width,
-                marginTop: 2*this.state.windowDim.height/3}}
+                style={{
+                  backgroundColor: Colors.primaryColor,
+                  height: this.state.windowDim.height / 3,
+                  width: this.state.windowDim.width,
+                  marginTop: 2 * this.state.windowDim.height / 3
+                }}
               >
                 <TouchableHighlight
-        onPress={this.toggleModal}
-        underlayColor={"transparent"}
-        style={{ alignItems: "center" }}
-      >
-      <Ionicons
-            name={"ios-arrow-down"}
-            size={32}
-            color={"#fff"}
-            style={{ marginRight: 18 }}
-          />
-          </TouchableHighlight>
-                
+                  onPress={this.toggleModal}
+                  underlayColor={"transparent"}
+                  style={{ alignItems: "center" }}
+                >
+                  <Ionicons
+                    name={"ios-arrow-down"}
+                    size={32}
+                    color={"#fff"}
+                    style={{ marginRight: 18 }}
+                  />
+                </TouchableHighlight>
+
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
             </Modal>
@@ -373,7 +380,7 @@ class MediaInfoViewer extends React.Component {
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
-      return <Text>{msg}</Text>;
+      return <PsycheText>{msg}</PsycheText>;
     }
   }
 }
@@ -384,9 +391,14 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
-        <View style={{flex: 0.3}}/>
-        <Text style={styles.informationPanelText}>{"By: " + this.props.credit}</Text>
+        <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
+        <PsycheText style={styles.informationPanelText}>
+          {this.props.title}
+        </PsycheText>
+        <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
+        <PsycheText style={styles.informationPanelText}>
+          {this.props.credit}
+        </PsycheText>
       </View>
     );
   }

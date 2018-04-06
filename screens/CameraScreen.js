@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Button, Image, StyleSheet, CameraRoll, TouchableOpacity, Text } from "react-native";
+import { View, Button, Image, StyleSheet, CameraRoll, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ImagePicker, takeSnapshotAsync } from "expo";
 import Colors from "../constants/Colors";
+import { PsycheText } from "../components/StyledText";
 
 export default class CameraScreen extends React.Component {
   constructor(props) {
@@ -48,12 +49,12 @@ export default class CameraScreen extends React.Component {
           <TouchableOpacity
             style={[styles.roundedButton, { marginLeft: 10 }]}
             onPress={() => this.props.navigation.goBack()}>
-            <Text style={{ color: "#fff" }}> Cancel </Text>
+            <PsycheText style={{ color: "#fff" }}> Cancel </PsycheText>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.roundedButton, { marginRight: 10 }]}
             onPress={() => this._saveImage()}>
-            <Text style={{ color: "#fff" }}> Save </Text>
+            <PsycheText style={{ color: "#fff" }}> Save </PsycheText>
           </TouchableOpacity>
         </View>
       </View>
