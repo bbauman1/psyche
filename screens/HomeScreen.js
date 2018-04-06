@@ -27,7 +27,6 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      countdown: this._get_current_countdown(),
       horizontalCountdown: false
     };
   }
