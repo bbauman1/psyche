@@ -13,10 +13,11 @@ import {
   PanResponder,
   WebView,
   Modal,
-  StatusBar
+  Platform
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import Colors from "../constants/Colors.js";
+import { Ionicons } from "@expo/vector-icons";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
@@ -25,6 +26,13 @@ const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
     <Text color="#0000ee">Loading</Text>
+  </View>
+);
+
+//Loading failure indicator
+const loadingFailureIndicator = (
+  <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+    <Text color="#0000ee">Cannot load content</Text>
   </View>
 );
 
@@ -90,10 +98,6 @@ class MediaContainer extends React.Component {
       this.mediaType === "image"
         ? this.props.file_db_ref[this.props.index].uri
         : this.props.file_db_ref[this.props.index].prev;
-
-    this.state = {
-      loadingPicture: true
-    };
   }
   onPress = () => {
     this.props.callback({
@@ -105,7 +109,7 @@ class MediaContainer extends React.Component {
     return (
       <TouchableHighlight
         onPress={this.onPress}
-        underlayColor={"#fff"}
+        underlayColor={"transparent"}
         style={{ alignItems: "center" }}
       >
         <Image
@@ -127,21 +131,30 @@ class MediaContainer extends React.Component {
 class MediaInfoViewer extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-
+    const infoButton = (
+      <TouchableHighlight
+        onPress={() => params._toggleModal()}
+        underlayColor={"transparent"}
+        style={{ alignItems: "center" }}
+      >
+      
+          <Ionicons
+            name={"ios-information-circle-outline"}
+            size={32}
+            color={"#fff"}
+            style={{ marginRight: 18 }}
+          />
+      </TouchableHighlight>
+    );
     return {
-      headerRight: (
-        <Button
-          title={"Info"}
-          color={"white"}
-          onPress={() => params._toggleModal()}
-        />
-      )
+      headerRight: infoButton
     };
   };
   constructor(props) {
     super(props);
     this.state = {
       loadingPicture: true,
+      loadingFail: false,
       xTrans: 0,
       windowDim: Dimensions.get("window"),
       modalVisible: false
@@ -166,6 +179,10 @@ class MediaInfoViewer extends React.Component {
     this.setState({ loadingPicture: false });
   };
 
+  failLoad = () => {
+    this.setState({ loadingPicture: true, loadingFail: true });
+  };
+
   orientationSwitchLayout = event => {
     this.setState({
       windowDim: Dimensions.get("window")
@@ -182,7 +199,7 @@ class MediaInfoViewer extends React.Component {
     this.index = indexChange;
     this.mediaURI = this.file_db_ref[this.index].uri;
     this.mediaType = this.file_db_ref[this.index].mediaType;
-    this.setState({ loadingPicture: true, xTrans: 0 });
+    this.setState({ loadingPicture: true, xTrans: 0, loadingFail: false });
     this.setLocalParams();
   };
 
@@ -250,16 +267,18 @@ class MediaInfoViewer extends React.Component {
   };
   render() {
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
-
+    //If we want to re-enable orientation unlocking, above is where we uncomment
     if (this.mediaType === "image") {
       //The image is loading
       if (this.state.loadingPicture === true) {
-        Image.getSize(this.mediaURI, this.loadPicture);
+        Image.getSize(this.mediaURI, this.loadPicture, this.failLoad);
         return (
           <View
             style={{ alignItems: "center", justifyContent: "center", flex: 1 }}
           >
-            {loadingIndicator}
+            {this.state.loadingFail
+              ? loadingFailureIndicator
+              : loadingIndicator}
           </View>
         );
       } else {
@@ -305,15 +324,25 @@ class MediaInfoViewer extends React.Component {
               transparent={true}
               visible={this.state.modalVisible}
               style={{ flex: 1 }}
+              onRequestClose={this.toggleModal}
             >
               <View
-                style={{ backgroundColor: Colors.primaryColor, marginTop: 30 }}
+                style={{ backgroundColor: Colors.primaryColor, height: this.state.windowDim.height/3, width: this.state.windowDim.width,
+                marginTop: 2*this.state.windowDim.height/3}}
               >
-                <Button
-                  title="Close"
-                  color={"white"}
-                  onPress={this.toggleModal}
-                />
+                <TouchableHighlight
+        onPress={this.toggleModal}
+        underlayColor={"transparent"}
+        style={{ alignItems: "center" }}
+      >
+      <Ionicons
+            name={"ios-arrow-down"}
+            size={32}
+            color={"#fff"}
+            style={{ marginRight: 18 }}
+          />
+          </TouchableHighlight>
+                
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
             </Modal>
@@ -355,10 +384,9 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>Title</Text>
-        <Text style={styles.informationPanelText}>{this.props.title}</Text>
-        <Text style={styles.informationPanelHeaders}>Credit</Text>
-        <Text style={styles.informationPanelText}>{this.props.credit}</Text>
+        <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
+        <View style={{flex: 0.3}}/>
+        <Text style={styles.informationPanelText}>{"By: " + this.props.credit}</Text>
       </View>
     );
   }
@@ -405,7 +433,6 @@ export default class GalleryScreen extends React.Component {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content" />
         <LocalPageNavigator />
       </View>
     );
@@ -420,12 +447,11 @@ const styles = StyleSheet.create({
   },
   informationPanelHeaders: {
     fontWeight: "bold",
-    color: "white"
+    color: "white",
+    fontSize: 32
   },
   informationPanelText: {
-    color: "white"
-  },
-  headerButtons: {
-    tintColor: "white"
+    color: "white",
+    fontSize: 24
   }
 });
