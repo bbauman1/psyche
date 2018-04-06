@@ -20,6 +20,7 @@ const WEBVIEW_REF = "webview";
 
 class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
+    console.log("Instagram Url: " + navEvent.url);
     if (navEvent.url !== SocialMediaURLs.instagramURL) {
       AppLink.maybeOpenURL("instagram://user?username=nasapsyche", {
         appName: "instagram",
