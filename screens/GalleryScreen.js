@@ -32,7 +32,7 @@ const loadingIndicator = (
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <Text color="#0000ee">Cannot load content</Text>
+    <PsycheText color="#0000ee">Cannot load content</PsycheText>
   </View>
 );
 
@@ -45,7 +45,7 @@ class Gallery extends React.Component {
       fontWeight: "normal",
       color: "#fff",
       fontFamily: "Helvetica"
-    },
+    }
   };
 
   constructor(props) {
@@ -141,7 +141,6 @@ class MediaInfoViewer extends React.Component {
         underlayColor={"transparent"}
         style={{ alignItems: "center" }}
       >
-
         <Ionicons
           name={"ios-information-circle-outline"}
           size={32}
@@ -332,7 +331,9 @@ class MediaInfoViewer extends React.Component {
             >
               <View
                 style={{
-                  backgroundColor: Colors.primaryColor, height: this.state.windowDim.height / 3, width: this.state.windowDim.width,
+                  backgroundColor: Colors.primaryColor,
+                  height: this.state.windowDim.height / 3,
+                  width: this.state.windowDim.width,
                   marginTop: 2 * this.state.windowDim.height / 3
                 }}
               >
@@ -391,10 +392,14 @@ class InformationPanel extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
-        <PsycheText style={styles.informationPanelText}>{this.props.title}</PsycheText>
+        <PsycheText style={styles.informationPanelText}>
+          {this.props.title}
+        </PsycheText>
         <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
-        <PsycheText style={styles.informationPanelText}>{this.props.credit}</PsycheText>
-      </View >
+        <PsycheText style={styles.informationPanelText}>
+          {this.props.credit}
+        </PsycheText>
+      </View>
     );
   }
 }
