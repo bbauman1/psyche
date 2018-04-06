@@ -13,7 +13,6 @@ import {
   PanResponder,
   WebView,
   Modal,
-  StatusBar,
   Platform
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
@@ -110,7 +109,7 @@ class MediaContainer extends React.Component {
     return (
       <TouchableHighlight
         onPress={this.onPress}
-        underlayColor={"#fff"}
+        underlayColor={"transparent"}
         style={{ alignItems: "center" }}
       >
         <Image
@@ -135,7 +134,7 @@ class MediaInfoViewer extends React.Component {
     const infoButton = (
       <TouchableHighlight
         onPress={() => params._toggleModal()}
-        underlayColor={"#fff"}
+        underlayColor={"transparent"}
         style={{ alignItems: "center" }}
       >
       
@@ -144,10 +143,9 @@ class MediaInfoViewer extends React.Component {
             size={32}
             color={"#fff"}
             style={{ marginRight: 18 }}
-            onPress={() => params._toggleModal()}
           />
       </TouchableHighlight>
-    ); //TEST HERE
+    );
     return {
       headerRight: infoButton
     };
@@ -332,11 +330,19 @@ class MediaInfoViewer extends React.Component {
                 style={{ backgroundColor: Colors.primaryColor, height: this.state.windowDim.height/3, width: this.state.windowDim.width,
                 marginTop: 2*this.state.windowDim.height/3}}
               >
-                <Button
-                  title="Close"
-                  color={"white"}
-                  onPress={this.toggleModal}
-                />
+                <TouchableHighlight
+        onPress={this.toggleModal}
+        underlayColor={"transparent"}
+        style={{ alignItems: "center" }}
+      >
+      <Ionicons
+            name={"ios-arrow-down"}
+            size={32}
+            color={"#fff"}
+            style={{ marginRight: 18 }}
+          />
+          </TouchableHighlight>
+                
                 <InformationPanel title={this.title} credit={this.credit} />
               </View>
             </Modal>
@@ -378,11 +384,9 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>Title</Text>
-        <Text style={styles.informationPanelText}>{this.props.title}</Text>
-        <View style={{flex: 0.2}}/>
-        <Text style={styles.informationPanelHeaders}>Credit</Text>
-        <Text style={styles.informationPanelText}>{this.props.credit}</Text>
+        <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
+        <View style={{flex: 0.3}}/>
+        <Text style={styles.informationPanelText}>{"By: " + this.props.credit}</Text>
       </View>
     );
   }
@@ -429,7 +433,6 @@ export default class GalleryScreen extends React.Component {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar barStyle="light-content" />
         <LocalPageNavigator />
       </View>
     );
