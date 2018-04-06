@@ -22,15 +22,16 @@ class InstagramFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     console.log("Instagram Url: " + navEvent.url);
     if (navEvent.url !== SocialMediaURLs.instagramURL) {
-      AppLink.maybeOpenURL("instagram://user?username=nasapsyche", {
-        appName: "instagram",
-        appStoreId: AppIds.instagramAppStoreId,
-        playStoreId: AppIds.instagramPlayStoreId
-      })
-        .then(() => {
-          this.refs[WEBVIEW_REF].stopLoading();
-        })
-        .catch(err => console.error("An error occurred", err));
+      // AppLink.maybeOpenURL("instagram://user?username=nasapsyche", {
+      //   appName: "instagram",
+      //   appStoreId: AppIds.instagramAppStoreId,
+      //   playStoreId: AppIds.instagramPlayStoreId
+      // })
+      //   .then(() => {
+      //     this.refs[WEBVIEW_REF].stopLoading();
+      //   })
+      //   .catch(err => console.error("An error occurred", err));
+      Linking.openURL(`https://itunes.apple.com/us/app/id389801252`);
     }
   }
 
