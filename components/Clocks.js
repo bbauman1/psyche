@@ -12,17 +12,16 @@ import { Ionicons } from "@expo/vector-icons";
 import { MonoText } from "../components/StyledText";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
+import Colors from "../constants/Colors";
 
-export class CountDownClockVertical extends React.Component {}
-
-export class CountDownClockHorizontal extends React.Component {
+class BaseClock extends React.Component {
   constructor(props) {
     super(props);
+    this.countDownDate = props.countDownDate;
 
     this.state = {
-      countdown: false,
-      countdownDate: props.countDownDate,
-      clockTitle: props.clockTitle
+      clockTitle: props.clockTitle,
+      countdown: this._get_current_countdown()
     };
   }
 
@@ -43,12 +42,70 @@ export class CountDownClockHorizontal extends React.Component {
   }
 
   _get_current_countdown() {
-    return countdown.timeTillLaunch(
-      new Date().getTime(),
-      this.state.countdownDate
+    return countdown.timeTillLaunch(new Date().getTime(), this.countDownDate);
+  }
+}
+
+export class CountDownClockVertical extends BaseClock {
+  render() {
+    let countdown = this.state.countdown ? this.state.countdown : {};
+    if (!this.state.countdown) {
+      return <View style={styles.loading} />;
+    }
+    return (
+      <Grid>
+        <Col size={4} />
+        <Col size={2}>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.years}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}> Y</MonoText>
+          </Row>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.months}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}> M</MonoText>
+          </Row>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.days}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}> D</MonoText>
+          </Row>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.hours}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}> H</MonoText>
+          </Row>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.minutes}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}>
+              {" "}
+              Min
+            </MonoText>
+          </Row>
+          <Row style={styles.countDownRow}>
+            <MonoText style={styles.countDownTextVertical}>
+              {countdown.seconds}
+            </MonoText>
+            <MonoText style={styles.countdownTextDurationVertical}>
+              {" "}
+              Sec
+            </MonoText>
+          </Row>
+        </Col>
+        <Col size={4} />
+      </Grid>
     );
   }
+}
 
+export class CountDownClockHorizontal extends BaseClock {
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
     if (!this.state.countdown) {
@@ -62,38 +119,58 @@ export class CountDownClockHorizontal extends React.Component {
           </Row>
           <Row size={25}>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>
+              <MonoText style={styles.countdownTextHorizontal}>
                 {countdown.years}
               </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Years</MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Years
+              </MonoText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>
+              <MonoText style={styles.countdownTextHorizontal}>
                 {countdown.months}
               </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Months</MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Months
+              </MonoText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>{countdown.days}</MonoText>
-              <MonoText style={styles.countdownTextDuration}> Days</MonoText>
+              <MonoText style={styles.countdownTextHorizontal}>
+                {countdown.days}
+              </MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Days
+              </MonoText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>
+              <MonoText style={styles.countdownTextHorizontal}>
                 {countdown.hours}
               </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Hours</MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Hours
+              </MonoText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>
+              <MonoText style={styles.countdownTextHorizontal}>
                 {countdown.minutes}
               </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Minutes</MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Minutes
+              </MonoText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownText}>
+              <MonoText style={styles.countdownTextHorizontal}>
                 {countdown.seconds}
               </MonoText>
-              <MonoText style={styles.countdownTextDuration}> Seconds</MonoText>
+              <MonoText style={styles.countdownTextDurationHorizontal}>
+                {" "}
+                Seconds
+              </MonoText>
             </Col>
           </Row>
           <Row size={25} />
@@ -106,18 +183,35 @@ export class CountDownClockHorizontal extends React.Component {
 const styles = StyleSheet.create({
   countDownTitle: {
     justifyContent: "center",
+    color: Colors.primaryColor,
     fontSize: 16
   },
   countDownCol: {
     alignItems: "center",
     width: "100%"
   },
-  countdownTextDuration: {
+  countDownRow: {
+    alignItems: "center"
+  },
+  countdownTextDurationVertical: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 12
   },
-  countdownText: {
+  countDownTextVertical: {
     fontWeight: "bold",
+    color: Colors.primaryColor,
+    fontSize: 50
+  },
+
+  countdownTextDurationHorizontal: {
+    fontWeight: "bold",
+    color: Colors.primaryColor,
+    fontSize: 12
+  },
+  countdownTextHorizontal: {
+    fontWeight: "bold",
+    color: Colors.primaryColor,
     fontSize: 16
   },
   container: {
