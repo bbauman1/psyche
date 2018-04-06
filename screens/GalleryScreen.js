@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
-  Text,
   Image,
   View,
   TouchableHighlight,
@@ -17,6 +16,7 @@ import {
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import Colors from "../constants/Colors.js";
+import { PsycheText } from "../components/StyledText";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
 
@@ -24,7 +24,7 @@ import Colors from "../constants/Colors.js";
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
-    <Text color="#0000ee">Loading</Text>
+    <PsycheText color="#0000ee">Loading</PsycheText>
   </View>
 );
 
@@ -33,7 +33,11 @@ class Gallery extends React.Component {
   static navigationOptions = {
     title: "Gallery",
     headerStyle: { backgroundColor: Colors.primaryColor },
-    headerTitleStyle: { color: "white" }
+    headerTitleStyle: {
+      fontWeight: "normal",
+      color: "#fff",
+      fontFamily: "Helvetica"
+    },
   };
 
   constructor(props) {
@@ -344,7 +348,7 @@ class MediaInfoViewer extends React.Component {
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
-      return <Text>{msg}</Text>;
+      return <PsycheText>{msg}</PsycheText>;
     }
   }
 }
@@ -355,10 +359,10 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>Title</Text>
-        <Text style={styles.informationPanelText}>{this.props.title}</Text>
-        <Text style={styles.informationPanelHeaders}>Credit</Text>
-        <Text style={styles.informationPanelText}>{this.props.credit}</Text>
+        <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
+        <PsycheText style={styles.informationPanelText}>{this.props.title}</PsycheText>
+        <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
+        <PsycheText style={styles.informationPanelText}>{this.props.credit}</PsycheText>
       </View>
     );
   }
