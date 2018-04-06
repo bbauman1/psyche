@@ -22,7 +22,7 @@ class FacebookFeed extends React.Component {
   _onNavigationStateChange(navEvent) {
     console.log("Facebook Url: " + navEvent.url);
     if (navEvent.url !== SocialMediaURLs.facebookURL) {
-      AppLink.maybeOpenURL("fb://page/1598743977091187", {
+      AppLink.maybeOpenURL("fb://profile/1598743977091187", {
         appName: "facebook",
         appStoreId: AppIds.facebookAppStoreId,
         playStoreId: AppIds.facebookPlayStoreId
