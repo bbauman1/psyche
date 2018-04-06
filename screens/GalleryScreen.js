@@ -24,15 +24,15 @@ import { Ionicons } from "@expo/vector-icons";
 //Loading indicator
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <ActivityIndicator size="large" color={"white"} />
-    <Text style={{color: "white"}}>Loading</Text>
+    <ActivityIndicator size="large" color={Colors.primaryColor} />
+    <Text style={{ color: Colors.primaryColor}}>Loading</Text>
   </View>
 );
 
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <Text style={{color: "white"}}>Cannot load content</Text>
+    <Text style={{ color: Colors.primaryColor }}>Cannot load content</Text>
   </View>
 );
 
@@ -131,22 +131,21 @@ class MediaContainer extends React.Component {
 class MediaInfoViewer extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    const infoButton = (
-      <TouchableHighlight
-        onPress={() => params._toggleModal()}
-        underlayColor={"transparent"}
-        style={{ alignItems: "center" }}
-      >
-        <Ionicons
-          name={"ios-information-circle-outline"}
-          size={32}
-          color={"#fff"}
-          style={{ marginRight: 18 }}
-        />
-      </TouchableHighlight>
-    );
     return {
-      headerRight: infoButton
+      headerRight: (
+        <TouchableHighlight
+          onPress={() => params._toggleModal()}
+          underlayColor={"transparent"}
+          style={{ alignItems: "center" }}
+        >
+          <Ionicons
+            name={"ios-information-circle-outline"}
+            size={32}
+            color={"#fff"}
+            style={{ marginRight: 18 }}
+          />
+        </TouchableHighlight>
+      ),
     };
   };
   constructor(props) {
@@ -219,11 +218,9 @@ class MediaInfoViewer extends React.Component {
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => false,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) =>
-        !this.state.modalVisible,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
       onMoveShouldSetPanResponder: (evt, gestureState) => false,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
-        !this.state.modalVisible,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
 
       onPanResponderGrant: (evt, gestureState) => {
         // The gesture has started. Show visual feedback so the user knows
@@ -240,13 +237,17 @@ class MediaInfoViewer extends React.Component {
       onPanResponderRelease: (evt, gestureState) => {
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
-        const threshold = 30;
-        if (gestureState.dx > threshold) {
-          this.doLeftSwipe();
-        } else if (gestureState.dx < -1 * threshold) {
-          this.doRightSwipe();
+        if (this.state.modalVisible) {
+          this.toggleModal();
         } else {
-          this.setState({ xTrans: 0 });
+          const threshold = 30;
+          if (gestureState.dx > threshold) {
+            this.doLeftSwipe();
+          } else if (gestureState.dx < -1 * threshold) {
+            this.doRightSwipe();
+          } else {
+            this.setState({ xTrans: 0 });
+          }
         }
       },
       onPanResponderTerminate: (evt, gestureState) => {
@@ -453,10 +454,14 @@ const styles = StyleSheet.create({
   informationPanelHeaders: {
     fontWeight: "bold",
     color: "white",
-    fontSize: 32
+    fontSize: 32,
+    marginLeft: 8,
+    marginRight: 8
   },
   informationPanelText: {
     color: "white",
-    fontSize: 24
+    fontSize: 24,
+    marginLeft: 8,
+    marginRight: 8
   }
 });
