@@ -11,7 +11,7 @@ import {
   TouchableOpacity
 } from "react-native";
 import { StackNavigator } from "react-navigation";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Row, Grid } from "react-native-easy-grid";
 import {
   CountDownClockHorizontal,
   CountDownClockVertical
@@ -26,7 +26,9 @@ import Colors from "../constants/Colors";
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countdown: this._get_current_countdown(), horizontalCountdown: false };
+    this.state = {
+      horizontalCountdown: false
+    };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -110,48 +112,7 @@ export default class HomeScreen extends React.Component {
           <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
         </TouchableOpacity>
         {!horizontalCountdown && (
-          <Grid>
-            <Col size={4} />
-            <Col size={2}>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.years}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Y</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.months}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> M</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.days}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> D</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.hours}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> H</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.minutes}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Min</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.seconds}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
-              </Row>
-            </Col>
-            <Col size={4} />
-          </Grid>
+          <CountDownClockVertical countDownDate={Dates.launch} />
         )}
         {horizontalCountdown && (
           <Grid>
@@ -181,19 +142,6 @@ export default class HomeScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  countDownRow: {
-    alignItems: "center"
-  },
-  countdownTextDuration: {
-    fontWeight: "bold",
-    color: Colors.primaryColor,
-    fontSize: 12
-  },
-  countdownText: {
-    fontWeight: "bold",
-    color: Colors.primaryColor,
-    fontSize: 50
-  },
   container: {
     flex: 1,
     backgroundColor: "#fff"
