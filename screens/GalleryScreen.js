@@ -390,16 +390,10 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-<<<<<<< HEAD
-    <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
-      <PsycheText style={styles.informationPanelText}>{this.props.title}</PsycheText>
-      <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
-      <PsycheText style={styles.informationPanelText}>{this.props.credit}</PsycheText>
-=======
-        <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
-        <View style={{flex: 0.3}}/>
-        <Text style={styles.informationPanelText}>{"By: " + this.props.credit}</Text>
->>>>>>> master
+        <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
+        <PsycheText style={styles.informationPanelText}>{this.props.title}</PsycheText>
+        <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
+        <PsycheText style={styles.informationPanelText}>{this.props.credit}</PsycheText>
       </View >
     );
   }
