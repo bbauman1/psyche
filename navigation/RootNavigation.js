@@ -19,8 +19,8 @@ const RootStackNavigator = StackNavigator(
     initialRouteName: 'Main',
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal",
-        fontFamily: "Helvetica"
+        fontWeight: "normal"
+
       },
       headerTintColor: '#fff',
       headerStyle: {

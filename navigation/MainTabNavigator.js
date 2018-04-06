@@ -90,7 +90,7 @@ export default TabNavigator(
         backgroundColor: "#fff",
       },
       labelStyle: {
-        fontFamily: "Helvetica"
+
       },
       activeTintColor: Colors.primaryColor,
     }
