@@ -10,11 +10,6 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
-import SocialMediaURLs from "../constants/SocialMediaURLs";
-import {
-  AppInstalledChecker,
-  CheckPackageInstallation
-} from "react-native-check-app-install";
 
 const WEBVIEW_REF = "webview";
 
@@ -49,8 +44,7 @@ class InstagramFeed extends React.Component {
 
 const styles = StyleSheet.create({
   socialWindow: {
-    flex: 1,
-    marginTop: 20
+    flex: 1
   }
 });
 
