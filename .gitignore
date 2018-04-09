@@ -2,3 +2,4 @@ node_modules/**/*
 .expo/**/*
 .vscode
 __snapshots__
+assets/.DS_Store

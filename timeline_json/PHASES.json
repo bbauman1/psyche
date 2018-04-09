@@ -2,7 +2,7 @@
   "PHASE_A": {
     "phase": "PHASE A",
     "title": "CONCEPT STUDY",
-    "date": "Sept 2015 – Dec 2016",
+    "date": "Sept 2015",
     "checkpoints": [
       {
         "title": "PHASE A",
@@ -20,7 +20,7 @@
   "PHASE_B": {
     "phase": "PHASE B",
     "title": "PRELIMINARY DESIGN OF ALL INSTRUMENTS & SPACECRAFT",
-    "date": "Jan 2017 – May 2019",
+    "date": "Jan 2017",
     "checkpoints": [
       {
         "title": "PRELIMINARY DESIGN OF ALL INSTRUMENTS & SPACECRAFT",
@@ -37,7 +37,7 @@
   "PHASE_C": {
     "phase": "PHASE C",
     "title": "CRITICAL DESIGN & BUILD OF ALL INSTRUMENTS & SPACECRAFT",
-    "date": "May 2019 – Jan 2021",
+    "date": "May 2019",
     "checkpoints": [
       {
         "title": "CRITICAL DESIGN & BUILD OF ALL INSTRUMENTS & SPACECRAFT",
@@ -58,7 +58,7 @@
   "PHASE_D": {
     "phase": "PHASE D",
     "title": "INSTRUMENT & SPACECRAFT BUILD & ASSEMBLY",
-    "date": "Jan 2021 – Aug 2022",
+    "date": "Jan 2021",
     "checkpoints": [
       {
         "title": "INSTRUMENT & SPACECRAFT BUILD & ASSEMBLY",
@@ -98,7 +98,7 @@
   "PHASE_E": {
     "phase": "PHASE E",
     "title": "MARS GRAVITY ASSIST",
-    "date": "May 2023 - Oct 2027",
+    "date": "May 2023",
     "checkpoints": [
       {
         "title": "MARS GRAVITY ASSIST",
@@ -135,7 +135,7 @@
   "PHASE_F": {
     "phase": "PHASE F",
     "title": "MISSION CLOSEOUT",
-    "date": "Nov 2027 – Aug 2028",
+    "date": "Nov 2027",
     "checkpoints": [
       {
         "title": "PHASE F",
