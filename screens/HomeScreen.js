@@ -20,7 +20,7 @@ import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
-import { PsycheText, MonoText } from "../components/StyledText";
+import { PsycheText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -108,7 +108,9 @@ export default class HomeScreen extends React.Component {
             this.setState({ horizontalCountdown: !horizontalCountdown });
           }}
         >
-          <PsycheText style={{ color: "#fff" }}>4 Years Until Launch</PsycheText>
+          <PsycheText style={{ color: "#fff" }}>
+            4 Years Until Launch
+          </PsycheText>
         </TouchableOpacity>
         {!horizontalCountdown && (
           <CountDownClockVertical countDownDate={Dates.launch} />
