@@ -5,6 +5,7 @@ import collapsible from 'react-native-collapsible';
 import Accordion from 'react-native-collapsible/Accordion';
 import Colors from '../constants/Colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { PsycheText } from "../components/StyledText";
 
 export default class FactsScreen extends React.Component {
   state = {
@@ -257,7 +258,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     height: 55,
-    paddingLeft: 10, 
+    paddingLeft: 10,
     paddingRight: 25,
     color: 'rgb(48,33,68)',
   },
@@ -278,7 +279,7 @@ class AccordionView extends React.Component {
       <View style={styles.headerContainer}>
         <View style={{ flexDirection: 'row', paddingLeft: 25 }}>
           <Icon name="plus-circle" size={20} color={'rgb(48,33,68)'} />
-          <Text style={styles.textHeaderSetup}>{section.title}</Text>
+          <PsycheText style={styles.textHeaderSetup}>{section.title}</PsycheText>
         </View>
       </View>
     );
@@ -287,7 +288,7 @@ class AccordionView extends React.Component {
   _renderContent(section) {
     return (
       <View style={styles.content}>
-        <Text style={styles.textContentSetup}>{section.content}</Text>
+        <PsycheText style={styles.textContentSetup}>{section.content}</PsycheText>
       </View>
     );
   }
