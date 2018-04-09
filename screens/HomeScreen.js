@@ -118,6 +118,7 @@ export default class HomeScreen extends React.Component {
                 countDownDate={Dates.arrival}
               />
             </Row>
+            <Row size={10} />
           </Grid>
         )}
         <FloatingAction
@@ -127,16 +128,6 @@ export default class HomeScreen extends React.Component {
           onPressMain={() => {
             this.setState({ horizontalCountdown: !horizontalCountdown });
           }}
-          // floatingIcon={<Ionicons
-          //   name={"ios-camera-outline"}
-          //   size={32}
-          //   color={"#fff"}
-          // />}
-          onPressItem={
-            (name) => {
-              console.log(`selected button: ${name}`);
-            }
-          }
         />
       </View>
     );
