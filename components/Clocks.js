@@ -115,7 +115,9 @@ export class CountDownClockHorizontal extends BaseClock {
       <View style={styles.container}>
         <Grid>
           <Row size={25}>
-            <MonoText style={styles.title}>{this.state.clockTitle}</MonoText>
+            <MonoText style={styles.countDownTitle}>
+              {this.state.clockTitle}
+            </MonoText>
           </Row>
           <Row size={25}>
             <Col style={styles.countDownCol}>
@@ -182,7 +184,9 @@ export class CountDownClockHorizontal extends BaseClock {
 
 const styles = StyleSheet.create({
   countDownTitle: {
-    justifyContent: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    width: "100%",
     color: Colors.primaryColor,
     fontSize: 16
   },
@@ -222,9 +226,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  title: {
-    textAlign: "center",
-    width: "100%"
   }
 });
