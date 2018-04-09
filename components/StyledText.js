@@ -1,15 +1,6 @@
 import React from "react";
 import { Text, Platform } from "react-native";
 
-export class MonoText extends React.Component {
-  render() {
-    const font = Platform.OS === "ios" ? "Helvetica" : "space-mono";
-    return (
-      <Text {...this.props} style={[this.props.style, { fontFamily: font }]} />
-    );
-  }
-}
-
 export class PsycheText extends React.Component {
   render() {
     const font = Platform.OS === "ios" ? "Helvetica" : "sans-serif";
