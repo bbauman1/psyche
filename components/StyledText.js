@@ -12,7 +12,6 @@ export class PsycheText extends React.Component {
     const font = Platform.OS === 'ios'
       ? 'Helvetica'
       : 'sans-serif';
-    console.log(font);
     return <Text {...this.props} style={[this.props.style, { fontFamily: font }]} />;
   }
 }
