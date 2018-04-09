@@ -4,7 +4,8 @@ import {
   ScrollView,
   View,
   Button,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Platform
 } from "react-native";
 import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
@@ -291,7 +292,15 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
+        fontWeight: "normal",
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
       },
       headerTintColor: "#fff",
       headerStyle: {

@@ -1,6 +1,7 @@
 import { Notifications } from "expo";
 import React from "react";
 import { StackNavigator } from "react-navigation";
+import { Platform } from "react-native";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
@@ -19,8 +20,15 @@ const RootStackNavigator = StackNavigator(
     initialRouteName: 'Main',
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
-
+        fontWeight: "normal",
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
       },
       headerTintColor: '#fff',
       headerStyle: {
@@ -34,6 +42,14 @@ const RootStackNavigator = StackNavigator(
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: "normal",
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
       }
     })
   }
