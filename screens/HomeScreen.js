@@ -20,8 +20,8 @@ import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
-import { PsycheText, MonoText } from "../components/StyledText";
 import { FloatingAction } from 'react-native-floating-action';
+import { PsycheText } from "../components/StyledText";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
