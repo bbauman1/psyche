@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
+import SocialMediaURLs from "../constants/SocialMediaURLs";
 
 const WEBVIEW_REF = "webview";
 
