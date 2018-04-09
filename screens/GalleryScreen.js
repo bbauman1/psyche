@@ -44,7 +44,7 @@ class Gallery extends React.Component {
     headerTitleStyle: {
       fontWeight: "normal",
       color: "#fff",
-      fontFamily: "Helvetica"
+
     }
   };
 
