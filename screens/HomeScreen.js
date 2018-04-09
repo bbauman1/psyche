@@ -21,6 +21,7 @@ import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
 import { PsycheText, MonoText } from "../components/StyledText";
+import { FloatingAction } from 'react-native-floating-action';
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -78,8 +79,6 @@ export default class HomeScreen extends React.Component {
       aspect: [4, 3]
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       this.props.navigation.navigate("Modal", {
         image: result.uri
@@ -88,28 +87,14 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    let countdown = this.state.countdown ? this.state.countdown : {};
-    let horizontalCountdown = this.state.horizontalCountdown;
-    /**
-     *  In the future this file will have the preloading/caching for images
-     *  and assets since it is the home screen. That'll most likely make this
-     *  code irrelevant since the splash screen will be displayed, but good
-     *  to have incase the loading is finished before the countdown is ready.
-     **/
+    const countdown = this.state.countdown ? this.state.countdown : {};
+    const horizontalCountdown = this.state.horizontalCountdown;
 
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.timelineButton}
-          onPress={() => {
-            this.setState({ horizontalCountdown: !horizontalCountdown });
-          }}
-        >
-          <PsycheText style={{ color: "#fff" }}>4 Years Until Launch</PsycheText>
-        </TouchableOpacity>
         {!horizontalCountdown && (
           <CountDownClockVertical countDownDate={Dates.launch} />
         )}
@@ -135,6 +120,24 @@ export default class HomeScreen extends React.Component {
             </Row>
           </Grid>
         )}
+        <FloatingAction
+          actions={[]}
+          color={Colors.primaryColor}
+          showBackground={false}
+          onPressMain={() => {
+            this.setState({ horizontalCountdown: !horizontalCountdown });
+          }}
+          // floatingIcon={<Ionicons
+          //   name={"ios-camera-outline"}
+          //   size={32}
+          //   color={"#fff"}
+          // />}
+          onPressItem={
+            (name) => {
+              console.log(`selected button: ${name}`);
+            }
+          }
+        />
       </View>
     );
   }
@@ -148,21 +151,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  timelineButton: {
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: 3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: Colors.primaryColor,
-    paddingVertical: 20
   }
 });
