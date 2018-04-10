@@ -126,7 +126,7 @@ export class CountDownClockHorizontal extends BaseClock {
     return (
       <View style={styles.container}>
         <Grid>
-          <Row size={25}>
+          <Row size={20}>
             <PsycheText style={styles.countDownTitle}>
               {this.state.clockTitle}
             </PsycheText>
