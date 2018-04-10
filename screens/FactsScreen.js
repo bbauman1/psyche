@@ -334,7 +334,7 @@ class AccordionView extends React.Component {
     const icon = isActive ? "minus-circle" : "plus-circle";
     return (
       <View style={styles.headerContainer}>
-        <View style={{ flexDirection: "row", paddingLeft: 25 }}>
+        <View style={{ flexDirection: "row", paddingLeft: 25, paddingTop: 25 }}>
           <Icon name={icon} size={20} color={"rgb(48,33,68)"} />
           <PsycheText style={styles.textHeaderSetup}>
             {sections[index].title}
