@@ -44,9 +44,6 @@ class Gallery extends React.Component {
     headerTitleStyle: {
       fontWeight: "normal",
       color: "#fff",
-<<<<<<< HEAD
-
-=======
       ...Platform.select({
         ios: {
           fontFamily: "Helvetica"
@@ -55,7 +52,6 @@ class Gallery extends React.Component {
           fontFamily: "sans-serif"
         }
       })
->>>>>>> master
     }
   };
 

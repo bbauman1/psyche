@@ -6,7 +6,9 @@ import {
   WebView,
   Dimensions,
   Alert,
-  Linking
+  Linking,
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
@@ -30,15 +32,23 @@ class TwitterFeed extends React.Component {
     }
   }
 
+  onPress = () => {
+    console.log("Button Pressed");
+  }
+  
   render() {
     return (
-      <WebView
-        ref={WEBVIEW_REF}
-        source={{ uri: SocialMediaURLs.twitterURL }}
-        style={[styles.socialWindow]}
-        onNavigationStateChange={this._onNavigationStateChange.bind(this)}
-        startInLoadingState={true}
-      />
+      <View style={styles.socialWindow}>
+      <ScrollView>
+          <WebView
+            ref={WEBVIEW_REF}
+            source={{ uri: SocialMediaURLs.twitterURL }}
+            style={{height: Dimensions.get("window").height}}
+            //onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+            startInLoadingState={true}
+          />
+      </ScrollView>
+      </View>
     );
   }
 }
@@ -46,6 +56,9 @@ class TwitterFeed extends React.Component {
 const styles = StyleSheet.create({
   socialWindow: {
     flex: 1
+  },
+  button: {
+    alignSelf: 'stretch'
   }
 });
 
