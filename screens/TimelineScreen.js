@@ -11,6 +11,7 @@ import { StackNavigator } from "react-navigation";
 import Colors from "../constants/Colors.js";
 import { Entypo } from "@expo/vector-icons";
 import { PsycheText } from "../components/StyledText";
+import { Radar } from "../components/Radar";
 
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
@@ -37,9 +38,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE A CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_A.date}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_A.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_A.title}</PsycheText>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_A.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -57,9 +62,14 @@ class Timeline extends React.Component {
           >
             {/* PHASE B CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_B.date}</PsycheText>
-              <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_B.title}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_B.date}
+              </PsycheText>
+              <Radar style={styles.circle} />
+              {/* <View style={styles.circle} /> */}
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_B.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -77,9 +87,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE C CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_C.date}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_C.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_C.title}</PsycheText>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_C.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -97,9 +111,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE D CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_D.date}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_D.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_D.title}</PsycheText>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_D.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -117,9 +135,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE E CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_E.date}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_E.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_E.title}</PsycheText>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_E.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -137,9 +159,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE F CARD */}
             <View style={styles.card}>
-              <PsycheText style={styles.dateText}>{PHASES.PHASE_F.date}</PsycheText>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_F.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <PsycheText style={styles.titleText}>{PHASES.PHASE_F.title}</PsycheText>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_F.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
