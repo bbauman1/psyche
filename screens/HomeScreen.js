@@ -157,18 +157,12 @@ export default class HomeScreen extends React.Component {
           actions={[
             {
               text: "Accessibility",
-              icon: (
-                <FontAwesome
-                  name={buttonIcon}
-                  size={24}
-                  color={Colors.primaryColor}
-                />
-              ),
+              icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
               name: "hourGlass",
               position: 1
             }
           ]}
-          color={"#FFFFFF"}
+          color={Colors.primaryColor}
           showBackground={true}
           overrideWithAction={true}
           onPressItem={() => {
