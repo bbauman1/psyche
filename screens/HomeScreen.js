@@ -16,12 +16,14 @@ import {
   CountDownClockVertical
 } from "../components/Clocks";
 import { Ionicons } from "@expo/vector-icons";
-import { ImagePicker } from "expo";
+import { ImagePicker, WebBrowser } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
-import { PsycheText, MonoText } from "../components/StyledText";
+import { PsycheText } from "../components/StyledText";
+import { connectActionSheet } from '@expo/react-native-action-sheet';
 
+@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -35,10 +37,12 @@ export default class HomeScreen extends React.Component {
     return {
       title: "Countdown",
       headerRight: (
-        <Image
-          source={require("../assets/images/meatball.png")}
-          style={{ width: 48, height: 48, marginRight: 18 }}
-        />
+        <TouchableOpacity onPress={() => params.handleRightHeader()}>
+          <Image
+            source={require("../assets/images/meatball.png")}
+            style={{ width: 48, height: 48, marginRight: 18 }}
+          />
+        </TouchableOpacity>
       ),
       headerLeft: (
         <Ionicons
@@ -54,7 +58,8 @@ export default class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.navigation.setParams({
-      handleLeftHeader: this._pickImage.bind(this)
+      handleLeftHeader: this._pickImage.bind(this),
+      handleRightHeader: this._openActionSheet.bind(this)
     });
 
     setInterval(
@@ -87,6 +92,28 @@ export default class HomeScreen extends React.Component {
     }
   };
 
+  _openActionSheet = () => {
+    const options = ['NASA Website', 'Psyche Website', 'Cancel'];
+    const cancelButtonIndex = 2;
+
+    this.props.showActionSheetWithOptions({
+      options,
+      cancelButtonIndex
+    },
+      (buttonIndex) => {
+        switch (buttonIndex) {
+          case 0:
+            WebBrowser.openBrowserAsync('https://www.nasa.gov/');
+            break;
+          case 1:
+            WebBrowser.openBrowserAsync('https://psyche.asu.edu/');
+            break;
+          default:
+            break;
+        }
+      });
+  }
+
   render() {
     let countdown = this.state.countdown ? this.state.countdown : {};
     let horizontalCountdown = this.state.horizontalCountdown;
@@ -108,7 +135,9 @@ export default class HomeScreen extends React.Component {
             this.setState({ horizontalCountdown: !horizontalCountdown });
           }}
         >
-          <PsycheText style={{ color: "#fff" }}>4 Years Until Launch</PsycheText>
+          <PsycheText style={{ color: "#fff" }}>
+            4 Years Until Launch
+          </PsycheText>
         </TouchableOpacity>
         {!horizontalCountdown && (
           <CountDownClockVertical countDownDate={Dates.launch} />

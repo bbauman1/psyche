@@ -90,7 +90,14 @@ export default TabNavigator(
         backgroundColor: "#fff",
       },
       labelStyle: {
-
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
       },
       activeTintColor: Colors.primaryColor,
     }

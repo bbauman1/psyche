@@ -87,7 +87,7 @@ export default class FactsScreen extends React.Component {
           }
         ]
         return (
-          <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={{ uri: 'https://image.ibb.co/iZJwEc/mission_background.png' }}>
+          <ImageBackground style={{ flex: 1, width: '100%', height: '100%' }} source={{ uri: 'https://image.ibb.co/mXxuxH/ssl_208_004.png' }}>
             <ScrollView>
               <AccordionView content={sections} />
             </ScrollView>
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(48,33,68)',
   },
   indicator: {
-    backgroundColor: 'rgb(250,160,0)',
+    backgroundColor: 'rgb(255,255,255)',
   },
   headerContainer: {
     flex: 1,
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
   },
   textHeaderSetup: {
     fontSize: 17,
-    fontWeight: '400',
+    fontWeight: 'bold',
     height: 55,
     paddingLeft: 10,
     paddingRight: 25,
@@ -264,6 +264,7 @@ const styles = StyleSheet.create({
   },
   textContentSetup: {
     fontSize: 15,
+    fontWeight: 'bold',
     paddingLeft: 52,
     paddingRight: 20,
     paddingBottom: 20,
