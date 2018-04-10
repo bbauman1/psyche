@@ -48,7 +48,6 @@ export default class FactsScreen extends React.Component {
             title: "What is Psyche?",
             content:
               "The name of an asteroid orbiting the Sun between Mars and Jupiter. Also it is a name of a NASA space mission to visit that asteroid, led by ASU.",
-            icon: "minus-circle"
           },
           {
             title:
