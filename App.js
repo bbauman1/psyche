@@ -32,7 +32,9 @@ export default class App extends React.Component {
     return Promise.all([
       Asset.loadAsync([
         require('./assets/images/psyche-icon.png'),
-        require('./assets/images/meatball.png')
+        require('./assets/images/meatball.png'),
+        require('./assets/images/badge-solid.png'),
+        require('./assets/images/white-launch-filter.png')
       ]),
       Font.loadAsync({
         ...Ionicons.font,

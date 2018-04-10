@@ -2,12 +2,39 @@ import React from "react";
 import { View, Button, Image, StyleSheet, CameraRoll, TouchableOpacity } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { ImagePicker, takeSnapshotAsync } from "expo";
-import Colors from "../constants/Colors";
+import { Colors } from "../constants/Colors";
 import { PsycheText } from "../components/StyledText";
+
+const filterData = [
+  {
+    path: require("../assets/images/badge-solid.png"),
+    style: {
+      height: 128,
+      width: 128,
+    }
+  },
+  {
+    path: require("../assets/images/meatball.png"),
+    style: {
+      height: 128,
+      width: 128,
+    }
+  },
+  {
+    path: require("../assets/images/white-launch-filter.png"),
+    style: {
+      height: 128,
+      width: 344,
+    }
+  }
+];
 
 export default class CameraScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      filterIndex: 0
+    }
   }
 
   static navigationOptions = {
@@ -17,6 +44,9 @@ export default class CameraScreen extends React.Component {
   render() {
     const { params } = this.props.navigation.state;
     const image = params ? params.image : null;
+    const filterIndex = this.state.filterIndex;
+
+    const filterDetail = filterData[filterIndex];
 
     return (
       <View style={{ flex: 1 }}>
@@ -35,30 +65,39 @@ export default class CameraScreen extends React.Component {
             style={styles.backgroundImage}
           />
           <Image
-            source={require("../assets/images/badge-solid.png")}
-            style={{
-              marginLeft: 9,
-              marginBottom: 9,
-              height: 128,
-              width: 128,
-              alignSelf: "flex-start"
-            }}
+            source={filterDetail.path}
+            style={[styles.filter, filterDetail.style]}
           />
         </View>
         <View style={styles.blurredView}>
           <TouchableOpacity
             style={[styles.roundedButton, { marginLeft: 10 }]}
             onPress={() => this.props.navigation.goBack()}>
-            <PsycheText style={{ color: "#fff" }}> Cancel </PsycheText>
+            <PsycheText style={{ color: "#000" }}> Cancel </PsycheText>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.roundedButton, { marginLeft: 10, marginRight: 10 }]}
+            onPress={() => this._setFilterIndex()}>
+            <PsycheText style={{ color: "#000" }}> Change Filter </PsycheText>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.roundedButton, { marginRight: 10 }]}
             onPress={() => this._saveImage()}>
-            <PsycheText style={{ color: "#fff" }}> Save </PsycheText>
+            <PsycheText style={{ color: "#000" }}> Save </PsycheText>
           </TouchableOpacity>
         </View>
       </View>
     );
+  }
+
+  _setFilterIndex = () => {
+    this.setState((prevState) => {
+      let newIndex = prevState.filterIndex + 1;
+      if (newIndex == filterData.length) {
+        newIndex = 0;
+      }
+      return { filterIndex: newIndex };
+    })
   }
 
   _saveImage = async () => {
@@ -69,21 +108,6 @@ export default class CameraScreen extends React.Component {
 
     let saveResult = await CameraRoll.saveToCameraRoll(result, "photo");
     this.props.navigation.goBack();
-  };
-
-  _pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: false,
-      aspect: [4, 3]
-    });
-
-    console.log(result);
-
-    if (!result.cancelled) {
-      this.setState({ image: result.uri });
-    } else {
-      this.props.navigation.goBack();
-    }
   };
 }
 
@@ -105,7 +129,7 @@ const styles = StyleSheet.create({
   roundedButton: {
     borderRadius: 30,
     padding: 10,
-    backgroundColor: Colors.psycheCoral,
+    backgroundColor: "#fff",
     alignItems: 'center'
   },
   backgroundImage: {
@@ -117,5 +141,12 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     alignSelf: "stretch"
+  },
+  filter: {
+    marginLeft: 9,
+    marginBottom: 9,
+    height: 128,
+    width: 336,
+    alignSelf: "flex-start"
   }
 });
