@@ -15,14 +15,14 @@ import {
   CountDownClockHorizontal,
   CountDownClockVertical
 } from "../components/Clocks";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { ImagePicker, WebBrowser } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
-import { FloatingAction } from 'react-native-floating-action';
+import { FloatingAction } from "react-native-floating-action";
 import { PsycheText } from "../components/StyledText";
-import { connectActionSheet } from '@expo/react-native-action-sheet';
+import { connectActionSheet } from "@expo/react-native-action-sheet";
 
 @connectActionSheet
 export default class HomeScreen extends React.Component {
@@ -92,30 +92,35 @@ export default class HomeScreen extends React.Component {
   };
 
   _openActionSheet = () => {
-    const options = ['NASA Website', 'Psyche Website', 'Cancel'];
+    const options = ["NASA Website", "Psyche Website", "Cancel"];
     const cancelButtonIndex = 2;
 
-    this.props.showActionSheetWithOptions({
-      options,
-      cancelButtonIndex
-    },
-      (buttonIndex) => {
+    this.props.showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex
+      },
+      buttonIndex => {
         switch (buttonIndex) {
           case 0:
-            WebBrowser.openBrowserAsync('https://www.nasa.gov/');
+            WebBrowser.openBrowserAsync("https://www.nasa.gov/");
             break;
           case 1:
-            WebBrowser.openBrowserAsync('https://psyche.asu.edu/');
+            WebBrowser.openBrowserAsync("https://psyche.asu.edu/");
             break;
           default:
             break;
         }
-      });
-  }
+      }
+    );
+  };
 
   render() {
     const countdown = this.state.countdown ? this.state.countdown : {};
     const horizontalCountdown = this.state.horizontalCountdown;
+    const buttonIcon = this.state.horizontalCountdown
+      ? "hourglass-3"
+      : "hourglass-1";
 
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
@@ -149,10 +154,24 @@ export default class HomeScreen extends React.Component {
           </Grid>
         )}
         <FloatingAction
-          actions={[]}
-          color={Colors.primaryColor}
-          showBackground={false}
-          onPressMain={() => {
+          actions={[
+            {
+              text: "Accessibility",
+              icon: (
+                <FontAwesome
+                  name={buttonIcon}
+                  size={24}
+                  color={Colors.primaryColor}
+                />
+              ),
+              name: "hourGlass",
+              position: 1
+            }
+          ]}
+          color={"#FFFFFF"}
+          showBackground={true}
+          overrideWithAction={true}
+          onPressItem={() => {
             this.setState({ horizontalCountdown: !horizontalCountdown });
           }}
         />
