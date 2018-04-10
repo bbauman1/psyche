@@ -4,49 +4,27 @@ import { StackNavigator } from "react-navigation";
 import { ImagePicker, takeSnapshotAsync } from "expo";
 import { Colors } from "../constants/Colors";
 import { PsycheText } from "../components/StyledText";
-import { Dimensions } from "react-native";
-
-const screenWidth = Dimensions.get("window").width;
 
 const filterData = [
   {
     path: require("../assets/images/badge-solid.png"),
     style: {
-      marginLeft: 9,
-      marginBottom: 9,
       height: 128,
       width: 128,
-      alignSelf: "flex-start"
     }
   },
   {
     path: require("../assets/images/meatball.png"),
     style: {
-      marginLeft: 9,
-      marginBottom: 9,
       height: 128,
       width: 128,
-      alignSelf: "flex-start"
     }
   },
   {
-    path: require("../assets/images/psyche-icon.png"),
+    path: require("../assets/images/white-launch-filter.png"),
     style: {
-      marginLeft: 9,
-      marginBottom: 9,
       height: 128,
-      width: 128,
-      alignSelf: "flex-start"
-    }
-  },
-  {
-    path: require("../assets/images/filter.png"),
-    style: {
-      marginLeft: 9,
-      marginBottom: 9,
-      height: 128,
-      width: 336,
-      alignSelf: "flex-start"
+      width: 344,
     }
   }
 ];
@@ -62,8 +40,6 @@ export default class CameraScreen extends React.Component {
   static navigationOptions = {
     header: null
   };
-
-
 
   render() {
     const { params } = this.props.navigation.state;
@@ -90,7 +66,7 @@ export default class CameraScreen extends React.Component {
           />
           <Image
             source={filterDetail.path}
-            style={filterDetail.style}
+            style={[styles.filter, filterDetail.style]}
           />
         </View>
         <View style={styles.blurredView}>
@@ -165,5 +141,12 @@ const styles = StyleSheet.create({
     width: undefined,
     height: undefined,
     alignSelf: "stretch"
+  },
+  filter: {
+    marginLeft: 9,
+    marginBottom: 9,
+    height: 128,
+    width: 336,
+    alignSelf: "flex-start"
   }
 });
