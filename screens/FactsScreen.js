@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(48,33,68)',
   },
   indicator: {
-    backgroundColor: 'rgb(250,160,0)',
+    backgroundColor: 'rgb(255,255,255)',
   },
   headerContainer: {
     flex: 1,
