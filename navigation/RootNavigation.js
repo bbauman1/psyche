@@ -77,7 +77,7 @@ export default class RootNavigator extends React.Component {
   _checkOnboarding = async () => {
     try {
       // returns null if item not found
-      let done = await AsyncStorage.getItem("@Pysche:Onboarding123:Done");
+      let done = await AsyncStorage.getItem("@Pysche:Onboarding:Done");
       if (done !== null) {
         return true;
       }
@@ -105,7 +105,14 @@ export default class RootNavigator extends React.Component {
             {
               backgroundColor: "#f06359",
               image: (
-                <Image source={require("../assets/images/meet-psyche.png")} />
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    height: 120,
+                    width: 120
+                  }}
+                  source={require("../assets/images/psyche-icon.png")}
+                />
               ),
               title: "Meet Psyche",
               subtitle:
