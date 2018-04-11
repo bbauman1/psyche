@@ -64,13 +64,13 @@ export default class RootNavigator extends React.Component {
       onboardingDone: null
     };
   }
-  _onboardingCallback = async () => {
+  _onDoneCallback = async () => {
     try {
       await AsyncStorage.setItem("@Pysche:Onboarding:Done", "done");
-      this.setState({ onboardingDone: true });
     } catch (error) {
       console.log(error);
     }
+    this.setState({ onboardingDone: true });
   };
 
   _checkOnboarding = async () => {
@@ -98,7 +98,7 @@ export default class RootNavigator extends React.Component {
     if (!this.state.onboardingDone) {
       return (
         <Onboarding
-          onDone={this._onboardingCallback}
+          onDone={this._onDoneCallback}
           showSkip={false}
           pages={[
             {
