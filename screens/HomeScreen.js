@@ -15,13 +15,16 @@ import {
   CountDownClockHorizontal,
   CountDownClockVertical
 } from "../components/Clocks";
-import { Ionicons } from "@expo/vector-icons";
-import { ImagePicker } from "expo";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { ImagePicker, WebBrowser } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
-import { PsycheText, MonoText } from "../components/StyledText";
+import { FloatingAction } from "react-native-floating-action";
+import { PsycheText } from "../components/StyledText";
+import { connectActionSheet } from "@expo/react-native-action-sheet";
 
+@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -35,10 +38,12 @@ export default class HomeScreen extends React.Component {
     return {
       title: "Countdown",
       headerRight: (
-        <Image
-          source={require("../assets/images/meatball.png")}
-          style={{ width: 48, height: 48, marginRight: 18 }}
-        />
+        <TouchableOpacity onPress={() => params.handleRightHeader()}>
+          <Image
+            source={require("../assets/images/meatball.png")}
+            style={{ width: 48, height: 48, marginRight: 18 }}
+          />
+        </TouchableOpacity>
       ),
       headerLeft: (
         <Ionicons
@@ -54,7 +59,8 @@ export default class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.navigation.setParams({
-      handleLeftHeader: this._pickImage.bind(this)
+      handleLeftHeader: this._pickImage.bind(this),
+      handleRightHeader: this._openActionSheet.bind(this)
     });
 
     setInterval(
@@ -78,8 +84,6 @@ export default class HomeScreen extends React.Component {
       aspect: [4, 3]
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       this.props.navigation.navigate("Modal", {
         image: result.uri
@@ -87,29 +91,42 @@ export default class HomeScreen extends React.Component {
     }
   };
 
+  _openActionSheet = () => {
+    const options = ["NASA Website", "Psyche Website", "Cancel"];
+    const cancelButtonIndex = 2;
+
+    this.props.showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex
+      },
+      buttonIndex => {
+        switch (buttonIndex) {
+          case 0:
+            WebBrowser.openBrowserAsync("https://www.nasa.gov/");
+            break;
+          case 1:
+            WebBrowser.openBrowserAsync("https://psyche.asu.edu/");
+            break;
+          default:
+            break;
+        }
+      }
+    );
+  };
+
   render() {
-    let countdown = this.state.countdown ? this.state.countdown : {};
-    let horizontalCountdown = this.state.horizontalCountdown;
-    /**
-     *  In the future this file will have the preloading/caching for images
-     *  and assets since it is the home screen. That'll most likely make this
-     *  code irrelevant since the splash screen will be displayed, but good
-     *  to have incase the loading is finished before the countdown is ready.
-     **/
+    const countdown = this.state.countdown ? this.state.countdown : {};
+    const horizontalCountdown = this.state.horizontalCountdown;
+    const buttonIcon = this.state.horizontalCountdown
+      ? "hourglass-3"
+      : "hourglass-1";
 
     if (!this.state.countdown) {
       return <View style={styles.loading} />;
     }
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.timelineButton}
-          onPress={() => {
-            this.setState({ horizontalCountdown: !horizontalCountdown });
-          }}
-        >
-          <PsycheText style={{ color: "#fff" }}>4 Years Until Launch</PsycheText>
-        </TouchableOpacity>
         {!horizontalCountdown && (
           <CountDownClockVertical countDownDate={Dates.launch} />
         )}
@@ -133,8 +150,25 @@ export default class HomeScreen extends React.Component {
                 countDownDate={Dates.arrival}
               />
             </Row>
+            <Row size={10} />
           </Grid>
         )}
+        <FloatingAction
+          actions={[
+            {
+              text: "Accessibility",
+              icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+              name: "hourGlass",
+              position: 1
+            }
+          ]}
+          color={Colors.primaryColor}
+          showBackground={true}
+          overrideWithAction={true}
+          onPressItem={() => {
+            this.setState({ horizontalCountdown: !horizontalCountdown });
+          }}
+        />
       </View>
     );
   }
@@ -148,21 +182,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  timelineButton: {
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: 3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: Colors.primaryColor,
-    paddingVertical: 20
   }
 });

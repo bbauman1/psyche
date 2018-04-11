@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Ionicons } from "@expo/vector-icons";
-import { MonoText } from "../components/StyledText";
+import { PsycheText } from "../components/StyledText";
 import { ImagePicker } from "expo";
 import countdown from "../util/countdown";
 import Colors from "../constants/Colors";
@@ -57,46 +57,58 @@ export class CountDownClockVertical extends BaseClock {
         <Col size={4} />
         <Col size={2}>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.years}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}> Y</MonoText>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
+              {" "}
+              Y
+            </PsycheText>
           </Row>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.months}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}> M</MonoText>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
+              {" "}
+              M
+            </PsycheText>
           </Row>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.days}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}> D</MonoText>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
+              {" "}
+              D
+            </PsycheText>
           </Row>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.hours}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}> H</MonoText>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
+              {" "}
+              H
+            </PsycheText>
           </Row>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.minutes}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
               {" "}
               Min
-            </MonoText>
+            </PsycheText>
           </Row>
           <Row style={styles.countDownRow}>
-            <MonoText style={styles.countDownTextVertical}>
+            <PsycheText style={styles.countDownTextVertical}>
               {countdown.seconds}
-            </MonoText>
-            <MonoText style={styles.countdownTextDurationVertical}>
+            </PsycheText>
+            <PsycheText style={styles.countdownTextDurationVertical}>
               {" "}
               Sec
-            </MonoText>
+            </PsycheText>
           </Row>
         </Col>
         <Col size={4} />
@@ -114,63 +126,65 @@ export class CountDownClockHorizontal extends BaseClock {
     return (
       <View style={styles.container}>
         <Grid>
-          <Row size={25}>
-            <MonoText style={styles.title}>{this.state.clockTitle}</MonoText>
+          <Row size={20}>
+            <PsycheText style={styles.countDownTitle}>
+              {this.state.clockTitle}
+            </PsycheText>
           </Row>
           <Row size={25}>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.years}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Years
-              </MonoText>
+              </PsycheText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.months}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Months
-              </MonoText>
+              </PsycheText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.days}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Days
-              </MonoText>
+              </PsycheText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.hours}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Hours
-              </MonoText>
+              </PsycheText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.minutes}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Minutes
-              </MonoText>
+              </PsycheText>
             </Col>
             <Col style={styles.countDownCol}>
-              <MonoText style={styles.countdownTextHorizontal}>
+              <PsycheText style={styles.countdownTextHorizontal}>
                 {countdown.seconds}
-              </MonoText>
-              <MonoText style={styles.countdownTextDurationHorizontal}>
+              </PsycheText>
+              <PsycheText style={styles.countdownTextDurationHorizontal}>
                 {" "}
                 Seconds
-              </MonoText>
+              </PsycheText>
             </Col>
           </Row>
           <Row size={25} />
@@ -182,7 +196,9 @@ export class CountDownClockHorizontal extends BaseClock {
 
 const styles = StyleSheet.create({
   countDownTitle: {
-    justifyContent: "center",
+    textAlign: "center",
+    fontWeight: "bold",
+    width: "100%",
     color: Colors.primaryColor,
     fontSize: 16
   },
@@ -222,9 +238,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  title: {
-    textAlign: "center",
-    width: "100%"
   }
 });
