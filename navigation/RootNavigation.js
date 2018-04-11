@@ -4,6 +4,7 @@ import { StackNavigator } from "react-navigation";
 import { Platform, Image, AsyncStorage, View } from "react-native";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import Onboarding from "react-native-onboarding-swiper";
+import { Ionicons } from "@expo/vector-icons";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
@@ -76,7 +77,7 @@ export default class RootNavigator extends React.Component {
   _checkOnboarding = async () => {
     try {
       // returns null if item not found
-      let done = await AsyncStorage.getItem("@Pysche:Onboarding:Done");
+      let done = await AsyncStorage.getItem("@Pysche:Onboarding123:Done");
       if (done !== null) {
         return true;
       }
@@ -113,7 +114,11 @@ export default class RootNavigator extends React.Component {
             {
               backgroundColor: "#a4405c",
               image: (
-                <Image source={require("../assets/images/countdown.png")} />
+                <Ionicons
+                  name={"ios-clock-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
               ),
               title: "Learn And Stay Informed",
               subtitle:
@@ -122,7 +127,11 @@ export default class RootNavigator extends React.Component {
             {
               backgroundColor: "#7e3255",
               image: (
-                <Image source={require("../assets/images/stayinformed.png")} />
+                <Ionicons
+                  name={"ios-information-circle-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
               ),
               title: "Countdown With Us",
               subtitle:
@@ -130,7 +139,13 @@ export default class RootNavigator extends React.Component {
             },
             {
               backgroundColor: "#342248",
-              image: <Image source={require("../assets/images/camera.png")} />,
+              image: (
+                <Ionicons
+                  name={"ios-camera-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
+              ),
               title: "Picture This",
               subtitle:
                 "Apply exclusive Psyche filters to your favorite images and share them with your friends."
