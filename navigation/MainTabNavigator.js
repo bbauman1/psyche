@@ -37,10 +37,15 @@ export default TabNavigator(
         let iconName;
         switch (routeName) {
           case "Facts":
-            iconName =
-              Platform.OS === "ios"
-                ? `ios-information-circle${focused ? "" : "-outline"}`
-                : "md-information-circle";
+            return (
+              <Image
+                source={require("../assets/images/info.png")}
+                style={{ height: 32, width: 32, resizeMode: "contain" }} />
+            );
+            // iconName =
+            //   Platform.OS === "ios"
+            //     ? `ios-information-circle${focused ? "" : "-outline"}`
+            //     : "md-information-circle";
             break;
           case "Timeline":
             iconName =
