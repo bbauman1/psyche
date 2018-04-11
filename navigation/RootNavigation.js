@@ -94,11 +94,6 @@ export default class RootNavigator extends React.Component {
   };
 
   render() {
-    // mount view to call async function to determine
-    // to show onBoarding or not
-    if (this.state.onboardingDone === null) {
-      return <View />;
-    }
     if (!this.state.onboardingDone) {
       return (
         <Onboarding
