@@ -65,11 +65,11 @@ class Timeline extends React.Component {
               <PsycheText style={styles.dateText}>
                 {PHASES.PHASE_B.date}
               </PsycheText>
-              <Radar style={styles.circle} />
-              {/* <View style={styles.circle} /> */}
+              <View style={styles.circle} />
               <PsycheText style={styles.titleText}>
                 {PHASES.PHASE_B.title}
               </PsycheText>
+              <Radar style={styles.circle} />
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"

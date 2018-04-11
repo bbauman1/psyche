@@ -21,8 +21,8 @@ export class Radar extends React.Component {
               this.animation = animation;
             }}
             style={{
-              width: 30,
-              height: 30
+              width: 50,
+              height: 50
             }}
             source={this.state.animation}
           />
@@ -54,9 +54,8 @@ export class Radar extends React.Component {
 
 const styles = StyleSheet.create({
   animationContainer: {
-    left: "30%",
+    left: "75%",
     flex: 1,
-    position: "absolute",
-    backgroundColor: "white"
+    position: "absolute"
   }
 });
