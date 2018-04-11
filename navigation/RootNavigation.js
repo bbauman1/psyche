@@ -127,7 +127,7 @@ export default class RootNavigator extends React.Component {
                   color={"#fff"}
                 />
               ),
-              title: "Learn And Stay Informed",
+              title: "Countdown With Us",
               subtitle:
                 "The mission is set to takeoff in 2022 and we are counting all the big milestones of the mission."
             },
@@ -140,9 +140,9 @@ export default class RootNavigator extends React.Component {
                   color={"#fff"}
                 />
               ),
-              title: "Countdown With Us",
+              title: "Learn And Stay Informed",
               subtitle:
-                "The Psyche app will teach you everything you need to know about the mission, the astroid, and the spacecraft through facts, a timeline and social media."
+                "This app will teach you everything you need to know about the Psyche mission through facts, social media and timeline."
             },
             {
               backgroundColor: "#342248",
