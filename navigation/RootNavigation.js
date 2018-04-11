@@ -89,14 +89,23 @@ export default class RootNavigator extends React.Component {
     }
   };
 
-  componentDidMount = async () => {
-    // checks to show onBoarding screen
-    let onboardingDone = await this._checkOnboarding();
-    this.setState({ onboardingDone: onboardingDone });
+  componentDidMount() {
+    AsyncStorage.getItem("onboardingDone").then(value => {
+      if (value == null) {
+        AsyncStorage.setItem("alreadyLaunched", true);
+        this.setState({ onboardingDone: true });
+      }
+      else {
+        this.setState({ onboardingDone: false });
+      }
+    });
   };
 
   render() {
-    if (!this.state.onboardingDone) {
+    if (this.state.onboardingDone === null) {
+      return null;
+    }
+    else if (!this.state.onboardingDone) {
       return (
         <Onboarding
           onDone={this._onDoneCallback}
@@ -161,10 +170,12 @@ export default class RootNavigator extends React.Component {
         />
       );
     }
-    return (
-      <ActionSheetProvider>
-        <RootStackNavigator />
-      </ActionSheetProvider>
-    );
+    else {
+      return (
+        <ActionSheetProvider>
+          <RootStackNavigator />
+        </ActionSheetProvider>
+      );
+    }
   }
 }
