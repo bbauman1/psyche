@@ -83,6 +83,7 @@ export default class RootNavigator extends React.Component {
       return false;
     } catch (error) {
       console.log(error);
+      // if error default to not showing onBoarding screen
       return true;
     }
   };
