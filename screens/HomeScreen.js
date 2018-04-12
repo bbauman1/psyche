@@ -7,7 +7,8 @@ import {
   StatusBar,
   Image,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Row, Grid } from "react-native-easy-grid";
@@ -23,13 +24,15 @@ import Colors from "../constants/Colors";
 import { FloatingAction } from "react-native-floating-action";
 import { PsycheText } from "../components/StyledText";
 import { connectActionSheet } from "@expo/react-native-action-sheet";
+import Onboarding from "react-native-onboarding-swiper";
 
 @connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      horizontalCountdown: false
+      horizontalCountdown: false,
+      onboardingDone: null
     };
   }
 
@@ -46,13 +49,12 @@ export default class HomeScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerLeft: (
-        <Ionicons
-          name={"ios-camera-outline"}
-          size={32}
-          color={"#fff"}
-          style={{ marginLeft: 18 }}
-          onPress={() => params.handleLeftHeader()}
-        />
+        <TouchableOpacity onPress={() => params.handleLeftHeader()}>
+          <Image
+            source={require("../assets/images/photo-album.png")}
+            style={{ width: 32, height: 26, marginLeft: 18 }}
+          />
+        </TouchableOpacity>
       )
     };
   };
@@ -72,6 +74,14 @@ export default class HomeScreen extends React.Component {
         }),
       1000
     );
+
+    AsyncStorage.getItem("@Pysche:firstLaunch").then(value => {
+      if (value === null) {
+        AsyncStorage.setItem("@Pysche:firstLaunch", "true");
+        this.props.navigation.navigate("Onboarding");
+      }
+      this.setState({ onboardingDone: true });
+    });
   }
 
   _get_current_countdown() {
@@ -116,61 +126,62 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    const countdown = this.state.countdown ? this.state.countdown : {};
     const horizontalCountdown = this.state.horizontalCountdown;
     const buttonIcon = this.state.horizontalCountdown
       ? "hourglass-3"
       : "hourglass-1";
 
-    if (!this.state.countdown) {
+    if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
     }
-    return (
-      <View style={styles.container}>
-        {!horizontalCountdown && (
-          <CountDownClockVertical countDownDate={Dates.launch} />
-        )}
-        {horizontalCountdown && (
-          <Grid>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Launch"
-                countDownDate={Dates.launch}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Mars Encounter"
-                countDownDate={Dates.mars}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="16 Psyche Arrival"
-                countDownDate={Dates.arrival}
-              />
-            </Row>
-            <Row size={10} />
-          </Grid>
-        )}
-        <FloatingAction
-          actions={[
-            {
-              text: "Accessibility",
-              icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
-              name: "hourGlass",
-              position: 1
-            }
-          ]}
-          color={Colors.primaryColor}
-          showBackground={true}
-          overrideWithAction={true}
-          onPressItem={() => {
-            this.setState({ horizontalCountdown: !horizontalCountdown });
-          }}
-        />
-      </View>
-    );
+    else {
+      return (
+        <View style={styles.container}>
+          {!horizontalCountdown && (
+            <CountDownClockVertical countDownDate={Dates.launch} />
+          )}
+          {horizontalCountdown && (
+            <Grid>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Launch"
+                  countDownDate={Dates.launch}
+                />
+              </Row>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Mars Encounter"
+                  countDownDate={Dates.mars}
+                />
+              </Row>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="16 Psyche Arrival"
+                  countDownDate={Dates.arrival}
+                />
+              </Row>
+              <Row size={10} />
+            </Grid>
+          )}
+          <FloatingAction
+            actions={[
+              {
+                text: "Accessibility",
+                icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+                name: "hourGlass",
+                position: 1
+              }
+            ]}
+            color={Colors.primaryColor}
+            showBackground={true}
+            overrideWithAction={true}
+            onPressItem={() => {
+              this.setState({ horizontalCountdown: !horizontalCountdown });
+            }}
+          />
+        </View>
+      );
+    }
   }
 }
 

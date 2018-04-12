@@ -2,12 +2,12 @@ import { Notifications } from "expo";
 import React from "react";
 import { StackNavigator } from "react-navigation";
 import { Platform } from "react-native";
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
-
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
-import Colors from "../constants/Colors.js"
+import OnboardingScreen from "../screens/OnboardingScreen";
+import Colors from "../constants/Colors.js";
 
 const RootStackNavigator = StackNavigator(
   {
@@ -16,10 +16,13 @@ const RootStackNavigator = StackNavigator(
     },
     Modal: {
       screen: CameraScreen
+    },
+    Onboarding: {
+      screen: OnboardingScreen
     }
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: "Main",
     navigationOptions: () => ({
       headerTitleStyle: {
         fontWeight: "normal",
@@ -32,10 +35,10 @@ const RootStackNavigator = StackNavigator(
           }
         })
       },
-      headerTintColor: '#fff',
+      headerTintColor: "#fff",
       headerStyle: {
         backgroundColor: Colors.primaryColor,
-        borderBottomColor: 'transparent',
+        borderBottomColor: "transparent"
       }
     })
   },
@@ -54,13 +57,25 @@ const RootStackNavigator = StackNavigator(
         })
       }
     })
+  },
+  {
+    mode: "modal"
   }
 );
 
 export default class RootNavigator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      onboardingDone: null
+    };
+  }
+
   render() {
-    return <ActionSheetProvider>
-      <RootStackNavigator />
-    </ActionSheetProvider>
+    return (
+      <ActionSheetProvider>
+        <RootStackNavigator />
+      </ActionSheetProvider>
+    );
   }
 }

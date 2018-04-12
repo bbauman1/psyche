@@ -47,60 +47,59 @@ export default class FactsScreen extends React.Component {
           {
             title: "What is Psyche?",
             content:
-              "The name of an asteroid orbiting the Sun between Mars and Jupiter. Also it is a name of a NASA space mission to visit that asteroid, led by ASU.",
+              "Psyche is the name of an asteroid orbiting the Sun between Mars and Jupiter. It's also the name of a NASA space mission to visit that asteroid, led by ASU."
           },
           {
-            title:
-              "What is the different between this mission compare to the others?",
+            title: "How does this mission compare to other space missions?",
             content:
               "Psyche is the first mission to a world made of metal rather than rock or ice."
           },
           {
-            title: "When did NASA choose this mission?",
-            content: "The Psyche mission is chosen by NASA on January 4, 2017."
+            title: "When was the Psyche mission chosen by NASA?",
+            content: "The Psyche mission was chosen by NASA on January 4, 2017."
           },
           {
-            title: "What program did Psyche mission selected for?",
+            title: "The Pysche mission was selected by which NASA Program?",
             content:
               "Psyche is the 14th mission selected by NASA Discovery Program, a series of relatively low-cost missions to solar system targets."
           },
           {
-            title: "How much is the mission cost?",
+            title: "How much does the mission cost?",
             content:
-              "The mission cost is ~850 million included mission development, operations, and science, communication demonstration hardware or operations. \n\nThis did not include cost for the launch service, Deep Space Optical these are procured separately."
+              "The mission cost is ~850 million included mission development, operations, and science, communication demonstration hardware or operations. \n\nThis does not include cost for the launch service, Deep Space Optical these are procured separately."
           },
           {
-            title: "What is the goals for this mission?",
+            title: "What are the goals for this mission?",
             content:
               "The goals for this mission are to understand a previously unexplored building block of planet formation: iron cores. \n\nLook inside terrestrial planets, including Earth, by directly examining the interior of a differentiated body, which otherwise could not be seen. \n\nExplore a new type of world. For the first time, examine a world made not of rock and ice, but metal."
           },
           {
-            title: "What is the mission objectives?",
+            title: "What are the mission objectives?",
             content:
               "Determine whether Psyche is a core, or if it is un-melted material. \n\nDetermine the relative ages of regions of Psyche’s surface. \n\nDetermine whether small metal bodies incorporate the same light elements as are expected in the Earth’s high-pressure core. \n\nDetermine whether Psyche was formed under conditions more oxidizing or more reducing than Earth’s core. \n\nCharacterize Psyche’s morphology."
           },
           {
-            title: "Whose involved in this mission?",
+            title: "Who is involved in this mission?",
             content:
               "Principal Investigator (PI): Lindy Elkins-Tanton, Arizona State University (ASU). \n\nDeputy Principal Investigator (Deputy PI): Jim Bell, ASU."
           },
           {
-            title: "What is the responsible of Principle Investigator(PI)?",
+            title: "What is the responsibility of Principle Investigator(PI)?",
             content:
               "The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \n\nThe PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \n\nThe PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \n\nThe PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines."
           },
           {
-            title: "Whose are the Co-Investigators?",
+            title: "Who are the Co-Investigators?",
             content:
               "Erik Asphaug, University of Arizona. \n\nDavid Bercovici, Yale University. \n\nBruce Bills, Jet Propulsion Laboratory (JPL). \n\nRichard Binzel, Massachusetts Institute of Technology (MIT). \n\nWilliam Bottke, Southwest Research Institute (SwRI). \n\nCatherine Bowman, ASU. \n\nRalf Jaumann, Deutsches Zentrum für Luft- und Raumfahrt. \n\nInsoo Jun, JPL. \n\nDavid Lawrence, Johns Hopkins University, Applied Physics Laboratory (APL). \n\nSimone Marchi, SwRI. \n\nTimothy McCoy, Smithsonian Institution. \n\nRyan Park, JPL. \n\nPatrick Peplowski, APL. \n\nCarol Polansky, JPL. \n\nThomas Prettyman, Planetary Science Institute. \n\nCarol Raymond, JPL. \n\nChris Russell, University of California, Los Angeles. \n\nBenjamin Weiss, MIT. \n\nDan Wenkert, JPL. \n\nMark Wieczorek, Observatoire de la Côte d’Azur. \n\nDavid Williams, ASU. \n\nMaria Zuber, MIT."
           },
           {
-            title: "Whose are The Mission leadership?",
+            title: "Who makes up The Mission leadership?",
             content:
               "Diane Brown, Program Executive, NASA Headquarters (HQ). \n\nSarah Noble, Program Scientist, NASA HQ. \n\nBelinda Wright, Mission Manager, NASA Marshall Space Flight Center (MSFC). \n\nHenry Stone, Project Manager, JPL. \n\nRobert Mase, Deputy Project Manager and Acting Mission System Manager, JPL. \n\nBrian Johnson, Project Business Manager, JPL. \n\nDavid Oh, Project System Engineer, JPL. \n\nKalyani Sukhatme, Payload Manager, JPL. \n\nRob Menke, Mission Assurance Manager, JPL. \n\nMark Brown, Flight System Manager, JPL. \n\nSteve Schott, SEP Chassis Program Manager, SSL. \n\nPeter Lord, SEP Chassis Deputy Program Manager, SSL."
           },
           {
-            title: "Whose are Psyche Science Partners?",
+            title: "Who makes up the Psyche Science Partners?",
             content:
               "Applied Physics Laboratory (APL). \n\nDeutsches Zentrum für Luft- und Raumfahrt (DLR). \n\nGlenn Research Center (GRC). \n\nJet Propulsion Laboratory (JPL). \n\nMassachusetts Institute of Technology (MIT). \n\nMalin Space Science Systems (MSSS). \n\nObservatoire de la Côte d’Azur. \n\nPlanetary Science Institute (PSI). \n\nSmithsonian Institution. \n\nSouthwest Research Institute (SwRI). \n\nSSL. \n\nUniversity of Arizona. \n\nUniversity of California Los Angeles (UCLA). \n\nYale University."
           }
@@ -110,7 +109,7 @@ export default class FactsScreen extends React.Component {
             style={{ flex: 1, width: "100%", height: "100%" }}
             source={{ uri: "https://image.ibb.co/mXxuxH/ssl_208_004.png" }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -118,21 +117,22 @@ export default class FactsScreen extends React.Component {
       case "second":
         sections = [
           {
-            title: "What type of propulsion does spacecraft use?",
+            title: "What type of propulsion does the spacecraft use?",
             content: "Solar-electric (low-thrust) propulsion."
           },
           {
-            title: "What does solar-electric propulsion means?",
+            title: "What does solar-electric propulsion mean?",
             content:
               "Solar electric propulsion uses electricity from solar arrays to create electromagnetic fields to accelerate and expel charged atoms (ions) of xenon to create a very low thrust with a very efficient use of propellant."
           },
           {
-            title: "Have we ever use this before beyond lunar orbit?",
+            title:
+              "Have we ever used this technology before beyond lunar orbit?",
             content:
               "No, this will be the first use of Hall effect thrusters beyond lunar orbit."
           },
           {
-            title: "What type of gas is using in Psyche spacecraft?",
+            title: "What type of gas is the Psyche spacecraft using?",
             content: "The Psyche spacecraft is using Xenon."
           },
           {
@@ -156,11 +156,12 @@ export default class FactsScreen extends React.Component {
               "Provides high-resolution images using filters to discriminate between Psyche’s metallic and silicate constituents.\n\nConsists of a pair of identical cameras designed to acquire geologic, compositional, and topographic data.\n\nPurpose of the second camera is to provide redundancy for mission-critical optical navigation."
           },
           {
-            title: "Where does the Multispectral Imager team based?",
+            title: "Where is the Multispectral Imager team based?",
             content: "The team is based at Arizona State University."
           },
           {
-            title: "What is The Psyche’s Gamma Ray and Neutron Spectrometer?",
+            title:
+              "What functions will The Psyche’s Gamma Ray and Neutron Spectrometer possess?",
             content:
               "Will detect, measure, and map Psyche’s elemental composition.\n\nMounted on a 2-meter (6-foot) boom (“arm”) to:\n\nDistance the sensors from background radiation created by energetic particles interacting with the spacecraft; provide an unobstructed field of view."
           },
@@ -176,12 +177,12 @@ export default class FactsScreen extends React.Component {
               "Designed to detect and measure the remnant magnetic field of the asteroid.\n\nComposed of two identical high-sensitivity magnetic field sensors located at the middle and outer end of a 2-meter (6-foot) boom (“arm”)."
           },
           {
-            title: "Where does the Magnetometer team based?",
+            title: "Where is the Magnetometer team based?",
             content:
               "The team is based at Massachusetts Institute of Technology (MIT) and the University of California Los Angeles (UCLA)."
           },
           {
-            title: "What is The Psyche’s Radio Science?",
+            title: "What is Psyche’s Radio Science?",
             content:
               "The Psyche mission will use the X-band radio telecommunications system to measure Psyche’s gravity field to high precision.\n\nWhen combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche."
           },
@@ -196,7 +197,7 @@ export default class FactsScreen extends React.Component {
               "The Psyche mission will test a sophisticated new laser communication technology that encodes data in photons (rather than radio waves) to communicate between a probe in deep space and Earth.\n\nUsing light instead of radio allows the spacecraft to communicate more data in a given amount of time."
           },
           {
-            title: "Where does the DSOC team based?",
+            title: "Where is the DSOC team based?",
             content: "The DSOC team is based at the Jet Propulsion Laboratory."
           }
         ];
@@ -207,7 +208,7 @@ export default class FactsScreen extends React.Component {
               uri: "https://preview.ibb.co/gdgiuc/Spacecraft_background.png"
             }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -220,27 +221,28 @@ export default class FactsScreen extends React.Component {
               "Psyche was discovered in 1852, by Italian astronomer Annibale de Gasparis. \n\nAlso Psyche is the 16th asteroid to be discovered."
           },
           {
-            title: "How do we know?",
+            title: "How do we know about Psyche?",
             content:
               "Radar albedo (Radar albedo is the “ratio of a target’s radar cross section in a specified polarization to its projected area; hence, a measure of the target’s radar reflectivity”). \n\nThermal inertia (Thermal inertia “refers to the ability of a material to conduct and store heat, and in planetary science, its measure of the sub surface’s ability to store heat during the day and reradiate it during the night”)."
           },
           {
-            title: "Why is this asteroid important?",
+            title: "Why is Psyche important?",
             content:
               "Scientists believe Psyche is the exposed nickel-iron core of an early planet, one of the building blocks of our solar system. \n\nPsyche is most likely a survivor of multiple violent hit-and-run collisions, common when the solar system was forming. \n\nThe asteroid Psyche may be able to tell us how Earth’s core and the cores of the other terrestrial (rocky) planets came to be. (The terrestrial planets are Mercury, Venus, Earth, and Mars)."
           },
           {
-            title: "Where does Psyche located?",
+            title: "Where is Psyche located?",
             content:
               "Psyche lies in the main asteroid belt between Mars and Jupiter."
           },
           {
-            title: "What is the time different on Psyche compare to Earth?",
+            title: "What is the time difference on Psyche compare to Earth?",
             content:
               'A day on Psyche is about 4 hours and 12 minutes. \n\nThis is the sidereal rotation period, or the amount of time it takes for a (body) to completely spin around and make one full roration. \n\nYou could live through just under six "days" on Psyche in the same time as one day on Earth. \n\nA year on Psyche lasts about five Earth years (about 1828 Earth days).'
           },
           {
-            title: "What is the different between Psyche and Earth orbiting?",
+            title:
+              "What is the difference between Psyche's and Earth's orbiting?",
             content:
               "Psyche orbit the Sun at an average distance of 3 astronomical units (AU) (about 280 million miles); Earth orbits at 1 AU (about 93 million miles)."
           },
@@ -260,7 +262,7 @@ export default class FactsScreen extends React.Component {
               "As asteroids go, Psyche is relatively large and has an irregular shape: \n\n279 x 232 x 189 kilometers (173 x 144 x 117 miles). \n\nIf Psyche were a perfect sphere, it would have a diameter of 226 kilometers (140 miles): \n\nThat is about the length of the state of Massachusetts (leaving out Cape Cod); If it were in Arizona it would stretch between Phoenix and Flagstaff! \n\nA surface area of about 641,800 square kilometers (246,300 square miles), making it just smaller than the area of the state of Texas and quite a bit larger than the area of California."
           },
           {
-            title: 'Where is the name "Psyche" came from?',
+            title: 'Where did the name "Psyche" came from?',
             content:
               '"Psyche" is the named for the goddess of the soul in ancient Greek mythology.'
           }
@@ -272,7 +274,7 @@ export default class FactsScreen extends React.Component {
               uri: "https://image.ibb.co/dGcZ0H/Asteroid_Background.png"
             }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -307,8 +309,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(255,255,255)"
   },
   headerContainer: {
-    flex: 1,
-    backgroundColor: "rgba(255,255,255,0.8)"
+    flex: 1
   },
   textHeaderSetup: {
     fontSize: 17,
@@ -324,8 +325,7 @@ const styles = StyleSheet.create({
     paddingLeft: 52,
     paddingRight: 20,
     paddingBottom: 20,
-    color: "rgb(74,74,74)",
-    backgroundColor: "rgba(255,255,255,0.8)"
+    color: "rgb(74,74,74)"
   }
 });
 
@@ -360,6 +360,7 @@ class AccordionView extends React.Component {
         sections={this.props.content}
         renderHeader={this._renderHeader}
         renderContent={this._renderContent}
+        underlayColor={"transparent"}
       />
     );
   }
