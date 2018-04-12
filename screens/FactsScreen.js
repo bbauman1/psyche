@@ -109,7 +109,7 @@ export default class FactsScreen extends React.Component {
             style={{ flex: 1, width: "100%", height: "100%" }}
             source={{ uri: "https://image.ibb.co/mXxuxH/ssl_208_004.png" }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -208,7 +208,7 @@ export default class FactsScreen extends React.Component {
               uri: "https://preview.ibb.co/gdgiuc/Spacecraft_background.png"
             }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -274,7 +274,7 @@ export default class FactsScreen extends React.Component {
               uri: "https://image.ibb.co/dGcZ0H/Asteroid_Background.png"
             }}
           >
-            <ScrollView>
+            <ScrollView style={{ backgroundColor: "rgba(255,255,255,0.8)" }}>
               <AccordionView content={sections} />
             </ScrollView>
           </ImageBackground>
@@ -309,8 +309,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(255,255,255)"
   },
   headerContainer: {
-    flex: 1,
-    backgroundColor: "rgba(255,255,255,0.8)"
+    flex: 1
   },
   textHeaderSetup: {
     fontSize: 17,
@@ -326,8 +325,7 @@ const styles = StyleSheet.create({
     paddingLeft: 52,
     paddingRight: 20,
     paddingBottom: 20,
-    color: "rgb(74,74,74)",
-    backgroundColor: "rgba(255,255,255,0.8)"
+    color: "rgb(74,74,74)"
   }
 });
 
@@ -362,6 +360,7 @@ class AccordionView extends React.Component {
         sections={this.props.content}
         renderHeader={this._renderHeader}
         renderContent={this._renderContent}
+        underlayColor={"transparent"}
       />
     );
   }
