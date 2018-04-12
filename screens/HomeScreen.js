@@ -3,30 +3,37 @@ import {
   ScrollView,
   StyleSheet,
   View,
-  Text,
   Button,
   StatusBar,
   Image,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import { StackNavigator } from "react-navigation";
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { Row, Grid } from "react-native-easy-grid";
 import {
   CountDownClockHorizontal,
   CountDownClockVertical
 } from "../components/Clocks";
-import { MonoText } from "../components/StyledText";
-import { Ionicons } from "@expo/vector-icons";
-import { ImagePicker } from "expo";
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { ImagePicker, WebBrowser } from "expo";
 import countdown from "../util/countdown";
 import Dates from "../constants/Dates";
 import Colors from "../constants/Colors";
+import { FloatingAction } from "react-native-floating-action";
+import { PsycheText } from "../components/StyledText";
+import { connectActionSheet } from "@expo/react-native-action-sheet";
+import Onboarding from "react-native-onboarding-swiper";
 
+@connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countdown: this._get_current_countdown(), horizontalCountdown: false };
+    this.state = {
+      horizontalCountdown: false,
+      onboardingDone: null
+    };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -34,26 +41,28 @@ export default class HomeScreen extends React.Component {
     return {
       title: "Countdown",
       headerRight: (
-        <Image
-          source={require("../assets/images/meatball.png")}
-          style={{ width: 48, height: 48, marginRight: 18 }}
-        />
+        <TouchableOpacity onPress={() => params.handleRightHeader()}>
+          <Image
+            source={require("../assets/images/meatball.png")}
+            style={{ width: 48, height: 48, marginRight: 18 }}
+          />
+        </TouchableOpacity>
       ),
       headerLeft: (
-        <Ionicons
-          name={"ios-camera-outline"}
-          size={32}
-          color={"#fff"}
-          style={{ marginLeft: 18 }}
-          onPress={() => params.handleLeftHeader()}
-        />
+        <TouchableOpacity onPress={() => params.handleLeftHeader()}>
+          <Image
+            source={require("../assets/images/photo-album.png")}
+            style={{ width: 32, height: 26, marginLeft: 18 }}
+          />
+        </TouchableOpacity>
       )
     };
   };
 
   componentDidMount() {
     this.props.navigation.setParams({
-      handleLeftHeader: this._pickImage.bind(this)
+      handleLeftHeader: this._pickImage.bind(this),
+      handleRightHeader: this._openActionSheet.bind(this)
     });
 
     setInterval(
@@ -65,6 +74,14 @@ export default class HomeScreen extends React.Component {
         }),
       1000
     );
+
+    AsyncStorage.getItem("@Pysche:firstLaunch").then(value => {
+      if (value === null) {
+        AsyncStorage.setItem("@Pysche:firstLaunch", "true");
+        this.props.navigation.navigate("Onboarding");
+      }
+      this.setState({ onboardingDone: true });
+    });
   }
 
   _get_current_countdown() {
@@ -77,8 +94,6 @@ export default class HomeScreen extends React.Component {
       aspect: [4, 3]
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       this.props.navigation.navigate("Modal", {
         image: result.uri
@@ -86,114 +101,91 @@ export default class HomeScreen extends React.Component {
     }
   };
 
-  render() {
-    let countdown = this.state.countdown ? this.state.countdown : {};
-    let horizontalCountdown = this.state.horizontalCountdown;
-    /**
-     *  In the future this file will have the preloading/caching for images
-     *  and assets since it is the home screen. That'll most likely make this
-     *  code irrelevant since the splash screen will be displayed, but good
-     *  to have incase the loading is finished before the countdown is ready.
-     **/
+  _openActionSheet = () => {
+    const options = ["NASA Website", "Psyche Website", "Cancel"];
+    const cancelButtonIndex = 2;
 
-    if (!this.state.countdown) {
+    this.props.showActionSheetWithOptions(
+      {
+        options,
+        cancelButtonIndex
+      },
+      buttonIndex => {
+        switch (buttonIndex) {
+          case 0:
+            WebBrowser.openBrowserAsync("https://www.nasa.gov/");
+            break;
+          case 1:
+            WebBrowser.openBrowserAsync("https://psyche.asu.edu/");
+            break;
+          default:
+            break;
+        }
+      }
+    );
+  };
+
+  render() {
+    const horizontalCountdown = this.state.horizontalCountdown;
+    const buttonIcon = this.state.horizontalCountdown
+      ? "hourglass-3"
+      : "hourglass-1";
+
+    if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
     }
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          style={styles.timelineButton}
-          onPress={() => {
-            this.setState({ horizontalCountdown: !horizontalCountdown });
-          }}
-        >
-          <Text style={{ color: "#fff" }}>4 Years Until Launch</Text>
-        </TouchableOpacity>
-        {!horizontalCountdown && (
-          <Grid>
-            <Col size={4} />
-            <Col size={2}>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.years}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Y</MonoText>
+    else {
+      return (
+        <View style={styles.container}>
+          {!horizontalCountdown && (
+            <CountDownClockVertical countDownDate={Dates.launch} />
+          )}
+          {horizontalCountdown && (
+            <Grid>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Launch"
+                  countDownDate={Dates.launch}
+                />
               </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.months}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> M</MonoText>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Mars Encounter"
+                  countDownDate={Dates.mars}
+                />
               </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.days}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> D</MonoText>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="16 Psyche Arrival"
+                  countDownDate={Dates.arrival}
+                />
               </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.hours}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> H</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.minutes}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Min</MonoText>
-              </Row>
-              <Row style={styles.countDownRow}>
-                <MonoText style={styles.countdownText}>
-                  {countdown.seconds}
-                </MonoText>
-                <MonoText style={styles.countdownTextDuration}> Sec</MonoText>
-              </Row>
-            </Col>
-            <Col size={4} />
-          </Grid>
-        )}
-        {horizontalCountdown && (
-          <Grid>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Launch"
-                countDownDate={Dates.launch}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Mars Encounter"
-                countDownDate={Dates.mars}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="16 Psyche Arrival"
-                countDownDate={Dates.arrival}
-              />
-            </Row>
-          </Grid>
-        )}
-      </View>
-    );
+              <Row size={10} />
+            </Grid>
+          )}
+          <FloatingAction
+            actions={[
+              {
+                text: "Accessibility",
+                icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+                name: "hourGlass",
+                position: 1
+              }
+            ]}
+            color={Colors.primaryColor}
+            showBackground={true}
+            overrideWithAction={true}
+            onPressItem={() => {
+              this.setState({ horizontalCountdown: !horizontalCountdown });
+            }}
+          />
+        </View>
+      );
+    }
   }
 }
 
 const styles = StyleSheet.create({
-  countDownRow: {
-    alignItems: "center"
-  },
-  countdownTextDuration: {
-    fontWeight: "bold",
-    color: Colors.primaryColor,
-    fontSize: 12
-  },
-  countdownText: {
-    fontWeight: "bold",
-    color: Colors.primaryColor,
-    fontSize: 50
-  },
   container: {
     flex: 1,
     backgroundColor: "#fff"
@@ -201,21 +193,5 @@ const styles = StyleSheet.create({
   loading: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  timelineButton: {
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: 3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: Colors.primaryColor,
-    paddingVertical: 20
   }
 });

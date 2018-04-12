@@ -3,7 +3,6 @@ import {
   ActivityIndicator,
   ScrollView,
   StyleSheet,
-  Text,
   Image,
   View,
   TouchableHighlight,
@@ -17,6 +16,7 @@ import {
 } from "react-native";
 import { StackNavigator, HeaderBackButton } from "react-navigation";
 import Colors from "../constants/Colors.js";
+import { PsycheText } from "../components/StyledText";
 import { Ionicons } from "@expo/vector-icons";
 
 /*Reference https://projects.invisionapp.com/share/47EEC5Z5U#/screens/262903252 */
@@ -25,14 +25,14 @@ import { Ionicons } from "@expo/vector-icons";
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
-    <Text style={{ color: Colors.primaryColor }}>Loading</Text>
+    <PsycheText style={{ color: Colors.primaryColor }}>Loading</PsycheText>
   </View>
 );
 
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <Text style={{ color: Colors.primaryColor }}>Cannot load content</Text>
+    <PsycheText style={{ color: Colors.primaryColor }}>Cannot load content</PsycheText>
   </View>
 );
 
@@ -41,7 +41,18 @@ class Gallery extends React.Component {
   static navigationOptions = {
     title: "Gallery",
     headerStyle: { backgroundColor: Colors.primaryColor },
-    headerTitleStyle: { color: "white" }
+    headerTitleStyle: {
+      fontWeight: "normal",
+      color: "#fff",
+      ...Platform.select({
+        ios: {
+          fontFamily: "Helvetica"
+        },
+        android: {
+          fontFamily: "sans-serif"
+        }
+      })
+    }
   };
 
   constructor(props) {
@@ -146,6 +157,7 @@ class MediaInfoViewer extends React.Component {
           />
         </TouchableHighlight>
       )
+
     };
   };
   constructor(props) {
@@ -355,7 +367,7 @@ class MediaInfoViewer extends React.Component {
     } else {
       let msg = "Type of media not supported";
       Alert.alert(msg);
-      return <Text>{msg}</Text>;
+      return <PsycheText>{msg}</PsycheText>;
     }
   }
 }
@@ -416,14 +428,15 @@ class ModalMediaOverlay extends React.Component {
 class InformationPanel extends React.Component {
   render() {
     return (
+
       <ScrollView style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>{this.props.title + "\n"}</Text>
-        <Text style={styles.informationPanelText}>
+        <PsycheText style={styles.informationPanelHeaders}>{this.props.title + "\n"}</PsycheText>
+        <PsycheText style={styles.informationPanelText}>
           {"By: " + this.props.credit + "\n"}
-        </Text>
-        <Text style={styles.informationPanelText}>
+        </PsycheText>
+        <PsycheText style={styles.informationPanelText}>
           {this.props.description}
-        </Text>
+        </PsycheText>
       </ScrollView>
     );
   }

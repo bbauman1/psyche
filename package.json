@@ -8,12 +8,15 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/react-native-action-sheet": "^1.0.2",
     "@expo/samples": "2.1.1",
     "expo": "^24.0.0",
     "react": "16.0.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-24.0.0.tar.gz",
     "react-native-collapsible": "^0.10.0",
     "react-native-easy-grid": "^0.1.17",
+    "react-native-floating-action": "^1.10.1",
+    "react-native-onboarding-swiper": "^0.6.0",
     "react-native-tab-view": "^0.0.74",
     "react-navigation": "^1.0.0-beta.21"
   },

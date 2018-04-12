@@ -3,14 +3,16 @@ import {
   StyleSheet,
   ScrollView,
   View,
-  Text,
   Button,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Platform
 } from "react-native";
 import { LinearGradient } from "expo";
 import { StackNavigator } from "react-navigation";
 import Colors from "../constants/Colors.js";
 import { Entypo } from "@expo/vector-icons";
+import { PsycheText } from "../components/StyledText";
+import { Radar } from "../components/Radar";
 
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
@@ -37,9 +39,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE A CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_A.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_A.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_A.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_A.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -57,9 +63,14 @@ class Timeline extends React.Component {
           >
             {/* PHASE B CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_B.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_B.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_B.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_B.title}
+              </PsycheText>
+              <Radar style={styles.circle} />
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -77,9 +88,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE C CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_C.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_C.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_C.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_C.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -97,9 +112,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE D CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_D.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_D.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_D.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_D.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -117,9 +136,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE E CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_E.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_E.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_E.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_E.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -137,9 +160,13 @@ class Timeline extends React.Component {
           >
             {/* PHASE F CARD */}
             <View style={styles.card}>
-              <Text style={styles.dateText}>{PHASES.PHASE_F.date}</Text>
+              <PsycheText style={styles.dateText}>
+                {PHASES.PHASE_F.date}
+              </PsycheText>
               <View style={styles.circle} />
-              <Text style={styles.titleText}>{PHASES.PHASE_F.title}</Text>
+              <PsycheText style={styles.titleText}>
+                {PHASES.PHASE_F.title}
+              </PsycheText>
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
@@ -165,19 +192,19 @@ class DetailsScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
-          <Text style={styles.detailPhase}>{phase_prop.phase}</Text>
+          <PsycheText style={styles.detailPhase}>{phase_prop.phase}</PsycheText>
           {phase_prop.checkpoints.map((checkpoint, i) => (
             <View key={i}>
-              <Text key={i + 1} style={styles.detailPhaseTitle}>
+              <PsycheText key={i + 1} style={styles.detailPhaseTitle}>
                 {checkpoint.title}
-              </Text>
-              <Text key={i + 2} style={styles.detailDate}>
+              </PsycheText>
+              <PsycheText key={i + 2} style={styles.detailDate}>
                 {checkpoint.date}
-              </Text>
+              </PsycheText>
               {checkpoint.bullets.map((bullet, k) => (
-                <Text key={k} style={styles.detailBullet}>
+                <PsycheText key={k} style={styles.detailBullet}>
                   {bullet}
-                </Text>
+                </PsycheText>
               ))}
             </View>
           ))}
@@ -291,7 +318,15 @@ const RootStack = StackNavigator(
     mode: "modal",
     navigationOptions: () => ({
       headerTitleStyle: {
-        fontWeight: "normal"
+        fontWeight: "normal",
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
       },
       headerTintColor: "#fff",
       headerStyle: {
