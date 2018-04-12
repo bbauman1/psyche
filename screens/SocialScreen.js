@@ -10,26 +10,21 @@ import { Ionicons } from "@expo/vector-icons";
 import { TabViewAnimated, TabBar } from "react-native-tab-view";
 import { LinearGradient } from "expo";
 import Colors from "../constants/Colors";
-import SocialWindow from "../components/SocialWindow";
+import FacebookFeed from "../components/FacebookFeed";
+import InstagramFeed from "../components/InstagramFeed";
+import TwitterFeed from "../components/TwitterFeed";
 
-/*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
-const FacebookRoute = () => (
-  <SocialWindow uri="https://www.facebook.com/NASAPsyche/" />
-);
-const InstagramRoute = () => (
-  <SocialWindow uri="https://www.instagram.com/nasapsyche/?hl=en" />
-);
-const TwitterRoute = () => (
-  <SocialWindow uri="https://twitter.com/nasapsyche?lang=en" />
-);
+const FacebookRoute = () => <FacebookFeed />;
+const InstagramRoute = () => <InstagramFeed />;
+const TwitterRoute = () => <TwitterFeed />;
 
 export default class SocialScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: "first", icon: "logo-facebook" },
+      { key: "first", icon: "logo-twitter" },
       { key: "second", icon: "logo-instagram" },
-      { key: "third", icon: "logo-twitter" }
+      { key: "third", icon: "logo-facebook" }
     ]
   };
 
@@ -46,14 +41,11 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-        //Render the SocialWindow component with Psyche facebook showing
-        return <FacebookRoute />;
+        return <TwitterRoute />;
       case "second":
-        //Render the SocialWindow component with Psyche Instagram showing
         return <InstagramRoute />;
       case "third":
-        //Render the SocialWindow component with Psyche Twitter showing
-        return <TwitterRoute />;
+        return <FacebookRoute />;
       default:
         return null;
     }
