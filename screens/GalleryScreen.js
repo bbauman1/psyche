@@ -25,14 +25,14 @@ import { Ionicons } from "@expo/vector-icons";
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
-    <PsycheText color="#0000ee">Loading</PsycheText>
+    <PsycheText style={{ color: Colors.primaryColor }}>Loading</PsycheText>
   </View>
 );
 
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <PsycheText color="#0000ee">Cannot load content</PsycheText>
+    <PsycheText style={{ color: Colors.primaryColor }}>Cannot load content</PsycheText>
   </View>
 );
 
@@ -142,22 +142,22 @@ class MediaContainer extends React.Component {
 class MediaInfoViewer extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
-    const infoButton = (
-      <TouchableHighlight
-        onPress={() => params._toggleModal()}
-        underlayColor={"transparent"}
-        style={{ alignItems: "center" }}
-      >
-        <Ionicons
-          name={"ios-information-circle-outline"}
-          size={32}
-          color={"#fff"}
-          style={{ marginRight: 18 }}
-        />
-      </TouchableHighlight>
-    );
     return {
-      headerRight: infoButton
+      headerRight: (
+        <TouchableHighlight
+          onPress={() => params._toggleModal()}
+          underlayColor={"transparent"}
+          style={{ alignItems: "center" }}
+        >
+          <Ionicons
+            name={"ios-information-circle-outline"}
+            size={32}
+            color={"#fff"}
+            style={{ marginRight: 18 }}
+          />
+        </TouchableHighlight>
+      )
+
     };
   };
   constructor(props) {
@@ -181,6 +181,7 @@ class MediaInfoViewer extends React.Component {
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.title = this.file_db_ref[this.index].name;
     this.credit = this.file_db_ref[this.index].credit;
+    this.description = this.file_db_ref[this.index].description;
   };
 
   loadPicture = (width, height) => {
@@ -201,7 +202,7 @@ class MediaInfoViewer extends React.Component {
 
   toggleModal = () => {
     this.setState({
-      modalVisible: !this.state.modalVisible && this.mediaType === "image"
+      modalVisible: !this.state.modalVisible
     });
   };
 
@@ -245,19 +246,25 @@ class MediaInfoViewer extends React.Component {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
-        this.setState({ xTrans: gestureState.dx });
+        if (!this.state.modalVisible) {
+          this.setState({ xTrans: gestureState.dx });
+        }
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
-        const threshold = 30;
-        if (gestureState.dx > threshold) {
-          this.doLeftSwipe();
-        } else if (gestureState.dx < -1 * threshold) {
-          this.doRightSwipe();
+        if (this.state.modalVisible) {
+          this.toggleModal();
         } else {
-          this.setState({ xTrans: 0 });
+          const threshold = 30;
+          if (gestureState.dx > threshold) {
+            this.doLeftSwipe();
+          } else if (gestureState.dx < -1 * threshold) {
+            this.doRightSwipe();
+          } else {
+            this.setState({ xTrans: 0 });
+          }
         }
       },
       onPanResponderTerminate: (evt, gestureState) => {
@@ -275,9 +282,11 @@ class MediaInfoViewer extends React.Component {
   componentWillUnmount = () => {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   };
+
   render() {
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
     //If we want to re-enable orientation unlocking, above is where we uncomment
+
     if (this.mediaType === "image") {
       //The image is loading
       if (this.state.loadingPicture === true) {
@@ -329,37 +338,7 @@ class MediaInfoViewer extends React.Component {
             {...this._panResponder.panHandlers}
           >
             {img}
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={this.state.modalVisible}
-              style={{ flex: 1 }}
-              onRequestClose={this.toggleModal}
-            >
-              <View
-                style={{
-                  backgroundColor: Colors.primaryColor,
-                  height: this.state.windowDim.height / 3,
-                  width: this.state.windowDim.width,
-                  marginTop: 2 * this.state.windowDim.height / 3
-                }}
-              >
-                <TouchableHighlight
-                  onPress={this.toggleModal}
-                  underlayColor={"transparent"}
-                  style={{ alignItems: "center" }}
-                >
-                  <Ionicons
-                    name={"ios-arrow-down"}
-                    size={32}
-                    color={"#fff"}
-                    style={{ marginRight: 18 }}
-                  />
-                </TouchableHighlight>
-
-                <InformationPanel title={this.title} credit={this.credit} />
-              </View>
-            </Modal>
+            <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
           </View>
         );
       }
@@ -382,6 +361,7 @@ class MediaInfoViewer extends React.Component {
             }}
             startInLoadingState={true}
           />
+          <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
         </View>
       );
     } else {
@@ -393,20 +373,71 @@ class MediaInfoViewer extends React.Component {
 }
 /*** END MEDIAINFOVIEWER ***/
 
+/*** MODAL MEDIA OVERLAY ***/
+class ModalMediaOverlay extends React.Component {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+    windowDim: Dimensions.get("window")
+    };
+  }
+  render() {
+    return (
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.props.visible}
+        style={{ flex: 1 }}
+        onRequestClose={this.props.toggleModal}
+      >
+        <View
+          style={{
+            backgroundColor: Colors.primaryColor,
+            height: this.state.windowDim.height / 3,
+            width: this.state.windowDim.width,
+            marginTop: 2 * this.state.windowDim.height / 3
+          }}
+        >
+          <TouchableHighlight
+            onPress={this.props.toggleModal}
+            underlayColor={"transparent"}
+            style={{ alignItems: "center" }}
+          >
+            <Ionicons
+              name={"ios-arrow-down"}
+              size={32}
+              color={"#fff"}
+              style={{ marginRight: 18 }}
+            />
+          </TouchableHighlight>
+
+          <InformationPanel
+            title={this.props.title}
+            credit={this.props.credit}
+            description={this.props.description}
+          />
+        </View>
+      </Modal>
+    );
+  }
+}
+/*** END MODAL MEDIA OVERLAY***/
+
 /***  INFORMATION PANEL ***/
 class InformationPanel extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
+
+      <ScrollView style={{ flex: 1 }}>
+        <PsycheText style={styles.informationPanelHeaders}>{this.props.title + "\n"}</PsycheText>
         <PsycheText style={styles.informationPanelText}>
-          {this.props.title}
+          {"By: " + this.props.credit + "\n"}
         </PsycheText>
-        <PsycheText style={styles.informationPanelHeaders}>Credit</PsycheText>
         <PsycheText style={styles.informationPanelText}>
-          {this.props.credit}
+          {this.props.description}
         </PsycheText>
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -467,10 +498,14 @@ const styles = StyleSheet.create({
   informationPanelHeaders: {
     fontWeight: "bold",
     color: "white",
-    fontSize: 32
+    fontSize: 32,
+    marginLeft: 8,
+    marginRight: 8
   },
   informationPanelText: {
     color: "white",
-    fontSize: 24
+    fontSize: 24,
+    marginLeft: 8,
+    marginRight: 8
   }
 });
