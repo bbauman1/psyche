@@ -76,14 +76,12 @@ export default class HomeScreen extends React.Component {
       1000
     );
 
-    AsyncStorage.getItem("@Pysche:firstLaunch11").then(value => {
+    AsyncStorage.getItem("@Pysche:firstLaunch29").then(value => {
       if (value === null) {
-        AsyncStorage.setItem("@Pysche:firstLaunch11", "true");
-        this.setState({ onboardingDone: false });
+        AsyncStorage.setItem("@Pysche:firstLaunch29", "true");
+        this.props.navigation.navigate("Onboarding");
       }
-      else {
-        this.setState({ onboardingDone: true });
-      }
+      this.setState({ onboardingDone: true });
     });
   }
 
@@ -136,71 +134,6 @@ export default class HomeScreen extends React.Component {
 
     if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
-    }
-    else if (!this.state.onboardingDone) {
-      return (
-        <Onboarding
-          onDone={() => this.props.navigation.navigate("Main")}
-          showSkip={false}
-          pages={[
-            {
-              backgroundColor: "#f06359",
-              image: (
-                <Image
-                  style={{
-                    alignSelf: "center",
-                    height: 120,
-                    width: 120
-                  }}
-                  source={require("../assets/images/psyche-icon.png")}
-                />
-              ),
-              title: "Meet Psyche",
-              subtitle:
-                "Psyche is the name of an astroid in out solar system and the name of the psyche mission to take us there."
-            },
-            {
-              backgroundColor: "#a4405c",
-              image: (
-                <Ionicons
-                  name={"ios-clock-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Countdown With Us",
-              subtitle:
-                "The mission is set to takeoff in 2022 and we are counting all the big milestones of the mission."
-            },
-            {
-              backgroundColor: "#7e3255",
-              image: (
-                <Ionicons
-                  name={"ios-information-circle-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Learn And Stay Informed",
-              subtitle:
-                "This app will teach you everything you need to know about the Psyche mission through facts, social media and timeline."
-            },
-            {
-              backgroundColor: "#342248",
-              image: (
-                <Ionicons
-                  name={"ios-camera-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Picture This",
-              subtitle:
-                "Apply exclusive Psyche filters to your favorite images and share them with your friends."
-            }
-          ]}
-        />
-      );
     }
     else {
       return (

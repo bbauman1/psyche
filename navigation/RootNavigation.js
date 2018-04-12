@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
+import OnboardingScreen from "../screens/OnboardingScreen";
 import Colors from "../constants/Colors.js";
 
 const RootStackNavigator = StackNavigator(
@@ -17,6 +18,9 @@ const RootStackNavigator = StackNavigator(
     },
     Modal: {
       screen: CameraScreen
+    },
+    Onboarding: {
+      screen: OnboardingScreen
     }
   },
   {
@@ -55,6 +59,27 @@ const RootStackNavigator = StackNavigator(
         })
       }
     })
+  },
+  {
+    mode: "modal",
+    navigationOptions: () => ({
+      headerTitleStyle: {
+        fontWeight: "normal",
+        ...Platform.select({
+          ios: {
+            fontFamily: "Helvetica"
+          },
+          android: {
+            fontFamily: "sans-serif"
+          }
+        })
+      },
+      headerTintColor: "#fff",
+      headerStyle: {
+        backgroundColor: Colors.primaryColor,
+        borderBottomColor: "transparent"
+      }
+    })
   }
 );
 
@@ -65,10 +90,6 @@ export default class RootNavigator extends React.Component {
       onboardingDone: null
     };
   }
-  // _onDoneCallback = async () => {
-  //   this.props.navigation.navigate("Main");
-  //   this.setState({ onboardingDone: true })
-  // };
 
   componentDidMount() {
     AsyncStorage.getItem("@Pysche:firstLaunch9").then(value => {
@@ -83,80 +104,12 @@ export default class RootNavigator extends React.Component {
   };
 
   render() {
-    if (this.state.onboardingDone === null) {
-      return <View style={{ flex: 1 }} />;
-    }
-    else if (false) {
-      return (
-        <Onboarding
-          onDone={() => console.log(this.props)}
-          showSkip={false}
-          pages={[
-            {
-              backgroundColor: "#f06359",
-              image: (
-                <Image
-                  style={{
-                    alignSelf: "center",
-                    height: 120,
-                    width: 120
-                  }}
-                  source={require("../assets/images/psyche-icon.png")}
-                />
-              ),
-              title: "Meet Psyche",
-              subtitle:
-                "Psyche is the name of an astroid in out solar system and the name of the psyche mission to take us there."
-            },
-            {
-              backgroundColor: "#a4405c",
-              image: (
-                <Ionicons
-                  name={"ios-clock-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Countdown With Us",
-              subtitle:
-                "The mission is set to takeoff in 2022 and we are counting all the big milestones of the mission."
-            },
-            {
-              backgroundColor: "#7e3255",
-              image: (
-                <Ionicons
-                  name={"ios-information-circle-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Learn And Stay Informed",
-              subtitle:
-                "This app will teach you everything you need to know about the Psyche mission through facts, social media and timeline."
-            },
-            {
-              backgroundColor: "#342248",
-              image: (
-                <Ionicons
-                  name={"ios-camera-outline"}
-                  size={120}
-                  color={"#fff"}
-                />
-              ),
-              title: "Picture This",
-              subtitle:
-                "Apply exclusive Psyche filters to your favorite images and share them with your friends."
-            }
-          ]}
-        />
-      );
-    }
-    else {
-      return (
-        <ActionSheetProvider>
-          <RootStackNavigator />
-        </ActionSheetProvider>
-      );
-    }
+
+    return (
+      <ActionSheetProvider>
+        <RootStackNavigator />
+      </ActionSheetProvider>
+    );
+
   }
 }
