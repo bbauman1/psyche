@@ -70,10 +70,7 @@ class Timeline extends React.Component {
               <PsycheText style={styles.titleText}>
                 {PHASES.PHASE_B.title}
               </PsycheText>
-<<<<<<< HEAD
-=======
               <Radar style={styles.circle} />
->>>>>>> master
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
