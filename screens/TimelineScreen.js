@@ -28,7 +28,7 @@ class Timeline extends React.Component {
 
   render() {
     return (
-      <View style={styles.parent}>
+      <View style={styles.parent} accessible={true}>
         <ScrollView contentContainerStyle={styles.container}>
           <TouchableWithoutFeedback
             onPress={() =>

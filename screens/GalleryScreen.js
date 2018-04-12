@@ -32,7 +32,9 @@ const loadingIndicator = (
 //Loading failure indicator
 const loadingFailureIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
-    <PsycheText style={{ color: Colors.primaryColor }}>Cannot load content</PsycheText>
+    <PsycheText style={{ color: Colors.primaryColor }}>
+      Cannot load content
+    </PsycheText>
   </View>
 );
 
@@ -157,7 +159,6 @@ class MediaInfoViewer extends React.Component {
           />
         </TouchableHighlight>
       )
-
     };
   };
   constructor(props) {
@@ -328,6 +329,7 @@ class MediaInfoViewer extends React.Component {
         //Display image with swipe gesture and information
         return (
           <View
+            accessible={true}
             onLayout={this.orientationSwitchLayout}
             style={{
               flex: 1,
@@ -338,13 +340,20 @@ class MediaInfoViewer extends React.Component {
             {...this._panResponder.panHandlers}
           >
             {img}
-            <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
+            <ModalMediaOverlay
+              title={this.title}
+              credit={this.credit}
+              description={this.description}
+              visible={this.state.modalVisible}
+              toggleModal={this.toggleModal}
+            />
           </View>
         );
       }
     } else if (this.mediaType === "video") {
       return (
         <View
+          accessible={true}
           onLayout={this.orientationSwitchLayout}
           style={{
             flex: 1,
@@ -361,7 +370,13 @@ class MediaInfoViewer extends React.Component {
             }}
             startInLoadingState={true}
           />
-          <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
+          <ModalMediaOverlay
+            title={this.title}
+            credit={this.credit}
+            description={this.description}
+            visible={this.state.modalVisible}
+            toggleModal={this.toggleModal}
+          />
         </View>
       );
     } else {
@@ -375,11 +390,10 @@ class MediaInfoViewer extends React.Component {
 
 /*** MODAL MEDIA OVERLAY ***/
 class ModalMediaOverlay extends React.Component {
-  constructor(props)
-  {
+  constructor(props) {
     super(props);
     this.state = {
-    windowDim: Dimensions.get("window")
+      windowDim: Dimensions.get("window")
     };
   }
   render() {
@@ -428,9 +442,10 @@ class ModalMediaOverlay extends React.Component {
 class InformationPanel extends React.Component {
   render() {
     return (
-
       <ScrollView style={{ flex: 1 }}>
-        <PsycheText style={styles.informationPanelHeaders}>{this.props.title + "\n"}</PsycheText>
+        <PsycheText style={styles.informationPanelHeaders}>
+          {this.props.title + "\n"}
+        </PsycheText>
         <PsycheText style={styles.informationPanelText}>
           {"By: " + this.props.credit + "\n"}
         </PsycheText>
@@ -482,7 +497,7 @@ export default class GalleryScreen extends React.Component {
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }} accessible={true}>
         <LocalPageNavigator />
       </View>
     );
