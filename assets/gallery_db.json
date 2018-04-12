@@ -1,362 +1,433 @@
-[
+[  
+  {
+    "name": "Psyche Inspired Overview Video",
+    "uri": "https://player.vimeo.com/video/264334014",
+    "prev": "https://psyche.asu.edu/wp-content/uploads/2018/04/Psyche_Inspired_17-18_BOwen_Project1_PsycheInspiredVideo_180412-640x420.jpg",
+    "mediaType": "video",
+    "credit": "Brooke Owen",
+    "description": "An overview of the Psyche Inspired program."
+    },
+  {
+    "name": "Psyche: Join the Journey to a Metal World",
+    "uri": "https://www.youtube.com/embed/NjCcl52M7Vg?feature=oembed",
+    "prev": "https://psyche.asu.edu/wp-content/uploads/2018/04/Capture-640x420.jpg",
+    "mediaType": "video",
+    "credit": "NASA/JPL-Caltech/Arizona State University/Peter Rubin/SSL",
+    "description": "Join the Psyche team to explore why this mission was selected for NASA’s Discovery Program, how we’ll get to the asteroid, what we hope to learn from Psyche, and the importance of scientific discovery."
+ },
   {
     "name": "Backyard Telescope",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/04/Psyche_Inspired_17-18_CCedarleaf_Project3_BackyardTelescope_180403-796x1024.jpg",
     "mediaType": "image",
-    "credit": "Caralie Cedarleaf"
+    "credit": "Caralie Cedarleaf",
+    "description": "Backyard Telescope represents the accessibility of the asteroid (16) Psyche to scientists and non-scientists alike because of the Psyche Mission. Images and information collected during NASA-led missions are made available as part of the public domain, allowing amateur astronomers a chance to learn about space. This diorama returns to a childlike fascination with exploration and learning. The asteroid in the center is cast in iron, an element in Psyche’s composition. The laser cut Psyche spacecraft orbits the asteroid on a copper wire, referencing Arizona’s role in the mission. The star patterns are designed after sculptures of the goddess Psyche from the era of the asteroid’s discovery. The dichroic film – which was developed in the late 1950s by NASA and the Department of Defense to protect sensitive instruments from cosmic radiation and to shield astronauts’ vision from unfiltered sunlight – represents the decades of great scientists and engineers who have made and continue to make space exploration possible."
   },
   {
     "name": "Psyche Comic",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/04/Psyche_Inspired_17-18_SGarcia_Project4_PsycheComic_180402-791x1024.jpg",
     "mediaType": "image",
-    "credit": "Sofia Garcia"
+    "credit": "Sofia Garcia",
+    "description": "This work is a fictional story of the development of Psyche. A friendship between a human and a spacecraft, discovering what is beyond the metal world."
   },
   {
     "name": "Psyche Word Cloud",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_KSanford_Project5_WordCloud_180328-1024x791.png",
     "mediaType": "image",
-    "credit": "Kari Sanford"
+    "credit": "Kari Sanford",
+    "description": "I wanted to tell the stories of the minds and hearts behind the Psyche Mission. With the team’s help, I approached scientists, engineers, journalists, and students associated with this mission and solicited their feedback. All of the words/phrases in this word cloud are their own. The most frequent, and inspiring, feedback that I saw was, ‘More than me,’ or ‘Bigger than me.’ This mission has helped people look beyond their own skillset and find ways to help others grow. Psyche has created a community through engagement: we are all connected through our pursuit of knowledge in deep space.\n\n\nSpecial thanks to the contributors: Rona Oran | Steven Dibb | William Bottke | Tess Calvert | Dave Williams | Lindy Elkins-Tanton | Tim McCoy | Hannah L Bercovici | Brooke Owen | Mark Wieczorek | Sofia Garcia | Abigail Weibel | Karin Valentine | Erick Ramirez Cordero | Makenzie Kundrat | John Christoph | Stone Woodham | Brendan Scobie | Rachael Tjahjo | Isaac Wisdom"
   },
   {
     "name": "Psyche Inspired Intern Portraits",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_AWeibel_Project4_PsycheInspiredPortraits_180327-906x1024.jpg",
     "mediaType": "image",
-    "credit": "Abigail Weibel"
+    "credit": "Abigail Weibel",
+    "description": "Headshots of (most of) the inaugural Psyche Inspired interns taken for the Psyche website. (My headshot was taken by Brooke Owen, the Psyche Inspired student manager.)"
   },
   {
     "name": "Psyche Pop-Up Book",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_NBacalzo_ANorenberg_Project4_PsychePop-Up_180323-1024x656.jpg",
     "mediaType": "image",
-    "credit": "Nikka Bacalzo and Anne Norenberg"
+    "credit": "Nikka Bacalzo and Anne Norenberg",
+    "description": "This informative book was a collaboration between Nikka Bacalzo and Annie Norenberg. Annie designed the pages of the book and Nikka elevated the pictures with foam core as well as added the pull-tabs and pop-ups with cardstock, cut with an X-Acto. The book outlines a little history of Psyche, its instruments, the launch date and the purpose of the mission. Dimensions are ~8″ x 7″."
   },
   {
     "name": "Heavy Metal Light Show",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_CVasquez_Project5_HeavyMetalLightShow_180321.jpg",
     "mediaType": "image",
-    "credit": "Chris Vasquez"
+    "credit": "Chris Vasquez",
+    "description": "With Psyche, you never have to take down your holiday lights! Inspired by festive holiday light sculptures, I wanted to create something reminiscent of those while keeping true to the design of Psyche."
   },
   {
     "name": "Psyche Cross Stitch",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_AWeibel_Project3_PsycheCrossStitch_180319-1024x683.jpg",
     "mediaType": "image",
-    "credit": "Abigail Weibel"
+    "credit": "Abigail Weibel",
+    "description": "This cross stitch is based off the current artist rendering of the Psyche asteroid. I chose to exaggerate the image by using a lot of color to help it pop off the black background (and because there are only so many choices of grey thread!)."
   },
   {
     "name": "Psyche Stop Motion",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_NBacalzo_Project4_PsycheStopMotion_180316-1024x688.png",
     "mediaType": "image",
-    "credit": "Nikka Bacalzo"
+    "credit": "Nikka Bacalzo",
+    "description": "This stop motion shows Psyche leaving Earth, passing the Moon, Mars, and a few meteoroids on its way to Psyche. All pieces were hand-cut from weighted cardstock. Dimensions of the Psyche spacecraft are 2” x 0.75”. The music is a piece called “Ideas” written by fellow Psyche Inspired intern Isaac Wisdom! Cinematography by Matthew Berger."
   },
   {
     "name": "Psyche Poems",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_KSanford_Project4_Poems_180306-1024x551.jpg",
     "mediaType": "image",
-    "credit": "Kari Sanford"
+    "credit": "Kari Sanford",
+    "description": "For the ASU Open Door public event on February 24, I wrote approximately 30 personalized poems, with space words chosen by the participants. These half-sheets also have a link to the Psyche website, coupled with coloring images of the Psyche Logo and an artist’s rendition of the asteroid.\nMy favorite poem I wrote that day was:\nStaring up high, guided by an azimuth,\nI spy a star hidden in a labyrinth."
   },
   {
     "name": "Asteroid Belt",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/03/Psyche_Inspired_17-18_BOrrill_Project4_AsteroidBelt_180227-1024x1024.jpg",
     "mediaType": "image",
-    "credit": "Brianna Orrill"
+    "credit": "Brianna Orrill",
+    "description": "In this piece I wanted to create a fun interactive piece that not only engaged the public but also shared a little history. In the ASU Asteroid Belt, I included three asteroids that humans have already visited, Eros, Vesta and Ceres, as well as Psyche, which will be visited in 2026. The public were welcome to fill in the smaller surrounding asteroids, creating an amazing mash up of imagination and creativity. ASU’s Asteroid Belt embraces the combination of science and art, just like the Psyche Inspired program does."
   },
   {
     "name": "Many Minds",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_SGarcia_Project3_ManyMinds_180221-731x1024.jpg",
     "mediaType": "image",
-    "credit": "Sofia Garcia"
+    "credit": "Sofia Garcia",
+    "description": "This is a work reflecting the many minds that make the Psyche mission. It all began somewhere. The inspiration and motivation to live out what is beyond human comprehension. This is based off a story I created for the Psyche mission. Young minds inspired to live out the unimaginable."
   },
   {
     "name": "Psyche Eye Chart",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_ANorenberg_Project3_PsycheEyeChart_180220-1024x768.png",
     "mediaType": "image",
-    "credit": "Anne Norenberg"
+    "credit": "Anne Norenberg",
+    "description": "This work was inspired by Luke Dubois’ Hindsight is Always 20/20 project. I made a Psyche Stylized Snellen eye chart, which helps determine a patient’s eyesight from the ability to measure the distance from the chart while reading the letters. I also took words that were important to the Psyche mission and included them as the lines on the eye chart."
   },
   {
     "name": "Psyche Perspective",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_BOrrill_Project3_PsychePerspective_180219-752x1024.jpg",
     "mediaType": "image",
-    "credit": "Brianna Orrill"
+    "credit": "Brianna Orrill",
+    "description": "This is a painting of the asteroid inspired by the artist rendition in most of Psyche’s videos. The piece is from the perspective of the spacecraft as it is coming over one side of the asteroid. I used watercolor, with a special focus on some metallic watercolors to create the metallic feel for the asteroid."
   },
   {
     "name": "Mylar Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_CVasquez_Project4_MylarPsyche_180208.jpg",
     "mediaType": "image",
-    "credit": "Chris Vasquez"
+    "credit": "Chris Vasquez",
+    "description": "I created a custom Psyche asteroid Mylar balloon so you have the opportunity to see the metal body floating through space. Your party has never been more metal!"
   },
   {
     "name": "Iron",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_JDomenico_Project2_Iron_180206-1024x991.jpg",
     "mediaType": "image",
-    "credit": "John Domenico"
+    "credit": "John Domenico",
+    "description": "I find it intriguing to think about how the element iron exists in space compared to its presence on Earth. Iron on Earth, in the presence of oxygen, naturally oxidizes. These oxide states of iron have a vast array of color possibilities ranging from red to brown to yellow to black. The exterior of this piece reflects on the spectrum of color we are familiar with in reference to iron. The form then adds a layer of curiosity in that, as a lidded vessel, there is an interior surface that is hidden from the viewer. This introduces the kind of unknown that I associate with Psyche. What will be the state of the iron on Psyche be?"
   },
   {
-    "name": "credit's Conception of the Pysche Asteroid",
+    "name": "Artist's Conception of the Pysche Asteroid",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2015/10/new-psyche-image.jpg",
     "mediaType": "image",
-    "credit": "Peter Rubin"
+    "credit": "Peter Rubin",
+    "description": "This artist’s conception shows a close-up of the Psyche asteroid."
   },
   {
     "name": "Pysche Zine",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_MBromley_Project2_PsycheZine_180205-790x1024.jpg",
     "mediaType": "image",
-    "credit": "Megan Bromley"
+    "credit": "Megan Bromley",
+    "description": "This work is a one-page ‘zine’ about Psyche that anyone can make and read. It is printed all on one side of a page and, when folded correctly, makes a small 8-page book. There are both images and written facts and poetry about Psyche. It is designed in black and white so the reader can color it and add their own art to it."
   },
   {
     "name": "Construction",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/02/Psyche_Inspired_17-18_IWisdom_Project2_Construction_180108.jpg",
     "mediaType": "image",
-    "credit": "Isaac Wisdom"
+    "credit": "Isaac Wisdom",
+    "description": "‘Construction’ is my interpretation of the build process for the construction of the Psyche spacecraft. The tune is upbeat and happy, which I feel fits the emotions the technicians will feel as they fit together the pieces that will become Psyche. Along with the written score is a live recording and a music video where I play the parts of the piece. This video features me playing the trumpet, trombone, alto and tenor saxophone, upright bass, and piano. I recorded and edited the music using Apple’s GarageBand software, and I created the video using Adobe’s Premiere Pro CC software. "
   },
   {
     "name": "Psyche Paper Quilling",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_NBacalzo_Project3_PsychePaperQuilling_180130-1024x419.jpg",
     "mediaType": "image",
-    "credit": "Nikka Bacalzo"
+    "credit": "Nikka Bacalzo",
+    "description": "I outlined the word Psyche with white cardstock and chose colors similar to the Psyche logo to fill in the letters. I chose to run the yellow colors through the middle of each letter, and surround the letters with white wavy pieces to create more movement, since Psyche will be orbiting! I also included Psyche the asteroid in between the “Y” and “C” as a focal point. Dimensions: 17″ x 6″."
   },
   {
     "name": "Psyche Out of the Dark",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_MBaerwaldt_Project3_PsycheOutOfTheDark_180123-774x1024.jpg",
     "mediaType": "image",
-    "credit": "Morgan Baerwaldt"
+    "credit": "Morgan Baerwaldt",
+    "description": "This project was made in Inkscape, an open source vector drawing program. The idea behind the piece was to show both Psyches, and to evoke the idea that even as the spacecraft approaches, we will still be in the dark, so to speak, about the nature of Psyche the asteroid. The high contrast brings out the excitement building towards the spacecraft’s eventual arrival."
   },
   {
     "name": "Psyche the Goddess",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_JSeidner_Project3_PsycheTheGoddess_180116-790x1024.jpg",
     "mediaType": "image",
-    "credit": "Jeremy Seidner"
+    "credit": "Jeremy Seidner",
+    "description": "For this piece, I used a blend of Greek and Art Deco themes to portray the goddess Psyche holding the metal asteroid named after her. The Psyche spacecraft is also hidden in the design. The color scheme is taken from the Psyche mission logo. The piece is symbolic, including the sun presiding over the galaxy and the butterfly, which Aristotle named Psyche (ψυχή), the Greek word for the soul. The eyes are the window to the soul for some, so the goddess’ face is blank except for her eyes, a mirror for anyone to gaze at and see themselves. The goddess’ lover, Eros (better known by his Roman name, Cupid) is represented by his wings near the sun. Zeus made Psyche immortal and is represented by his Roman name, Jupiter. Ionic columns were used in the temples to the gods of ancient Greece, who drank ambrosia, the nectar of the gods, brought to them by doves."
   },
   {
     "name": "Coming in 2022: Psyche Mission",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_ANorenberg_Project2_ComingIn2022_171221-674x1024.png",
     "mediaType": "image",
-    "credit": "Anne Norenberg"
+    "credit": "Anne Norenberg",
+    "description": "For this project I created a Psyche Mission movie poster to highlight the curiosity of the mission. I created flames depicting a question mark with the Psyche asteroid as the period of the question mark to show the mystery and endpoint of the mission."
   },
   {
     "name": "Psyche Spacecraft 3D Model",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_ANorenberg_Project1_PsycheSpacecraft3DModel_171206-1024x768.jpg",
     "mediaType": "image",
-    "credit": "Anne Norenberg"
+    "credit": "Anne Norenberg",
+    "description": "For my first Project, I created a 3D model and 3D-printed model of the Psyche spacecraft using AutoDesk Fusion 360. I constructed the model in three different parts so that it is a buildable model. I printed the Psyche spacecraft on a Makerbot 3rd Generation printer and the material is PLA plastic. The model of the spacecraft is to scale and includes the body of the spacecraft and the two solar panels."
   },
   {
     "name": "Surreal Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_SGarcia_Project2_SurrealPsyche_171214-1024x747.jpg",
     "mediaType": "image",
-    "credit": "Sofia Garcia"
+    "credit": "Sofia Garcia",
+    "description": "This work is inspired by the colors of the Psyche mission badge and the overall journey of the Psyche mission. This reflects all the people who have put in the time to push for the future of this mission."
   },
   {
     "name": "Psyche 3D Book",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_NBacalzo_Project2_Psyche3DBook_171207-1024x440.png",
     "mediaType": "image",
-    "credit": "Nikka Bacalzo"
+    "credit": "Nikka Bacalzo",
+    "description": "The Psyche 3D book is intended to inform viewers of one of the mission goals: to explore a world made of metal. I originally saw this idea from artist Yusuke Ono who has done these 3D books for Mt. Fuji and also stories like Little Red Riding Hood and Jack and the Beanstalk. I ended up creating 20 templates of the Psyche shape, used watercolor to show varying textures, folded each template, glued them together, then strung them in order for them to fan out evenly when you open the book."
   },
   {
     "name": "Metal World",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_CCedarleaf_Project2_MetalWorld_171208-1024x695.jpg",
     "mediaType": "image",
-    "credit": "Caralie Cedarleaf"
+    "credit": "Caralie Cedarleaf",
+    "description": "Metal World is a speculative iron landscape that could be found on 16 Psyche. This speculative landscape started as a layer of burn-out wax from the Foundry at the School of Art at ASU. Wax that is burned out drops several feet onto a pool of water and is collected for reuse. The result is organic in shape and resembles aspects of planetary geology such as impact cratering and volcanism. Wax is melted out of ceramic shells, which is the final step before pouring molten metal. One day we may start mining in space and, in this future, it is possible that traditional foundries will still be making art by modeling in wax and burning it out before casting in iron and other metals from far away asteroids."
   },
   {
     "name": "Star Dust",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_JSeidner_Project2_StarDust_171213-1-1024x691.jpg",
     "mediaType": "image",
-    "credit": "Jeremy Seidner"
+    "credit": "Jeremy Seidner",
+    "description": "This piece portrays the darkness of space and the loneliness of Psyche, even within the asteroid belt: a black sheet of poster board stippled with white ink. To serve as a model for the possible shapes and textures of the asteroid, I used a chunk of iron to mimic the nickel-iron core. A pointillism style felt appropriate to serve as a metaphor that the asteroid, like all of us, is made up of ‘star dust.’"
   },
   {
     "name": "Hypercolor Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_CVasquez_Project3_HypercolorPsyche_180103-760x1024.png",
     "mediaType": "image",
-    "credit": "Chris Vasquez"
+    "credit": "Chris Vasquez",
+    "description": "This rendition of Psyche is based on the neon hypercolor, ultra-futuristic styling of 80’s movie posters and artwork. It depicts the portion of the mission in which the Psyche spacecraft will enter into orbit around the Psyche asteroid, gathering information while in an optimal zone to do so."
   },
   {
     "name": "Curious",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/Psyche_Inspired_17-18_AWeibel_Project1_171027_Curious-1024x684.jpg",
     "mediaType": "image",
-    "credit": "Abigail Weibel"
+    "credit": "Abigail Weibel",
+    "description": "Curiosity is the theme for this piece. To signify this I chose to position the model looking outwards and upwards. The color gray is representative of the unknown, black of space, and brighter colors of the new information we will gain through the Psyche mission. Curiosity is innate in all humans and does not belong to one type of person. I chose to emphasize this by providing the model some anonymity by covering her eyes and to further accentuate her line of sight."
   },
   {
-    "name": "credit's Conception of Psyche Spacecraft at Psyche Asteroid",
+    "name": "Artist's Conception of Psyche Spacecraft at Psyche Asteroid",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/psyche_and_spacecraft_-_v2_draft_0-1-1024x760.jpg",
     "mediaType": "image",
-    "credit": "SSL/ASU/Peter Rubin"
+    "credit": "SSL/ASU/Peter Rubin",
+    "description": ""
   },
   {
     "name": "Pysche Close-up",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2018/01/PSYCHECLOSEUP0718-1024x791.jpg",
     "mediaType": "image",
-    "credit": "ASU/Peter Rubin"
+    "credit": "ASU/Peter Rubin",
+    "description": "This artist’s conception shows a close-up of the surface of the Psyche asteroid."
   },
   {
-    "name": "credit's Conception of the Psyche Asteroid",
+    "name": "Artist's Conception of the Psyche Asteroid",
     "uri": "https://psyche.asu.edu/wp-content/uploads/2018/01/asteroid.jpg",
     "mediaType": "image",
-    "credit": "ASU/Peter Rubin"
+    "credit": "ASU/Peter Rubin",
+    "description": "This artist’s conception shows the Psyche spacecraft near the surface of the Psyche asteroid."
   },
   {
     "name": "Lindy Elkins-Tanton",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/team-lindy-1024x682.jpg",
     "mediaType": "image",
-    "credit": "Abigail Weibel"
+    "credit": "Abigail Weibel",
+    "description": "Lindy Elkins-Tanton is a planetary scientist with expertise in planet formation and evolution. She is the Director of the School of Earth and Space Exploration at Arizona State University in Tempe, Arizona."
   },
   {
     "name": "Jim Bell",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/team-jim-1024x682.jpg",
     "mediaType": "image",
-    "credit": "John Carpenter"
+    "credit": "John Carpenter",
+    "description": "Dr. Jim Bell, Psyche Deputy Principal Investigator"
   },
   {
     "name": "Papier Mache Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_CVasquez_KSanford_Project1_PapierMachePsyche_171030-1024x341.png",
     "mediaType": "image",
-    "credit": "Chris Vasquez and Kari Sanford"
+    "credit": "Chris Vasquez and Kari Sanford",
+    "description": "For this project we made a replica of the Psyche asteroid roughly the size of a laundry basket. We used a papier mache technique in order to achieve this goal, using wire, foam, and paper. This provides a tangible way for people to “interact” with the asteroid."
   },
   {
     "name": "Ideas",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_IWisdom_Project1_Ideas_171118.png",
     "mediaType": "image",
-    "credit": "Isaac Wisdom"
+    "credit": "Isaac Wisdom",
+    "description": "Ideas is a piece I wrote for a mallet ensemble that was inspired by the feelings and emotions that might have been felt by the person or group of people as they were first conceptualizing Psyche. In addition to writing out each part, I also specified how the ensemble should be set up. Certain instruments are meant to be on either the left or the right side, which allowed me to write the music with interest to the spatial relation between instruments. Interpretation of music is always subjective, of course, but hopefully you will feel the curiosity, wonder, and excitement that was present during the conception of Psyche, and that I convey through this piece."
   },
   {
     "name": "Pixelated Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_SGarcia_Project1_PixelatedPsyche_171115-1024x856.jpg",
     "mediaType": "image",
-    "credit": "Sofia Garcia"
+    "credit": "Sofia Garcia",
+    "description": "I incorporated the pixelated image from the latest radar observations of Psyche for the inspiration in my image. Psyche is still so unfamiliar to us, this is my interpretation. The thought of discovering the unknown and the pieces that we need to put together."
   },
   {
     "name": "Psyche Pop",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_MBaerwaldt_Project2_PsychePop_171121-1024x750.jpg",
     "mediaType": "image",
-    "credit": "Morgan Baerwaldt"
+    "credit": "Morgan Baerwaldt",
+    "description": "I created an 8-panel Warhol/pop art-inspired drawing of Psyche in orbit. The image features a repeated image of the spacecraft drawn with a bright, limited color palette. I used Inkscape to draw a very basic vector outline of the Psyche spacecraft and played around with using the Psyche color palette."
   },
   {
     "name": "Psyche in Orbit",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_JDomenico_Project1_PsycheInOrbit_171027-983x1024.jpg",
     "mediaType": "image",
-    "credit": "John Domenico"
+    "credit": "John Domenico",
+    "description": "As a double major in Materials Science & Engineering and Ceramic Fine Arts I am especially interested in the underlying composition of things. Given that Psyche (the asteroid) is believed to be primarily iron and nickel, I felt that I had a unique opportunity to explore a glaze that utilizes the thermite reaction to create a surface that is primarily raw iron. The texture on this platter is a product of the thermite reaction and is an interpretation of an iron body in space. On the black, space-like rim, the colors of the Psyche mission stand out to allude to the Psyche (spacecraft) in orbit. This is all contained on a large piece of fired clay—which, in a way, “brings it back to Earth.” As a fun fact, the viewer will notice an orange/red blushing on the platter. This is because, unlike in space, on Earth metals oxidize rather quickly. Thus, the orange/red tint is the raw iron on the surface of the platter oxidizing. Over time there will be more of the color as the iron continues to oxidize. Dimensions: 25″ x 25″ x 3.5″."
   },
   {
     "name": "How Big Will The Psyche Spacecraft Be?",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_MBaerwaldt_Project1_HowBigWillThePsycheSpacecraftBe_171027-1024x776.jpg",
     "mediaType": "image",
-    "credit": "Morgan Baerwaldt"
+    "credit": "Morgan Baerwaldt",
+    "description": "I figured that a visual comparison would probably help people imagine the size of the craft more than the descriptions alone. School buses are a really common, relatable size, so I chose to use those for the first two illustrations. I added in a six foot tall bus driver, who is clearly very confused about why the Psyche bus is sitting next to his bus, to make the drawing more fun and add more context. I chose to show Psyche sitting on top of a tennis court. While not every body knows the where the singles lines are on a tennis court, most people have seen a tennis court and can see the relationship. It turns out that a standard interior door, something that most people probably walk through every day, is nearly exactly the height of Psyche’s booms and antenna reflector. I used felt-tip ink pens and watercolor on cold press watercolor paper. I drew it in pencil, inked over it in pen, erased extra marks, and then watercolored over that."
   },
   {
     "name": "Launch Day",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_JSeidner_Project1_LaunchDay_171107-1024x666.jpg",
     "mediaType": "image",
-    "credit": "Jeremy Seidner"
+    "credit": "Jeremy Seidner",
+    "description": "This piece aims to convey the excitement of the Psyche mission to the public, like the excitement we feel as children. While brainstorming layout ideas, I couldn’t decide on one, so I decided to incorporate all four of them into one large piece. This not only added more creativity, but also provided different perspectives of what it may look like on launch day. I chose to use a watercolor technique and cartoon-looking children for the piece because I felt the two styles relate with the child in all of us."
   },
   {
     "name": "Heart of Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_CVasquez_Project2_HeartOfPsyche_171129-1024x820.png",
     "mediaType": "image",
-    "credit": "Chris Vasquez"
+    "credit": "Chris Vasquez",
+    "description": "For this project I created an illustration depicting both Psyche the asteroid and Psyche the spacecraft. I drew the latter as an exploded diagram, with all the pieces orbiting/surrounding the asteroid as if it were the heart of the spacecraft. I intend to portray the importance and reason for the mission at a glance while also acknowledging the complexity of work being put in by all involved parties."
   },
   {
     "name": "Psyche Acrylic Pop Art Posters",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_CCedarleaf_Project1_PsycheAcrylicPopArtPosters_171112-1024x683.jpg",
     "mediaType": "image",
-    "credit": "Caralie Cedarleaf"
+    "credit": "Caralie Cedarleaf",
+    "description": "The Psyche Mission is possible today because of NASA’s work in the late 50’s into the early 60’s and 70’s. Inspired by the Pop Art Movement that thrived during those decades, the Psyche Posters celebrate that era of advancement. Details were cut from transparent acrylic; brightly colored solid pieces fit together with the detail pieces. A colorful image is cast behind each poster when lit from one side."
   },
   {
     "name": "(16) Psyche",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_MBromley_Project1_16Psyche_171104-1024x768.jpg",
     "mediaType": "image",
-    "credit": "Megan Bromley"
+    "credit": "Megan Bromley",
+    "description": "This work underscores the mysterious nature of the asteroid and the importance of the mission. It emphasizes that our current images and predictions about the asteroid are useful, but ultimately can be distortions, not unlike the images I’ve made. Exploration attempts to reconcile this divide between reality and knowledge. To create this work, I converted a pixelated image of (16) Psyche into a sound file, applied 16 different combinations of sound filters to the file, converted those 16 results back to image files, and added each edit as a tile in a larger grid of 16 images. Taped over the top is an accompanying collage poem."
   },
   {
     "name": "A History of Space Exploration",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_BOrrill_Project1_HistoryOfSpaceExploration_171117-e1515962224749-1024x576.jpg",
     "mediaType": "image",
-    "credit": "Brianna Orrill"
+    "credit": "Brianna Orrill",
+    "description": "This piece is based on the Japanese art style of Notan, which focuses on stark contrasts. Designs and shapes are cut into black paper and reflected to the outside, creating a mirror image. The piece takes the overall shape of the Psyche spacecraft, while cut into the main structure is the history of space exploration. In this piece you can see: Goddard’s first fuel rocket, Sputnik, the first human space flight, a Saturn rocket used for the Apollo missions, the lunar landing, Skylab I, the Space Shuttle, Mir, the Hubble telescope, the International Space Station, Voyager, the Spirit rover, the Curiosity rover, and finally Psyche, the next step in our exploration of space."
   },
   {
     "name": "Psyche: Then and Now",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_NBacalzo_Project1_PsycheThenAndNow_171114-1024x721.jpg",
     "mediaType": "image",
-    "credit": "Nikka Bacalzo"
+    "credit": "Nikka Bacalzo",
+    "description": "These two pieces that I cut with an X-Acto blade show the “then” and “now” of Psyche. I layered multiple different cut-outs, separated and framed by foam core, to create the final piece. The Psyche asteroid was named after a Greek goddess, which inspired the idea of hands presenting the asteroid, as well as the wings she had that float behind. Fast forward-ing to 2026, the expected arrival date of the Psyche spacecraft, the second piece includes people looking through a telescope at Psyche, as well as Jupiter and Mars, which are near Psyche. Dimensions: 8.5” x 6”."
   },
   {
     "name": "Mixed Metallic",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_AWeibel_Project2_MixedMetallic_171119-813x1024.jpg",
     "mediaType": "image",
-    "credit": "Abigail Weibel"
+    "credit": "Abigail Weibel",
+    "description": "This painting was inspired by the color palettes of the current artist rendering of the asteroid and my fellow Psyche interns’ recent artworks. It seemed fitting to me to create an abstract piece that allowed for greater interpretation and imagination, similar to the interpretations that are resulting from the small amount of data we currently have on Psyche."
   },
   {
     "name": "Psyche Street Art",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Inspired_17-18_BOrrill_Project2_PsycheStreetArt_171130-1024x684.jpg",
     "mediaType": "image",
-    "credit": "Brianna Orrill"
+    "credit": "Brianna Orrill",
+    "description": "I created street art for ASU’s Earth and Space Exploration Day on November 18th. This piece contained half of the Psyche satellite, with accurate dimensions to show the public the size. I filled in the entirety of the bus (body) of the spacecraft. For the solar panels, however, I invited kids (of all ages!) at the event to participate: Each person got a small cup of chalk and a square foot to draw any image of space that they wanted."
   },
   {
     "name": "3D-Printed Psyche Asteroid Models",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Outreach_SmPainted3DModel.jpg",
     "mediaType": "image",
-    "credit": "John Carpenter"
+    "credit": "John Carpenter",
+    "description": "Large painted 3-D model of the Psyche Asteroid"
   },
   {
     "name": "3D-Printed Psyche Asteroid Model",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/Psyche_Outreach_LrgPainted3DModel.jpg",
     "mediaType": "image",
-    "credit": "John Carpenter"
+    "credit": "John Carpenter",
+    "description": "Large painted 3-D model of the Psyche Asteroid"
   },
   {
-    "name": "Linday & the Team",
+    "name": "Lindy & the Team",
     "uri":
       "https://psyche.asu.edu/wp-content/uploads/2017/12/post-4-1024x672.jpg",
     "mediaType": "image",
-    "credit": "Lindy Elkins-Tanton"
+    "credit": "Lindy Elkins-Tanton",
+    "description": "Psyche Team"
   },
   {
     "name": "Psyche: Journey to a Metal World",
     "uri": "https://player.vimeo.com/video/194399729",
     "prev": "https://psyche.asu.edu/wp-content/uploads/2017/12/video-1-640x420.jpg",
-    "mediaType": "video"
+    "mediaType": "video",
+    "credit": "Psyche Team",
+    "description": "Psyche is both the name of an asteroid orbiting the Sun between Mars and Jupiter — and the name of an ASU mission to visit that asteroid. The mission was chosen by NASA on January 4, 2017 as one of two missions for the agency’s Discovery Program, a series of low-cost missions to solar system targets. The Psyche spacecraft is targeted to launch in summer 2022 and travel to the asteroid using solar-electric (low-thrust) propulsion, arriving in 2026, following a Mars flyby and gravity-assist in 2023. After arrival, the mission plan calls for 21 months spent at the asteroid, mapping it and studying its properties."
   },
   {
     "name": "ASU KEDtalk: Psyche - Journey to a Metal World",
     "uri": "https://player.vimeo.com/video/147388754",
     "prev": "https://psyche.asu.edu/wp-content/uploads/2017/12/video-2-640x420.jpg",
-    "mediaType": "video"
+    "mediaType": "video",
+    "credit":"Psyche Team",
+    "description": "Lindy Elkins-Tanton is a planetary scientist and director of the School of Earth and Space Exploration at Arizona State University. She’s also one of the few people in the world who has an asteroid named after her (Google Asteroid 8252 Elkins-Tanton). Why should we explore space? What does science need to make real progress? Can scientists be creative people? Where is your path in life going to take you? If you’ve ever pondered the answers to these questions, Elkins-Tanton’s KEDtalk is for you."
   }
 ]
