@@ -65,50 +65,31 @@ export default class RootNavigator extends React.Component {
       onboardingDone: null
     };
   }
-  _onDoneCallback = async () => {
-    try {
-      await AsyncStorage.setItem("@Pysche:Onboarding:Done", "done");
-    } catch (error) {
-      console.log(error);
-    }
-    this.setState({ onboardingDone: true });
-  };
-
-  _checkOnboarding = async () => {
-    try {
-      // returns null if item not found
-      let done = await AsyncStorage.getItem("@Pysche:Onboarding:Done");
-      if (done !== null) {
-        return true;
-      }
-      return false;
-    } catch (error) {
-      console.log(error);
-      // if error default to not showing onBoarding screen
-      return true;
-    }
-  };
+  // _onDoneCallback = async () => {
+  //   this.props.navigation.navigate("Main");
+  //   this.setState({ onboardingDone: true })
+  // };
 
   componentDidMount() {
-    AsyncStorage.getItem("onboardingDone").then(value => {
-      if (value == null) {
-        AsyncStorage.setItem("alreadyLaunched", true);
-        this.setState({ onboardingDone: true });
+    AsyncStorage.getItem("@Pysche:firstLaunch9").then(value => {
+      if (value === null) {
+        AsyncStorage.setItem("@Pysche:firstLaunch9", "true");
+        this.setState({ onboardingDone: false });
       }
       else {
-        this.setState({ onboardingDone: false });
+        this.setState({ onboardingDone: true });
       }
     });
   };
 
   render() {
     if (this.state.onboardingDone === null) {
-      return null;
+      return <View style={{ flex: 1 }} />;
     }
-    else if (!this.state.onboardingDone) {
+    else if (false) {
       return (
         <Onboarding
-          onDone={this._onDoneCallback}
+          onDone={() => console.log(this.props)}
           showSkip={false}
           pages={[
             {

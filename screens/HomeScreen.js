@@ -7,7 +7,8 @@ import {
   StatusBar,
   Image,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import { Row, Grid } from "react-native-easy-grid";
@@ -23,13 +24,15 @@ import Colors from "../constants/Colors";
 import { FloatingAction } from "react-native-floating-action";
 import { PsycheText } from "../components/StyledText";
 import { connectActionSheet } from "@expo/react-native-action-sheet";
+import Onboarding from "react-native-onboarding-swiper";
 
 @connectActionSheet
 export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      horizontalCountdown: false
+      horizontalCountdown: false,
+      onboardingDone: null
     };
   }
 
@@ -72,6 +75,16 @@ export default class HomeScreen extends React.Component {
         }),
       1000
     );
+
+    AsyncStorage.getItem("@Pysche:firstLaunch11").then(value => {
+      if (value === null) {
+        AsyncStorage.setItem("@Pysche:firstLaunch11", "true");
+        this.setState({ onboardingDone: false });
+      }
+      else {
+        this.setState({ onboardingDone: true });
+      }
+    });
   }
 
   _get_current_countdown() {
@@ -116,61 +129,127 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
-    const countdown = this.state.countdown ? this.state.countdown : {};
     const horizontalCountdown = this.state.horizontalCountdown;
     const buttonIcon = this.state.horizontalCountdown
       ? "hourglass-3"
       : "hourglass-1";
 
-    if (!this.state.countdown) {
+    if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
     }
-    return (
-      <View style={styles.container}>
-        {!horizontalCountdown && (
-          <CountDownClockVertical countDownDate={Dates.launch} />
-        )}
-        {horizontalCountdown && (
-          <Grid>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Launch"
-                countDownDate={Dates.launch}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="Mars Encounter"
-                countDownDate={Dates.mars}
-              />
-            </Row>
-            <Row size={20}>
-              <CountDownClockHorizontal
-                clockTitle="16 Psyche Arrival"
-                countDownDate={Dates.arrival}
-              />
-            </Row>
-            <Row size={10} />
-          </Grid>
-        )}
-        <FloatingAction
-          actions={[
+    else if (!this.state.onboardingDone) {
+      return (
+        <Onboarding
+          onDone={() => this.props.navigation.navigate("Main")}
+          showSkip={false}
+          pages={[
             {
-              text: "Accessibility",
-              icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
-              name: "hourGlass",
-              position: 1
+              backgroundColor: "#f06359",
+              image: (
+                <Image
+                  style={{
+                    alignSelf: "center",
+                    height: 120,
+                    width: 120
+                  }}
+                  source={require("../assets/images/psyche-icon.png")}
+                />
+              ),
+              title: "Meet Psyche",
+              subtitle:
+                "Psyche is the name of an astroid in out solar system and the name of the psyche mission to take us there."
+            },
+            {
+              backgroundColor: "#a4405c",
+              image: (
+                <Ionicons
+                  name={"ios-clock-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
+              ),
+              title: "Countdown With Us",
+              subtitle:
+                "The mission is set to takeoff in 2022 and we are counting all the big milestones of the mission."
+            },
+            {
+              backgroundColor: "#7e3255",
+              image: (
+                <Ionicons
+                  name={"ios-information-circle-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
+              ),
+              title: "Learn And Stay Informed",
+              subtitle:
+                "This app will teach you everything you need to know about the Psyche mission through facts, social media and timeline."
+            },
+            {
+              backgroundColor: "#342248",
+              image: (
+                <Ionicons
+                  name={"ios-camera-outline"}
+                  size={120}
+                  color={"#fff"}
+                />
+              ),
+              title: "Picture This",
+              subtitle:
+                "Apply exclusive Psyche filters to your favorite images and share them with your friends."
             }
           ]}
-          color={Colors.primaryColor}
-          showBackground={true}
-          overrideWithAction={true}
-          onPressItem={() => {
-            this.setState({ horizontalCountdown: !horizontalCountdown });
-          }}
         />
-      </View>
-    );
+      );
+    }
+    else {
+      return (
+        <View style={styles.container}>
+          {!horizontalCountdown && (
+            <CountDownClockVertical countDownDate={Dates.launch} />
+          )}
+          {horizontalCountdown && (
+            <Grid>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Launch"
+                  countDownDate={Dates.launch}
+                />
+              </Row>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="Mars Encounter"
+                  countDownDate={Dates.mars}
+                />
+              </Row>
+              <Row size={20}>
+                <CountDownClockHorizontal
+                  clockTitle="16 Psyche Arrival"
+                  countDownDate={Dates.arrival}
+                />
+              </Row>
+              <Row size={10} />
+            </Grid>
+          )}
+          <FloatingAction
+            actions={[
+              {
+                text: "Accessibility",
+                icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+                name: "hourGlass",
+                position: 1
+              }
+            ]}
+            color={Colors.primaryColor}
+            showBackground={true}
+            overrideWithAction={true}
+            onPressItem={() => {
+              this.setState({ horizontalCountdown: !horizontalCountdown });
+            }}
+          />
+        </View>
+      );
+    }
   }
 }
 
