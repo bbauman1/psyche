@@ -61,25 +61,7 @@ const RootStackNavigator = StackNavigator(
     })
   },
   {
-    mode: "modal",
-    navigationOptions: () => ({
-      headerTitleStyle: {
-        fontWeight: "normal",
-        ...Platform.select({
-          ios: {
-            fontFamily: "Helvetica"
-          },
-          android: {
-            fontFamily: "sans-serif"
-          }
-        })
-      },
-      headerTintColor: "#fff",
-      headerStyle: {
-        backgroundColor: Colors.primaryColor,
-        borderBottomColor: "transparent"
-      }
-    })
+    mode: "modal"
   }
 );
 
@@ -91,25 +73,11 @@ export default class RootNavigator extends React.Component {
     };
   }
 
-  componentDidMount() {
-    AsyncStorage.getItem("@Pysche:firstLaunch9").then(value => {
-      if (value === null) {
-        AsyncStorage.setItem("@Pysche:firstLaunch9", "true");
-        this.setState({ onboardingDone: false });
-      }
-      else {
-        this.setState({ onboardingDone: true });
-      }
-    });
-  };
-
   render() {
-
     return (
       <ActionSheetProvider>
         <RootStackNavigator />
       </ActionSheetProvider>
     );
-
   }
 }
