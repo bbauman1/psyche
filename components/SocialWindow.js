@@ -19,16 +19,15 @@ class SocialWindow extends React.Component {
   render() {
     return (
       <View style={[styles.socialWindow]}>
-        <View style={[styles.backButtonTopBar]}>
+        {this.state.canGoBack && <View style={[styles.backButtonTopBar]}>
           <TouchableOpacity
-            disabled={!this.state.canGoBack}
             onPress={this.onGoBack.bind(this)}
           >
             <Text>Go Back </Text>
           </TouchableOpacity>
-        </View>
+        </View>}
         <WebView
-          ref = {WEBVIEW_REF}
+          ref={WEBVIEW_REF}
           source={{ uri: this.props.uri }}
           style={[styles.socialWindow]}
           onNavigationStateChange={this._onNavigationStateChange.bind(this)}
