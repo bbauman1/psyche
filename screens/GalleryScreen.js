@@ -417,12 +417,10 @@ class InformationPanel extends React.Component {
   render() {
     return (
       <ScrollView style={{ flex: 1 }}>
-        <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
-        <View style={{ flex: 0.5 }} />
+        <Text style={styles.informationPanelHeaders}>{this.props.title + "\n"}</Text>
         <Text style={styles.informationPanelText}>
-          {"By: " + this.props.credit}
+          {"By: " + this.props.credit + "\n"}
         </Text>
-        <View style={{ flex: 0.5 }} />
         <Text style={styles.informationPanelText}>
           {this.props.description}
         </Text>
