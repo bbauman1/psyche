@@ -34,22 +34,59 @@ class TwitterFeed extends React.Component {
 
   onPress = () => {
     console.log("Button Pressed");
-  }
-  
+  };
+
+  // render() {
+  //   return (
+  //     <View style={styles.socialWindow}>
+  //     <ScrollView>
+  //         <WebView
+  //           ref={WEBVIEW_REF}
+  //           source={{ uri: SocialMediaURLs.twitterURL }}
+  //           // style = {[styles.socialWindow]}
+  //           style={{height: Dimensions.get("window").height * 10}}
+  //           //onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+  //           startInLoadingState={true}
+  //         />
+  //     </ScrollView>
+  //     </View>
+  //   );
+  // }
+
+  state = {
+    enablePullToRefresh: true
+  };
+
   render() {
     return (
-      <View style={styles.socialWindow}>
-      <ScrollView>
-          <WebView
-            ref={WEBVIEW_REF}
-            source={{ uri: SocialMediaURLs.twitterURL }}
-            style={{height: Dimensions.get("window").height}}
-            //onNavigationStateChange={this._onNavigationStateChange.bind(this)}
-            startInLoadingState={true}
-          />
+      <ScrollView
+        onLayout={event =>
+          this.setState({ scrollViewHeight: event.nativeEvent.layout.height })
+        }
+      >
+        <WebView
+          style={{
+            width: Dimensions.get("window").width,
+            height: this.state.scrollViewHeight
+          }}
+          enableNavigate={false}
+          source={{
+            uri: SocialMediaURLs.twitterURL
+          }}
+          ref={r => (this.webview = r)}
+          {...this.props}
+          injectedJavaScript="window.onscroll = function() { window.postMessage(document.documentElement.scrollTop||document.body.scrollTop)}"
+          onMessage={this.onMessage.bind(this)}
+        />
       </ScrollView>
-      </View>
     );
+  }
+
+  onMessage(event) {
+    //document.documentElement.scrollTop||document.body.scrollTop returns the distance between scroll bar and top position
+    this.setState({
+      enablePullToRefresh: event.nativeEvent.data == 0
+    });
   }
 }
 
@@ -58,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   button: {
-    alignSelf: 'stretch'
+    alignSelf: "stretch"
   }
 });
 
