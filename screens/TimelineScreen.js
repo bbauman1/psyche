@@ -12,6 +12,7 @@ import { StackNavigator } from "react-navigation";
 import Colors from "../constants/Colors.js";
 import { Entypo } from "@expo/vector-icons";
 import { PsycheText } from "../components/StyledText";
+import { Radar } from "../components/Radar";
 
 // Import timeline string data stored as JSON
 var PHASES = require("../timeline_json/PHASES.json");
@@ -69,6 +70,10 @@ class Timeline extends React.Component {
               <PsycheText style={styles.titleText}>
                 {PHASES.PHASE_B.title}
               </PsycheText>
+<<<<<<< HEAD
+=======
+              <Radar style={styles.circle} />
+>>>>>>> master
               <Entypo
                 style={styles.chevron}
                 name="chevron-small-right"
