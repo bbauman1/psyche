@@ -11,6 +11,7 @@ import {
 import AppLink from "react-native-app-link";
 import AppIds from "../constants/AppIds";
 import SocialMediaURLs from "../constants/SocialMediaURLs";
+import SocialFeedBase from "../components/base_components/SocialFeedBase";
 
 const WEBVIEW_REF = "webview";
 
@@ -31,15 +32,7 @@ class InstagramFeed extends React.Component {
   }
 
   render() {
-    return (
-      <WebView
-        ref={WEBVIEW_REF}
-        source={{ uri: SocialMediaURLs.instagramURL }}
-        style={[styles.socialWindow]}
-        onNavigationStateChange={this._onNavigationStateChange.bind(this)}
-        startInLoadingState={true}
-      />
-    );
+    return <SocialFeedBase uri={SocialMediaURLs.instagramURL} />;
   }
 }
 
