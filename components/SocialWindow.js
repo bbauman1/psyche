@@ -28,10 +28,11 @@ class SocialWindow extends React.Component {
           </TouchableOpacity>
         </View>
         <WebView
-          ref = {WEBVIEW_REF}
+          ref={WEBVIEW_REF}
           source={{ uri: this.props.uri }}
           style={[styles.socialWindow]}
           onNavigationStateChange={this._onNavigationStateChange.bind(this)}
+          startInLoadingState={true}
         />
       </View>
     );
@@ -55,8 +56,8 @@ const styles = StyleSheet.create({
   },
   backButtonTopBar: {
     height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   }
 });
 
