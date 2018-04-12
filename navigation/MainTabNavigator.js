@@ -39,19 +39,16 @@ export default TabNavigator(
           case "Facts":
             return (
               <Image
-                source={require("../assets/images/info.png")}
-                style={{ height: 32, width: 32, resizeMode: "contain" }} />
+                source={require("../assets/images/fact.png")}
+                style={{ height: 28, width: 28, resizeMode: "contain" }} />
             );
-            // iconName =
-            //   Platform.OS === "ios"
-            //     ? `ios-information-circle${focused ? "" : "-outline"}`
-            //     : "md-information-circle";
             break;
           case "Timeline":
-            iconName =
-              Platform.OS === "ios"
-                ? `ios-time${focused ? "" : "-outline"}`
-                : "md-time";
+            return (
+              <Image
+                source={require("../assets/images/timeline.png")}
+                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+            );
             break;
           case "Home":
             let homeStyle = Platform.OS === "ios"
@@ -64,16 +61,18 @@ export default TabNavigator(
             );
             break;
           case "Social":
-            iconName =
-              Platform.OS === "ios"
-                ? `ios-chatbubbles${focused ? "" : "-outline"}`
-                : "md-chatbubbles";
+            return (
+              <Image
+                source={require("../assets/images/social.png")}
+                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+            );
             break;
           case "Gallery":
-            iconName =
-              Platform.OS === "ios"
-                ? `ios-images${focused ? "" : "-outline"}`
-                : "md-images";
+            return (
+              <Image
+                source={require("../assets/images/gallery.png")}
+                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+            );
             break;
         }
         return (

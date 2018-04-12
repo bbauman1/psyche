@@ -46,13 +46,12 @@ export default class HomeScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerLeft: (
-        <Ionicons
-          name={"ios-camera-outline"}
-          size={32}
-          color={"#fff"}
-          style={{ marginLeft: 18 }}
-          onPress={() => params.handleLeftHeader()}
-        />
+        <TouchableOpacity onPress={() => params.handleLeftHeader()}>
+          <Image
+            source={require("../assets/images/photo-album.png")}
+            style={{ width: 32, height: 26, marginLeft: 18 }}
+          />
+        </TouchableOpacity>
       )
     };
   };
