@@ -13,7 +13,6 @@ import Colors from "../constants/Colors";
 import SocialWindow from "../components/SocialWindow";
 import SocialMediaURLs from "../constants/SocialMediaURLs";
 
-/*Reference: https://projects.invisionapp.com/share/CEEG2I6JB#/screens/262903247*/
 const FacebookRoute = () => <SocialWindow uri={SocialMediaURLs.facebookURL} />;
 const InstagramRoute = () => (
   <SocialWindow uri={SocialMediaURLs.instagramURL} />
@@ -44,13 +43,13 @@ export default class SocialScreen extends React.Component {
     switch (route.key) {
       case "first":
         //Render the SocialWindow component with Psyche facebook showing
-        return <FacebookRoute />;
+        return <TwitterRoute />;
       case "second":
         //Render the SocialWindow component with Psyche Instagram showing
         return <InstagramRoute />;
       case "third":
         //Render the SocialWindow component with Psyche Twitter showing
-        return <TwitterRoute />;
+        return <FacebookRoute />;
       default:
         return null;
     }
