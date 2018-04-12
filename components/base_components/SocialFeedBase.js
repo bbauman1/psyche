@@ -15,11 +15,14 @@ import AppIds from "../../constants/AppIds";
 import SocialMediaURLs from "../../constants/SocialMediaURLs";
 
 class SocialFeedBase extends React.Component {
-
   state = {
     enablePullToRefresh: true
   };
 
+  _onPressTest = () => {
+    console.log("Pressed!");
+  }
+  
   render() {
     return (
       <ScrollView
@@ -27,19 +30,21 @@ class SocialFeedBase extends React.Component {
           this.setState({ scrollViewHeight: event.nativeEvent.layout.height })
         }
       >
-        <WebView
-          style={{
-            width: Dimensions.get("window").width,
-            height: this.state.scrollViewHeight
-          }}
-          source={{
-            uri: this.props.uri
-          }}
-          ref={r => (this.webview = r)}
-          {...this.props}
-          injectedJavaScript="window.onscroll = function() { window.postMessage(document.documentElement.scrollTop||document.body.scrollTop)}"
-          onMessage={this.onMessage.bind(this)}
-        />
+        <TouchableOpacity onPress ={this._onPressTest}>
+          <WebView
+            style={{
+              width: Dimensions.get("window").width,
+              height: this.state.scrollViewHeight
+            }}
+            source={{
+              uri: this.props.uri
+            }}
+            ref={r => (this.webview = r)}
+            {...this.props}
+            injectedJavaScript="window.onscroll = function() { window.postMessage(document.documentElement.scrollTop||document.body.scrollTop)}"
+            onMessage={this.onMessage.bind(this)}
+          />
+        </TouchableOpacity>
       </ScrollView>
     );
   }
