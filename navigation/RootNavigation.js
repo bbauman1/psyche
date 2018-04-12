@@ -1,10 +1,8 @@
 import { Notifications } from "expo";
 import React from "react";
 import { StackNavigator } from "react-navigation";
-import { Platform, Image, AsyncStorage, View } from "react-native";
+import { Platform } from "react-native";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
-import Onboarding from "react-native-onboarding-swiper";
-import { Ionicons } from "@expo/vector-icons";
 
 import MainTabNavigator from "./MainTabNavigator";
 import CameraScreen from "../screens/CameraScreen";
