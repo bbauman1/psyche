@@ -42,13 +42,10 @@ export default class SocialScreen extends React.Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case "first":
-        //Render the SocialWindow component with Psyche facebook showing
         return <TwitterRoute />;
       case "second":
-        //Render the SocialWindow component with Psyche Instagram showing
         return <InstagramRoute />;
       case "third":
-        //Render the SocialWindow component with Psyche Twitter showing
         return <FacebookRoute />;
       default:
         return null;
