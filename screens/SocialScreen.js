@@ -73,6 +73,7 @@ export default class SocialScreen extends React.Component {
   render() {
     return (
       <View
+        accessible={true}
         style={{
           height: "100%",
           backgroundColor: "#302144"

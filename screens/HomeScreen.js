@@ -133,10 +133,9 @@ export default class HomeScreen extends React.Component {
 
     if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
-    }
-    else {
+    } else {
       return (
-        <View style={styles.container}>
+        <View style={styles.container} accessible={true}>
           {!horizontalCountdown && (
             <CountDownClockVertical countDownDate={Dates.launch} />
           )}
@@ -167,7 +166,9 @@ export default class HomeScreen extends React.Component {
             actions={[
               {
                 text: "Accessibility",
-                icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+                icon: (
+                  <FontAwesome name={buttonIcon} size={24} color={"#fff"} />
+                ),
                 name: "hourGlass",
                 position: 1
               }

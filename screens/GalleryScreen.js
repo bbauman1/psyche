@@ -319,6 +319,7 @@ class MediaInfoViewer extends React.Component {
         //Display image with swipe gesture and information
         return (
           <View
+            accessible={true}
             onLayout={this.orientationSwitchLayout}
             style={{
               flex: 1,
@@ -337,6 +338,7 @@ class MediaInfoViewer extends React.Component {
               onRequestClose={this.toggleModal}
             >
               <View
+                accessible={true}
                 style={{
                   backgroundColor: Colors.primaryColor,
                   height: this.state.windowDim.height / 3,
@@ -366,6 +368,7 @@ class MediaInfoViewer extends React.Component {
     } else if (this.mediaType === "video") {
       return (
         <View
+          accessible={true}
           onLayout={this.orientationSwitchLayout}
           style={{
             flex: 1,
@@ -397,7 +400,7 @@ class MediaInfoViewer extends React.Component {
 class InformationPanel extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }} accessible={true}>
         <PsycheText style={styles.informationPanelHeaders}>Title</PsycheText>
         <PsycheText style={styles.informationPanelText}>
           {this.props.title}
@@ -451,7 +454,7 @@ export default class GalleryScreen extends React.Component {
   render() {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 }} accessible={true}>
         <LocalPageNavigator />
       </View>
     );
