@@ -64,8 +64,9 @@ const styles = StyleSheet.create({
     paddingLeft: 15
   },
   backText: {
-    color: "white", 
+    color: "white",
     paddingLeft: 5,
+    paddingBottom: 2,
     fontWeight: "bold",
   }
 });

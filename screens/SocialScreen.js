@@ -23,9 +23,9 @@ export default class SocialScreen extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: "first", icon: "logo-facebook" },
+      { key: "first", icon: "logo-twitter" },
       { key: "second", icon: "logo-instagram" },
-      { key: "third", icon: "logo-twitter" }
+      { key: "third", icon: "logo-facebook" }
     ]
   };
 
