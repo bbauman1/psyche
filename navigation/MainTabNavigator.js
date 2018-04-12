@@ -40,38 +40,44 @@ export default TabNavigator(
             return (
               <Image
                 source={require("../assets/images/fact.png")}
-                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+                style={{ height: 28, width: 28, resizeMode: "contain" }}
+              />
             );
             break;
           case "Timeline":
             return (
               <Image
                 source={require("../assets/images/timeline.png")}
-                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+                style={{ height: 28, width: 28, resizeMode: "contain" }}
+              />
             );
             break;
           case "Home":
-            let homeStyle = Platform.OS === "ios"
-              ? { height: 48, width: 48, marginBottom: 10 }
-              : { height: 32, width: 32, marginBottom: -1 };
+            let homeStyle =
+              Platform.OS === "ios"
+                ? { height: 48, width: 48, marginBottom: 10 }
+                : { height: 32, width: 32, marginBottom: -1 };
             return (
               <Image
                 source={require("../assets/images/psyche-icon.png")}
-                style={homeStyle} />
+                style={homeStyle}
+              />
             );
             break;
           case "Social":
             return (
               <Image
                 source={require("../assets/images/social.png")}
-                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+                style={{ height: 28, width: 28, resizeMode: "contain" }}
+              />
             );
             break;
           case "Gallery":
             return (
               <Image
                 source={require("../assets/images/gallery.png")}
-                style={{ height: 28, width: 28, resizeMode: "contain" }} />
+                style={{ height: 28, width: 28, resizeMode: "contain" }}
+              />
             );
             break;
         }
@@ -91,7 +97,7 @@ export default TabNavigator(
     swipeEnabled: false,
     tabBarOptions: {
       style: {
-        backgroundColor: "#fff",
+        backgroundColor: "#fff"
       },
       labelStyle: {
         ...Platform.select({
@@ -103,7 +109,7 @@ export default TabNavigator(
           }
         })
       },
-      activeTintColor: Colors.primaryColor,
+      activeTintColor: Colors.primaryColor
     }
   }
 );

@@ -31,6 +31,9 @@ class Timeline extends React.Component {
       <View style={styles.parent}>
         <ScrollView contentContainerStyle={styles.container}>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase a details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_A
@@ -55,6 +58,9 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase b details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_B
@@ -80,6 +86,9 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase c details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_C
@@ -104,6 +113,9 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase d details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_D
@@ -128,6 +140,9 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase e details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_E
@@ -152,6 +167,9 @@ class Timeline extends React.Component {
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback
+            accessibilityLabel={"Phase f details"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             onPress={() =>
               this.props.navigation.navigate("Details", {
                 phase: PHASES.PHASE_F

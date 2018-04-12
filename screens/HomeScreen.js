@@ -41,7 +41,12 @@ export default class HomeScreen extends React.Component {
     return {
       title: "Countdown",
       headerRight: (
-        <TouchableOpacity onPress={() => params.handleRightHeader()}>
+        <TouchableOpacity
+          accessibilityLabel={"Open NASA or Psyche website"}
+          accessibilityTraits={"button"} // only works in ios
+          accessibilityComponentType={"button"} // only works in android
+          onPress={() => params.handleRightHeader()}
+        >
           <Image
             source={require("../assets/images/meatball.png")}
             style={{ width: 48, height: 48, marginRight: 18 }}
@@ -49,7 +54,12 @@ export default class HomeScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerLeft: (
-        <TouchableOpacity onPress={() => params.handleLeftHeader()}>
+        <TouchableOpacity
+          accessibilityLabel={"Open filter gallery"}
+          accessibilityTraits={"button"} // only works in ios
+          accessibilityComponentType={"button"} // only works in android
+          onPress={() => params.handleLeftHeader()}
+        >
           <Image
             source={require("../assets/images/photo-album.png")}
             style={{ width: 32, height: 26, marginLeft: 18 }}
@@ -133,8 +143,7 @@ export default class HomeScreen extends React.Component {
 
     if (this.state.onboardingDone === null) {
       return <View style={styles.loading} />;
-    }
-    else {
+    } else {
       return (
         <View style={styles.container}>
           {!horizontalCountdown && (
@@ -164,10 +173,15 @@ export default class HomeScreen extends React.Component {
             </Grid>
           )}
           <FloatingAction
+            accessibilityLabel={"Swtich Countdown clocks"}
+            accessibilityTraits={"button"} // only works in ios
+            accessibilityComponentType={"button"} // only works in android
             actions={[
               {
                 text: "Accessibility",
-                icon: <FontAwesome name={buttonIcon} size={24} color={"#fff"} />,
+                icon: (
+                  <FontAwesome name={buttonIcon} size={24} color={"#fff"} />
+                ),
                 name: "hourGlass",
                 position: 1
               }
