@@ -25,7 +25,7 @@ import { Ionicons } from "@expo/vector-icons";
 const loadingIndicator = (
   <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
     <ActivityIndicator size="large" color={Colors.primaryColor} />
-    <Text style={{ color: Colors.primaryColor}}>Loading</Text>
+    <Text style={{ color: Colors.primaryColor }}>Loading</Text>
   </View>
 );
 
@@ -145,7 +145,7 @@ class MediaInfoViewer extends React.Component {
             style={{ marginRight: 18 }}
           />
         </TouchableHighlight>
-      ),
+      )
     };
   };
   constructor(props) {
@@ -169,6 +169,7 @@ class MediaInfoViewer extends React.Component {
     this.mediaType = this.file_db_ref[this.index].mediaType;
     this.title = this.file_db_ref[this.index].name;
     this.credit = this.file_db_ref[this.index].credit;
+    this.description = this.file_db_ref[this.index].description;
   };
 
   loadPicture = (width, height) => {
@@ -189,7 +190,7 @@ class MediaInfoViewer extends React.Component {
 
   toggleModal = () => {
     this.setState({
-      modalVisible: !this.state.modalVisible && this.mediaType === "image"
+      modalVisible: !this.state.modalVisible
     });
   };
 
@@ -218,9 +219,11 @@ class MediaInfoViewer extends React.Component {
     this._panResponder = PanResponder.create({
       // Ask to be the responder:
       onStartShouldSetPanResponder: (evt, gestureState) => false,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onStartShouldSetPanResponderCapture: (evt, gestureState) =>
+        !this.state.modalVisible,
       onMoveShouldSetPanResponder: (evt, gestureState) => false,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+      onMoveShouldSetPanResponderCapture: (evt, gestureState) =>
+        !this.state.modalVisible,
 
       onPanResponderGrant: (evt, gestureState) => {
         // The gesture has started. Show visual feedback so the user knows
@@ -231,7 +234,9 @@ class MediaInfoViewer extends React.Component {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
-        this.setState({ xTrans: gestureState.dx });
+        if (!this.state.modalVisible) {
+          this.setState({ xTrans: gestureState.dx });
+        }
       },
       onPanResponderTerminationRequest: (evt, gestureState) => true,
       onPanResponderRelease: (evt, gestureState) => {
@@ -265,9 +270,11 @@ class MediaInfoViewer extends React.Component {
   componentWillUnmount = () => {
     Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.PORTRAIT);
   };
+
   render() {
     //Expo.ScreenOrientation.allow(Expo.ScreenOrientation.Orientation.ALL);
     //If we want to re-enable orientation unlocking, above is where we uncomment
+
     if (this.mediaType === "image") {
       //The image is loading
       if (this.state.loadingPicture === true) {
@@ -319,37 +326,7 @@ class MediaInfoViewer extends React.Component {
             {...this._panResponder.panHandlers}
           >
             {img}
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={this.state.modalVisible}
-              style={{ flex: 1 }}
-              onRequestClose={this.toggleModal}
-            >
-              <View
-                style={{
-                  backgroundColor: Colors.primaryColor,
-                  height: this.state.windowDim.height / 3,
-                  width: this.state.windowDim.width,
-                  marginTop: 2 * this.state.windowDim.height / 3
-                }}
-              >
-                <TouchableHighlight
-                  onPress={this.toggleModal}
-                  underlayColor={"transparent"}
-                  style={{ alignItems: "center" }}
-                >
-                  <Ionicons
-                    name={"ios-arrow-down"}
-                    size={32}
-                    color={"#fff"}
-                    style={{ marginRight: 18 }}
-                  />
-                </TouchableHighlight>
-
-                <InformationPanel title={this.title} credit={this.credit} />
-              </View>
-            </Modal>
+            <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
           </View>
         );
       }
@@ -372,6 +349,7 @@ class MediaInfoViewer extends React.Component {
             }}
             startInLoadingState={true}
           />
+          <ModalMediaOverlay title={this.title} credit={this.credit} description={this.description} visible={this.state.modalVisible} toggleModal={this.toggleModal}/>
         </View>
       );
     } else {
@@ -383,17 +361,72 @@ class MediaInfoViewer extends React.Component {
 }
 /*** END MEDIAINFOVIEWER ***/
 
+/*** MODAL MEDIA OVERLAY ***/
+class ModalMediaOverlay extends React.Component {
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+    windowDim: Dimensions.get("window")
+    };
+  }
+  render() {
+    return (
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={this.props.visible}
+        style={{ flex: 1 }}
+        onRequestClose={this.props.toggleModal}
+      >
+        <View
+          style={{
+            backgroundColor: Colors.primaryColor,
+            height: this.state.windowDim.height / 3,
+            width: this.state.windowDim.width,
+            marginTop: 2 * this.state.windowDim.height / 3
+          }}
+        >
+          <TouchableHighlight
+            onPress={this.props.toggleModal}
+            underlayColor={"transparent"}
+            style={{ alignItems: "center" }}
+          >
+            <Ionicons
+              name={"ios-arrow-down"}
+              size={32}
+              color={"#fff"}
+              style={{ marginRight: 18 }}
+            />
+          </TouchableHighlight>
+
+          <InformationPanel
+            title={this.props.title}
+            credit={this.props.credit}
+            description={this.props.description}
+          />
+        </View>
+      </Modal>
+    );
+  }
+}
+/*** END MODAL MEDIA OVERLAY***/
+
 /***  INFORMATION PANEL ***/
 class InformationPanel extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }}>
         <Text style={styles.informationPanelHeaders}>{this.props.title}</Text>
-        <View style={{ flex: 0.3 }} />
+        <View style={{ flex: 0.5 }} />
         <Text style={styles.informationPanelText}>
           {"By: " + this.props.credit}
         </Text>
-      </View>
+        <View style={{ flex: 0.5 }} />
+        <Text style={styles.informationPanelText}>
+          {this.props.description}
+        </Text>
+      </ScrollView>
     );
   }
 }
