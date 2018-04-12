@@ -11,8 +11,8 @@ import {
   ScrollView
 } from "react-native";
 import AppLink from "react-native-app-link";
-import AppIds from "../constants/AppIds";
-import SocialMediaURLs from "../constants/SocialMediaURLs";
+import AppIds from "../../constants/AppIds";
+import SocialMediaURLs from "../../constants/SocialMediaURLs";
 
 class SocialFeedBase extends React.Component {
 
@@ -54,9 +54,7 @@ class SocialFeedBase extends React.Component {
 
 const styles = StyleSheet.create({
   socialWindow: {
-    flex: 1,
-    width: Layout.width,
-    height: Layout.height
+    flex: 1
   }
 });
 
