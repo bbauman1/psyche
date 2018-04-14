@@ -67,8 +67,8 @@
         "bullets": [
           "During this phase, all the spacecraft subsystems are integrated onto the spacecraft bus.",
           "The spacecraft undergoes vibration testing.",
-          "The spacecraft undergoes environmental thermal-vacuum testing",
-          "The spacecraft undergoes electromagnetic interference, electromagnetic compatibility testing.",
+          "The spacecraft undergoes environmental thermal-vacuum testing.",
+          "The spacecraft undergoes electromagnetic interference and electromagnetic compatibility testing.",
           "In May 2022 the team will conduct the Operations Readiness Review to ensure the system, procedures, and all supporting software and personnel are ready and fully operational. Before launch, the team will conduct Key Decision Point E that will determine readiness to conduct post launch operations."
         ]
       },
@@ -106,7 +106,7 @@
         "date": "May 2023",
         "bullets": [
           "Phase E begins after the Post Launch Assessment Review is conducted.",
-          "The spacecraft will use the gravity of Mars to increase speed and to set its trajectory to intersect with Psyche’s orbit around the Sun",
+          "The spacecraft will use the gravity of Mars to increase speed and to set its trajectory to intersect with Psyche’s orbit around the Sun.",
           "It does this by entering and leaving the gravitational field of Mars.",
           "This slingshot maneuver will save propellant, time and expense."
         ]
@@ -116,7 +116,7 @@
         "id": "8",
         "date": "Jan 2026",
         "bullets": [
-          "Leading up to arrival at Psyche, the spacecraft will spend 100 days in the approach phase",
+          "Leading up to arrival at Psyche, the spacecraft will spend 100 days in the approach phase.",
           "The spacecraft will also measure the asteroid’s spin axis and rotation."
         ]
       },
@@ -126,7 +126,7 @@
         "date": "Jan 2026 - Oct 2027",
         "bullets": [
           "The spacecraft will orbit the asteroid for 21 months.",
-          "It will perform science operations from four different orbits, each successively closer to the asteroid",
+          "It will perform science operations from four different orbits, each successively closer to the asteroid.",
           "In each orbit, the instruments on board will send data back to Earth to be analyzed by the mission’s science team."
         ]
       }

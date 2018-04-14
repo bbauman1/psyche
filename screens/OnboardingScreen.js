@@ -30,7 +30,7 @@ export default class OnboardingScreen extends React.Component {
                         ),
                         title: "Meet Psyche",
                         subtitle:
-                            "Psyche is the name of an astroid in out solar system and the name of the psyche mission to take us there."
+                            "Psyche is the name of an astroid in our solar system and the name of the mission to take us there."
                     },
                     {
                         backgroundColor: "#a4405c",
@@ -43,7 +43,7 @@ export default class OnboardingScreen extends React.Component {
                         ),
                         title: "Countdown With Us",
                         subtitle:
-                            "The mission is set to takeoff in 2022 and we are counting all the big milestones of the mission."
+                            "The mission is set to takeoff in 2022 and we are counting all the big milestones."
                     },
                     {
                         backgroundColor: "#7e3255",
@@ -56,7 +56,7 @@ export default class OnboardingScreen extends React.Component {
                         ),
                         title: "Learn And Stay Informed",
                         subtitle:
-                            "This app will teach you everything you need to know about the Psyche mission through facts, social media and timeline."
+                            "This app will teach you everything you need to know about the Psyche mission through facts, social media and a timeline."
                     },
                     {
                         backgroundColor: "#342248",

@@ -84,7 +84,7 @@ export default class FactsScreen extends React.Component {
               "Principal Investigator (PI): Lindy Elkins-Tanton, Arizona State University (ASU). \n\nDeputy Principal Investigator (Deputy PI): Jim Bell, ASU."
           },
           {
-            title: "What is the responsibility of Principle Investigator(PI)?",
+            title: "What is the responsibility of the Principle Investigator(PI)?",
             content:
               "The PI is responsible for overall mission success, and for the scientific integrity and execution of the mission within committed cost and schedule. \n\nThe PI oversees the team organization, decides science priorities and progress, and oversees delivery of mission data to NASA’s Planetary Data System. \n\nThe PI is the decision-maker within the Psyche team, and NASA is the ultimate decision-maker. \n\nThe PI is responsible for ensuring that all mission participants are playing their roles as defined by the Team Guidelines."
           },
@@ -129,7 +129,7 @@ export default class FactsScreen extends React.Component {
             title:
               "Have we ever used this technology before beyond lunar orbit?",
             content:
-              "No, this will be the first use of Hall effect thrusters beyond lunar orbit."
+              "No. This will be the first use of Hall effect thrusters beyond lunar orbit."
           },
           {
             title: "What type of gas is the Psyche spacecraft using?",
@@ -138,7 +138,7 @@ export default class FactsScreen extends React.Component {
           {
             title: "What is Xenon?",
             content:
-              "Xenon is a gas that is in the air we breathe (in very small amounts-- 0.09 parts per million!).\n\nXenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\n“The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”"
+              "Xenon is a gas that is in the air we breathe (in very small amounts -- 0.09 parts per million!).\n\nXenon gas is used in high quality light bulbs, including automobile headlamps and movie projectors.\n\n“The most common propellant used in ion propulsion is xenon, which is easily ionized and has a high atomic mass, thus generating a desirable level of thrust when ions are accelerated. It also is inert and has a high storage density; therefore, it is well suited for storing on spacecraft.”"
           },
           {
             title: "What is the size of The Psyche spacecraft?",
@@ -187,7 +187,7 @@ export default class FactsScreen extends React.Component {
               "The Psyche mission will use the X-band radio telecommunications system to measure Psyche’s gravity field to high precision.\n\nWhen combined with topography derived from onboard imagery, this will provide information on the interior structure of Psyche."
           },
           {
-            title: "Where does the Radio Science team based?",
+            title: "Where is the Radio Science team based?",
             content: "The team is based at MIT and JPL."
           },
           {
