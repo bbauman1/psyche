@@ -3,9 +3,12 @@
     "name": "psyche",
     "description": "Nasa Psyche Mission Capstone Project.",
     "slug": "psyche",
-    "privacy": "unlisted",
+    "privacy": "public",
     "sdkVersion": "24.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,7 +18,14 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.nasa.psyche"
+    },
+    "android": {
+      "package": "com.nasa.psyche",
+      "versionCode": 1
+    },
+    "androidStatusBar": {
+      "barStyle": "light-content"
     }
   }
 }
