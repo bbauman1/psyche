@@ -25,7 +25,7 @@ export default class OnboardingScreen extends React.Component {
                   height: 120,
                   width: 120
                 }}
-                source={require("../assets/images/psyche-white.png")}
+                source={require("../assets/images/psyche-icon-white.png")}
               />
             ),
             title: "Meet Psyche",
@@ -42,7 +42,7 @@ export default class OnboardingScreen extends React.Component {
                   height: 120,
                   width: 120
                 }}
-                source={require("../assets/images/countdown.png")}
+                source={require("../assets/images/timeline-white.png")}
               />
             ),
             title: "Countdown With Us",
@@ -59,7 +59,7 @@ export default class OnboardingScreen extends React.Component {
                   height: 120,
                   width: 120
                 }}
-                source={require("../assets/images/learn.png")}
+                source={require("../assets/images/fact-white.png")}
               />
             ),
             title: "Learn And Stay Informed",
@@ -76,7 +76,7 @@ export default class OnboardingScreen extends React.Component {
                   height: 120,
                   width: 120
                 }}
-                source={require("../assets/images/photo-album.png")}
+                source={require("../assets/images/photo-album-white.png")}
               />
             ),
             title: "Picture This",

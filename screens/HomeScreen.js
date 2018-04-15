@@ -85,7 +85,7 @@ export default class HomeScreen extends React.Component {
       1000
     );
 
-    AsyncStorage.getItem("@Pysche:firstLaunch").then(value => {
+    AsyncStorage.getItem("@Pysche:firstLaunch1").then(value => {
       if (value === null) {
         AsyncStorage.setItem("@Pysche:firstLaunch", "true");
         this.props.navigation.navigate("Onboarding");
