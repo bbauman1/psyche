@@ -30,7 +30,7 @@ export default class OnboardingScreen extends React.Component {
             ),
             title: "Meet Psyche",
             subtitle:
-              "Psyche is the name of an astroid in out solar system and the name of the psyche mission to take us there."
+              "Psyche is the name of an astroid in our solar system and the name of the psyche mission to take us there."
           },
           {
             backgroundColor: "#a4405c",
