@@ -147,7 +147,10 @@ export default class HomeScreen extends React.Component {
       return (
         <View style={styles.container}>
           {!horizontalCountdown && (
-            <CountDownClockVertical countDownDate={Dates.launch} />
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <PsycheText style={{ color: Colors.primaryColor, fontSize: 16, paddingTop: 10 }}>Until Launch</PsycheText>
+              <CountDownClockVertical countDownDate={Dates.launch} />
+            </View>
           )}
           {horizontalCountdown && (
             <Grid>
